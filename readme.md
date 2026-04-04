@@ -1,5 +1,7 @@
 # layout-tui
 
+![banner](./assets/banner.png)
+
 Generative design tool with a terminal UI — compose layouts, render to canvas, export to SVG/PDF.
 
 Built with [Textual](https://github.com/Textualize/textual) · [Playwright](https://playwright.dev) · [PixiJS](https://pixijs.com)
