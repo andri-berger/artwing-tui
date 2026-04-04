@@ -1,4 +1,4 @@
-# layout-tui
+# filterx-tui
 
 ![banner](./assets/banner.png)
 
