@@ -1,4 +1,6 @@
-# layout-tui
+# filterx-tui
+
+![banner](./assets/banner.png)
 
 Generative design tool with a terminal UI — compose layouts, render to canvas, export to SVG/PDF.
 
