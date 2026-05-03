@@ -18,10 +18,10 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 **Generic Install (Native)**
 <br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
+
 ```bash
-curl -fsSL https://github.com/andri-berger/filterx-tui/releases@0.0.1 | bash
-curl -o https://github.com/andri-berger/filterx-tui/releases@0.0.1 filterx-tui
-chmod +x filterx-tui
+curl -fsSL https://raw.githubusercontent.com/\
+andri-berger/filterx-tui/main/install.sh | sh
 ```
 **macOS (Homebrew)**
 <br>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
@@ -38,10 +38,9 @@ pacman -S filterx-tui
 ```
 ```bash
 paru -S filterx-tui
-```
-```bash
 yay -S filterx-tui
 ```
+
 
 ## Configuration
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -219,18 +218,36 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         Link <img width="560"></th>
     </tr>
     <tr>
+        <td>Assets</td>
+        <td>Flags</td><td>
+        <a href="https://github.com/lipis/flag-icons">
+        https://github.com/lipis/flag-icons</a></td>
+    </tr>
+    <tr>
+        <td>Assets</td>
+        <td>Maps</td><td>
+        <a href="//github.com/djaiss/mapsicon">
+        https://github.com/djaiss/mapsicon</a></td>
+    </tr>
+    <tr>
         <td>Build</td>
-        <td>Grip</td>
-        <td><a href="//github.com/chrishrb/go-grip">
+        <td>Grip</td><td>
+        <a href="//github.com/chrishrb/go-grip">
         https://github.com/chrishrb/go-grip</a></td>
     </tr>
     <tr>
         <td>Build</td>
-        <td>Biome</td>
-        <td><a href="//github.com/biomejs/biome">
+        <td>Biome</td><td>
+        <a href="//github.com/biomejs/biome">
         https://github.com/biomejs/biome</a></td>
     </tr>
-    <tr align="left">
+        <tr>
+        <td>Build</td>
+        <td>Pyright</td><td>
+        <a href="//github.com/microsoft/pyright">
+        https://github.com/microsoft/pyright</a></td>
+    </tr>
+    <tr>
         <td>Build</td>
         <td>Ruff</td>
         <td><a href="//github.com/astral-sh/ruff">
@@ -238,80 +255,80 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     </tr>
     <tr>
         <td>Build</td>
-        <td>UV</td>
-        <td><a href="//github.com/astral-sh/uv">
+        <td>UV</td><td>
+        <a href="//github.com/astral-sh/uv">
         https://github.com/astral-sh/uv</a></td>
     </tr>
     <tr>
         <td>Utilities</td>
-        <td>Numpy</td>
-        <td><a href="//github.com/numpy/numpy">
+        <td>Numpy</td><td>
+        <a href="//github.com/numpy/numpy">
         https://github.com/numpy/numpy</a></td>
     </tr>
     <tr>
         <td>Utilities</td>
-        <td>Platform</td>
-        <td><a href="https://github.com/tox-dev/platformdirs">
+        <td>Platform</td><td>
+        <a href="https://github.com/tox-dev/platformdirs">
         https://github.com/tox-dev/platformdirs</a></td>
     </tr>
     <tr>
         <td>Framework</td>
-        <td>Textual Dev</td>
-        <td><a href="//github.com/Textualize/textual-dev">
+        <td>Textual Dev</td><td>
+        <a href="//github.com/Textualize/textual-dev">
         https://github.com/Textualize/textual-dev</a></td>
     </tr>
     <tr>
         <td>Framework</td>
-        <td>Textual Img</td>
-        <td><a href="//github.com/lnqs/textual-image">
+        <td>Textual Img</td><td>
+        <a href="//github.com/lnqs/textual-image">
         https://github.com/lnqs/textual-image</a></td>
     </tr>
     <tr>
         <td>Framework</td>
-        <td>Textual Fs</td>
-        <td><a href="//github.com/davep/textual-fspicker">
+        <td>Textual Fs</td><td>
+        <a href="//github.com/davep/textual-fspicker">
         https://github.com/davep/textual-fspicker</a></td>
     </tr>
     <tr>
         <td>Processing</td>
-        <td>Playwright</td>
-        <td><a href="https://github.com/microsoft/playwright">
+        <td>Playwright</td><td>
+        <a href="https://github.com/microsoft/playwright">
         https://github.com/microsoft/playwright</a></td>
     </tr>
     <tr>
         <td>Processing</td>
-        <td>GMic</td>
-        <td><a href="https://github.com/GreycLab/gmic">
+        <td>GMic</td><td>
+        <a href="https://github.com/GreycLab/gmic">
         https://github.com/GreycLab/gmic</a></td>
     </tr>
     <tr>
         <td>Processing</td>
-        <td>Pillow</td>
-        <td><a href="//github.com/python-pillow/Pillow">
+        <td>Pillow</td><td>
+        <a href="//github.com/python-pillow/Pillow">
         https://github.com/python-pillow/Pillow</a></td>
     </tr>
     <tr>
         <td>Processing</td>
-        <td>Pixi Filters</td>
-        <td><a href="//github.com/pixijs/filters">
+        <td>Pixi Filters</td><td>
+        <a href="//github.com/pixijs/filters">
         https://github.com/pixijs/filters</a></td>
     </tr>
     <tr>
         <td>Processing</td>
-        <td>OpenCV</td>
-        <td><a href="https://github.com/opencv/opencv">
+        <td>OpenCV</td><td>
+        <a href="https://github.com/opencv/opencv">
         https://github.com/opencv/opencv</a></td>
     </tr>
     <tr>
         <td>Conversion</td>
-        <td>VTracer</td>
-        <td><a href="//github.com/visioncortex/vtracer">
+        <td>VTracer</td><td>
+        <a href="//github.com/visioncortex/vtracer">
         https://github.com/visioncortex/vtracer</a></td>
     </tr>
     <tr>
         <td>Conversion</td>
-        <td>ReSVG</td>
-        <td><a href="//github.com/linebender/resvg">
+        <td>ReSVG</td><td>
+        <a href="//github.com/linebender/resvg">
         https://github.com/linebender/resvg</a></td>
     </tr>
 </table>

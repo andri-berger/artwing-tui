@@ -1,8 +1,8 @@
 [project]
-name = "layout-tui"
-version = "0.1.0"
-description = ""
-license = { file = "COPYING" }
+name = "filterx-tui"
+version = "1.0.0"
+description = "Flexible Filter Generator in TUI format"
+license = { file = "license.md" }
 authors = [{ name = "Andri Berger" }]
 requires-python = ">=3.14"
 dependencies = [
@@ -11,10 +11,7 @@ dependencies = [
     "pillow>=12.1.1",
     "platformdirs>=4.9.2",
     "playwright>=1.58.0",
-    "pytest>=9.0.2",
     "resvg-py>=0.2.6",
-    "sounddevice>=0.5.5",
-    "soundfile>=0.13.1",
     "textual>=8.0.0",
     "textual-fspicker>=1.0.0",
     "textual-image>=0.8.5",
@@ -61,3 +58,12 @@ venvPath = "."
 venv = ".venv"
 include = ["backend"]
 exclude = ["tests"]
+
+
+# [tasks]
+# check-js = "tsc --noEmit"
+# check-py = "uv run pyright"
+# lint-py = "uv run ruff check"
+# lint-js = "biome check"
+# build = "uv build"
+
