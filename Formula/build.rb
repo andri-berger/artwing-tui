@@ -3,7 +3,7 @@
 
     desc "Flexible Filter Generator in TUI format"
     homepage "https://github.com/andri-berger/filterx-tui"
-    url "https://github.com/you/andri-berger/filterx-tui/refs/tags/v1.0.0.tar.gz"
+    url "https://github.com/andri-berger/filterx-tui/archive/v0.0.1.tar.gz"
     sha256 "abc123..."
     license "GPL-3.0-only"
     depends_on "python@3.14"

@@ -4,10 +4,10 @@ pkgrel=1
 arch=('any')
 pkgdesc="Flexible Filter Generator in TUI format"
 url="https://github.com/you/layout-tui"
+makedepends=('python-build' 'python-pip')
 license=('GPL-3.0-only')
 depends=('python' 'uv')
-makedepends=('python-build' 'python-pip')
-  source=("${pkgname}-${pkgver}.tar.gz::https://github.com/you/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+  source=("${pkgname}-${pkgver}.tar.gz::https://github.com/andri-berger/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('abc123...')
 
   build() {

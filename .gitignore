@@ -11,14 +11,11 @@ wheels/
 *.pyc
 *.pyo
 *.pyd
-.eggs/
 
 # Build output
 *.min.js
 *.min.css
 *.tgz
-out
-dist
 
 # Environment / secrets
 .env
@@ -36,21 +33,14 @@ secrets.json
 
 # macOS
 .DS_Store
-.AppleDouble
 
-# Temporary / generated
 *.log
 *.tmp
 .cache/
 .temp/
 
-# dotenv environment variable files
-.env.development.local
-.env.test.local
-.env.production.local
-
 # caches
+*.tsbuildinfo
 .eslintcache
 .cache
-*.tsbuildinfo
 
