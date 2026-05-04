@@ -1,46 +1,76 @@
-
-# Python-generated files
+# Python
 __pycache__/
-*.py[oc]
-build/
-dist/
-wheels/
-*.egg-info/
-*.egg-info
-.venv/
-*.pyc
+*.py[cod]
 *.pyo
 *.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+lib/
+lib64/
 
-# Build output
-*.min.js
-*.min.css
-*.tgz
+# uv
+.venv/
+uv.lock          # optional — commit for apps, ignore for libraries
 
-# Environment / secrets
-.env
-.env.local
-.env.*.local
-*.pem
-*.key
-secrets.json
+# pytest
+.pytest_cache/
+.coverage
+htmlcov/
 
-# JetBrains
+# ruff / mypy
+.mypy_cache/
+.ruff_cache/
+
+# Frontend
+node_modules/
+dist/
+.next/
+.nuxt/
+.output/
+*.local
+
+# Build artifacts
+*.js.map
+*.css.map
+
+# PyCharm / JetBrains
 .idea/
 *.iml
 *.iws
 *.ipr
+.idea_modules/
 
-# macOS
+# OS
 .DS_Store
+Thumbs.db
+desktop.ini
 
+# Environment
+.env
+.env.local
+.env.*.local
+*.env
+
+# Logs
 *.log
-*.tmp
-.cache/
-.temp/
+logs/
+npm-debug.log*
+yarn-debug.log*
 
-# caches
-*.tsbuildinfo
-.eslintcache
-.cache
+# Playwright
+playwright-report/
+test-results/
+.playwright/
 
+# Compiled
+*.elc              # if Emacs files present
+*.pyc

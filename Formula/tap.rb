@@ -1,4 +1,4 @@
-  class Filterx-Tui < Formula
+  class Tap < Formula
     include Language::Python::Virtualenv
 
     license "GPL-3.0-only"
@@ -6,8 +6,9 @@
     homepage "https://github.com/andri-berger/filterx-tui"
     url "https://github.com/andri-berger/filterx-tui/archive/v0.0.1.tar.gz"
     sha256 "95cda2e85ef7c9aa8f5eea4e3551ac8d6da7baac1a11fab668917d0adcd71eef"
-    # depends_on cask: "ungoogled-chromium"
     depends_on "python@3.14"
+    depends_on "opencv"
+    depends_on "resvg"
     depends_on "gmic"
 
 
@@ -32,19 +33,19 @@
     end
 
     on_arm do
-      resource "vtracer" do
-        url "https://files.pythonhosted.org/packages/ca/c6/22c009b147de23fb8d1b18587ec303ab99fe4af423802185a2991a0a5bc4/vtracer-0.6.15-cp314-cp314-macosx_11_0_arm64.whl"
-        sha256 "a845d023d5704eb4edf017cb4e57cad2c7dec36d80160b7f6eab744ca8121e68"
+      resource "opencv-python" do
+        url "https://files.pythonhosted.org/packages/fc/6f/5a28fef4c4a382be06afe3938c64cc168223016fa520c5abaf37e8862aa5/opencv_python-4.13.0.92-cp37-abi3-macosx_13_0_arm64.whl"
+        sha256 "caf60c071ec391ba51ed00a4a920f996d0b64e3e46068aac1f646b5de0326a19"
       end
     end
 
     on_intel do
-      resource "vtracer" do
-        url "https://files.pythonhosted.org/packages/58/84/8b269b73dd0b0f662dc11b6f9ae695ce98b98103cb9248c097e4c1d406f0/vtracer-0.6.15-cp314-cp314-macosx_10_12_x86_64.whl"
-        sha256 "51b9069e87ea022249352f585a2774a07db7434743b8ddae5e49761c33412ceb"
+      resource "opencv-python" do
+        url "https://files.pythonhosted.org/packages/08/ac/6c98c44c650b8114a0fb901691351cfb3956d502e8e9b5cd27f4ee7fbf2f/opencv_python-4.13.0.92-cp37-abi3-macosx_14_0_x86_64.whl"
+        sha256 "5868a8c028a0b37561579bfb8ac1875babdc69546d236249fff296a8c010ccf9"
       end
     end
-    
+
     on_arm do
       resource "playwright" do
         url "https://files.pythonhosted.org/packages/08/71/5e4d98b2ce3641b4343623c6450ff33b9de1c979d12a957505e392338b07/playwright-1.59.0-py3-none-macosx_11_0_arm64.whl"
@@ -58,21 +59,21 @@
         sha256 "bfc6940100b57423175c819ce2422ec5880d55fa2769987f62ab7a1f5fe6783e"
       end
     end
-   
+    
     on_arm do
-      resource "opencv-contrib-python-headless" do
-        url "https://files.pythonhosted.org/packages/70/b5/9af5b81d9279e9982e21dad52f8a6aec10f7c891ae1e3d3d1b3ce111f8e7/opencv_contrib_python_headless-4.13.0.92-cp37-abi3-macosx_13_0_arm64.whl"
-        sha256 "b0467988c2d56c283b00fb808e0b57f5db2e3ca7743164a3b3efc733bfa03d3a"
+      resource "vtracer" do
+        url "https://files.pythonhosted.org/packages/ca/c6/22c009b147de23fb8d1b18587ec303ab99fe4af423802185a2991a0a5bc4/vtracer-0.6.15-cp314-cp314-macosx_11_0_arm64.whl"
+        sha256 "a845d023d5704eb4edf017cb4e57cad2c7dec36d80160b7f6eab744ca8121e68"
       end
     end
 
     on_intel do
-      resource "opencv-contrib-python-headless" do
-        url "https://files.pythonhosted.org/packages/c5/42/f0aef27baf1f376007b018b00f6c304c42c20d31aa8491633c53b18912cb/opencv_contrib_python_headless-4.13.0.92-cp37-abi3-macosx_14_0_x86_64.whl"  
-        sha256 "79e503b77880d806a1b106ff8182c6f898347ccfd1db58ffc9a6369acc236c4c"
+      resource "vtracer" do
+        url "https://files.pythonhosted.org/packages/58/84/8b269b73dd0b0f662dc11b6f9ae695ce98b98103cb9248c097e4c1d406f0/vtracer-0.6.15-cp314-cp314-macosx_10_12_x86_64.whl"
+        sha256 "51b9069e87ea022249352f585a2774a07db7434743b8ddae5e49761c33412ceb"
       end
     end
-
+   
     on_arm do
       resource "pillow" do
         url "https://files.pythonhosted.org/packages/19/1e/dce46f371be2438eecfee2a1960ee2a243bbe5e961890146d2dee1ff0f12/pillow-12.2.0-cp314-cp314t-macosx_11_0_arm64.whl"
@@ -101,29 +102,29 @@
       end
     end
 
-    # def install
-    #   inreplace "pyproject.toml", /\[project\.dependencies\][^\[]*/m, ""
-    #   virtualenv_install_with_resources
-    # end
 
-    def post_install
-      ohai "Installing Chromium via Playwright..."
-      system libexec/"bin/playwright", "install", "chromium"
-    end
+    # def caveats
+    #   <<~EOS
+    #   Chromium is managed by Playwright and installed separately.
+    #   If Chromium is missing or broken, reinstall it manually:
+    #      #{libexec}/bin/playwright install chromium
+
+    #      On Linux, system dependencies may also be needed:
+    #      #{libexec}/bin/playwright install chromium --with-deps
+    #      EOS
+    # end
 
     def caveats
       <<~EOS
-      Chromium is managed by Playwright and installed separately.
-      If Chromium is missing or broken, reinstall it manually:
-         #{libexec}/bin/playwright install chromium
+        artwork-tui requires Chromium via Playwright.
+        After installation run:
 
-         On Linux, system dependencies may also be needed:
-         #{libexec}/bin/playwright install chromium --with-deps
-         EOS
+              playwright install chromium
+
+              EOS
     end
- 
+
     test do
       system "#{bin}/filterx-tui", "--version"
     end
-
   end
