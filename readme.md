@@ -27,7 +27,6 @@ andri-berger/filterx-tui/main/install.sh | sh
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
 
 ```bash
-brew tap andri-berger/filterx-tui
 brew install andri-berger/filterx-tui/tap
 playwright install chromium #deps are included
 ```
@@ -335,88 +334,88 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 ## Gallery
 <table>
   <tr>
-    <td><a href="assets/file-png/1744168392.png">
-    <img src="assets/file-png/1744168392.png"></a></td>
-    <td><a href="assets/file-png/1744168389.png">
-    <img src="assets/file-png/1744168389.png"></a></td>
-    <td><a href="assets/file-png/1744168387.png">
-    <img src="assets/file-png/1744168387.png"></a></td>
-    <td><a href="assets/file-png/1744168383.png">
-    <img src="assets/file-png/1744168383.png"></a></td>
-    <td><a href="assets/file-png/1744168379.png">
-    <img src="assets/file-png/1744168379.png"></a></td>
-    <td><a href="assets/file-png/1744168364.png">
-    <img src="assets/file-png/1744168364.png"></a></td>
+    <td><a href="Asset/file-png/1744168392.png">
+    <img src="Asset/file-png/1744168392.png"></a></td>
+    <td><a href="Asset/file-png/1744168389.png">
+    <img src="Asset/file-png/1744168389.png"></a></td>
+    <td><a href="Asset/file-png/1744168387.png">
+    <img src="Asset/file-png/1744168387.png"></a></td>
+    <td><a href="Asset/file-png/1744168383.png">
+    <img src="Asset/file-png/1744168383.png"></a></td>
+    <td><a href="Asset/file-png/1744168379.png">
+    <img src="Asset/file-png/1744168379.png"></a></td>
+    <td><a href="Asset/file-png/1744168364.png">
+    <img src="Asset/file-png/1744168364.png"></a></td>
   </tr>
   <tr>
-    <td><a href="assets/file-png/1744168360.png">
-    <img src="assets/file-png/1744168360.png"></a></td>
-    <td><a href="assets/file-png/1744168357.png">
-    <img src="assets/file-png/1744168357.png"></a></td>
-    <td><a href="assets/file-png/1744168352.png">
-    <img src="assets/file-png/1744168352.png"></a></td>
-    <td><a href="assets/file-png/1744168350.png">
-    <img src="assets/file-png/1744168350.png"></a></td>
-    <td><a href="assets/file-png/1744168323.png">
-    <img src="assets/file-png/1744168323.png"></a></td>
-    <td><a href="assets/file-png/1744168321.png">
-    <img src="assets/file-png/1744168321.png"></a></td>
+    <td><a href="Asset/file-png/1744168360.png">
+    <img src="Asset/file-png/1744168360.png"></a></td>
+    <td><a href="Asset/file-png/1744168357.png">
+    <img src="Asset/file-png/1744168357.png"></a></td>
+    <td><a href="Asset/file-png/1744168352.png">
+    <img src="Asset/file-png/1744168352.png"></a></td>
+    <td><a href="Asset/file-png/1744168350.png">
+    <img src="Asset/file-png/1744168350.png"></a></td>
+    <td><a href="Asset/file-png/1744168323.png">
+    <img src="Asset/file-png/1744168323.png"></a></td>
+    <td><a href="Asset/file-png/1744168321.png">
+    <img src="Asset/file-png/1744168321.png"></a></td>
   </tr>
   <tr>
-    <td><a href="assets/file-png/1744168314.png">
-    <img src="assets/file-png/1744168314.png"></a></td>
-    <td><a href="assets/file-png/1744168305.png">
-    <img src="assets/file-png/1744168305.png"></a></td>
-    <td><a href="assets/file-png/1744168298.png">
-    <img src="assets/file-png/1744168298.png"></a></td>
-    <td><a href="assets/file-png/1744168282.png">
-    <img src="assets/file-png/1744168282.png"></a></td>
-    <td><a href="assets/file-png/1744168280.png">
-    <img src="assets/file-png/1744168280.png"></a></td>
-    <td><a href="assets/file-png/1744168271.png">
-    <img src="assets/file-png/1744168271.png"></a></td>
+    <td><a href="Asset/file-png/1744168314.png">
+    <img src="Asset/file-png/1744168314.png"></a></td>
+    <td><a href="Asset/file-png/1744168305.png">
+    <img src="Asset/file-png/1744168305.png"></a></td>
+    <td><a href="Asset/file-png/1744168298.png">
+    <img src="Asset/file-png/1744168298.png"></a></td>
+    <td><a href="Asset/file-png/1744168282.png">
+    <img src="Asset/file-png/1744168282.png"></a></td>
+    <td><a href="Asset/file-png/1744168280.png">
+    <img src="Asset/file-png/1744168280.png"></a></td>
+    <td><a href="Asset/file-png/1744168271.png">
+    <img src="Asset/file-png/1744168271.png"></a></td>
   </tr>
   <tr>
-    <td><a href="assets/file-png/1744168261.png">
-    <img src="assets/file-png/1744168261.png"></a></td>
-    <td><a href="assets/file-png/1744168246.png">
-    <img src="assets/file-png/1744168246.png"></a></td>
-    <td><a href="assets/file-png/1744168243.png">
-    <img src="assets/file-png/1744168243.png"></a></td>
-    <td><a href="assets/file-png/1744168233.png">
-    <img src="assets/file-png/1744168233.png"></a></td>
-    <td><a href="assets/file-png/1744168209.png">
-    <img src="assets/file-png/1744168209.png"></a></td>
-    <td><a href="assets/file-png/1744168199.png">
-    <img src="assets/file-png/1744168199.png"></a></td>
+    <td><a href="Asset/file-png/1744168261.png">
+    <img src="Asset/file-png/1744168261.png"></a></td>
+    <td><a href="Asset/file-png/1744168246.png">
+    <img src="Asset/file-png/1744168246.png"></a></td>
+    <td><a href="Asset/file-png/1744168243.png">
+    <img src="Asset/file-png/1744168243.png"></a></td>
+    <td><a href="Asset/file-png/1744168233.png">
+    <img src="Asset/file-png/1744168233.png"></a></td>
+    <td><a href="Asset/file-png/1744168209.png">
+    <img src="Asset/file-png/1744168209.png"></a></td>
+    <td><a href="Asset/file-png/1744168199.png">
+    <img src="Asset/file-png/1744168199.png"></a></td>
   </tr>
   <tr>
-    <td><a href="assets/file-png/1744168196.png">
-    <img src="assets/file-png/1744168196.png"></a></td>
-    <td><a href="assets/file-png/1744168190.png">
-    <img src="assets/file-png/1744168190.png"></a></td>
-    <td><a href="assets/file-png/1744168164.png">
-    <img src="assets/file-png/1744168164.png"></a></td>
-    <td><a href="assets/file-png/1744168146.png">
-    <img src="assets/file-png/1744168146.png"></a></td>
-    <td><a href="assets/file-png/1744168006.png">
-    <img src="assets/file-png/1744168006.png"></a></td>
-    <td><a href="assets/file-png/1744167993.png">
-    <img src="assets/file-png/1744167993.png"></a></td>
+    <td><a href="Asset/file-png/1744168196.png">
+    <img src="Asset/file-png/1744168196.png"></a></td>
+    <td><a href="Asset/file-png/1744168190.png">
+    <img src="Asset/file-png/1744168190.png"></a></td>
+    <td><a href="Asset/file-png/1744168164.png">
+    <img src="Asset/file-png/1744168164.png"></a></td>
+    <td><a href="Asset/file-png/1744168146.png">
+    <img src="Asset/file-png/1744168146.png"></a></td>
+    <td><a href="Asset/file-png/1744168006.png">
+    <img src="Asset/file-png/1744168006.png"></a></td>
+    <td><a href="Asset/file-png/1744167993.png">
+    <img src="Asset/file-png/1744167993.png"></a></td>
   </tr>
   <tr>
-    <td><a href="assets/file-png/1744167990.png">
-    <img src="assets/file-png/1744167990.png"></a></td>
-    <td><a href="assets/file-png/1744167985.png">
-    <img src="assets/file-png/1744167985.png"></a></td>
-    <td><a href="assets/file-png/1744167983.png">
-    <img src="assets/file-png/1744167983.png"></a></td>
-    <td><a href="assets/file-png/1744167978.png">
-    <img src="assets/file-png/1744167978.png"></a></td>
-    <td><a href="assets/file-png/1744167972.png">
-    <img src="assets/file-png/1744167972.png"></a></td>
-    <td><a href="assets/file-png/1744167951.png">
-    <img src="assets/file-png/1744167951.png"></a></td>
+    <td><a href="Asset/file-png/1744167990.png">
+    <img src="Asset/file-png/1744167990.png"></a></td>
+    <td><a href="Asset/file-png/1744167985.png">
+    <img src="Asset/file-png/1744167985.png"></a></td>
+    <td><a href="Asset/file-png/1744167983.png">
+    <img src="Asset/file-png/1744167983.png"></a></td>
+    <td><a href="Asset/file-png/1744167978.png">
+    <img src="Asset/file-png/1744167978.png"></a></td>
+    <td><a href="Asset/file-png/1744167972.png">
+    <img src="Asset/file-png/1744167972.png"></a></td>
+    <td><a href="Asset/file-png/1744167951.png">
+    <img src="Asset/file-png/1744167951.png"></a></td>
   </tr>
 </table>
 
