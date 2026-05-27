@@ -16,8 +16,7 @@ main = [
     "playwright>=1.58.0",
     "textual>=8.0.0",
     "textual-fspicker>=1.0.0",
-    "textual-image>=0.8.5",
-    "vtracer>=0.6.12"]
+    "textual-image>=0.8.5"]
 
 dev = [
     "pyright>=1.1.408",
