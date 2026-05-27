@@ -1,21 +1,15 @@
-from playwright.async_api import async_playwright
 from textual.app import App, ComposeResult
-from .script import (make_layer,
-make_layers, make_new, make_news, make_news_0)
+from .script import (make_layer, make_layers,
+make_new, make_news, make_news_0)
 from .model import ImageTab
 from .builds import TableApp
 from pathlib import Path
-import http.server
-import threading
-import functools
 import json
 import time
 
 
-PORT = 9000
 PATH_FILE = Path(__file__).parent
 STATIC_DIR = PATH_FILE.parent / "Fontend"
-DIR = f"http://localhost:{PORT}/build.html"
 CSS_PATHS = STATIC_DIR / "style.tcss"
 CONFIG = STATIC_DIR / "build.json"
 CONFIGS = STATIC_DIR / "model.json"
@@ -67,23 +61,6 @@ class CLIApp(App):
         dt = self.query_one("#data-table-0")
         self.set_focus(dt)
 
-        handler = functools.partial(
-            http.server.SimpleHTTPRequestHandler,
-            directory=str(STATIC_DIR))
-        self._server = http.server.HTTPServer(
-            ("localhost", PORT), handler)
-        thread = threading.Thread(
-            target=self._server.serve_forever,
-            daemon=True)
-        thread.start()
-
-        self._pw = await async_playwright().start()
-        browser = await (self._pw.chromium.launch(
-            headless=True
-        ))
-        self.page = await browser.new_page()
-        await self.page.goto(DIR)
-
         if self.stores == {}:
             f1 = self.stores
             now = int(time.time())
@@ -96,16 +73,6 @@ class CLIApp(App):
         l0['_'] = [2,1 if l0 else 2]
         self.e_images.config = l0
 
-        # clean sweep png/otf in module/modules
-        # for f in ASSETS_DIR.glob("*.png"):
-        #     if f.name != "model.png"\
-        #             and f.name != f10.name:
-        #         f.unlink()
-        #
-        # for f in ASSETS_DIR.glob("*.otf"):
-        #     if f.name != "model.otf"\
-        #             and f.name != f10.name:
-        #         f.unlink()
 
     async def on_unmount(self) -> None:
         if self._server:

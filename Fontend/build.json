@@ -69,6 +69,162 @@
     36, 37, 38, 39, 40, 25, 26, 27, 28, null,
     29, 30, 31, 32, 33, 34, 35, 23, 24, null],
 
+  "": [
+    ["","",""],
+    ["","",""],
+    ["","",""],
+    ["","",""],
+    ["","",""],
+    ["","",""],
+    ["","",""],
+    ["","",""],
+    ["","",""],
+    ["","",""],
+    ["","",""],
+    ["","",""]],
+
+
+
+
+"artistic": {
+  "_boxfitting": [
+    ["min_box_size",">= 1","1"],
+    ["max_box_size",">= 0","0"],
+    ["initial_density",">= 0","0.25"],
+    ["min_spacing","> 0","1"]],
+
+  "_cartoon": [
+    ["smoothness","int","3"],
+    ["sharpening","int","150"],
+    ["threshold",">= 0","20"],
+    ["thickness",">= 0","0.25"],
+    ["color",">= 0","1.5"],
+    ["quantization","> 0","8"]],
+
+  "_color_ellipses": [
+    ["count","> 0","400"],
+    ["radius",">= 0","5"],
+    ["opacity",">= 0","0.1"]],
+
+  "_cubism": [
+    ["density",">= 0","50"],
+    ["thickness","<= 50","10"],
+    ["max_angle","int","75"],
+    ["opacity","float","0.7"],
+    ["smoothness",">= 0","0"]],
+
+  "_draw_whirl": [
+    ["amplitude",">= 0","100"]],
+
+  "_ellipsionism": [
+    ["R","% > 0","10"],
+    ["r","% > 0","3"],
+    ["smoothness","% >= 0","1"],
+    ["opacity","float","0.7"],
+    ["outline","> 0","8"],
+    ["density","> 0","0.6"]],
+
+  "_fire_edges": [
+    ["edges",">= 0","0.7"],
+    ["attenuation","0 - 1","0.25"],
+    ["smoothness",">= 0","0.5"],
+    ["threshold",">= 0","25"],
+    ["nb_frames","> 0","1"],
+    ["starting_frame",">= 0","20"],
+    ["frame_skip",">= 0","0"]],
+
+  "_fractalize": [
+    ["detail_level","0-1","0.8"]],
+
+  "_glow": [
+    ["amplitude","% >= 0","1"]],
+
+  "_halftone": [
+    ["nb_levels",">= 2","5"],
+    ["size_dark",">= 2","8"],
+    ["size_bright",">= 2","8"],
+    ["shape","0-5","5"],
+    ["smoothness","% >= 0","0"]],
+
+    "_hardsketchbw": [
+    ["amplitude",">= 0","1000"],
+    ["density",">= 0","3"],
+    ["opacity","float","0.1"],
+    ["edge_threshold","<= 100","20"],
+    ["is_fast","0-1","0"]],
+
+  "_hearts": [
+    ["density",">= 0","10"]],
+
+  "_houghsketchbw": [
+    ["density",">= 0","100"],
+    ["radius","> 0","3"],
+    ["threshold","%","100"],
+    ["opacity","% / 100","0.1"],
+    ["votesize","% > 0","100"]],
+
+
+  "_lightrays": [
+    ["density","%","50"],
+    ["center_x","%","50"],
+    ["center_y","%","50"],
+    ["ray_length",">= 0","0.0"],
+    ["ray_attenuation",">= 0","0.5"]],
+
+
+  "_light_relief": [
+    ["ambient_light","","0.3"],
+    ["specular_lightness","","0.5"],
+    ["specular_size","","0.2"],
+    ["darkness","","0"],
+    ["light_smoothness","","??"],
+    ["xl","","0.2"],
+    ["yl","","0.2"],
+    ["zl","","0.5"],
+    ["zscale","","1"],
+    ["opacity","% / 100","1"],
+    ["opacity_is_heightmap","0-1","0"]],
+
+   "_linify": [
+    ["density","<= 100","50"],
+    ["spreading",">= 0","2"],
+    ["resolution","% > 0","40"],
+    ["line_opacity",">= 0","10"],
+    ["line_precision","> 0","24"],
+    ["mode","0-1","0"]],
+
+   "_mosaic": [
+    ["density","0-10","30"]],
+
+  "_old_photo": [[]],
+
+  "pencilbw": [
+    ["size",">= 0","0.3"],
+    ["amplitude",">= 0","60"]]},
+
+"degradations": {
+  "cracks": ["","",""],
+  /* 0<=_density<=100,_is_relief={ 0:No | 1:Yes },_opacity,_color1,
+  density=25, is_relief=0, opacity=1 and color1=0
+   Draw random cracks on selected images with specified color.*/
+  "light_patch": ["","",""],
+  "": ["","",""],
+  "": ["","",""],
+  "": ["","",""],
+  "": ["","",""],
+  "": ["","",""],
+  "": ["","",""],
+  "": ["","",""],
+  "": ["","",""],
+  "": ["","",""],
+  "": ["","",""],
+  "spread": ["","",""]
+
+},
+
+
+
+
   "1-0": [
     ["local limit"],
     ["local level"],

@@ -3,18 +3,15 @@ from textual.reactive import reactive
 from textual_image.widget import Image
 from textual.widgets import DataTable
 from textual.widget import Widget
-from .script import tui_to_web, web_to_tui
+from .script import tui_to_web
 from pathlib import Path
 from textual import on
-from .scripts import opencv
-from .script import testlauf
+from .scripts import open_fred
 from textual.app import ComposeResult
 from .models import on_message
 import shutil
-import base64
 import time
 import json
-import cv2
 
 
 CWD = Path.cwd()
@@ -23,6 +20,7 @@ APP_DIR = Path(__file__).parent
 ASSETS_DIR = APP_DIR.parent / "Fontend"
 ASSETS = ASSETS_DIR / "model.png"
 CONFIGS = ASSETS_DIR / "model.json"
+CONFIG = CONFIGS.read_text()
 
 class ImageTab(Widget):
     config: reactive[dict] = reactive(dict, init=False)
@@ -55,21 +53,6 @@ class ImageTab(Widget):
                     row.extend([""]*f9[f1])
                     f2[f1].add_row(*row)
 
-        if f7 >= 0:
-            f11 = await (
-                f5.evaluate(
-                f4['4-2'][3],[f7,f8]))
-            b64 = f11[0].split(',')[1]
-            f12 = base64.b64decode(b64)
-
-            if f10.get('80',0) in range(1,5):
-                f20 = { "set": f10.get('80',0),
-                    "set0": f10.get('81',0),
-                    "set1": f10.get('82',0),
-                    "set2": f10.get('83',0),
-                    "set3": f10.get('83',0)}
-                f12 = opencv(f12,f20)
-
         if f7 == 4:
             f25 = int(time.time())
             f26 = CWD / f"{f25}.png"
@@ -77,36 +60,18 @@ class ImageTab(Widget):
                 f.write(f12)
 
         if f7 <= 3:
-            with open(ASSETS, "wb") as f:
-                f.write(f12)
-            self.mount(Image(ASSETS))
-            testlauf(self,ASSETS,Image,cv2)
+            self.mount(Image("project.png"))
+            # testlauf(self,"project.png",Image,cv2)
 
-        if f7 == 2:
-            here = web_to_tui(f11[1], f4)
-            f3 = {**f3, **here}
-
-        if f6 >= 1:
-            ss = [0,6] if f6 == 2 else [1,4]
-            with self.app.batch_update():
-                for i in range(*ss):
-                    uv = int(i) == 3
-                    st = 2 if uv else i
-                    f7 = f4[f"1-{st}"]
-                    test = f3.get(str(i),{})
-                    if test is not None:
-                        f2[i].clear(columns=False)
-                        cols = [str(col_i) for
-                                col_i in range(f9[i])]
-                        for row_i in range(len(f7)):
-                            row_key = str(row_i)
-                            yes = test.get(row_key)
-                            row = [f7[row_i][0]]
-                            if yes is not None:
-                                for f1 in cols:
-                                    row.append(
-                                    str(yes.get(f1,"")))
-                            f2[i].add_row(*row)
+        if f7 >= 0:
+            if f10.get('80',0) in range(1,5):
+                f20 = { "set": f10.get('80',0),
+                    "set0": f10.get('81',0),
+                    "set1": f10.get('82',0),
+                    "set2": f10.get('83',0),
+                    "set3": f10.get('83',0)}
+                f13 = open_fred(f12,f20)
+                self.notify(f"Fred: {f13}")
 
         CONFIGS.write_text(
         json.dumps(f3))
@@ -127,7 +92,7 @@ class FileTypeTree(DirectoryTree):
         self.e_images = self.app.query_one(ImageTab)
 
     def filter_paths(self, paths):
-        return [p for p in paths if not p.name.startswith(".") and self._is_allowed(p)]
+        return [p for p in paths if not p.name.startswith(".")]
 
     def _is_allowed(self, p):
         if p.is_dir():
@@ -172,33 +137,34 @@ class FileTypeTree(DirectoryTree):
             self.e_images.config = f14
             await self.reload()
 
-        elif f6 == "1" or f6 == "2":
+
+        elif f5 == "dir-tree-1":
                 f15 = ASSETS_DIR / f9
                 f16 = f15 / f10.name
                 f17 = f4.column
                 f18 = f4.row
 
-                if (int(f2) in [4, 5]
-                        and f17 == 12):
-                    f19 = f3.setdefault(f7, {})
-                    f20 = f19.setdefault(f18, {})
-                    f20[f17 or '11'] = f10.name
-                    f21 = f1.get_cell_at(f4)
-                    f22 = f15 / f21.name
-                    if f22.exists():
-                        f22.unlink()
-                    f1.update_cell_at(
-                        f4,f10.name)
-                else:
-                    f23 = f3.setdefault('0', {})
-                    f24 = f23.setdefault('40', {})
-                    f25 = f24[int(f6)-1] or ""
-                    f24[int(f6)-1] = f10.name
-                    f26 = f15 / f25
-                    if f26.exists():
-                        f26.unlink()
+                self.notify(f"{event.data}")
+                # if (int(f2) in [4, 5]
+                #         and f17 == 12):
+                #     f19 = f3.setdefault(f7, {})
+                #     f20 = f19.setdefault(f18, {})
+                #     f20[f17 or '11'] = f10.name
+                #     f21 = f1.get_cell_at(f4)
+                #     f22 = f15 / f21.name
+                #     if f22.exists():
+                #         f22.unlink()
+                #     f1.update_cell_at(
+                #         f4,f10.name)
+                # else:
+                #     f23 = f3.setdefault('0', {})
+                #     f24 = f23.setdefault('40', {})
+                #     f25 = f24[int(f6)-1] or ""
+                #     f24[int(f6)-1] = f10.name
+                #     f26 = f15 / f25
+                #     if f26.exists():
+                #         f26.unlink()
 
-                shutil.copy2(f10, f16)
                 f27 = {**self.app.stores}
                 f27.update({'_':  [0,1]})
                 self.e_images.config = f27
@@ -206,5 +172,7 @@ class FileTypeTree(DirectoryTree):
                 on_message(self,
                            f10.name,
                            "f0")
+
+
 
 

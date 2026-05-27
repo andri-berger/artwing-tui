@@ -23,6 +23,7 @@ class NoSelectInput(Input):
 class TableApp(Widget):
     def __init__(self) -> None:
         super().__init__()
+        self.glob = 0
         self.coord = None
         self._cursor = None
         self._clipboard = None
@@ -80,16 +81,16 @@ class TableApp(Widget):
                     id="cont-switch-0"):
                 yield FileTypeTree(
                     "/",
-                    file_type="json",
+                    file_type="png",
                     id="dir-tree-0")
+
+            with ContentSwitcher(
+                    initial="dir-tree-1",
+                    id="cont-switch-2"):
                 yield FileTypeTree(
-                    "/",
-                    file_type="image",
+                    "Fontend/modules",
+                    file_type="png",
                     id="dir-tree-1")
-                yield FileTypeTree(
-                    "/",
-                    file_type="font",
-                    id="dir-tree-2")
 
             with ContentSwitcher(
                     initial="data-table-0",
@@ -97,21 +98,6 @@ class TableApp(Widget):
                 yield DataTable(
                     show_header=False,
                     id="data-table-0")
-                yield DataTable(
-                    show_header=False,
-                    id="data-table-1")
-                yield DataTable(
-                    show_header=False,
-                    id="data-table-2")
-                yield DataTable(
-                    show_header=False,
-                    id="data-table-3")
-                yield DataTable(
-                    show_header=False,
-                    id="data-table-4")
-                yield DataTable(
-                    show_header=False,
-                    id="data-table-5")
 
         with Horizontal(id="status"):
             yield Button("X", id="button-6")
