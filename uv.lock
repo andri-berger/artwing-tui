@@ -121,6 +121,13 @@ wheels = [
 name = "filterx-tui"
 version = "1.0.0"
 source = { editable = "." }
+dependencies = [
+    { name = "numpy" },
+    { name = "opencv-python" },
+    { name = "playwright" },
+    { name = "textual" },
+    { name = "textual-image" },
+]
 
 [package.dev-dependencies]
 dev = [
@@ -128,34 +135,21 @@ dev = [
     { name = "ruff" },
     { name = "textual-dev" },
 ]
-main = [
-    { name = "numpy" },
-    { name = "opencv-python" },
-    { name = "pillow" },
-    { name = "platformdirs" },
-    { name = "playwright" },
-    { name = "textual" },
-    { name = "textual-fspicker" },
-    { name = "textual-image" },
-]
 
 [package.metadata]
+requires-dist = [
+    { name = "numpy", specifier = ">=2.4.2" },
+    { name = "opencv-python", specifier = ">=4.13.0.92" },
+    { name = "playwright", specifier = ">=1.58.0" },
+    { name = "textual", specifier = ">=8.0.0" },
+    { name = "textual-image", specifier = ">=0.8.5" },
+]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "pyright", specifier = ">=1.1.408" },
     { name = "ruff", specifier = ">=0.15.4" },
     { name = "textual-dev", specifier = ">=1.8.0" },
-]
-main = [
-    { name = "numpy", specifier = ">=2.4.2" },
-    { name = "opencv-python", specifier = ">=4.13.0.92" },
-    { name = "pillow", specifier = ">=12.1.1" },
-    { name = "platformdirs", specifier = ">=4.9.2" },
-    { name = "playwright", specifier = ">=1.58.0" },
-    { name = "textual", specifier = ">=8.0.0" },
-    { name = "textual-fspicker", specifier = ">=1.0.0" },
-    { name = "textual-image", specifier = ">=0.8.5" },
 ]
 
 [[package]]
@@ -656,18 +650,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/38/fd/fd5ad9527b536c306a5a860a33a45e13983a59804b48b91ea52b42ba030a/textual_dev-1.8.0.tar.gz", hash = "sha256:7e56867b0341405a95e938cac0647e6d2763d38d0df08710469ad6b6a8db76df", size = 25026, upload-time = "2025-10-11T09:47:01.824Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/45/c6/1dc08ceee6d0bdf219c500cb2fbd605b681b63507c4ff27a6477f12f8245/textual_dev-1.8.0-py3-none-any.whl", hash = "sha256:227b6d24a485fbbc77e302aa21f4fdf3083beb57eb45cd95bae082c81cbeddeb", size = 27541, upload-time = "2025-10-11T09:47:00.531Z" },
-]
-
-[[package]]
-name = "textual-fspicker"
-version = "1.0.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "textual" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/e8/fd/dc3160123af550838d50a4fa7f62e357d7ad2fc9b4220ead9160661bcd1b/textual_fspicker-1.0.0.tar.gz", hash = "sha256:462608dbe6a14edff679fc6116addcf288f4a79f8e4fffd240f9ce2caaf9e655", size = 16517, upload-time = "2026-02-18T20:02:16.547Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/92/2f/bf13ae8a1f17186a122968c7ba0f18716d63d2fa67a9e6f905a20067c022/textual_fspicker-1.0.0-py3-none-any.whl", hash = "sha256:71c80258f8885a67abf85d68b42ac8defc8226281481717af722346cbc3e0305", size = 24932, upload-time = "2026-02-18T20:02:15.492Z" },
 ]
 
 [[package]]

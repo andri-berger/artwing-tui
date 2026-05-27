@@ -1,23 +1,18 @@
 [project]
 version = "1.0.0"
 name = "filterx-tui"
-description = "Flexible Filter Generator"
+description = "filterx generator"
+license = { file = "LICENSE" }
 authors = [{ name = "Andri Berger" }]
-license = { file = "license.md" }
 requires-python = ">=3.14"
-dependencies = []
-
-[dependency-groups]
-main = [
+dependencies = [
     "numpy>=2.4.2",
     "opencv-python>=4.13.0.92",
-    "pillow>=12.1.1",
-    "platformdirs>=4.9.2",
     "playwright>=1.58.0",
     "textual>=8.0.0",
-    "textual-fspicker>=1.0.0",
     "textual-image>=0.8.5"]
 
+[dependency-groups]
 dev = [
     "pyright>=1.1.408",
     "ruff>=0.15.4",
@@ -35,7 +30,7 @@ include = [
     "pyproject.py"]
 
 [project.scripts]
-layout-tui ="pyproject:pyproject"
+filterx-tui ="pyproject:pyproject"
 
 [tool.ruff]
 line-length = 88
@@ -56,11 +51,12 @@ venv = ".venv"
 include = ["backend"]
 exclude = ["tests"]
 
-
-# [tasks]
 # check-js = "tsc --noEmit"
 # check-py = "uv run pyright"
 # lint-py = "uv run ruff check"
 # lint-js = "biome check"
 # build = "uv build"
+
+
+
 

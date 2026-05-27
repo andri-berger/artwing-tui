@@ -1,4 +1,4 @@
-from backend.app import CLIApp
+from Backend.build import CLIApp
 
 def pyproject():
     CLIApp().run()

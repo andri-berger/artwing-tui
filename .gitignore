@@ -1,76 +1,17 @@
-# Python
+Fontend/model.png
+.eslintcache
+*.tsbuildinfo
 __pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-.Python
-*.egg
-*.egg-info/
-dist/
-build/
-eggs/
-parts/
-var/
-sdist/
-develop-eggs/
-.installed.cfg
-lib/
-lib64/
-
-# uv
-.venv/
-uv.lock          # optional — commit for apps, ignore for libraries
-
-# pytest
 .pytest_cache/
-.coverage
-htmlcov/
-
-# ruff / mypy
-.mypy_cache/
 .ruff_cache/
-
-# Frontend
-node_modules/
-dist/
-.next/
-.nuxt/
-.output/
-*.local
-
-# Build artifacts
-*.js.map
-*.css.map
-
-# PyCharm / JetBrains
 .idea/
-*.iml
-*.iws
-*.ipr
-.idea_modules/
-
-# OS
-.DS_Store
-Thumbs.db
-desktop.ini
-
-# Environment
-.env
-.env.local
-.env.*.local
-*.env
-
-# Logs
+.venv/
 *.log
-logs/
-npm-debug.log*
-yarn-debug.log*
-
-# Playwright
-playwright-report/
-test-results/
-.playwright/
-
-# Compiled
-*.elc              # if Emacs files present
-*.pyc
+*.tmp
+.cache
+.cache/
+.temp/
+temp/
+.env
+*.pem
+*.key

@@ -28,15 +28,14 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 ```bash
 brew install andri-berger/filterx-tui/tap
-playwright install chromium #deps are included
 ```
 
 ### Arch Linux (AUR)
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
 
 ```bash
-yay -S filterx-tui #Or use paru instead
-playwright install chromium --with-deps
+yay -S filterx-tui 
+# paru -S filterx-tui
 ```
 
 ## Configuration
@@ -214,17 +213,11 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         <th align="left">
         Link <img width="560"></th>
     </tr>
-    <tr>
-        <td>Assets</td>
-        <td>Flags</td><td>
-        <a href="https://github.com/lipis/flag-icons">
-        https://github.com/lipis/flag-icons</a></td>
-    </tr>
-    <tr>
-        <td>Assets</td>
-        <td>Maps</td><td>
-        <a href="//github.com/djaiss/mapsicon">
-        https://github.com/djaiss/mapsicon</a></td>
+        <tr>
+        <td>Build</td>
+        <td>Apng</td><td>
+        <a href="//github.com/apngasm/apngasm">
+        https://github.com/apngasm/apngasm</a></td>
     </tr>
     <tr>
         <td>Build</td>
@@ -234,25 +227,19 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     </tr>
     <tr>
         <td>Build</td>
-        <td>Biome</td><td>
-        <a href="//github.com/biomejs/biome">
-        https://github.com/biomejs/biome</a></td>
-    </tr>
-        <tr>
-        <td>Build</td>
         <td>Pyright</td><td>
         <a href="//github.com/microsoft/pyright">
         https://github.com/microsoft/pyright</a></td>
     </tr>
     <tr>
         <td>Build</td>
-        <td>Ruff</td>
-        <td><a href="//github.com/astral-sh/ruff">
+        <td>Ruff</td><td>
+        <a href="//github.com/astral-sh/ruff">
         https://github.com/astral-sh/ruff</a></td>
     </tr>
     <tr>
         <td>Build</td>
-        <td>UV</td><td>
+        <td>Uv</td><td>
         <a href="//github.com/astral-sh/uv">
         https://github.com/astral-sh/uv</a></td>
     </tr>
@@ -263,16 +250,10 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         https://github.com/numpy/numpy</a></td>
     </tr>
     <tr>
-        <td>Utilities</td>
-        <td>Platform</td><td>
-        <a href="https://github.com/tox-dev/platformdirs">
-        https://github.com/tox-dev/platformdirs</a></td>
-    </tr>
-    <tr>
         <td>Framework</td>
-        <td>Textual Dev</td><td>
-        <a href="//github.com/Textualize/textual-dev">
-        https://github.com/Textualize/textual-dev</a></td>
+        <td>Textual</td><td>
+        <a href="//github.com/Textualize/textual">
+        https://github.com/Textualize/textual</a></td>
     </tr>
     <tr>
         <td>Framework</td>
@@ -281,141 +262,109 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         https://github.com/lnqs/textual-image</a></td>
     </tr>
     <tr>
-        <td>Framework</td>
-        <td>Textual Fs</td><td>
-        <a href="//github.com/davep/textual-fspicker">
-        https://github.com/davep/textual-fspicker</a></td>
-    </tr>
-    <tr>
         <td>Processing</td>
-        <td>Playwright</td><td>
-        <a href="https://github.com/microsoft/playwright">
-        https://github.com/microsoft/playwright</a></td>
-    </tr>
-    <tr>
-        <td>Processing</td>
-        <td>GMic</td><td>
-        <a href="https://github.com/GreycLab/gmic">
+        <td>Gmic</td><td>
+        <a href="//github.com/GreycLab/gmic">
         https://github.com/GreycLab/gmic</a></td>
     </tr>
-    <tr>
+    <tr align="left">
         <td>Processing</td>
         <td>Pillow</td><td>
         <a href="//github.com/python-pillow/Pillow">
         https://github.com/python-pillow/Pillow</a></td>
     </tr>
-    <tr>
-        <td>Processing</td>
-        <td>Pixi Filters</td><td>
-        <a href="//github.com/pixijs/filters">
-        https://github.com/pixijs/filters</a></td>
-    </tr>
-    <tr>
-        <td>Processing</td>
-        <td>OpenCV</td><td>
-        <a href="https://github.com/opencv/opencv">
-        https://github.com/opencv/opencv</a></td>
-    </tr>
-    <tr>
-        <td>Conversion</td>
-        <td>VTracer</td><td>
-        <a href="//github.com/visioncortex/vtracer">
-        https://github.com/visioncortex/vtracer</a></td>
-    </tr>
-    <tr>
-        <td>Conversion</td>
-        <td>ReSVG</td><td>
-        <a href="//github.com/linebender/resvg">
-        https://github.com/linebender/resvg</a></td>
-    </tr>
 </table>
 
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 ## Gallery
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+
 <table>
   <tr>
-    <td><a href="Asset/file-png/1744168392.png">
-    <img src="Asset/file-png/1744168392.png"></a></td>
-    <td><a href="Asset/file-png/1744168389.png">
-    <img src="Asset/file-png/1744168389.png"></a></td>
-    <td><a href="Asset/file-png/1744168387.png">
-    <img src="Asset/file-png/1744168387.png"></a></td>
-    <td><a href="Asset/file-png/1744168383.png">
-    <img src="Asset/file-png/1744168383.png"></a></td>
-    <td><a href="Asset/file-png/1744168379.png">
-    <img src="Asset/file-png/1744168379.png"></a></td>
-    <td><a href="Asset/file-png/1744168364.png">
-    <img src="Asset/file-png/1744168364.png"></a></td>
+    <td><a href="Backend/module/1744168392.png">
+    <img src="Backend/module/1744168392.png"></a></td>
+    <td><a href="Backend/module/1744168389.png">
+    <img src="Backend/module/1744168389.png"></a></td>
+    <td><a href="Backend/module/1744168387.png">
+    <img src="Backend/module/1744168387.png"></a></td>
+    <td><a href="Backend/module/1744168383.png">
+    <img src="Backend/module/1744168383.png"></a></td>
+    <td><a href="Backend/module/1744168379.png">
+    <img src="Backend/module/1744168379.png"></a></td>
+    <td><a href="Backend/module/1744168364.png">
+    <img src="Backend/module/1744168364.png"></a></td>
   </tr>
   <tr>
-    <td><a href="Asset/file-png/1744168360.png">
-    <img src="Asset/file-png/1744168360.png"></a></td>
-    <td><a href="Asset/file-png/1744168357.png">
-    <img src="Asset/file-png/1744168357.png"></a></td>
-    <td><a href="Asset/file-png/1744168352.png">
-    <img src="Asset/file-png/1744168352.png"></a></td>
-    <td><a href="Asset/file-png/1744168350.png">
-    <img src="Asset/file-png/1744168350.png"></a></td>
-    <td><a href="Asset/file-png/1744168323.png">
-    <img src="Asset/file-png/1744168323.png"></a></td>
-    <td><a href="Asset/file-png/1744168321.png">
-    <img src="Asset/file-png/1744168321.png"></a></td>
+    <td><a href="Backend/module/1744168360.png">
+    <img src="Backend/module/1744168360.png"></a></td>
+    <td><a href="Backend/module/1744168357.png">
+    <img src="Backend/module/1744168357.png"></a></td>
+    <td><a href="Backend/module/1744168352.png">
+    <img src="Backend/module/1744168352.png"></a></td>
+    <td><a href="Backend/module/1744168350.png">
+    <img src="Backend/module/1744168350.png"></a></td>
+    <td><a href="Backend/module/1744168323.png">
+    <img src="Backend/module/1744168323.png"></a></td>
+    <td><a href="Backend/module/1744168321.png">
+    <img src="Backend/module/1744168321.png"></a></td>
   </tr>
   <tr>
-    <td><a href="Asset/file-png/1744168314.png">
-    <img src="Asset/file-png/1744168314.png"></a></td>
-    <td><a href="Asset/file-png/1744168305.png">
-    <img src="Asset/file-png/1744168305.png"></a></td>
-    <td><a href="Asset/file-png/1744168298.png">
-    <img src="Asset/file-png/1744168298.png"></a></td>
-    <td><a href="Asset/file-png/1744168282.png">
-    <img src="Asset/file-png/1744168282.png"></a></td>
-    <td><a href="Asset/file-png/1744168280.png">
-    <img src="Asset/file-png/1744168280.png"></a></td>
-    <td><a href="Asset/file-png/1744168271.png">
-    <img src="Asset/file-png/1744168271.png"></a></td>
+    <td><a href="Backend/module/1744168314.png">
+    <img src="Backend/module/1744168314.png"></a></td>
+    <td><a href="Backend/module/1744168305.png">
+    <img src="Backend/module/1744168305.png"></a></td>
+    <td><a href="Backend/module/1744168298.png">
+    <img src="Backend/module/1744168298.png"></a></td>
+    <td><a href="Backend/module/1744168282.png">
+    <img src="Backend/module/1744168282.png"></a></td>
+    <td><a href="Backend/module/1744168280.png">
+    <img src="Backend/module/1744168280.png"></a></td>
+    <td><a href="Backend/module/1744168271.png">
+    <img src="Backend/module/1744168271.png"></a></td>
   </tr>
   <tr>
-    <td><a href="Asset/file-png/1744168261.png">
-    <img src="Asset/file-png/1744168261.png"></a></td>
-    <td><a href="Asset/file-png/1744168246.png">
-    <img src="Asset/file-png/1744168246.png"></a></td>
-    <td><a href="Asset/file-png/1744168243.png">
-    <img src="Asset/file-png/1744168243.png"></a></td>
-    <td><a href="Asset/file-png/1744168233.png">
-    <img src="Asset/file-png/1744168233.png"></a></td>
-    <td><a href="Asset/file-png/1744168209.png">
-    <img src="Asset/file-png/1744168209.png"></a></td>
-    <td><a href="Asset/file-png/1744168199.png">
-    <img src="Asset/file-png/1744168199.png"></a></td>
+    <td><a href="Backend/module/1744168261.png">
+    <img src="Backend/module/1744168261.png"></a></td>
+    <td><a href="Backend/module/1744168246.png">
+    <img src="Backend/module/1744168246.png"></a></td>
+    <td><a href="Backend/module/1744168243.png">
+    <img src="Backend/module/1744168243.png"></a></td>
+    <td><a href="Backend/module/1744168233.png">
+    <img src="Backend/module/1744168233.png"></a></td>
+    <td><a href="Backend/module/1744168209.png">
+    <img src="Backend/module/1744168209.png"></a></td>
+    <td><a href="Backend/module/1744168199.png">
+    <img src="Backend/module/1744168199.png"></a></td>
   </tr>
   <tr>
-    <td><a href="Asset/file-png/1744168196.png">
-    <img src="Asset/file-png/1744168196.png"></a></td>
-    <td><a href="Asset/file-png/1744168190.png">
-    <img src="Asset/file-png/1744168190.png"></a></td>
-    <td><a href="Asset/file-png/1744168164.png">
-    <img src="Asset/file-png/1744168164.png"></a></td>
-    <td><a href="Asset/file-png/1744168146.png">
-    <img src="Asset/file-png/1744168146.png"></a></td>
-    <td><a href="Asset/file-png/1744168006.png">
-    <img src="Asset/file-png/1744168006.png"></a></td>
-    <td><a href="Asset/file-png/1744167993.png">
-    <img src="Asset/file-png/1744167993.png"></a></td>
+    <td><a href="Backend/module/1744168196.png">
+    <img src="Backend/module/1744168196.png"></a></td>
+    <td><a href="Backend/module/1744168190.png">
+    <img src="Backend/module/1744168190.png"></a></td>
+    <td><a href="Backend/module/1744168164.png">
+    <img src="Backend/module/1744168164.png"></a></td>
+    <td><a href="Backend/module/1744168146.png">
+    <img src="Backend/module/1744168146.png"></a></td>
+    <td><a href="Backend/module/1744168006.png">
+    <img src="Backend/module/1744168006.png"></a></td>
+    <td><a href="Backend/module/1744167993.png">
+    <img src="Backend/module/1744167993.png"></a></td>
   </tr>
   <tr>
-    <td><a href="Asset/file-png/1744167990.png">
-    <img src="Asset/file-png/1744167990.png"></a></td>
-    <td><a href="Asset/file-png/1744167985.png">
-    <img src="Asset/file-png/1744167985.png"></a></td>
-    <td><a href="Asset/file-png/1744167983.png">
-    <img src="Asset/file-png/1744167983.png"></a></td>
-    <td><a href="Asset/file-png/1744167978.png">
-    <img src="Asset/file-png/1744167978.png"></a></td>
-    <td><a href="Asset/file-png/1744167972.png">
-    <img src="Asset/file-png/1744167972.png"></a></td>
-    <td><a href="Asset/file-png/1744167951.png">
-    <img src="Asset/file-png/1744167951.png"></a></td>
+    <td><a href="Backend/module/1744167990.png">
+    <img src="Backend/module/1744167990.png"></a></td>
+    <td><a href="Backend/module/1744167985.png">
+    <img src="Backend/module/1744167985.png"></a></td>
+    <td><a href="Backend/module/1744167983.png">
+    <img src="Backend/module/1744167983.png"></a></td>
+    <td><a href="Backend/module/1744167978.png">
+    <img src="Backend/module/1744167978.png"></a></td>
+    <td><a href="Backend/module/1744167972.png">
+    <img src="Backend/module/1744167972.png"></a></td>
+    <td><a href="Backend/module/1744167951.png">
+    <img src="Backend/module/1744167951.png"></a></td>
   </tr>
 </table>
 
