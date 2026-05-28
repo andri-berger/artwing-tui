@@ -51,154 +51,94 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 <table>
     <tr>
-        <th align="left">Cell</th>
-        <th align="left">Resource</th>
-        <th align="left">Default</th>
+        <th align="left">Key</th>
+        <th align="left">Binding</th>
         <th align="left">Description</th>
     </tr>
     <tr>
-        <td>A0</td>
-        <td>boolean</td>
-        <td>nil</td>
-        <td>Enable centering in typing-mode. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
+        <td>F1</td>
+        <td>Delete (CUA)</td>
+        <td>Delete table/grid cell. Think of it as DEL or BACKSPACE in a spreadsheet. </td>
     </tr>
     <tr>
-        <td>A1</td>
-        <td>boolean</td>
-        <td>nil</td>
-        <td>Enable anchoring in navigation-mode. Lorem ipsum dolor sit amet.</td>
+        <td>F2</td>
+        <td>Copy (CUA)</td>
+        <td>Delete table/grid cell. Think of it as Ctrl-C in a spreadsheet. </td>
     </tr>
     <tr>
-        <td>A2</td>
-        <td>boolean</td>
-        <td>nil</td>
-        <td>Enable anchoring in org-mode. Lorem ipsum dolor sit amet.</td>
+        <td>F3</td>
+        <td>Cut (CUA)</td>
+        <td>Delete table/grid cell. Think of it as Ctrl-C in a spreadsheet. </td>
     </tr>
     <tr>
-        <td>A3</td>
-        <td>boolean</td>
-        <td>nil</td>
-        <td>LTR vs RTL Alignment. Lorem ipsum dolor sit amet.</td>
+        <td>F4</td>
+        <td>Paste (CUA)</td>
+        <td>Delete table/grid cell. Think of it as Ctrl-V in a spreadsheet. </td>
     </tr>
     <tr>
-        <td>A4</td>
-        <td>boolean </td>
-        <td>nil</td>
-        <td>Centering horizontally. Lorem ipsum dolor sit amet.</td>
+        <td>F5</td>
+        <td>Clear</td>
+        <td>Clear the Canvas. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td>A5</td>
-        <td>integer</td>
-        <td>50</td>
-        <td>Max-width in chars. Lorem ipsum dolor sit amet.</td>
+        <td>F6</td>
+        <td>Afs</td>
+        <td>Set Seed for A00-A99 Elements. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td>A6</td>
-        <td>integer</td>
-        <td>0</td>
-        <td>Left fringe width in px. Lorem ipsum dolor sit amet.</td>
+        <td>F7</td>
+        <td>Bfs</td>
+        <td>Set Seed for B00-B99. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td>B0</td>
-        <td>integer</td>
-        <td>0</td>
-        <td>Vertical gap at the edge in px. Lorem ipsum dolor sit amet.</td>
+        <td>F8</td>
+        <td>Cfs</td>
+        <td>Set Seed for C00-C99. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td>B1</td>
-        <td>integer</td>
-        <td>0</td>
-        <td>Vertical gap fringe left in px. Lorem ipsum dolor sit amet.</td>
+        <td>F9</td>
+        <td>Create</td>
+        <td>Generate Artwork via Random Generator. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td>B2</td>
-        <td>select 0-3</td>
-        <td>0</td>
-        <td>Line-styles. 
-        <br>0 = Lorem ipsum dolor sit amet. 
-        <br>1 = Lorem ipsum dolor sit amet. 
-        <br>2 = Lorem ipsum dolor sit amet. 
-        <br>3 = Lorem ipsum dolor sit amet.</td>
+        <td>F10</td>
+        <td>Export</td>
+        <td>Export both generated (png) and project file (json) into the directory from where the app was executed / started.</td>
     </tr>
     <tr>
-        <td>B3</td>
-        <td>select 0-3</td>
-        <td>0</td>
-        <td>Hierarchy treshold. 
-        <br>0 = Lorem ipsum dolor sit amet. 
-        <br>1 = Lorem ipsum dolor sit amet. 
-        <br>2 = Lorem ipsum dolor sit amet. 
-        <br>3 = Lorem ipsum dolor sit amet.</td>
+        <td>Tab</td>
+        <td>Navigate</td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
-        <td>B4</td>
-        <td>select 0-3</td>
-        <td>0</td>
-        <td>Lines config header. 
-        <br>0 = Lorem ipsum dolor sit amet. 
-        <br>1 = Lorem ipsum dolor sit amet. 
-        <br>2 = Lorem ipsum dolor sit amet. 
-        <br>3 = Lorem ipsum dolor sit amet.</td>
+        <td>Shift-Tab</td>
+        <td>Navigate</td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
-        <td>B5</td>
-        <td>select 0-3</td>
-        <td>0</td>
-        <td>Lines config mode. 
-        <br>0 = Lorem ipsum dolor sit amet. 
-        <br>1 = Lorem ipsum dolor sit amet. 
-        <br>2 = Lorem ipsum dolor sit amet. 
-        <br>3 = Lorem ipsum dolor sit amet.</td>
+        <td>Arrow-keys</td>
+        <td>Navigation</td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
-        <td>B6</td>
-        <td>select 0-3</td>
-        <td>0</td>
-        <td>Char/line/word header. 
-        <br>0 = Lorem ipsum dolor sit amet. 
-        <br>1 = Lorem ipsum dolor sit amet. 
-        <br>2 = Lorem ipsum dolor sit amet. 
-        <br>3 = Lorem ipsum dolor sit amet.</td>
+        <td>BackSpace</td>
+        <td>Navigation</td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
-        <td>C0</td>
-        <td>select 0-3</td>
-        <td>0</td>
-        <td>Char/line/word mode. 
-        <br>0 = Lorem ipsum dolor sit amet. 
-        <br>1 = Lorem ipsum dolor sit amet. 
-        <br>2 = Lorem ipsum dolor sit amet. 
-        <br>3 = Lorem ipsum dolor sit amet.</td>
+        <td>Space</td>
+        <td>Navigation</td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
-        <td>C1</td>
-        <td>string</td>
-        <td>"/"</td>
-        <td>First Separator header / mode. Lorem ipsum dolor sit amet.</td>
+        <td>Enter</td>
+        <td>Navigation</td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
-        <td>C2</td>
-        <td>string</td>
-        <td>" // "</td>
-        <td>Second separator header / mode. Lorem ipsum dolor sit amet.</td>
-    </tr>
-    <tr>
-        <td>C3</td>
-        <td>string</td>
-        <td>"writer"</td>
-        <td>Fallback text if no org-parent. Lorem ipsum dolor sit amet.</td>
-    </tr>
-    <tr>
-        <td>C4</td>
-        <td>value</td>
-        <td>'unspecified</td>
-        <td>Faces inherit header mode line. Lorem ipsum dolor sit amet.</td>
-    </tr>
-    <tr>
-        <td>C5</td>
-        <td>value</td>
-        <td>'unspecified</td>
-        <td>Custom face of vertical line. Lorem ipsum dolor sit amet.</td>
+        <td>Ctrl-Q</td>
+        <td>System</td>
+        <td>Exit the app. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
 </table>
 
@@ -217,37 +157,19 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         <td>Build</td>
         <td>Apng</td><td>
         <a href="//github.com/apngasm/apngasm">
-        https://github.com/apngasm/apngasm</a></td>
+        https://github.com/apngasm/apng</a></td>
     </tr>
     <tr>
         <td>Build</td>
-        <td>Grip</td><td>
-        <a href="//github.com/chrishrb/go-grip">
-        https://github.com/chrishrb/go-grip</a></td>
+        <td>Watch</td><td>
+        <a href="//github.com/samuelcolvin/watchfiles">
+        https://github.com/samuelcolvin</a></td>
     </tr>
     <tr>
-        <td>Build</td>
-        <td>Pyright</td><td>
-        <a href="//github.com/microsoft/pyright">
-        https://github.com/microsoft/pyright</a></td>
-    </tr>
-    <tr>
-        <td>Build</td>
-        <td>Ruff</td><td>
-        <a href="//github.com/astral-sh/ruff">
-        https://github.com/astral-sh/ruff</a></td>
-    </tr>
-    <tr>
-        <td>Build</td>
-        <td>Uv</td><td>
+        <td>Utility</td>
+        <td>Pip Uv</td><td>
         <a href="//github.com/astral-sh/uv">
         https://github.com/astral-sh/uv</a></td>
-    </tr>
-    <tr>
-        <td>Utilities</td>
-        <td>Numpy</td><td>
-        <a href="//github.com/numpy/numpy">
-        https://github.com/numpy/numpy</a></td>
     </tr>
     <tr>
         <td>Framework</td>
@@ -261,17 +183,17 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         <a href="//github.com/lnqs/textual-image">
         https://github.com/lnqs/textual-image</a></td>
     </tr>
+    <tr align="left">
+        <td>Processing</td>
+        <td>Resize</td><td>
+        <a href="//github.com/shibukawa/imagesize_py">
+        https://github.com/shibukawa/imsize</a></td>
+    </tr>
     <tr>
         <td>Processing</td>
         <td>Gmic</td><td>
         <a href="//github.com/GreycLab/gmic">
         https://github.com/GreycLab/gmic</a></td>
-    </tr>
-    <tr align="left">
-        <td>Processing</td>
-        <td>Pillow</td><td>
-        <a href="//github.com/python-pillow/Pillow">
-        https://github.com/python-pillow/Pillow</a></td>
     </tr>
 </table>
 
@@ -369,6 +291,14 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 </table>
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+
+
+## Rationale
+
+If you encounter any issues, please file an issue on GitHub.
+<br>If you find this module useful, please consider starring the repository on GitHub. 
+
+This project began by moving most of the functionality from a commercial WEB SaaS-project https://print-artwork.com (minus the physical print / POD, minus the vectorizer => vtracer), free of charge, now at the complete opposite in copyleft territory, with some additional code-tweaks to accommodate the different UI-requirements in archaic TUI-land as opposed to shiny WEB-land. The app has been split up into the the glaze/gloss part and the generational part with its sibling <a href="https://github.com/andri-berger/artwork-tui>filterx-TUI">filterx-TUI</a> listed under the same GitHub Profile. Thus, they complement each another really well. The other one for the substance, the matter, this one for the refinement. We strongly believe that the TUI's very own nature, its limitations are its biggest strength! They might outlast every centralized UI-App due to their self-sufficient, decentralized nature, taking advantage of each user's own infrastructure. The less visual features there are, the less maintenance, the less choices, the less moving parts, the less friction, the more ease of mind, the more sparked creativity, the longer lasting a tool will be. 
 
 <br>
 <br>
