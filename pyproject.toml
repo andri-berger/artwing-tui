@@ -8,17 +8,17 @@ requires-python = ">=3.14"
 dependencies = [
     "watchfiles",
     "imagesize",
-    "numpy>=2.4.2",
-    "pillow>=12.2.0",
-    "playwright>=1.58.0",
-    "textual>=8.0.0",
-    "textual-image>=0.8.5"]
+    "numpy",
+    "pillow",
+    "playwright",
+    "textual",
+    "textual-image"]
 
 [dependency-groups]
 dev = [
-    "pyright>=1.1.408",
-    "ruff>=0.15.4",
-    "textual-dev>=1.8.0"]
+    "pyright",
+    "ruff",
+    "textual-dev"]
 
 [build-system]
 requires = ["hatchling"]

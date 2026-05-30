@@ -5,10 +5,8 @@ from textual.widgets import DataTable
 from textual.widget import Widget
 from pathlib import Path
 from textual import on
-from .scripts import open_fred
 from textual.app import ComposeResult
-from .script import testlauf
-import subprocess
+import imagesize
 import asyncio
 import shutil
 import time
@@ -22,7 +20,7 @@ ASSETS_DIR = APP_DIR.parent / "Fontend"
 ASSETS = ASSETS_DIR / "Formula/za.png"
 CONFIGS = APP_DIR.parent / "Formula/za.json"
 IMAGES = APP_DIR.parent / "Formula/za.png"
-TEST = APP_DIR.parent / "tconfig.png"
+TEST = APP_DIR.parent / "uread.png"
 
 class ImageTab(Widget):
     config: reactive[dict] = reactive(dict, init=False)
@@ -81,7 +79,23 @@ class ImageTab(Widget):
                 stderr=asyncio.subprocess.DEVNULL))
             await proc.communicate()
             await self.mount(Image(IMAGES))
-            testlauf(self,IMAGES,Image)
+
+            size = self.size
+            cell_w, cell_h = 9, 18
+            target_w = size.width * cell_w
+            target_h = size.height * cell_h
+            container_ratio = target_w / target_h
+
+            width, height = imagesize.get(str(IMAGES))
+            img_ratio = width / height
+
+            if img_ratio > container_ratio:
+                self.query_one(Image).styles.width = "100%"
+                self.query_one(Image).styles.height = "auto"
+            else:
+                self.query_one(Image).styles.width = "auto"
+                self.query_one(Image).styles.height = "100%"
+
 
         CONFIGS.write_text(
         json.dumps(f3))

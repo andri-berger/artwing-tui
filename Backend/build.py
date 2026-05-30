@@ -7,7 +7,8 @@ import json
 
 PATH_FILE = Path(__file__).parent
 STATIC_DIR = PATH_FILE.parent / "Fontend"
-CSS_PATHS = PATH_FILE.parent / "tconfig.tcss"
+STATIC_BAC = PATH_FILE.parent / "Backend"
+CSS_PATHS = STATIC_BAC / "model.tcss"
 CONFIG = PATH_FILE.parent / "build.json"
 CONFIGS = PATH_FILE.parent / "Formula/za.json"
 

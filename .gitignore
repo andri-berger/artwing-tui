@@ -1,5 +1,15 @@
-Formula/za.json
-Formula/za.png
+Fileend/_blank/*.png
+Fileend/artist/*.png
+Fileend/degrade/*.png
+Fileend/extract/*.png
+Fileend/filter/*.png
+Fileend/filters/*.png
+Fileend/formats/*.png
+Fileend/geometry/*.png
+Fileend/warpings/*.png
+Fileend/zarpings/*.json
+Formula/*.json
+Formula/*.png
 .eslintcache
 __pycache__/
 .pytest_cache/

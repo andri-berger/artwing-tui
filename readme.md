@@ -10,7 +10,7 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
 [Gallery](#gallery)
 
 <!--
-<img src="Backend/module/project.png" width="100%">
+<img src="Backend/modules/17" width="100%">
 <table>
   <tr>
     <td><a href="Backend/module/project.png">
