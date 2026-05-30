@@ -9,8 +9,114 @@ Generative design tool with a terminal UI — compose layouts, render to canvas,
 [API Credit](#credit) / 
 [Gallery](#gallery)
 
+<!--
+<img src="Backend/module/project.png" width="100%">
+<table>
+  <tr>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+  </tr>
+  <tr>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+  </tr>
+  <tr>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+  </tr>
+  <tr>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+  </tr>
+  <tr>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+    <td><a href="Backend/module/project.png">
+    <img src="Backend/module/project.png">
+    </a></td>
+  </tr>
+</table>
+<br>
+<br> -->
 
-(Drag Video in here). Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 ## Installation
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -45,6 +151,63 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 filterx-tui #Launches the TUI
 ```
 Keyboard-driven, no mouse. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+
+<table width="100%">
+    <tr>
+        <th align="left">KPG</th>
+        <th align="left">Terminal</th>
+        <th align="left">Plattform</th>
+        <th align="left">Notes</th>
+    </tr>
+    <tr>
+        <td>&#x2705;</td>
+        <td>Kitty</td>
+        <td>Linux, macOS</td>
+        <td>The originator — reference implementation</td>
+    </tr>
+    <tr>
+        <td>&#x2705;</td>
+        <td>Ghostty</td>
+        <td>Linux, macOS</td>
+        <td>The new kid on the block — native support</td>
+    </tr>
+    <tr>
+        <td>&#x2705;</td>
+        <td>WezTerm</td>
+        <td>Linux, macOS</td>
+        <td>Also supports Sixel + iTerm2 protocol — widest coverage</td>
+    </tr>
+    <tr>
+        <td>&#x1F7E1;</td>
+        <td>suckless</td>
+        <td>Linux</td>
+        <td>Patch available implementing a subset of KGP - not built-in</td>
+    </tr>
+    <tr>
+        <td>&#x274C;</td>
+        <td>foot</td>
+        <td>Linux (Wayland)</td>
+        <td>Sixel only — notable omission given it's the go-to Wayland minimal terminal</td>
+    </tr>
+    <tr>
+        <td>&#x274C;</td>
+        <td>Alacritty</td>
+        <td>Linux, macOS</td>
+        <td>Intentionally does not support font ligatures or modern image protocols</td>
+    </tr>
+    <tr>
+        <td>&#x274C;</td>
+        <td>iTerm2</td>
+        <td>macOS</td>
+        <td>Has its own inline image protocol (iTerm2 protocol), not KGP</td>
+    </tr>
+     <tr>
+        <td>&#x274C;</td>
+        <td>Konsole</td>
+        <td>Linux</td>
+        <td>Sixely only</td>
+    </tr>
+</table>
 
 ## API Reference
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -183,6 +346,20 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     </tr>
     <tr>
         <td><kbd>
+        Build</kbd></td>
+        <td>Biome</td><td>
+        <a href="//github.com/biomejs/biome">
+        https://github.com/biomejs/biome</a></td>
+    </tr>
+    <tr>
+        <td><kbd>
+        Utility</kbd></td>
+        <td>Ruff</td><td>
+        <a href="//github.com/astral-sh/ruff">
+        https://github.com/astral-sh/ruff</a></td>
+    </tr>
+    <tr>
+        <td><kbd>
         Utility</kbd></td>
         <td>Pip Uv</td><td>
         <a href="//github.com/astral-sh/uv">
@@ -205,14 +382,14 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     <tr align="left">
         <td><kbd>
         Processing</kbd></td>
-        <td>Resize</td><td>
+        <td>Resize Img</td><td>
         <a href="//github.com/shibukawa/imagesize_py">
         https://github.com/shibukawa/imsize</a></td>
     </tr>
     <tr>
         <td><kbd>
         Processing</kbd></td>
-        <td>Gmic</td><td>
+        <td>Gmic FX</td><td>
         <a href="//github.com/GreycLab/gmic">
         https://github.com/GreycLab/gmic</a></td>
     </tr>
@@ -220,95 +397,72 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
-## API Gallery
+## PI Gallery
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 
 <table>
-  <tr>
-    <td><a href="Backend/module/1744168392.png">
-    <img src="Backend/module/1744168392.png"></a></td>
-    <td><a href="Backend/module/1744168389.png">
-    <img src="Backend/module/1744168389.png"></a></td>
-    <td><a href="Backend/module/1744168387.png">
-    <img src="Backend/module/1744168387.png"></a></td>
-    <td><a href="Backend/module/1744168383.png">
-    <img src="Backend/module/1744168383.png"></a></td>
-    <td><a href="Backend/module/1744168379.png">
-    <img src="Backend/module/1744168379.png"></a></td>
-    <td><a href="Backend/module/1744168364.png">
-    <img src="Backend/module/1744168364.png"></a></td>
-  </tr>
-  <tr>
-    <td><a href="Backend/module/1744168360.png">
-    <img src="Backend/module/1744168360.png"></a></td>
-    <td><a href="Backend/module/1744168357.png">
-    <img src="Backend/module/1744168357.png"></a></td>
-    <td><a href="Backend/module/1744168352.png">
-    <img src="Backend/module/1744168352.png"></a></td>
-    <td><a href="Backend/module/1744168350.png">
-    <img src="Backend/module/1744168350.png"></a></td>
-    <td><a href="Backend/module/1744168323.png">
-    <img src="Backend/module/1744168323.png"></a></td>
-    <td><a href="Backend/module/1744168321.png">
-    <img src="Backend/module/1744168321.png"></a></td>
-  </tr>
-  <tr>
-    <td><a href="Backend/module/1744168314.png">
-    <img src="Backend/module/1744168314.png"></a></td>
-    <td><a href="Backend/module/1744168305.png">
-    <img src="Backend/module/1744168305.png"></a></td>
-    <td><a href="Backend/module/1744168298.png">
-    <img src="Backend/module/1744168298.png"></a></td>
-    <td><a href="Backend/module/1744168282.png">
-    <img src="Backend/module/1744168282.png"></a></td>
-    <td><a href="Backend/module/1744168280.png">
-    <img src="Backend/module/1744168280.png"></a></td>
-    <td><a href="Backend/module/1744168271.png">
-    <img src="Backend/module/1744168271.png"></a></td>
-  </tr>
-  <tr>
-    <td><a href="Backend/module/1744168261.png">
-    <img src="Backend/module/1744168261.png"></a></td>
-    <td><a href="Backend/module/1744168246.png">
-    <img src="Backend/module/1744168246.png"></a></td>
-    <td><a href="Backend/module/1744168243.png">
-    <img src="Backend/module/1744168243.png"></a></td>
-    <td><a href="Backend/module/1744168233.png">
-    <img src="Backend/module/1744168233.png"></a></td>
-    <td><a href="Backend/module/1744168209.png">
-    <img src="Backend/module/1744168209.png"></a></td>
-    <td><a href="Backend/module/1744168199.png">
-    <img src="Backend/module/1744168199.png"></a></td>
-  </tr>
-  <tr>
-    <td><a href="Backend/module/1744168196.png">
-    <img src="Backend/module/1744168196.png"></a></td>
-    <td><a href="Backend/module/1744168190.png">
-    <img src="Backend/module/1744168190.png"></a></td>
-    <td><a href="Backend/module/1744168164.png">
-    <img src="Backend/module/1744168164.png"></a></td>
-    <td><a href="Backend/module/1744168146.png">
-    <img src="Backend/module/1744168146.png"></a></td>
-    <td><a href="Backend/module/1744168006.png">
-    <img src="Backend/module/1744168006.png"></a></td>
-    <td><a href="Backend/module/1744167993.png">
-    <img src="Backend/module/1744167993.png"></a></td>
-  </tr>
-  <tr>
-    <td><a href="Backend/module/1744167990.png">
-    <img src="Backend/module/1744167990.png"></a></td>
-    <td><a href="Backend/module/1744167985.png">
-    <img src="Backend/module/1744167985.png"></a></td>
-    <td><a href="Backend/module/1744167983.png">
-    <img src="Backend/module/1744167983.png"></a></td>
-    <td><a href="Backend/module/1744167978.png">
-    <img src="Backend/module/1744167978.png"></a></td>
-    <td><a href="Backend/module/1744167972.png">
-    <img src="Backend/module/1744167972.png"></a></td>
-    <td><a href="Backend/module/1744167951.png">
-    <img src="Backend/module/1744167951.png"></a></td>
-  </tr>
+<tr>
+    <td><a href="Backend/module/1780150638.png">
+    <img src="Backend/module/1780150638.png"></a></td>
+    <td><a href="Backend/module/1780150643.png">
+    <img src="Backend/module/1780150643.png"></a></td>
+    <td><a href="Backend/module/1780150675.png">
+    <img src="Backend/module/1780150675.png"></a></td>
+    <td><a href="Backend/module/1780150689.png">
+    <img src="Backend/module/1780150689.png"></a></td>
+    <td><a href="Backend/module/1780150715.png">
+    <img src="Backend/module/1780150715.png"></a></td>
+</tr>
+<tr>
+    <td><a href="Backend/module/1780150731.png">
+    <img src="Backend/module/1780150731.png"></a></td>
+    <td><a href="Backend/module/1780150740.png">
+    <img src="Backend/module/1780150740.png"></a></td>
+    <td><a href="Backend/module/1780150748.png">
+    <img src="Backend/module/1780150748.png"></a></td>  
+    <td><a href="Backend/module/1780151480.png">
+    <img src="Backend/module/1780151480.png"></a></td>  
+    <td><a href="Backend/module/1780151501.png">
+    <img src="Backend/module/1780151501.png"></a></td>
+</tr>
+<tr>
+    <td><a href="Backend/module/1780151522.png">
+    <img src="Backend/module/1780151522.png"></a></td>
+    <td><a href="Backend/module/1780159196.png">
+    <img src="Backend/module/1780159196.png"></a></td>
+    <td><a href="Backend/module/1780159214.png">
+    <img src="Backend/module/1780159214.png"></a></td>
+    <td><a href="Backend/module/1780159226.png">
+    <img src="Backend/module/1780159226.png"></a></td>
+    <td><a href="Backend/module/1780159230.png">
+    <img src="Backend/module/1780159230.png"></a></td>  
+</tr>
+<tr>
+    <td><a href="Backend/module/1780159311.png">
+    <img src="Backend/module/1780159311.png"></a></td>
+    <td><a href="Backend/module/1780159326.png">
+    <img src="Backend/module/1780159326.png"></a></td>
+    <td><a href="Backend/module/1780159589.png">
+    <img src="Backend/module/1780159589.png"></a></td>
+    <td><a href="Backend/module/1780159608.png">
+    <img src="Backend/module/1780159608.png"></a></td>
+    <td><a href="Backend/module/1780159627.png">
+    <img src="Backend/module/1780159627.png"></a></td>
+</tr>
+<tr>
+    <td><a href="Backend/module/1780159636.png">
+    <img src="Backend/module/1780159636.png"></a></td>
+    <td><a href="Backend/module/1780159664.png">
+    <img src="Backend/module/1780159664.png"></a></td>
+    <td><a href="Backend/module/1780159667.png">
+    <img src="Backend/module/1780159667.png"></a></td>
+    <td><a href="Backend/module/1780159675.png">
+    <img src="Backend/module/1780159675.png"></a></td>
+    <td><a href="Backend/module/1780159679.png">
+    <img src="Backend/module/1780159679.png"></a></td>
+</tr>
+
 </table>
 
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.

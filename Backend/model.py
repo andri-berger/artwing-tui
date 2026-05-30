@@ -3,12 +3,13 @@ from textual.reactive import reactive
 from textual_image.widget import Image
 from textual.widgets import DataTable
 from textual.widget import Widget
-from .script import tui_to_web
 from pathlib import Path
 from textual import on
 from .scripts import open_fred
 from textual.app import ComposeResult
-from .models import on_message
+from .script import testlauf
+import subprocess
+import asyncio
 import shutil
 import time
 import json
@@ -18,60 +19,69 @@ CWD = Path.cwd()
 APP = Path(__file__)
 APP_DIR = Path(__file__).parent
 ASSETS_DIR = APP_DIR.parent / "Fontend"
-ASSETS = ASSETS_DIR / "model.png"
-CONFIGS = ASSETS_DIR / "model.json"
-CONFIG = CONFIGS.read_text()
+ASSETS = ASSETS_DIR / "Formula/za.png"
+CONFIGS = APP_DIR.parent / "Formula/za.json"
+IMAGES = APP_DIR.parent / "Formula/za.png"
+TEST = APP_DIR.parent / "tconfig.png"
 
 class ImageTab(Widget):
     config: reactive[dict] = reactive(dict, init=False)
 
     def compose(self) -> ComposeResult:
-        yield Image()
+        yield Image(TEST)
 
+    def on_mount(self) -> None:
+        self.query_one(Image).styles.width = "auto"
+        self.query_one(Image).styles.height = "100%"
+
+    # 2 2 boxfit {}
     async def watch_config(self, value: dict):
+        f02 = self.app.query_one("#label-0")
+        f003 = self.app.store["0"]
+        f03 = self.app.store["3"]
+
         f0 = self.app.query_one("#cont-switch-1")
         f1 = int(f0.current.split("-")[-1])
         f2 = self.app.query(DataTable)
         f3 = self.app.stores
-        f4 = self.app.store
-        f5 = self.app.page
-        f6,f7 = value.pop("_", [])
-        f8 = tui_to_web(value,f4) or {}
-        f9 = [9, 100, 301, 300, 6, 6]
-        f10 = f8.get('0', {})
-        self.query_one(
-            Image).remove()
-        self.notify(
-            f"{f7} - {f8}")
+        self.notify(f"model: {value}")
+        test = value[2][2:-1]
+        testr = value[2][-1]
 
-        if f6 >= 1:
-            with self.app.batch_update():
-                f2[f1].clear(columns=False)
-                f07 = self.app.store[f"1-{f1}"]
+
+        if value[0] == 1:
+            with ((self.app.batch_update())):
+                f2[0].clear(columns=False)
+                f07 = f003[f"{self.app.now}"]
                 for row_i in range(len(f07)):
-                    row = [f07[row_i][0]]
-                    row.extend([""]*f9[f1])
-                    f2[f1].add_row(*row)
+                    ja = test[row_i] if len(test) > row_i else ""
+                    row = [f07[row_i][0],ja]
+                    f2[0].add_row(*row)
 
-        if f7 == 4:
+        def after_focus():
+            f02.update(f03[self.app.now])
+        self.call_after_refresh(
+            after_focus)
+
+        if value[1] == 1:
             f25 = int(time.time())
             f26 = CWD / f"{f25}.png"
-            with open(f26, "wb") as f:
-                f.write(f12)
 
-        if f7 <= 3:
-            self.mount(Image("project.png"))
-            # testlauf(self,"project.png",Image,cv2)
-
-        if f7 >= 0:
-            if f10.get('80',0) in range(1,5):
-                f20 = { "set": f10.get('80',0),
-                    "set0": f10.get('81',0),
-                    "set1": f10.get('82',0),
-                    "set2": f10.get('83',0),
-                    "set3": f10.get('83',0)}
-                f13 = open_fred(f12,f20)
-                self.notify(f"Fred: {f13}")
+        if value[1] == 0:
+            params = ",".join(str(p) for p in test)
+            check = [x for x in test if x != ""]
+            params0 = params if len(check) else ","
+            if self.query(Image):
+                self.query_one(Image).remove()
+            proc = await (asyncio
+            .create_subprocess_exec(
+                "gmic", str(TEST),
+                testr, params0, '-output', str(IMAGES),
+                stdout=asyncio.subprocess.DEVNULL,
+                stderr=asyncio.subprocess.DEVNULL))
+            await proc.communicate()
+            await self.mount(Image(IMAGES))
+            testlauf(self,IMAGES,Image)
 
         CONFIGS.write_text(
         json.dumps(f3))
@@ -86,10 +96,6 @@ class FileTypeTree(DirectoryTree):
     def __init__(self, path, file_type: str, **kwargs):
         self.file_type = file_type
         super().__init__(path, **kwargs)
-        self.store = self.app.store["4-2"][0]
-
-    def on_mount(self):
-        self.e_images = self.app.query_one(ImageTab)
 
     def filter_paths(self, paths):
         return [p for p in paths if not p.name.startswith(".")]
@@ -99,22 +105,22 @@ class FileTypeTree(DirectoryTree):
             return True  # always show dirs for navigation
 
         match self.file_type:
-            case "image":
-                return p.suffix.lower() == ".png"
-            case "font":
-                return p.suffix.lower() == ".otf"
-            case "json":
-                return p.suffix.lower() == ".json"
+            case "multi":
+                return (p.suffix.lower() == ".png"
+                        or p.suffix.lower() == ".json")
         return False
 
 
     @on(DirectoryTree.FileSelected)
     async def selected(self, event: DirectoryTree.FileSelected) -> None:
-        f0 = self.query_one("#cont-switch-1")
-        f1 = self.query_one(f"#{f0.current}")
+        e_images = self.app.query_one(ImageTab)
+        f0 = self.app.query_one("#cont-switch-2")
+        f1 = self.app.query_one(f"#{f0.current}")
+        f02 = self.app.query_one("#label-0")
         f2 = f0.current.split("-")[-1]
         f3 = self.app.stores
-        f4 = self.app.coord
+        f03 = self.app.store["3"]
+        # f4 = self.app.coord
         f5 = event.control.id
         f6 = f5.split("-")[-1]
         f7 = ['4','5'][int(f6)-1]
@@ -122,14 +128,13 @@ class FileTypeTree(DirectoryTree):
         f9 = f8[int(f6)-1]
         f10 = event.path
 
+        self.notify(f"File: {event.path.name}")
+
         if not f10.is_file():
             return
 
         if f5 == "dir-tree-0":
-            f11 = "model.json"
-            f12 = ASSETS_DIR / f11
-            shutil.copy2(f10, f12)
-
+            shutil.copy2(f10, CONFIGS)
             f13 = f10.read_text()
             f14 = json.loads(f13)
             f14.update({'_': [2,1]})
@@ -137,14 +142,19 @@ class FileTypeTree(DirectoryTree):
             self.e_images.config = f14
             await self.reload()
 
+        elif f5 == "dir-tree-2":
+            pass
 
         elif f5 == "dir-tree-1":
-                f15 = ASSETS_DIR / f9
-                f16 = f15 / f10.name
-                f17 = f4.column
-                f18 = f4.row
+                self.app.now = f10.name
+                # f15 = ASSETS_DIR / f9
+                # f16 = f15 / f10.name
+                # f02.update(f03[f10.name][0] or "")
 
-                self.notify(f"{event.data}")
+
+                # f17 = f4.column
+                # f18 = f4.row
+
                 # if (int(f2) in [4, 5]
                 #         and f17 == 12):
                 #     f19 = f3.setdefault(f7, {})
@@ -165,14 +175,18 @@ class FileTypeTree(DirectoryTree):
                 #     if f26.exists():
                 #         f26.unlink()
 
-                f27 = {**self.app.stores}
-                f27.update({'_':  [0,1]})
-                self.e_images.config = f27
-                await self.reload()
-                on_message(self,
-                           f10.name,
-                           "f0")
+                f70 = self.app.store["0"]
+                f05 = f70[self.app.now] or []
 
-
-
-
+                test = sum(1 for row in f05
+                           if row[0] != "")
+                f06 = [""] * test
+                self.notify(f"f05 {f06}")
+                l93 = [0,0,*f06]
+                l94 = [1,0,[*l93,f10.name]]
+                self.app.stores[f10.name] = l93
+                self.notify(f"l94 {l94}")
+                e_images.config = l94
+                # on_message(self,
+                #            f10.name,
+                #            "f0")

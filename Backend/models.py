@@ -9,6 +9,8 @@ CWD = Path.cwd()
 PATH_FILE = Path(__file__).parent
 STATIC_DIR = PATH_FILE.parent / "Fontend"
 CONFIGS = STATIC_DIR / "model.json"
+CONFIGS_ = PATH_FILE.parent / "Formula/za.json"
+IMAGES_ = PATH_FILE.parent / "Formula/za.png"
 
 
 
@@ -48,28 +50,27 @@ def action_next_table(self, event, prefix) -> None:
 
     if self.coord is None:
         if ((f2 + f7) in
-                [-1,0,1,3,4,5,6,7,14]):
+                [-1,9]):
             event.prevent_default()
             event.stop()
 
-        if f3 in [0,1,2,9,10,11,12,13,14]:
+        if f3 in [0,1,2,4,5,6,7,8,9]:
             self.label.update(f4[f3] or "")
-            self.c_digits.update("")
             self.e_third.value = ""
             self.e_fourth.value = ""
 
-        if f3 in [3,4,5,6,7,8]:
+        if f3 in [3]:
             f1.current = f5
             table = self.query_one(f"#{f5}")
             coordinates = table.cursor_coordinate
             on_cell_highlighted_(self, coordinates)
 
         if f3 in [0,1,2]:
-            f0.current = f5
+            # f0.current = f5
             tree = self.query_one(f"#{f5}")
             tree.reload()
 
-        if (f2 + f7) == 14:
+        if (f2 + f7) == 9:
             sr = f"#{f0.current}"
             self.query_one(sr).focus()
 
@@ -188,17 +189,12 @@ async def on_key_(self, event) -> None:
 
 def on_cell_highlighted_(self, coordinate) -> None:
     f0 = self.query_one("#cont-switch-1")
-    f1 = self.query_one("#digits-0")
-    f2 = self.query_one("#label-0")
     f3 = self.query_one("#fourth")
     f4 = self.query_one("#third")
     f5 = f0.current.split("-")[-1]
-    f6 = '2' if f5 == '3' else f5
-    f7 = self.app.store[f"2-{f6}"]
-    f8 = self.app.store[f"3-{f6}"]
+    f00 = self.app.now
+    f7 = self.app.store["0"].get(f00)
     row, col = coordinate
-    f1.update("")
-    f2.update("")
     f4.value = ""
     f3.value = ""
 
@@ -211,53 +207,11 @@ def on_cell_highlighted_(self, coordinate) -> None:
         return obj
 
     try:
-        switches = int(f5)
-        if switches in [0,4,5]:
-            cell = safe(f8, row, col)
-            values_ = safe(f7, row, col) or ""
-            configs = safe(f7, row, col) or ""
-
-            if cell is not None:
-                f2.update(cell)
-
-            if values_ is not None:
-                f1.update(values_[0])
-
-            if configs is not None:
-                rrr = configs[1]
-                rrt = configs[2]
-                f3.value = rrr
-                f4.value = rrt
-
-        elif switches in [1,2,3]:
             value = safe(f7, row) or ""
-            cell = safe(f8, row) or ""
-            check = isinstance(cell, str)
-            values = cell if check \
-                else safe(f8, cell)
-            test_ = safe(f7, row,0) or ""
-
             if value is not None:
                 f3.value = value[1]
-                f4.value = value[2] \
-                    if isinstance(value[2],str) \
-                    else self.app.store["00"][value[2]][col]
+                f4.value = value[2]
 
-            if values is not None:
-                f2.update(values)
-
-            if test_ is not None:
-                entries = ("", [""] +
-                           [f"{test_[0]}{n:02d}"
-                                  for n in range(100)],
-                           ["","00"] + [f"{letter}{n:02d}"
-                            for letter in "ABC"
-                            for n in range(100)],
-                           [""] + [f"{letter}{n:02d}"
-                            for letter in "DEF"
-                            for n in range(100)])
-                f1.update(
-                    entries[switches][col])
 
     except IndexError:
         return
@@ -307,50 +261,63 @@ def on_pressed(self, event) -> None:
         on_message(self, "", "f10")
 
     if f3 == "6" or f3 == "3":
-        f18 = {**self.app.stores}
-        f19 = {} if f3 == '6' else f18
-        f20 = [f11[f3],f12[f3]]
-        f19.update({'_': f20})
-        self.e_images.config = f19
+        # self.e_images.config = f19
+        pass
 
     if f3 == "4":
-        f15 = int(time.time())
-        f16 = STATIC_DIR / "model.json"
-        image_outs = CWD / f"{f15}.json"
-        shutil.copy2(f16, image_outs)
-        f17 = {**self.app.stores}
-        f17.update({'_': [0,4]})
-        self.e_images.config = f17
+        f15 = str(int(time.time()))
+        image_outs_ = CWD / f"{f15}.png"
+        image_outs = CWD / f"{f15[1:]}.json"
+        shutil.copy2(CONFIGS_, image_outs)
+        shutil.copy2(IMAGES_, image_outs_)
+
+
 
 def on_submitted(self, event) -> None:
     f1 = self.query_one("#cont-switch-1")
     f2 = self.query_one(f"#{f1.current}")
     f3 = f1.current.split("-")[-1]
+    f80 = self.app.stores or {}
+    f70 = self.app.store["0"]
+    f05 = f70[self.app.now] or []
+    f71 = f05[self.coord.row] or []
+    # f72 = f71.get(self.coord.column)
     f00 = event.value
     f0 = self.coord
 
-    if f0 is not None:
-        f4 = [[11,23,31],
-               [18,36,54,73,92],
-               [10,22,33,44,55,65],
-               [10,22,33,44,55,65],[],[]]
 
-        if f0.row not in f4[int(f3)]:
-            f2.update_cell_at(f0,f00)
-            f6 = self.get_all_data(f2)
-            f8 = f0.row in range(0, 10)
-            f7 = f0.row in range(24, 31)
-            f9 = 2 if f8 else (0 if f7 else 1)
-            f10 = f9 if int(f3) == 0 else 1
 
-            self.app.stores[f3] = f6
-            f11 = {**self.app.stores}
-            f11.update({'_': [0,f10]})
-            self.e_images.config = f11
-            event.input.value = ""
-            self.coord = None
-            f2.focus()
-        else:
-            self.coord = None
-            event.input.value = ""
-            f2.focus()
+    if f71[0] and self.coord.column == 1:
+        f2.update_cell_at(f0,f00)
+        f6 = self.get_all_data(f2)
+        test = sum(1 for row in f05
+                   if row[0] != "")
+        f06 = [""] * test
+
+        for var,val in f6.items():
+            test = val.get('0','')
+            if len(f06) > int(var):
+                f06[int(var)] = test
+
+        new = [self.coord.row,self.coord.column,*f06]
+        # news = [self.coord.row,self.coord.column,f00,s]
+        self.app.stores[self.app.now] = new
+        news = [*new,self.app.now]
+        self.e_images.config = [0,0,news]
+
+
+
+    #         f8 = f0.row in range(0, 10)
+    #         f7 = f0.row in range(24, 31)
+    #         f9 = 2 if f8 else (0 if f7 else 1)
+    #         f10 = f9 if int(f3) == 0 else 1
+    #
+    #         self.app.stores[f3] = f6
+    #         f11 = {**self.app.stores}
+    #         f11.update({'_': [0,f10]})
+    #         self.e_images.config = f11
+    #
+    #     self.coord = None
+    #     event.input.value = ""
+    #     f2.focus()
+

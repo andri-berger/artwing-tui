@@ -13,8 +13,9 @@ from textual.widget import Widget
 from textual.events import Key
 from textual import events, on
 from itertools import cycle
+from pathlib import Path
 cursors = cycle(["cell"])
-
+CWD = Path.cwd()
 
 class NoSelectInput(Input):
     def on_focus(self):
@@ -24,56 +25,39 @@ class TableApp(Widget):
     def __init__(self) -> None:
         super().__init__()
         self.glob = 0
-        self.coord = None
+        self.coord = (0,0)
         self._cursor = None
         self._clipboard = None
         self.full_IDs = self.app.store["4-0"]
         self.turi = ['activated', 'deactivated']
         self.turis = ['visible', 'hidden']
-        self.lister = [9, 100, 301, 300, 12, 13]
-        self.listers = [28, 22, 18, 18, 14, 14]
-        self.check_only = [8,8,8,7,7,7]
-        self.check_only0 = [8,8,8,8,8,8,8,8,8,8,8,30,60]
 
     def on_mount(self) -> None:
         self.f_left = self.query_one("#cont-switch-0")      # decentralize !!
         self.c_cont = self.query_one("#cont-switch-0")      # decentralize !!
         self.f_right = self.query_one("#cont-switch-1")     # decentralize !!
-        self.d_digits = self.query_one("#digits-0")         # decentralize !!
-        self.c_digits = self.query_one("#digits-0")         # decentralize !!
         self.e_fourth = self.query_one("#fourth")           # decentralize !!
         self.e_third = self.query_one("#third")             # decentralize !!
         self.label = self.query_one("#label-0")             # decentralize !!
         self.e_images = self.query_one(ImageTab)
-        a_tables = self.query(DataTable)
+        table = self.query_one(DataTable)
+        rows = self.app.store["0"]["_blank"]
 
-        for i, table in enumerate(a_tables):
-            i0 = '2' if i == 3 else i
-            rows = self.app.store[f"1-{i0}"]
-            checks = self.check_only[i]
-            table.cursor_type = "cell"
-            table.zebra_stripes = True
-            table.fixed_columns = 1
-            table.fixed_rows = 0
-            table.add_column(
-                "", width=self.listers[i])
-            for _ in range(self.lister[i]):
-                if i <= 3:
-                    table.add_column(
-                        "",
-                        width=checks)
-                elif i >= 4:
-                    checks0 = self.check_only0[_]
-                    table.add_column(
-                        "",
-                        width=checks0)
-            table.add_rows(rows[0:])
+        table.cursor_type = "cell"
+        table.zebra_stripes = True
+        table.fixed_columns = 1
+        table.fixed_rows = 0
+        table.add_column(
+            "", width=20)
+        for _ in range(9):
+                table.add_column(
+                    "",
+                    width=9)
+        table.add_rows(rows[0:])
 
     def compose(self) -> ComposeResult:
         with Horizontal(id="top"):
             yield ImageTab(name="")
-            yield Digits("F00",
-                         id="digits-0")
 
         with Horizontal(id="bottom"):
             with ContentSwitcher(
@@ -81,14 +65,22 @@ class TableApp(Widget):
                     id="cont-switch-0"):
                 yield FileTypeTree(
                     "/",
-                    file_type="png",
+                    file_type="multi",
                     id="dir-tree-0")
+
+            with ContentSwitcher(
+                    initial="dir-tree-2",
+                    id="cont-switch-3"):
+                yield FileTypeTree(
+                    "Fileend",
+                    file_type="multi",
+                    id="dir-tree-2")
 
             with ContentSwitcher(
                     initial="dir-tree-1",
                     id="cont-switch-2"):
                 yield FileTypeTree(
-                    "Fontend/modules",
+                    "Fontend",
                     file_type="png",
                     id="dir-tree-1")
 
@@ -159,12 +151,6 @@ class TableApp(Widget):
     @on(Button.Pressed)
     def pressed(self, event: Button.Pressed) -> None:
         on_pressed(self, event)
-
-    @on(events.Resize)
-    def on_resize(self, event: events.Resize) -> None:
-        self.d_digits.styles.offset = (0, 0)
-        self.call_after_refresh(
-            self._position_digits)
 
     @on(Key)
     async def key(self, event) -> None:
