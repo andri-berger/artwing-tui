@@ -305,6 +305,9 @@ def on_submitted(self, event) -> None:
         news = [*new,self.app.now]
         self.e_images.config = [0,0,news]
 
+        self.coord = None
+        event.input.value = ""
+        f2.focus()
 
 
     #         f8 = f0.row in range(0, 10)
@@ -317,7 +320,5 @@ def on_submitted(self, event) -> None:
     #         f11.update({'_': [0,f10]})
     #         self.e_images.config = f11
     #
-    #     self.coord = None
-    #     event.input.value = ""
-    #     f2.focus()
+
 
