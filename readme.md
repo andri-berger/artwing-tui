@@ -9,114 +9,114 @@ filterx-tui is a terminal-native creative filter engine wrapping G'MIC's extensi
 [API Credit](#credit) / 
 [Gallery](#gallery)
 
-<!--
-<img src="Backend/modules/17" width="100%">
+
+<img src="Backend/modules/1710000000.png" width="100%">
 <table>
   <tr>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000000.png">
+    <img src="Backend/modules/1710000000.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000000.png">
+    <img src="Backend/modules/1710000000.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000001.png">
+    <img src="Backend/modules/1710000001.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000001.png">
+    <img src="Backend/modules/1710000001.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000002.png">
+    <img src="Backend/modules/1710000002.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000002.png">
+    <img src="Backend/modules/1710000002.png">
+    </a></td>
+  </tr>
+    
+<!-- 
+<tr>
+    <td><a href="Backend/modules/1710000007.png">
+    <img src="Backend/modules/1710000007.png">
+    </a></td>
+    <td><a href="Backend/modules/1710000008.png">
+    <img src="Backend/modules/1710000008.png">
+    </a></td>
+    <td><a href="Backend/modules/1710000009.png">
+    <img src="Backend/modules/1710000009.png">
+    </a></td>
+    <td><a href="Backend/modules/1710000010.png">
+    <img src="Backend/modules/1710000010.png">
+    </a></td>
+    <td><a href="Backend/modules/1710000011.png">
+    <img src="Backend/modules/1710000011.png">
+    </a></td>
+    <td><a href="Backend/modules/1710000012.png">
+    <img src="Backend/modules/1710000012.png">
     </a></td>
   </tr>
   <tr>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000013.png">
+    <img src="Backend/modules/1710000013.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000014.png">
+    <img src="Backend/modules/1710000014.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000015.png">
+    <img src="Backend/modules/1710000015.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000016.png">
+    <img src="Backend/modules/1710000016.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000017.png">
+    <img src="Backend/modules/1710000017.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
-    </a></td>
-  </tr>
-  <tr>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
-    </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
-    </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
-    </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
-    </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
-    </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000018.png">
+    <img src="Backend/modules/1710000018.png">
     </a></td>
   </tr>
   <tr>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000019.png">
+    <img src="Backend/modules/1710000019.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000020.png">
+    <img src="Backend/modules/1710000020.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000021.png">
+    <img src="Backend/modules/1710000021.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000022.png">
+    <img src="Backend/modules/1710000022.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000023.png">
+    <img src="Backend/modules/1710000023.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000024.png">
+    <img src="Backend/modules/1710000024.png">
     </a></td>
   </tr>
   <tr>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000025.png">
+    <img src="Backend/modules/1710000025.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000026.png">
+    <img src="Backend/modules/1710000026.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000027.png">
+    <img src="Backend/modules/1710000027.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000028.png">
+    <img src="Backend/modules/1710000028.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000029.png">
+    <img src="Backend/modules/1710000029.png">
     </a></td>
-    <td><a href="Backend/module/project.png">
-    <img src="Backend/module/project.png">
+    <td><a href="Backend/modules/1710000030.png">
+    <img src="Backend/modules/1710000030.png">
     </a></td>
-  </tr>
+  </tr> 
+-->
 </table>
 <br>
-<br> -->
-
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 ## Installation
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
