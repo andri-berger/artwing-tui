@@ -80,64 +80,74 @@ def action_next_table(self, event, prefix) -> None:
 
 
 async def on_key_(self, event) -> None:
+    f5 = ["backspace", "space", "enter"]
     f00 = self.query_one("#cont-switch-0")
     f0 = self.query_one("#cont-switch-1")
     f1 = self.query_one(f"#{f0.current}")
     f01 = f0.current.split("-")[-1]
     f4 = self.query_one("#third")
-    f5 = ["backspace", "space"]
     f2 = f1.cursor_coordinate
     f3 = f1.get_cell_at(f2) or ""
     f6 = event.key
 
     match f6:
-        case "f1":
+        case "delete":
             self.coord = f2
             on_message(self, f3, "f1")
             self.post_message(Input.Submitted(
                 f4, ""))
 
-        case "f2":
+        case "f1":
             self.coord = f2
             self._clipboard = str(f3)
             on_message(self, f3, "f2")
             self.post_message(Input.Submitted(
                 f4, f4.value))
 
-        case "f3":
+        case "f2":
             self._clipboard = str(f3)
             on_message(self, f3, "f3")
 
-        case "f4":
+        case "f3":
             self.coord = f2
             clipboard = self._clipboard
             on_message(self, clipboard, "f4")
             self.post_message(Input.Submitted(
                 f4, clipboard))
 
-        case "f5":
+        case "f4":
             self.query_one(
                 "#button-0").press()
 
-        case "f6":
+        case "f5":
             self.query_one(
                 "#button-1").press()
 
-        case "f7":
+        case "f6":
             self.query_one(
                 "#button-2").press()
 
-        case "f8":
+        case "f7":
             self.query_one(
                 "#button-6").press()
 
-        case "f9":
+        case "f8":
             self.query_one(
                 "#button-3").press()
 
-        case "f10":
+        case "f9":
             self.query_one(
                 "#button-4").press()
+
+        case "f10":
+            self.notify("fullscreen coming soon, stay tuned")
+
+        case "f11":
+            self.notify("fullscreen coming soon, stay tuned")
+
+        case "f12":
+            self.notify("fullscreen coming soon, stay tuned")
+
 
     if not isinstance(self.app.focused, Input):
         if f6 == "shift+tab":

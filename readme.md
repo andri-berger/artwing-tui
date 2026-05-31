@@ -1,7 +1,7 @@
 
 ![Readme](./readme.png)
 # Filterx-TUI (WIP)
-Generative design tool with a terminal UI — compose layouts, render to canvas, export to SVG/PDF. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+filterx-tui is a terminal-native creative filter engine wrapping G'MIC's extensive library of image effects into a comfortable spreadsheet-driven interface. Think of it as an effects rack for images, operated entirely from the terminal – a creative filter machine with no GUI overhead, no cloud dependency, no subscription. The motivation was equally simple: G'MIC is one of the most powerful and underappreciated image processing tools in existence, yet its full potential remains largely inaccessible to anyone unwilling to memorize its command syntax or navigate its GIMP plugin interface. filterx-tui bridges that gap, exposing G'MIC's creative filter library through a structured, navigable interface that rewards exploration without demanding expertise. It is the sibling project of artwork-tui, operating under the same GitHub umbrella and complementing it naturally: where artwork-tui generates, filterx-tui processes.
 
 [Installation](#installation) / 
 [Configuration](#configuration) / 
@@ -221,60 +221,80 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     <tr>
         <td><kbd>
         F1</kbd></td>
-        <td>Delete</td>
-        <td>Delete table/grid cell. Think of it as DEL or BACKSPACE in a spreadsheet. </td>
+        <td>Copy</td>
+        <td>Copy table cell, also applies to the first 2 directories, you can copy png/json files therein without leaving the app. Think of it as Ctrl-C in setting outside of TUI. </td>
     </tr>
     <tr>
         <td><kbd>
         F2</kbd></td>
-        <td>Copy</td>
-        <td>Delete table/grid cell. Think of it as Ctrl-C in a spreadsheet. </td>
+        <td>Cut</td>
+        <td>Cut table cell, also applies to the first 2 file directories, you can cut png/json files without leaving the app. Think of it as Ctrl-X in setting outside of TUI. </td>
     </tr>
     <tr>
         <td><kbd>
         F3</kbd></td>
-        <td>Cut</td>
-        <td>Delete table/grid cell. Think of it as Ctrl-C in a spreadsheet. </td>
+        <td>Paste</td>
+        <td>Paste table cell, also applies to first 2 file directories, you can paste png/json files without leaving the app. Think of it as Ctrl-V in setting outside of TUI. </td>
     </tr>
     <tr>
         <td><kbd>
         F4</kbd></td>
-        <td>Paste</td>
-        <td>Delete table/grid cell. Think of it as Ctrl-V in a spreadsheet. </td>
-    </tr>
-    <tr>
-        <td><kbd>
-        F5</kbd></td>
         <td>Clear</td>
         <td>Clear the Canvas. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
         <td><kbd>
-        F6</kbd></td>
+        F5</kbd></td>
         <td>Afs</td>
         <td>Set Seed for A00-A99 Elements. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
         <td><kbd>
-        F7</kbd></td>
+        F6</kbd></td>
         <td>Bfs</td>
         <td>Set Seed for B00-B99. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
         <td><kbd>
-        F8</kbd></td>
+        F7</kbd></td>
         <td>Cfs</td>
         <td>Set Seed for C00-C99. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td><kbd>F9</kbd></td>
+        <td><kbd>
+        F8</kbd></td>
         <td>Create</td>
         <td>Generate Artwork via Random Generator. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td><kbd>F10</kbd></td>
+        <td><kbd>
+        F9</kbd></td>
         <td>Export</td>
         <td>Export both generated (png) and project file (json) into the directory from where the app was executed / started.</td>
+    </tr>
+    <tr>
+        <td><kbd>
+        F10</kbd></td>
+        <td>Scrolling</td>
+        <td>Extra functionality (I) with regards to fullscreen toggle and scroll-emulation (=> see also shift-arrows)</td>
+    </tr>
+    <tr>
+        <td><kbd>
+        F11</kbd></td>
+        <td>Scrolling</td>
+        <td>Extra functionality (II) with regards to fullscreen toggle and scroll-emulation (=> see also shift-arrows)</td>
+    </tr>
+    <tr>
+        <td><kbd>
+        F12</kbd></td>
+        <td>Scrolling</td>
+        <td>Extra functionality (II) with regards to fullscreen toggle and scroll-emulation (=> see also shift-arrows)</td>
+    </tr>
+    <tr>
+        <td><kbd>Del
+        </kbd></td>
+        <td>Delete</td>
+        <td>Delete table/grid cell.</td>
     </tr>
     <tr>
         <td><kbd>
@@ -287,6 +307,12 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         Shift-Tab</kbd></td>
         <td>Navigate</td>
         <td>Cycle backward all navigational UI-Elements. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
+    </tr>
+    <tr>
+        <td><kbd>
+        Shift-Arrow</kbd></td>
+        <td>Navigation</td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
         <td><kbd>
@@ -337,12 +363,12 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         <a href="//github.com/apngasm/apngasm">
         https://github.com/apngasm/apng</a></td>
     </tr>
-    <tr>
-        <td><kbd>
+    </tr>
+        <tr><td><kbd>
         Build</kbd></td>
-        <td>Watch</td><td>
-        <a href="//github.com/samuelcolvin/watchfiles">
-        https://github.com/samuelcolvin</a></td>
+        <td>Grim</td><td>
+        <a href="//github.com/emersion/grim">
+        https://github.com/emersion/grim</a></td>
     </tr>
     <tr>
         <td><kbd>

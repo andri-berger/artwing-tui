@@ -112,13 +112,15 @@ class FileTypeTree(DirectoryTree):
         super().__init__(path, **kwargs)
 
     def filter_paths(self, paths):
-        return [p for p in paths if not p.name.startswith(".")]
+        return [p for p in paths if not p.name.startswith(".") and self._is_allowed(p)]
 
     def _is_allowed(self, p):
         if p.is_dir():
             return True  # always show dirs for navigation
 
         match self.file_type:
+            case "naked":
+                return p.suffix == ""
             case "multi":
                 return (p.suffix.lower() == ".png"
                         or p.suffix.lower() == ".json")

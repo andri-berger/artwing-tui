@@ -72,7 +72,7 @@ class TableApp(Widget):
                     initial="dir-tree-2",
                     id="cont-switch-3"):
                 yield FileTypeTree(
-                    "Fileend",
+                    "Fontend",
                     file_type="multi",
                     id="dir-tree-2")
 
@@ -80,8 +80,8 @@ class TableApp(Widget):
                     initial="dir-tree-1",
                     id="cont-switch-2"):
                 yield FileTypeTree(
-                    "Fontend",
-                    file_type="png",
+                    "Fontend/_blank",
+                    file_type="naked",
                     id="dir-tree-1")
 
             with ContentSwitcher(
@@ -136,13 +136,6 @@ class TableApp(Widget):
     @on(DataTable.CellHighlighted)
     def highlighted(self, event: DataTable.CellHighlighted) -> None:
         on_cell_highlighted_(self, event.coordinate)
-
-    @on(DataTable.CellSelected)
-    async def selected(self, event: DataTable.CellSelected) -> None:
-        self.coord = event.coordinate
-        if event.value is not None:
-            self.e_third.value = str(event.value)
-        self.e_third.focus()
 
     @on(Input.Submitted)
     def submitted(self, event: Input.Submitted) -> None:
