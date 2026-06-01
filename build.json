@@ -72,20 +72,20 @@
      "dilate_circ": "FX DILATE CIRC. Apply circular dilation of selected images by specified size.",
      "dilate_oct": "FX DILATE OCT. Apply octagonal dilation of selected images by specified size.",
      "dilate_threshold": "FX DILATE THRESHOLD. Dilate selected images in the (X,Y,Z,I) space.",
-     "divergence": "FX DIVERGENCE.Compute divergence of selected vector fields.",
-     "dog": "FX DOG. Compute difference of gaussian on selected images.",
-     "diffusiontensors": "FX DIFFUSIONTENSORS. Compute the diffusion tensors of selected images for edge-preserving smoothing algorithms.",
-     "erode": "FX ERODE Erode selected images by a rectangular or the specified structuring element.",
-     "erode_circ": "FX ERODE CIRC. Apply circular erosion of selected images by specified size.",
-     "erode_oct": "FX ERODE OCT. Apply octagonal erosion of selected images by specified size.",
-     "erode_threshold": "FX ERODE THRESHOLD. Erode selected images in the (X,Y,Z,I) space.",
+    "divergence": "FX DIVERGENCE.Compute divergence of selected vector fields.",
+    "diffusiontensors": "FX DIFFUSIONTENSORS. Compute the diffusion tensors of selected images for edge-preserving smoothing algorithms.",
+    "dog": "FX DOG. Compute difference of gaussian on selected images.",
+    "erode": "FX ERODE Erode selected images by a rectangular or the specified structuring element.",
+    "erode_circ": "FX ERODE CIRC. Apply circular erosion of selected images by specified size.",
+    "erode_oct": "FX ERODE OCT. Apply octagonal erosion of selected images by specified size.",
+    "erode_threshold": "FX ERODE THRESHOLD. Erode selected images in the (X,Y,Z,I) space.",
     "gradient": "FX GRADIENT. Compute the gradient components (first derivatives) of selected images, along specified axes. (no arg) compute all significant components. ",
-     "gradient_norm": "GX GRADIENT NORM. Compute the gradient norm of selected images.",
-     "gradient_orientation": "FX GRADIENT ORIENTATION. Compute N-d gradient orientation of selected images.",
-     "guided": "FX GUIDED. Blur selected images by guided image filtering.",
-     "haar": "FX HAAR. Compute the direct haar multiscale wavelet transform of selected images.",
-     "heat_flow": "FX HEAT FLOW. Apply iterations of the heat flow on selected images.",
-     "hessian": "FX HESSIAN. Compute the hessian components (second derivatives) of selected images along specified axes. (no arg) compute all significant components.",
+    "gradient_norm": "GX GRADIENT NORM. Compute the gradient norm of selected images.",
+    "gradient_orientation": "FX GRADIENT ORIENTATION. Compute N-d gradient orientation of selected images.",
+    "guided": "FX GUIDED. Blur selected images by guided image filtering.",
+    "haar": "FX HAAR. Compute the direct haar multiscale wavelet transform of selected images.",
+    "heat_flow": "FX HEAT FLOW. Apply iterations of the heat flow on selected images.",
+    "hessian": "FX HESSIAN. Compute the hessian components (second derivatives) of selected images along specified axes. (no arg) compute all significant components.",
 
       "iee": "FX IEE. Compute gradient-orthogonal-directed 2nd derivative of image(s).",
      "ifft": "FX IFFT. Compute the inverse fourier transform (real and imaginary parts) of selected images. optionally along the specified axes only.",
@@ -349,8 +349,8 @@
       ["opacity","% / 100","1"],
       ["opacity_is_heightmap","0-1","0"]],
     "mosaic": [
-      ["density","0-10","30"],
-      ["_","",""],
+      ["density","0-100","30"],
+      ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -359,11 +359,11 @@
       ["","",""],
       ["","",""]],
     "old_photo": [
-      ["_","",""],
-      ["_","",""],
       ["","",""],
       ["","",""],
       ["","",""],
+      ["","",""],
+      ["","",""],     "dog": "FX DOG. Compute difference of gaussian on selected images.",
       ["","",""],
       ["","",""],
       ["","",""],
@@ -379,9 +379,9 @@
       ["","",""],
       ["","",""]],
     "pixelsort": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
+      ["ordering","list 2",""],
+      ["axis","list 4","0"],
+      ["n","",""],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -389,8 +389,8 @@
       ["","",""],
       ["","",""]],
     "polaroid": [
-      ["_","",""],
-      ["_","",""],
+      ["size1",">=0","10"],
+      ["size2",">=0","20"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -399,28 +399,28 @@
       ["","",""],
       ["","",""]],
     "polygonize": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
-      ["","",""],
-      ["","",""],
+      ["warp_amplitude",">= 0","300"],
+      ["smoothness","% >= 0","2"],
+      ["min_area","% >= 0","0.1"],
+      ["resolution x","% > 0","10"],
+      ["resolution y","% > 0","10"],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""]],
     "poster_edges": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
-      ["","",""],
-      ["","",""],
-      ["","",""],
+      ["edge_threshold","<= 100","40"],
+      ["edge_shade","<= 100","5"],
+      ["edge_thickness",">= 0","0.5"],
+      ["edge_antialiasing",">= 0","10"],
+      ["posterization_level","<= 15","12"],
+      ["posterization_antialiasing",">= 0","0"],
       ["","",""],
       ["","",""],
       ["","",""]],
     "poster_hope": [
-      ["_","",""],
-      ["_","",""],
+      ["smoothness",">= 0","3"],
+      ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -429,20 +429,19 @@
       ["","",""],
       ["","",""]],
     "rodilius": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
-      ["","",""],
-      ["","",""],
-      ["","",""],
+      ["amplitude","<= 100","10"],
+      ["thickness","<= 100","10"],
+      ["sharpness",">= 0","400"],
+      ["nb_orientations","> 0","7"],
+      ["offset","<=> 0","0"],
+      ["color_mode","0-1","1"],
       ["","",""],
       ["","",""],
       ["","",""]],
-
     "cracks": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
+      ["density","<= 100","25"],
+      ["is_relief","0 - 1","0"],
+      ["opacity","<= 1","1"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -450,9 +449,9 @@
       ["","",""],
       ["","",""]],
     "light_patch": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
+      ["density","> 0","10"],
+      ["darkness",">= 0","0.9"],
+      ["lightness",">= 0","1.7"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -460,9 +459,9 @@
       ["","",""],
       ["","",""]],
     "pixelize": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
+      ["scale_x","> 0","20"],
+      ["scale_y","> 0","20"],
+      ["scale_z","> 0","20"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -470,28 +469,28 @@
       ["","",""],
       ["","",""]],
     "scanlines": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
-      ["","",""],
-      ["","",""],
+      ["amplitude","0-255","60"],
+      ["bandwidth","0-300","2"],
+      ["shape","0-4","0"],
+      ["angle","0-360","0"],
+      ["offset","0-500","0"],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""]],
     "shade_stripes": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
-      ["","",""],
+      ["frequency",">= 0","5"],
+      ["direction","0-1","1"],
+      ["darkness",">= 0","0.8"],
+      ["lightness",">= 0","2"],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""]],
     "shadow_patch": [
-      ["_","",""],
-      ["_","",""],
+      ["opacity",">= 0","0.7"],
+      ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -500,9 +499,9 @@
       ["","",""],
       ["","",""]],
     "spread": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
+      ["dx","% >= 0","3"],
+      ["dy","% >= 0","3"],
+      ["dz","% >= 0","0"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -510,8 +509,8 @@
       ["","",""],
       ["","",""]],
     "stripes_y": [
-      ["_","",""],
-      ["_","",""],
+      ["frequency",">= 0","10"],
+      ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -520,9 +519,9 @@
       ["","",""],
       ["","",""]],
     "texturize_canvas": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
+      ["amplitude",">= 0","20"],
+      ["fibrousness",">= 0","3"],
+      ["emboss level",">= 0","0.6"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -530,8 +529,8 @@
       ["","",""],
       ["","",""]],
     "texturize_paper": [
-      ["_","",""],
-      ["_","",""],
+      ["","",""],
+      ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -540,9 +539,9 @@
       ["","",""],
       ["","",""]],
     "vignette": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
+      ["strength",">= 0","100"],
+      ["radius_min","<= 100","70"],
+      ["radius_max","<= 100","90"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -550,19 +549,19 @@
       ["","",""],
       ["","",""]],
     "watermark_visible": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
-      ["","",""],
-      ["","",""],
-      ["","",""],
+      ["text","text","G'MIC"],
+      ["opacity","< 1","0.3"],
+      ["size","> 0","53"],
+      ["angle","0-360","25"],
+      ["mode","0-1","1"],
+      ["smoothness","% >= 0","0"],
       ["","",""],
       ["","",""],
       ["","",""]],
 
     "area": [
-      ["_","",""],
-      ["_","",""],
+      ["tolerance",">= 0","0"],
+      ["is_high_connectivity","0-1","0"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -571,8 +570,8 @@
       ["","",""],
       ["","",""]],
     "area_fg": [
-      ["_","",""],
-      ["_","",""],
+      ["tolerance",">= 0","0"],
+      ["is_high_connectivity","0-1","0"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -581,9 +580,9 @@
       ["","",""],
       ["","",""]],
     "at_curve": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
+      ["x0","",""],
+      ["y0","",""],
+      ["z0","",""],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -591,9 +590,9 @@
       ["","",""],
       ["","",""]],
     "canny": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
+      ["sigma","% >= 0","1"],
+      ["low_threshold",">= 0","0.05"],
+      ["High_threshold",">= 0","0.15"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -601,7 +600,7 @@
       ["","",""],
       ["","",""]],
     "edges": [
-      ["_","",""],
+      ["threshold","% >= 0","15"],
       ["_","",""],
       ["","",""],
       ["","",""],
@@ -611,8 +610,8 @@
       ["","",""],
       ["","",""]],
     "fftpolar": [
-      ["_","",""],
-      ["_","",""],
+      ["","",""],
+      ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -620,6 +619,9 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* _nb_levels>0
+      nb_levels=64
+      image.jpg blur 2 isophotes 6 dilate_circ 5 display_rgba */
     "isophotes": [
       ["_","",""],
       ["_","",""],
@@ -630,6 +632,9 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* _patch_size>=1
+      patch_size=16
+      image.jpg norm +max_patch 16 */
     "max_patch": [
       ["_","",""],
       ["_","",""],
@@ -641,7 +646,7 @@
       ["","",""],
       ["","",""]],
     "min_patch": [
-      ["_","",""],
+      ["patch_size",">= 1","16"],
       ["_","",""],
       ["","",""],
       ["","",""],
@@ -651,18 +656,18 @@
       ["","",""],
       ["","",""]],
     "patches2img": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
-      ["","",""],
+      ["width","> 0",""],
+      ["height","> 0",""],
+      ["overlap","% > 0","0"],
+      ["overlap_std","%","-1"],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""]],
     "segment_watershed": [
-      ["_","",""],
-      ["_","",""],
+      ["threshold",">= 0","2"],
+      ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -671,9 +676,9 @@
       ["","",""],
       ["","",""]],
     "slic": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
+      ["size","> 0","16"],
+      ["regularity",">= 0","10"],
+      ["nb_iterations","> 0","10"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -681,7 +686,7 @@
       ["","",""],
       ["","",""]],
     "tones": [
-      ["_","",""],
+      ["N","> 0","3"],
       ["_","",""],
       ["","",""],
       ["","",""],
@@ -691,8 +696,8 @@
       ["","",""],
       ["","",""]],
     "topographic_map": [
-      ["_","",""],
-      ["_","",""],
+      ["nb_levels","> 0","16"],
+      ["smoothness",">= 0","2"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -701,7 +706,7 @@
       ["","",""],
       ["","",""]],
     "variance_patch": [
-      ["_","",""],
+      ["patch_size",">= 1","16"],
       ["_","",""],
       ["","",""],
       ["","",""],
@@ -712,8 +717,8 @@
       ["","",""]],
 
     "bandpass": [
-      ["_","",""],
-      ["_","",""],
+      ["min_freq","%","0"],
+      ["max_freq","%","20"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -722,19 +727,19 @@
       ["","",""],
       ["","",""]],
     "bilateral": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
-      ["","",""],
+      ["std_deviation_s",">=","0"],
+      ["std_deviation_r",">=","0"],
+      ["sampling_s",">=","0"],
+      ["sampling_r",">=","0"],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""]],
     "blur": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
+      ["std_deviation","% >= 0",""],
+      ["boundary_conditions","0-3","1"],
+      ["kernel","0-1","1"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -742,15 +747,18 @@
       ["","",""],
       ["","",""]],
     "blur_angular": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
+      ["amplitude","%","0"],
+      ["center_x","%","50"],
+      ["center_y","%","50"],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* _amplitude>=0,_ratio>=0,_nb_iter>=0,_blend_operator={ + | max | min },_kernel={ 0:Deriche | 1:Gaussian | 2:Box | 3:Triangle | 4:Quadratic },_normalize_scales={ 0:No | 1:Yes },_axes
+      amplitude=1, ratio=2, nb_iter=5, blend_operator=+, kernel=1, normalize_scales=0 and axes=(all)
+  When specified, argument axes is a sequence of { x | y | z | c }. */
     "blur_bloom": [
       ["_","",""],
       ["_","",""],
@@ -761,6 +769,8 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* amplitude1[%],_amplitude2[%],_angle,_boundary_conditions={ 0:Dirichlet | 1:Neumann }
+      amplitude2=0, angle=0 and boundary_conditions=1 */
     "blur_linear": [
       ["_","",""],
       ["_","",""],
@@ -771,6 +781,8 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* amplitude[%],_center_x[%],_center_y[%]
+      center_x=center_y=50% */
     "blur_radial": [
       ["_","",""],
       ["_","",""],
@@ -781,6 +793,8 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* sigma>=0,_edges>0,_nb_scales>0
+      sigma=5, edges=0.5 and nb_scales=5 */
     "blur_selective": [
       ["_","",""],
       ["_","",""],
@@ -791,6 +805,12 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* size[%]>=0,_order,_boundary_conditions,_nb_iter>=0 or
+  axes,size[%]>=0,_order,_boundary_conditions,_nb_iter>=0
+   order=0, boundary_conditions=1 and nb_iter=1
+   order can be { 0:Smooth | 1:1st-derivative | 2:2nd-derivative }.
+  boundary_conditions can be { 0:Dirichlet | 1:Neumann | 2:Periodic | 3:Mirror }.
+  When specified, argument axes is a sequence of { x | y | z | c }.*/
     "boxfilter": [
       ["_","",""],
       ["_","",""],
@@ -801,6 +821,12 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* size>=0    or
+  size_x>=0,size_y>=0,_size_z>=0    or
+  [kernel],_boundary_conditions,_is_real={ 0:Binary-mode | 1:Real-mode }
+  size_z=1, boundary_conditions=1 and is_real=0
+
+  boundary_conditions can be { 0:Dirichlet | 1:Neumann | 2:Periodic | 3:Mirror }. */
     "closing": [
       ["_","",""],
       ["_","",""],
@@ -811,6 +837,8 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* _size>=0,_is_real={ 0:No | 1:Yes }
+      boundary_conditions=1 and is_real=0 */
     "closing_circ": [
       ["_","",""],
       ["_","",""],
@@ -822,8 +850,8 @@
       ["","",""],
       ["","",""]],
     "curvature": [
-      ["_","",""],
-      ["_","",""],
+      ["","",""],
+      ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -831,6 +859,9 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* std_deviation[%]>=0,order={ 0 | 1 | 2 },axis={ x | y | z | c },_boundary_conditions
+      boundary_conditions=1
+  boundary_conditions can be { 0:Dirichlet | 1:Neumann | 2:Periodic | 3:Mirror }. */
     "deriche": [
       ["_","",""],
       ["_","",""],
@@ -841,6 +872,8 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* _sharpness>=0,0<=_anisotropy<=1,_alpha[%],_sigma[%],is_sqrt={ 0:No | 1:Yes }
+      sharpness=0.7, anisotropy=0.3, alpha=0.6, sigma=1.1 and is_sqrt=0 */
     "diffusiontensors": [
       ["_","",""],
       ["_","",""],
@@ -851,6 +884,11 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* size[%]>=0    or
+  size_x[%]>=0,size_y[%]>=0,size_z[%]>=0    or
+  [kernel],_boundary_conditions,_is_real={ 0:Binary-mode | 1:Real-mode }
+  size_z=1, boundary_conditions=1 and is_real=0
+  boundary_conditions can be { 0:Dirichlet | 1:Neumann | 2:Periodic | 3:Mirror }. */
     "dilate": [
       ["_","",""],
       ["_","",""],
@@ -862,9 +900,9 @@
       ["","",""],
       ["","",""]],
     "dilate_circ": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
+      ["size","% >= 0","0"],
+      ["boundary_conditions","0-3","1"],
+      ["is_real","0-1","0"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -872,9 +910,9 @@
       ["","",""],
       ["","",""]],
     "dilate_oct": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
+      ["size","% >= 0",""],
+      ["boundary_conditions","0-1","1"],
+      ["is_real","0-1","0"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -882,8 +920,18 @@
       ["","",""],
       ["","",""]],
     "dilate_threshold": [
-      ["_","",""],
-      ["_","",""],
+      ["size_x",">= 1","0"],
+      ["size_y",">= 1","0"],
+      ["size_z",">= 1","1"],
+      ["threshold","255",""],
+      ["boundary_conditions","0-3","1"],
+      ["","",""],
+      ["","",""],
+      ["","",""],
+      ["","",""]],
+    "divergence": [
+      ["","",""],
+      ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -891,9 +939,9 @@
       ["","",""],
       ["","",""],
       ["","",""]],
-    "divergence": [
-      ["_","",""],
-      ["_","",""],
+    "dog": [
+      ["sigma1","% >= 0","2"],
+      ["sigma2","% >= 0","3"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -902,25 +950,28 @@
       ["","",""],
       ["","",""]],
     "erode": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
-      ["","",""],
+      ["size","% >= 0","0"],
+      ["size_x","% >= 0",""],
+      ["size_y","% >= 0",""],
+      ["size_z","% >= 0",""],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""]],
     "erode_circ": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
+      ["size","% >= 0","0"],
+      ["boundary_conditions","0-3","1"],
+      ["is_real","0-1","0"],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""]],
+
+          /* _size[%]>=0,_boundary_conditions,_is_real={ 0:No | 1:Yes }
+      boundary_conditions=1 and is_real=0 */
     "erode_oct": [
       ["_","",""],
       ["_","",""],
@@ -931,6 +982,9 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* size_x>=1,size_y>=1,size_z>=1,_threshold>=0,_boundary_conditions
+      size_y=size_x, size_z=1, threshold=255 and boundary_conditions=1
+  boundary_conditions can be { 0:Dirichlet | 1:Neumann | 2:Periodic | 3:Mirror } */
     "erode_threshold": [
       ["_","",""],
       ["_","",""],
@@ -941,7 +995,11 @@
       ["","",""],
       ["","",""],
       ["","",""]],
-
+      /* scheme=0 and boundary_conditions=1
+  (equivalent to shortcut command g).
+  scheme can be { -1:Backward | 0:Centered | 1:Forward | 2:Sobel | 3:Rotation-invariant (default) | 4:Deriche | 5:Vanvliet | 6:FB-Maxabs }.
+  boundary_conditions can be { 0:Dirichlet | 1:Neumann | 2:Periodic | 3:Mirror }.
+  (no arg) compute all significant components. */
     "gradient": [
       ["_","",""],
       ["_","",""],
@@ -952,6 +1010,11 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* _scheme,_boundary_conditions    or
+  (no arg)
+  scheme=0 and boundary_conditions=1
+  scheme can be { -1:Backward | 0:Centered | 1:Forward | 2:Sobel | 3:Rotation-invariant (default) | 4:Deriche | 5:Vanvliet | 6:FB-Maxabs }.
+  boundary_conditions can be { 0:Dirichlet | 1:Neumann | 2:Periodic | 3:Mirror } */
     "gradient_norm": [
       ["_","",""],
       ["_","",""],
@@ -962,6 +1025,8 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* _dimension={ 1 | 2 | 3 }
+      dimension=3 */
     "gradient_orientation": [
       ["_","",""],
       ["_","",""],
@@ -972,6 +1037,8 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* [guide],radius[%]>=0,regularization[%]>=0    or
+  radius[%]>=0,regularization[%]>=0 */
     "guided": [
       ["_","",""],
       ["_","",""],
@@ -982,6 +1049,7 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* scale>0 */
     "haar": [
       ["_","",""],
       ["_","",""],
@@ -992,6 +1060,8 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* _nb_iter>=0,_dt,_keep_sequence={ 0:No | 1:Yes
+      nb_iter=10, dt=30 and keep_sequence=0 */
     "heat_flow": [
       ["_","",""],
       ["_","",""],
@@ -1002,6 +1072,11 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* { xx | xy | xz | yy | yz | zz }...{ xx | xy | xz | yy | yz | zz },_boundary_conditions    or
+  (no arg) :
+  boundary_conditions=1
+  boundary_conditions can be { 0:Dirichlet | 1:Neumann | 2:Periodic | 3:Mirror }.
+  (no arg) compute all significant components. */
     "hessian": [
       ["_","",""],
       ["_","",""],
@@ -1013,8 +1088,8 @@
       ["","",""],
       ["","",""]],
     "iee": [
-      ["_","",""],
-      ["_","",""],
+      ["","",""],
+      ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -1022,6 +1097,8 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* _{ x | y | z }...{ x | y | z }
+     optionally along the specified axes only. */
     "ifft": [
       ["_","",""],
       ["_","",""],
@@ -1032,6 +1109,7 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* scale>0 */
     "ihaar": [
       ["_","",""],
       ["_","",""],
@@ -1042,6 +1120,11 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* { nb_iterations>0 | 0 },_[initial_estimate]
+      nb_iterations=0, axes=(undefined) and [initial_estimated]=(undefined)
+  If given nb_iterations is 0, inversion is done in Fourier space (single iteration),
+  otherwise, by applying nb_iterations of a Laplacian-inversion PDE flow.
+  Note that the resulting inversions are just estimation of possible/approximated solutions. */
     "ilaplacian": [
       ["_","",""],
       ["_","",""],
@@ -1053,8 +1136,8 @@
       ["","",""],
       ["","",""]],
     "inn": [
-      ["_","",""],
-      ["_","",""],
+      ["","",""],
+      ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -1062,6 +1145,13 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* [mask]    or
+  [mask],0,_fast_method    or
+  [mask],_patch_size>=1,_lookup_size>=1,_lookup_factor>=0,_lookup_increment!=0,_blend_size>=0,0<=_blend_threshold<=1,_blend_decay>=0,_blend_scales>=1,_is_blend_outer={ 0:No | 1:Yes }
+  patch_size=0, fast_method=1, lookup_size=22, lookup_factor=0.5, lookup_increment=1, blend_size=0, blend_threshold=0, blend_decay=0.05, blend_scales=10 and is_blend_outer=1
+  If no patch size (or 0) is specified, inpainting is done using a fast average or median algorithm.
+  Otherwise, it used a patch-based reconstruction method, that can be very time consuming.
+  fast_method can be { 0:Low-connectivity average | 1:High-connectivity average | 2:Low-connectivity median | 3:High-connectivity median }. */
     "inpaint": [
       ["_","",""],
       ["_","",""],
@@ -1072,6 +1162,8 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* maximal_area[%]>=0,_tolerance>=0,_is_high_connectivity={ 0:No | 1:Yes }
+      maximal_area=4, tolerance=0 and is_high_connectivity=0 */
     "inpaint_holes": [
       ["_","",""],
       ["_","",""],
@@ -1083,8 +1175,8 @@
       ["","",""],
       ["","",""]],
     "kuwahara": [
-      ["_","",""],
-      ["_","",""],
+      ["size","> 0",""],
+      ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -1093,8 +1185,8 @@
       ["","",""],
       ["","",""]],
     "laplacian": [
-      ["_","",""],
-      ["_","",""],
+      ["","",""],
+      ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -1103,18 +1195,18 @@
       ["","",""],
       ["","",""]],
     "map_tones": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
-      ["","",""],
+      ["threshold",">= 0","0.1"],
+      ["gamma",">= 0","0.8"],
+      ["smoothness",">= 0","0.5"],
+      ["nb_iter",">= 0","30"],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""]],
     "map_tones_fast": [
-      ["_","",""],
-      ["_","",""],
+      ["radius","% >= 0","3"],
+      ["power",">= 0","0.3"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -1123,9 +1215,9 @@
       ["","",""],
       ["","",""]],
     "meancurvature_flow": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
+      ["nb_iter",">= 0","10"],
+      ["dt",">= 0","30"],
+      ["keep_sequence","0-1","0"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -1133,8 +1225,8 @@
       ["","",""],
       ["","",""]],
     "median": [
-      ["_","",""],
-      ["_","",""],
+      ["size",">= 0",""],
+      ["threshold","> 0",""],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -1142,10 +1234,12 @@
       ["","",""],
       ["","",""],
       ["","",""]],
+          /* _amplitude>=0,_radius>0,_n_smooth[%]>=0,_a_smooth[%]>=0,_is_cut={ 0:No | 1:Yes },_min=0,_max=255
+      amplitude=3, radius=16, n_smooth=4%, a_smooth=2%, is_cut=1, min=0 and max=255 */
     "normalize_local": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
+      ["amplitude",">= 0","0"],
+      ["radius","> 0",""],
+      ["n_smooth",">= 0","0"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -1153,19 +1247,19 @@
       ["","",""],
       ["","",""]],
     "opening": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
-      ["","",""],
+      ["size",">= 0",""],
+      ["size_x",">= 0",""],
+      ["size_y",">= 0",""],
+      ["size_z",">= 0",""],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""]],
     "opening_circ": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
+      ["size",">= 0",""],
+      ["boundary_conditions","0-1","0"],
+      ["is_real","","0"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -1173,10 +1267,10 @@
       ["","",""],
       ["","",""]],
     "pde_flow": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
-      ["","",""],
+      ["nb_iter",">= 0","10"],
+      ["dt","??","30"],
+      ["velocity_command","??","laplacian"],
+      ["keep sequence","0-1","0"],
       ["","",""],
       ["","",""],
       ["","",""],
@@ -1193,17 +1287,17 @@
       ["","",""],
       ["","",""]],
     "peronamalik_flow": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
-      ["","",""],
+      ["K_factory","> 0","20"],
+      ["nb_iter",">= 0","5"],
+      ["dt",">= 0","5"],
+      ["keep_sequence","0-1","0"],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""],
       ["","",""]],
     "remove_pixels": [
-      ["_","",""],
+      ["number_of_pixels",">= 0",""],
       ["_","",""],
       ["","",""],
       ["","",""],
@@ -1213,9 +1307,9 @@
       ["","",""],
       ["","",""]],
     "rolling_guidance": [
-      ["_","",""],
-      ["_","",""],
-      ["","",""],
+      ["std_deviation_s","% >= 0","4"],
+      ["std_deviation_r","% >= 0","10"],
+      ["precision",">= 0","0.5"],
       ["","",""],
       ["","",""],
       ["","",""],
