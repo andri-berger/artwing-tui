@@ -232,55 +232,37 @@ def on_pressed(self, event) -> None:
     f1 = self.app.stores
     f2 = event.button.id
     f3 = f2.split("-")[-1]
-    f5 = f1.setdefault("0", {})
-    f6 = f5.setdefault("38", {})
-    f7 = f5.setdefault("39", {})
     f8 =  f0["4-0"].index(f2) \
         if f2 in f0["4-0"] else -1
     f10 = f0["4-1"][f8]
     self.label.update(f10)
-    f11 = {"6": 2, "3": 1}
-    f12 = {"6": 1, "3": 2}
-    f9 = self.turi
 
     if f2 == "button-6":
-        self.app.stores = {}
-        on_message(self,  "", "f5")
+        on_message(self,"", "f5")
 
     elif f2 == "button-0":
-        f6[0] = 1 - f6.get(0,0)
-        on_message(self,f9[f6[0]],"f6")
+        on_message(self,f2,"f6")
 
     elif f2 == "button-1":
-        f6[1] = 1 - f6.get(1,0)
-        on_message(self,f9[f6[1]],"f7")
+        on_message(self,f2,"f7")
 
     elif f2 == "button-2":
-        f6[2] = 1 - f6.get(2,0)
-        on_message(self,f9[f6[2]],"f8")
-
-    elif f2 == "button-3":
-        f13 = f5.get('38', {})
-        f14 = int(time.time())
-        for k in ['0', '1', '2']:
-            if f13.get(k, 0) == 0:
-                f7[k] = f14
-        on_message(self, "", "f9")
+        on_message(self,f2,"f8")
 
     elif f2 == "button-4":
-        on_message(self, "", "f10")
+        pass
 
-    if f3 == "6" or f3 == "3":
+    elif f2 == "button-3":
         # self.e_images.config = f19
         pass
 
-    if f3 == "4":
+    elif f2 == "button-4":
         f15 = str(int(time.time()))
         image_outs_ = CWD / f"{f15}.png"
         image_outs = CWD / f"{f15[1:]}.json"
         shutil.copy2(CONFIGS_, image_outs)
         shutil.copy2(IMAGES_, image_outs_)
-
+        on_message(self, "", "f10")
 
 
 def on_submitted(self, event) -> None:
@@ -313,7 +295,7 @@ def on_submitted(self, event) -> None:
         # news = [self.coord.row,self.coord.column,f00,s]
         self.app.stores[self.app.now] = new
         news = [*new,self.app.now]
-        self.e_images.config = [0,0,news]
+        self.e_images.config = [1,news]
 
         self.coord = None
         event.input.value = ""

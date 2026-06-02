@@ -22,7 +22,7 @@ class CLIApp(App):
     def __init__(self):
         super().__init__()
         self.helpful = {}
-        self.now = 'blank' # global operator
+        self.now = "_blank" # global operator
         self.page = None
         self._pw = None
         self._server = None
@@ -37,16 +37,17 @@ class CLIApp(App):
 
     async def on_mount(self) -> None:
         self.e_images = self.query_one(ImageTab)
-        dt = self.query_one("#data-table-0")
+        dt = self.query_one("#dir-tree-1")
         self.set_focus(dt)
 
         if self.stores:
-            l0 = self.stores.get("_blank",[])
-            l1 = l0[2] if len(l0) > 2 else "blank"
-            l2 = self.stores.get(l1)
-            # l3 = {**self.stores}
+            yy = self.stores
+            l0 = yy.get("_blank",[])
+            l1 = l0[2] if len(l0) > 2 else "_"
+            l2 = yy.get(l1)
             if l2 is not None:
-                self.e_images.config = [1,1,l1,l2]
+                l3 = [*l2,l1]
+                self.e_images.config = [0,l3]
 
     async def on_unmount(self) -> None:
         if self._server:

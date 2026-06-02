@@ -32,49 +32,68 @@ class ImageTab(Widget):
         self.query_one(Image).styles.width = "auto"
         self.query_one(Image).styles.height = "100%"
 
+    def _select_child(self, parent_node, f8,tree) -> None:
+        for child in parent_node.children:
+            if child.data.path.name == f8:
+                tree.move_cursor(child)
+                break
+
     # 2 2 boxfit {}
     async def watch_config(self, value: dict):
-        f02 = self.app.query_one("#label-0")
-        f003 = self.app.store["0"]
-        f03 = self.app.store["3"]
-
+        tree = self.app.query_one("#dir-tree-1")
         f0 = self.app.query_one("#cont-switch-1")
-        f1 = int(f0.current.split("-")[-1])
-        f2 = self.app.query(DataTable)
-        f3 = self.app.stores
-        self.notify(f"model: {value}")
-        test = value[2][2:-1]
-        testr = value[2][-1]
+        f1 = self.app.query_one("#label-0")
+        f2 = int(f0.current.split("-")[-1])
+        f3 = self.app.query(DataTable)
+        f4 = self.app.store["0"]
+        f5 = self.app.store["3"]
+        f7 = value[1][2:-1]
+        f8 = value[1][-1]
+        f9 = value[1]
+        self.app.clear_notifications()
+        self.notify(
+            f"model: {value}")
 
+        if value[0] == 0:
+            with (self.app.batch_update()):
+                f3[0].clear(columns=False)
+                f07 = f4[f"{f8}"]
+                for row_i in range(9):
+                    tt = f07[row_i] if len(f07) > row_i else [""]
+                    ja = f7[row_i] if len(f7) > row_i else ""
+                    row = [tt[0],ja]
+                    f3[0].add_row(*row)
 
-        if value[0] == 1:
-            with ((self.app.batch_update())):
-                f2[0].clear(columns=False)
-                f07 = f003[f"{self.app.now}"]
-                for row_i in range(len(f07)):
-                    ja = test[row_i] if len(test) > row_i else ""
-                    row = [f07[row_i][0],ja]
-                    f2[0].add_row(*row)
+            f3[0].move_cursor(
+                row=f9[0],
+                column=f9[1])
+
+            two = Path(tree.path).resolve()
+            for node in tree.root.children:
+                one = node.data.path
+                three = one.relative_to(two)
+                if three == Path("artist"):
+                    node.expand()
+                    self.call_after_refresh(
+                        self._select_child,
+                        node, f8,tree)
+                    break
 
         def after_focus():
-            f02.update(f03[self.app.now])
+            f1.update(f5[f8])
         self.call_after_refresh(
             after_focus)
 
-        if value[1] == 1:
-            f25 = int(time.time())
-            f26 = CWD / f"{f25}.png"
-
-        if value[1] == 0:
-            params = ",".join(str(p) for p in test)
-            check = [x for x in test if x != ""]
+        if value[0] >= 0:
+            params = ",".join(str(p) for p in f7)
+            check = [x for x in f7 if x != ""]
             params0 = params if len(check) else ","
             if self.query(Image):
                 self.query_one(Image).remove()
             proc = await (asyncio
             .create_subprocess_exec(
                 "gmic", str(TEST),
-                testr, params0, '-output', str(IMAGES),
+                f8, params0, '-output', str(IMAGES),
                 stdout=asyncio.subprocess.DEVNULL,
                 stderr=asyncio.subprocess.DEVNULL))
             await proc.communicate()
@@ -95,10 +114,6 @@ class ImageTab(Widget):
             else:
                 self.query_one(Image).styles.width = "auto"
                 self.query_one(Image).styles.height = "100%"
-
-
-        CONFIGS.write_text(
-        json.dumps(f3))
 
     def render(self):
         return ""
@@ -130,6 +145,7 @@ class FileTypeTree(DirectoryTree):
     @on(DirectoryTree.FileSelected)
     async def selected(self, event: DirectoryTree.FileSelected) -> None:
         e_images = self.app.query_one(ImageTab)
+        f00 = self.app.query_one("#data-table-0")
         f0 = self.app.query_one("#cont-switch-2")
         f1 = self.app.query_one(f"#{f0.current}")
         f02 = self.app.query_one("#label-0")
@@ -144,7 +160,6 @@ class FileTypeTree(DirectoryTree):
         f9 = f8[int(f6)-1]
         f10 = event.path
 
-        self.notify(f"File: {event.path.name}")
 
         if not f10.is_file():
             return
@@ -162,15 +177,14 @@ class FileTypeTree(DirectoryTree):
             pass
 
         elif f5 == "dir-tree-1":
+                temp = self.app.now
                 self.app.now = f10.name
                 # f15 = ASSETS_DIR / f9
                 # f16 = f15 / f10.name
                 # f02.update(f03[f10.name][0] or "")
 
-
-                # f17 = f4.column
                 # f18 = f4.row
-
+                # f17 = f4.column
                 # if (int(f2) in [4, 5]
                 #         and f17 == 12):
                 #     f19 = f3.setdefault(f7, {})
@@ -192,17 +206,31 @@ class FileTypeTree(DirectoryTree):
                 #         f26.unlink()
 
                 f70 = self.app.store["0"]
-                f05 = f70[self.app.now] or []
-
+                f77 = self.app.stores
+                f05 = f70[f10.name] or []
+                f90 = f77.get(f10.name)
+                ts = f00.cursor_coordinate
                 test = sum(1 for row in f05
                            if row[0] != "")
                 f06 = [""] * test
-                self.notify(f"f05 {f06}")
-                l93 = [0,0,*f06]
-                l94 = [1,0,[*l93,f10.name]]
-                self.app.stores[f10.name] = l93
-                self.notify(f"l94 {l94}")
+                l60 = f90 or [0,0,*f06]
+                l94 = [0,[*l60,f10.name]]
+                jau = self.app.stores.get(temp,[])
+                if len(jau) > 0:
+                    jau[0] = ts.row if len(jau) > 0 else 0
+                    jau[1] = ts.column if len(jau) > 0 else 0
+
+                self.app.stores["_blank"] = [0,0,f10.name]
+                if f77.get(f10.name) is None:
+                    self.app.stores[f10.name] = l60
                 e_images.config = l94
+
+                CONFIGS.write_text(
+                    json.dumps(f77))
+
                 # on_message(self,
                 #            f10.name,
                 #            "f0")
+
+
+
