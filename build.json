@@ -917,8 +917,8 @@
   },
   "4-0": [
     "dir-tree-0",
-    "dir-tree-1",
     "dir-tree-2",
+    "dir-tree-1",
     "data-table-0",
     "button-6",
     "button-0",
@@ -931,8 +931,8 @@
     "LOCAL FILE PICKER (PNG / JSON)",
     "CHOOSE CREATIVE FX PALETTE", "",
     "Clear the Canvas (Reset)",
-    "Coming Soon (I)",
-    "Coming Soon (II)",
+    "Enable Realtime FX on Global FilePicker",
+    "Enable Realtime FX on Local FilePicker",
     "Coming Soon (III)",
     "CREATE Local snapshot",
     "SAVE Image to disk"]
