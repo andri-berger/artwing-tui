@@ -3,8 +3,8 @@ class Tap < Formula
 
   license "GPL-3.0-only"
   desc "Flexible Filterx Generator in TUI format"
-  homepage "https://github.com/andri-berger/artwork-tui"
-  url "https://github.com/andri-berger/artwork-tui/archive/v0.0.1.tar.gz"
+  homepage "https://github.com/andri-berger/filterx-tui"
+  url "https://github.com/andri-berger/filterx-tui/archive/v0.0.1.tar.gz"
   sha256 "10790e80a965d21087a53c40286817f7f7835356d917c2bce1c152dc004edcab"
   depends_on "python@3.14"
   depends_on "gmic"
