@@ -19,12 +19,6 @@ ModalScreen {
     background: $defaults;
 }
 
-
-
-
-
-
-
 TableApp {
     align: center middle;
     background: $defaults;
