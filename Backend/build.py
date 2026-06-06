@@ -2,16 +2,16 @@ from textual.app import App, ComposeResult
 from .model import ImageTab
 from .builds import TableApp
 from pathlib import Path
+from .models import helsing
 import json
-
 
 PATH_FILE = Path(__file__).parent
 STATIC_DIR = PATH_FILE.parent / "Fontend"
 STATIC_BAC = PATH_FILE.parent / "Backend"
-CSS_PATHS = STATIC_BAC / "model.tcss"
+CSS_PATHS = STATIC_BAC / "style.tcss"
 CONFIG = PATH_FILE.parent / "build.json"
 CONFIGS = PATH_FILE.parent / "Formula/za.json"
-
+TEST = PATH_FILE.parent / "uread.png"
 
 class CLIApp(App):
     COMMAND_PALETTE_DISPLAY = None
@@ -21,8 +21,6 @@ class CLIApp(App):
 
     def __init__(self):
         super().__init__()
-        self.helpful = {}
-        self.now = "_blank" # global operator
         self.page = None
         self._pw = None
         self._server = None
@@ -36,18 +34,16 @@ class CLIApp(App):
         yield TableApp()
 
     async def on_mount(self) -> None:
-        self.e_images = self.query_one(ImageTab)
-        dt = self.query_one("#dir-tree-1")
-        self.set_focus(dt)
+        f0 = self.query_one("#dir-tree-1")
+        f1 = self.query_one(ImageTab)
+        f5 = self.app.stores
+        f6 = str(TEST) or ""
+        f2 = helsing(f5,f6)
+        self.notify(f"00:::: {f2}")
+        self.set_focus(f0)
 
-        if self.stores:
-            yy = self.stores
-            l0 = yy.get("_blank",[])
-            l1 = l0[2] if len(l0) > 2 else "_"
-            l2 = yy.get(l1)
-            if l2 is not None:
-                l3 = [*l2,l1]
-                self.e_images.config = [0,l3]
+        if f2[-2]:
+            f1.config = f2
 
     async def on_unmount(self) -> None:
         if self._server:
@@ -55,5 +51,4 @@ class CLIApp(App):
         if self._pw:
         # if self.page:
             await self._pw.stop()
-
 
