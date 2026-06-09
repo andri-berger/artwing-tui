@@ -1,21 +1,21 @@
 from .models import (
-    on_cell_highlighted_,
+    on_highlighted_,
     on_key_, on_pressed,
     on_submitted)
 from textual.widgets import (
     DataTable, Input, Button,
-    ContentSwitcher, Digits, Label)
+    ContentSwitcher, Label)
 
 from .model import FileTypeTree, ImageTab
 from textual.containers import Horizontal
 from textual.app import ComposeResult
 from textual.widget import Widget
 from textual.events import Key
-from textual import events, on
+from textual import on
 from itertools import cycle
 from pathlib import Path
 cursors = cycle(["cell"])
-CWD = Path.cwd()
+
 
 class NoSelectInput(Input):
     def on_focus(self):
@@ -28,20 +28,11 @@ class TableApp(Widget):
         self.coord = (0,0)
         self._cursor = None
         self._clipboard = None
-        self.full_IDs = self.app.store["4-0"]
-        self.turi = ['activated', 'deactivated']
-        self.turis = ['visible', 'hidden']
 
     def on_mount(self) -> None:
-        self.f_left = self.query_one("#cont-switch-0")      # decentralize !!
-        self.c_cont = self.query_one("#cont-switch-0")      # decentralize !!
-        self.f_right = self.query_one("#cont-switch-1")     # decentralize !!
-        self.e_fourth = self.query_one("#fourth")           # decentralize !!
-        self.e_third = self.query_one("#third")             # decentralize !!
-        self.label = self.query_one("#label-0")             # decentralize !!
         self.e_images = self.query_one(ImageTab)
         table = self.query_one(DataTable)
-        rows = self.app.store["0"]["_blank"]
+        rows = [[""]] * 9
 
         table.cursor_type = "cell"
         table.zebra_stripes = True
@@ -135,9 +126,9 @@ class TableApp(Widget):
 
     @on(DataTable.CellHighlighted)
     def highlighted(self, event: DataTable.CellHighlighted) -> None:
-        on_cell_highlighted_(self, event.coordinate)
+        on_highlighted_(self, event.coordinate)
 
-    @on(Input.Submitted)
+    @on(Input.Submitted) # Enter only
     def submitted(self, event: Input.Submitted) -> None:
         on_submitted(self,event)
 
