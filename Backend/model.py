@@ -1,32 +1,47 @@
-from textual.widgets import DirectoryTree
+from textual.widgets import (
+    DirectoryTree,DataTable)
+from textual.app import ComposeResult
 from textual.reactive import reactive
 from textual_image.widget import Image
-from textual.widgets import DataTable
 from textual.widget import Widget
 from pathlib import Path
-from textual import on
-from textual.app import ComposeResult
-import imagesize
+from textual import on,work
+
+from .models import (
+    testlauf,helsing,tester)
+
 import asyncio
 import shutil
-import time
 import json
 
 
-CWD = Path.cwd()
 APP = Path(__file__)
 APP_DIR = Path(__file__).parent
-ASSETS_DIR = APP_DIR.parent / "Fontend"
-ASSETS = ASSETS_DIR / "Formula/za.png"
-CONFIGS = APP_DIR.parent / "Formula/za.json"
-IMAGES = APP_DIR.parent / "Formula/za.png"
 TEST = APP_DIR.parent / "uread.png"
+IMAGES = APP_DIR.parent / "Formula" / "za.png"
+CONFIGS = APP_DIR.parent / "Formula" / "za.json"
+
+
+# worker @work
+# changing themes
+# remove background only gerüst
+# style switcher border/outline
+# BINDINGS = [Binding("ctrl+z", "suspend_process")]
+# BOX-SIZING ???
+# action key bindings
+# inline markup [b]
+# self.notify, markup=false
+# structure widget vs app vs custom => analyze
+# color / background structure range / tint
+# scan and categorize all import modules
+#
+
 
 class ImageTab(Widget):
     config: reactive[dict] = reactive(dict, init=False)
 
     def compose(self) -> ComposeResult:
-        yield Image(TEST)
+       yield Image(TEST)
 
     def on_mount(self) -> None:
         self.query_one(Image).styles.width = "auto"
@@ -38,82 +53,71 @@ class ImageTab(Widget):
                 tree.move_cursor(child)
                 break
 
-    # 2 2 boxfit {}
+    @work(exclusive=True)
     async def watch_config(self, value: dict):
-        tree = self.app.query_one("#dir-tree-1")
-        f0 = self.app.query_one("#cont-switch-1")
-        f1 = self.app.query_one("#label-0")
-        f2 = int(f0.current.split("-")[-1])
-        f3 = self.app.query(DataTable)
-        f4 = self.app.store["0"]
-        f5 = self.app.store["3"]
-        f7 = value[1][2:-1]
-        f8 = value[1][-1]
-        f9 = value[1]
-        self.app.clear_notifications()
-        self.notify(
-            f"model: {value}")
+        f1 = self.app.query_one("#dir-tree-1")
+        f0 = self.app.query_one(DataTable)
+        f2 = self.app.store["0"]
+        f02 = self.app.store["3"]
+        f4 = value[3:-2]
+        f5 = value[-2]
+        f3 = value[-1]
+
+        # (self.app.
+        #  clear_notifications())
+        # self.notify(f"00: {value}")
 
         if value[0] == 0:
-            with (self.app.batch_update()):
-                f3[0].clear(columns=False)
-                f07 = f4[f"{f8}"]
+            with self.app.batch_update():
+                f0.clear(columns=False)
+                f6 = f2[f"{f5}"]
                 for row_i in range(9):
-                    tt = f07[row_i] if len(f07) > row_i else [""]
-                    ja = f7[row_i] if len(f7) > row_i else ""
-                    row = [tt[0],ja]
-                    f3[0].add_row(*row)
+                    f7 = f6[row_i] if len(f6) > row_i else [""]
+                    f8 = f4[row_i] if len(f4) > row_i else ""
+                    f9 = [f7[0],f8]
+                    f0.add_row(*f9)
 
-            f3[0].move_cursor(
-                row=f9[0],
-                column=f9[1])
+                f0.move_cursor(
+                    row=value[1],
+                    column=value[2])
 
-            two = Path(tree.path).resolve()
-            for node in tree.root.children:
-                one = node.data.path
-                three = one.relative_to(two)
-                if three == Path("artist"):
+            f10 = f02.get(f5,[])
+            f11 = f10[1] if len(f10) > 1 else ""
+            f12 = Path(f1.path).resolve()
+            for node in f1.root.children:
+                f13 = node.data.path
+                f14 = f13.relative_to(f12)
+                if f14 == Path(f11):
                     node.expand()
                     self.call_after_refresh(
                         self._select_child,
-                        node, f8,tree)
+                        node, f5,f1)
                     break
 
-        def after_focus():
-            f1.update(f5[f8])
-        self.call_after_refresh(
-            after_focus)
+        if self.query(Image):
+            self.query_one(Image).remove()
 
-        if value[0] >= 0:
-            params = ",".join(str(p) for p in f7)
-            check = [x for x in f7 if x != ""]
-            params0 = params if len(check) else ","
-            if self.query(Image):
-                self.query_one(Image).remove()
-            proc = await (asyncio
+        if value[0] <= 1:
+            f15 = ",".join(str(p) for p in f4)
+            f16 = [x for x in f4 if x != ""]
+            f17 = f15 if len(f16) else ","
+
+            f18 = await (asyncio
             .create_subprocess_exec(
-                "gmic", str(TEST),
-                f8, params0, '-output', str(IMAGES),
+                "gmic", str(f3),
+                f5, f17, '-output', str(IMAGES),
                 stdout=asyncio.subprocess.DEVNULL,
                 stderr=asyncio.subprocess.DEVNULL))
-            await proc.communicate()
-            await self.mount(Image(IMAGES))
+            await f18.communicate()
+            f19 = Image(IMAGES)
+            testlauf(f19,self.size,IMAGES)
+            await self.mount(f19)
+            # self.post_message("")
 
-            size = self.size
-            cell_w, cell_h = 9, 18
-            target_w = size.width * cell_w
-            target_h = size.height * cell_h
-            container_ratio = target_w / target_h
-
-            width, height = imagesize.get(str(IMAGES))
-            img_ratio = width / height
-
-            if img_ratio > container_ratio:
-                self.query_one(Image).styles.width = "100%"
-                self.query_one(Image).styles.height = "auto"
-            else:
-                self.query_one(Image).styles.width = "auto"
-                self.query_one(Image).styles.height = "100%"
+        if value[0] == 2:
+            f20 = Image(f3)
+            testlauf(f20,self.size,f3)
+            await self.mount(f20)
 
     def render(self):
         return ""
@@ -142,95 +146,67 @@ class FileTypeTree(DirectoryTree):
         return False
 
 
-    @on(DirectoryTree.FileSelected)
+    @on(DirectoryTree.FileSelected) #Enter only
     async def selected(self, event: DirectoryTree.FileSelected) -> None:
-        e_images = self.app.query_one(ImageTab)
-        f00 = self.app.query_one("#data-table-0")
-        f0 = self.app.query_one("#cont-switch-2")
-        f1 = self.app.query_one(f"#{f0.current}")
-        f02 = self.app.query_one("#label-0")
-        f2 = f0.current.split("-")[-1]
-        f3 = self.app.stores
-        f03 = self.app.store["3"]
-        # f4 = self.app.coord
-        f5 = event.control.id
-        f6 = f5.split("-")[-1]
-        f7 = ['4','5'][int(f6)-1]
-        f8 = ["module","modules"]
-        f9 = f8[int(f6)-1]
-        f10 = event.path
+        f0 = self.app.query_one("#dir-tree-1")
+        f1 = self.app.query_one("#label-0")
+        f2 = self.app.query_one(DataTable)
+        f3 = self.app.query_one(ImageTab)
+        f4 = self.app.store["3"]
+        f5 = self.app.stores
+        f6 = event.control.id
+        f7 = f5['_blank'][4]
+        f8 = f5['_blank'][3]
+        f9 = event.path
+        f10 = f9.name
+        f11 = str(TEST)
+        f12 = str(f9)
 
+        self.notify(f"File selected: {event}")
 
-        if not f10.is_file():
+        if not f9.is_file():
             return
 
-        if f5 == "dir-tree-0":
-            shutil.copy2(f10, CONFIGS)
-            f13 = f10.read_text()
-            f14 = json.loads(f13)
-            f14.update({'_': [2,1]})
-            self.app.stores = f14
-            self.e_images.config = f14
-            await self.reload()
+        if (f6 == "dir-tree-0"
+                or f6 == "dir-tree-2"):
+            fx6 = f10.split(".")[-1]
 
-        elif f5 == "dir-tree-2":
-            pass
+            if fx6 == "json":
+                shutil.copy2(f9, CONFIGS)
+                f13 = f9.read_text()
+                f14 = json.loads(f13)
+                self.app.stores = f14
+                f15 = helsing(f14,f11)
+                f3.config = f15
+                self.reload()
 
-        elif f5 == "dir-tree-1":
-                temp = self.app.now
-                self.app.now = f10.name
-                # f15 = ASSETS_DIR / f9
-                # f16 = f15 / f10.name
-                # f02.update(f03[f10.name][0] or "")
+            elif fx6 == "png":
+                f16 = tester(self,f8,f12)
+                f3.config = [2,*f16,f8,f12]
 
-                # f18 = f4.row
-                # f17 = f4.column
-                # if (int(f2) in [4, 5]
-                #         and f17 == 12):
-                #     f19 = f3.setdefault(f7, {})
-                #     f20 = f19.setdefault(f18, {})
-                #     f20[f17 or '11'] = f10.name
-                #     f21 = f1.get_cell_at(f4)
-                #     f22 = f15 / f21.name
-                #     if f22.exists():
-                #         f22.unlink()
-                #     f1.update_cell_at(
-                #         f4,f10.name)
-                # else:
-                #     f23 = f3.setdefault('0', {})
-                #     f24 = f23.setdefault('40', {})
-                #     f25 = f24[int(f6)-1] or ""
-                #     f24[int(f6)-1] = f10.name
-                #     f26 = f15 / f25
-                #     if f26.exists():
-                #         f26.unlink()
-
-                f70 = self.app.store["0"]
-                f77 = self.app.stores
-                f05 = f70[f10.name] or []
-                f90 = f77.get(f10.name)
-                ts = f00.cursor_coordinate
-                test = sum(1 for row in f05
-                           if row[0] != "")
-                f06 = [""] * test
-                l60 = f90 or [0,0,*f06]
-                l94 = [0,[*l60,f10.name]]
-                jau = self.app.stores.get(temp,[])
-                if len(jau) > 0:
-                    jau[0] = ts.row if len(jau) > 0 else 0
-                    jau[1] = ts.column if len(jau) > 0 else 0
-
-                self.app.stores["_blank"] = [0,0,f10.name]
-                if f77.get(f10.name) is None:
-                    self.app.stores[f10.name] = l60
-                e_images.config = l94
+                f17 = f0.cursor_node
+                if f17 and f17.parent:
+                    f17.parent.collapse()
+                f0.move_cursor(
+                    f0.root.children[0])
 
                 CONFIGS.write_text(
-                    json.dumps(f77))
+                    json.dumps(f5))
 
-                # on_message(self,
-                #            f10.name,
-                #            "f0")
+        elif f6 == "dir-tree-1":
+                f18 = f4.get(f10, [])
+                f19 = f5.get(f8,[])
+                f20 = len(f18) > 2
+                f21 = tester(self,f10,f7)
+                f22 = f2.cursor_coordinate
+                f3.config = [0,*f21,f10,f7]
 
+                f23 = f18[2] if f20 else ""
+                f1.update(f23)
 
+                if len(f19) > 0:
+                    f19[0] = f22.row if len(f19) > 0 else 0
+                    f19[1] = f22.column if len(f19) > 0 else 0
 
+                CONFIGS.write_text(
+                    json.dumps(f5))

@@ -1,18 +1,83 @@
-from textual.widgets import (DataTable, Input)
+from textual.widgets import (
+    DataTable, Input, DirectoryTree)
 # from textual.coordinate import Coordinate
 from pathlib import Path
+import imagesize
 import shutil
 import time
+import json
 
 
 CWD = Path.cwd()
 PATH_FILE = Path(__file__).parent
 STATIC_DIR = PATH_FILE.parent / "Fontend"
-CONFIGS = STATIC_DIR / "model.json"
-CONFIGS_ = PATH_FILE.parent / "Formula/za.json"
-IMAGES_ = PATH_FILE.parent / "Formula/za.png"
+IMAGES_ = PATH_FILE.parent / "Formula" / "za.png"
+CONFIGS_ = PATH_FILE.parent / "Formula" / "za.json"
 
+# tree = self.query_one(DirectoryTree)
+# node = tree.cursor_node
+#
+# if node and node.data:
+#     path = node.data.path
+#     current_dir = path if path.is_dir() else path.parent
 
+# def on_key(self, event: events.Key) -> None:
+#     if event.key in ("up", "down"):
+#         self.call_after_refresh(self._on_cursor_move)
+#
+# def _on_cursor_move(self) -> None:
+#     tree = self.query_one(DirectoryTree)
+#     node = tree.cursor_node
+#     if node and node.data:
+#         path = node.data.path
+#         # do something with path
+
+def tester(self,param,params) -> list:
+    f0 = self.app.store["0"]
+    f1 = self.app.stores
+    f2 = f0.get(param,[])
+    f3 = sum(1 for row in f2
+             if row[0] != "")
+    f4 = [0, 0, *[""] * f3]
+    f5 = f1.get(param,f4)
+    f6 = f1["_blank"]
+    f6[4] = params
+    f6[3] = param
+    f1[param] = f5
+    return f5
+
+def helsing(self, param) -> list:
+    f1 = [0,0,0,"",""]
+    self.setdefault("_blank",f1)
+    f3 = self.get("_blank")[4]
+    f4 = self.get("_blank")[3]
+    f5 = self.get(f4,None)
+    f7 = f3 or param or ""
+    self['_blank'][4] = f7
+    if f5 is not None:
+        f7 = [*f5,f4,f7]
+        f1 = [0,*f7]
+    return f1
+
+def testlauf(yes, size, IMAGES):
+    cell_w, cell_h = 9, 18
+    target_w = size.width * cell_w
+    target_h = size.height * cell_h
+    container_ratio = target_w / target_h
+    width, height = imagesize.get(str(IMAGES))
+    img_ratio = width / height
+
+    if img_ratio > container_ratio:
+        yes.styles.width = "100%"
+        yes.styles.height = "auto"
+    else:
+        yes.styles.width = "auto"
+        yes.styles.height = "100%"
+
+def safe_rename(dst: Path) -> Path:
+    count = len(list(dst.parent.glob(f"{dst.stem}*{dst.suffix}")))
+    new_dst = dst.with_stem(f"{dst.stem}_{count-1}") if count > 0 else dst
+    return new_dst
 
 def on_message(self,value,hash) -> None:
     self.app.clear_notifications()
@@ -35,85 +100,94 @@ def on_message(self,value,hash) -> None:
 def action_next_table(self, event, prefix) -> None:
     f0 = self.query_one("#cont-switch-0")
     f1 = self.query_one("#cont-switch-1")
-    f00 = self.query_one("#cont-switch-1")
-    f01 = self.query_one(f"#{f00.current}")
-    f2 = self.full_IDs.index(self.app.focused.id)
-    f3 = (f2 + prefix) % len(self.full_IDs)
-    f4 = self.app.store["4-1"]
-    f5 = self.full_IDs[f3]
-    f7 = min(prefix,0)
+    f2 = self.query_one(f"#{f1.current}")
+    f3 = self.query_one(DataTable)
+    f4 = self.query_one("#label-0")
+    f5 = self.query_one("#fourth")
+    f6 = self.query_one("#third")
+    f7 = self.app.store["4-1"]
+    f8 = self.app.store["4-0"]
+    f9 = self.app.store["3"]
+    f10 = self.app.focused.id
+    f11 = self.app.stores
+    f12 = f11['_blank']
+    f13 = f8.index(f10)
+    f14 = f13 + prefix
+    f15 = f14 % len(f8)
+    f17 = min(prefix,0)
+    f16 = f8[f15]
 
     if self.coord is not None:
         event.prevent_default()
         event.stop()
-        f01.focus()
+        f2.focus()
 
     if self.coord is None:
-        if ((f2 + f7) in
-                [-1,9]):
+        if ((f13 + f17) in [-1,9]):
             event.prevent_default()
             event.stop()
 
-        if f3 in [0,1,2,4,5,6,7,8,9]:
-            self.label.update(f4[f3] or "")
-            self.e_third.value = ""
-            self.e_fourth.value = ""
+        if f15 in [0,1,2,3,4,5,6,7,8,9]:
+            self.app.clear_notifications()
+            f4.update(f7[f15] or "")
+            f6.value = ""
+            f5.value = ""
 
-        if f3 in [3]:
-            f1.current = f5
-            table = self.query_one(f"#{f5}")
-            coordinates = table.cursor_coordinate
-            on_cell_highlighted_(self, coordinates)
+        if f15 in [3]:
+            coordinates = f3.cursor_coordinate
+            on_highlighted_(self,coordinates)
+            yes = f9.get(f12[2],[])
+            yes0 = yes[2] if len(yes) > 2 else ""
+            f4.update(yes0)
 
-        if f3 in [0,1,2]:
-            # f0.current = f5
-            tree = self.query_one(f"#{f5}")
+        if f15 in [0,1,2]:
+            tree = self.query_one(f"#{f16}")
             tree.reload()
 
-        if (f2 + f7) == 9:
+        if (f13 + f17) == 9:
             sr = f"#{f0.current}"
             self.query_one(sr).focus()
 
-        if (f2 + f7) == -1:
+        if (f13 + f17) == -1:
             sr = "#button-4"
             self.query_one(sr).focus()
 
 
 async def on_key_(self, event) -> None:
-    f5 = ["backspace", "space", "enter"]
-    f00 = self.query_one("#cont-switch-0")
-    f0 = self.query_one("#cont-switch-1")
-    f1 = self.query_one(f"#{f0.current}")
-    f01 = f0.current.split("-")[-1]
-    f4 = self.query_one("#third")
-    f2 = f1.cursor_coordinate
-    f3 = f1.get_cell_at(f2) or ""
-    f6 = event.key
+    f0 = ["backspace", "space", "enter"]
+    f1 = self.query_one("#cont-switch-0")
+    f2 = self.query_one("#cont-switch-1")
+    f3 = self.query_one(f"#{f2.current}")
+    f4 = f2.current.split("-")[-1]
+    f5 = self.query_one("#third")
+    f6 = f3.cursor_coordinate
+    f7 = f3.get_cell_at(f6) or ""
+    f8 = event.key
 
-    match f6:
+    match f8:
         case "delete":
-            self.coord = f2
-            on_message(self, f3, "f1")
+            self.coord = f6
+            on_message(self, f7, "f1")
             self.post_message(Input.Submitted(
-                f4, ""))
+                f5, ""))
 
         case "f1":
-            self.coord = f2
-            self._clipboard = str(f3)
-            on_message(self, f3, "f2")
+            self.coord = f6
+            self._clipboard = str(f7)
+            on_message(self, f7, "f2")
             self.post_message(Input.Submitted(
-                f4, f4.value))
+                f5, f5.value))
 
         case "f2":
-            self._clipboard = str(f3)
-            on_message(self, f3, "f3")
+            self._clipboard = str(f7)
+            on_message(self, f7, "f3")
 
         case "f3":
-            self.coord = f2
+            self.coord = f6
             clipboard = self._clipboard
             on_message(self, clipboard, "f4")
             self.post_message(Input.Submitted(
-                f4, clipboard))
+                f5, clipboard))
 
         case "f4":
             self.query_one(
@@ -148,169 +222,190 @@ async def on_key_(self, event) -> None:
         case "f12":
             self.notify("fullscreen coming soon, stay tuned")
 
+    # if isinstance(self.app.focused, DirectoryTree):
+    #     if f8 == "space":
+    #         event.stop()
+    #         tree = self.query_one(DirectoryTree)
+    #         node = tree.cursor_node
+    #         if (node and node.data
+    #                 and node.data.path.is_file()):
+    #             self.notify("space pressed")
+    #             self.post_message(
+    #                 DirectoryTree.FileSelected(tree, node))
 
     if not isinstance(self.app.focused, Input):
-        if f6 == "shift+tab":
+        if f8 == "shift+tab":
             action_next_table(self, event, -1)
             self.coord = None
-        elif f6 == "tab":
+        elif f8 == "tab":
             action_next_table(self, event, 1)
             self.coord = None
 
     if isinstance(self.app.focused, Input):
-        if f6 == "tab":
+        if f8 == "tab":
             event.stop()
             event.prevent_default()
-            f01 = self.query_one("#third")
+            f4 = self.query_one("#third")
             self.post_message(Input.Submitted(
-                f01, f01.value))
+                f4, f4.value))
         if event.key == "escape":
             self.coord = None
-            f4.value = ""
-            f1.focus()
+            f5.value = ""
+            f3.focus()
 
     if isinstance(self.app.focused, DataTable):
-        if (len(f6) == 1 or f6 in f5):
-            self.coord = f2
+        if (len(f8) == 1 or f8 in f0):
+            self.coord = f6
 
-            if (int(f01) in [4,5]
-                    and f2.column == 12):
-                sarin = int(f01) - 3
+            if (int(f4) in [4,5]
+                    and f6.column == 12):
+                sarin = int(f4) - 3
                 sar = f"dir-tree-{sarin}"
                 self.query_one(f"#{sar}").focus()
-                f00.current = sar
+                f1.current = sar
                 event.stop()
 
             else:
-                f4.focus()
+                f5.focus()
                 event.stop()
 
-                if f6 in f5:
-                    f4.value = str(f3)
+                if f8 in f0:
+                    f5.value = str(f7)
 
-                elif len(f6) == 1:
-                    f4.value = f6
+                elif len(f8) == 1:
+                    f5.value = f8
 
                     def after_focus():
-                        f4.cursor_position = len(f6)
-
+                        f5.cursor_position = len(f8)
                     self.call_after_refresh(after_focus)
 
-
-def on_cell_highlighted_(self, coordinate) -> None:
-    f0 = self.query_one("#cont-switch-1")
-    f3 = self.query_one("#fourth")
-    f4 = self.query_one("#third")
-    f5 = f0.current.split("-")[-1]
-    f00 = self.app.now
-    f7 = self.app.store["0"].get(f00)
-    row, col = coordinate
-    f4.value = ""
-    f3.value = ""
-
-    def safe(obj, *keys):
-        for key in keys:
-            try:
-                obj = obj[key]
-            except (IndexError, KeyError, TypeError):
-                return None
-        return obj
+def on_highlighted_(self, coordinate) -> None:
+    f0 = self.query_one("#fourth")
+    f1 = self.query_one("#third")
+    f2 = self.app.store["0"]
+    f3 = self.app.stores
+    f4 = f3['_blank'][3]
+    f5 = [""] * 10
+    f6,f7 = coordinate
+    f8 = f2.get(f4,f5)
+    f1.value = ""
+    f0.value = ""
 
     try:
-            value = safe(f7, row) or ""
-            if value is not None:
-                f3.value = value[1]
-                f4.value = value[2]
-
+        value = f8[f6] if len(f8) > f6 else f5
+        if value is not None and f7 <= 1:
+            f0.value = value[1]
+            f1.value = value[2]
 
     except IndexError:
-        return
+        pass
 
 
 def on_pressed(self, event) -> None:
+    f01 = ['activated', 'deactivated']
+    f00 = self.query_one("#dir-tree-2")
+    f02 = self.query_one("#label-0")
     f0 = self.app.store
     f1 = self.app.stores
     f2 = event.button.id
-    f3 = f2.split("-")[-1]
-    f8 =  f0["4-0"].index(f2) \
+    f03 = f1['_blank']
+    f3 = f1['_blank'][3]
+    f09 = f1['_blank'][4]
+    f4 = f2.split("-")[-1]
+    f5 =  f0["4-0"].index(f2) \
         if f2 in f0["4-0"] else -1
-    f10 = f0["4-1"][f8]
-    self.label.update(f10)
+    f6 = f0["4-1"][f5]
+    f02.update(f6)
+
 
     if f2 == "button-6":
+        f1.pop(f3, None)
+        f16 = tester(self, f3, f09)
+        f06 = [0, *f16, f3, f09]
+        self.e_images.config = f06
         on_message(self,"", "f5")
 
     elif f2 == "button-0":
+        f03[0] = 1 - f03[0]
         on_message(self,f2,"f6")
 
     elif f2 == "button-1":
+        f03[1] = 1 - f03[1]
         on_message(self,f2,"f7")
 
     elif f2 == "button-2":
+        f03[2] = 1 - f03[2]
         on_message(self,f2,"f8")
 
-    elif f2 == "button-4":
-        pass
-
     elif f2 == "button-3":
-        # self.e_images.config = f19
-        pass
+        toast = f0["3"].get(
+            f3,["",""])
+        node = f02.cursor_node
+        news = node.data.path
+        if toast[1]:
+            f07 = STATIC_DIR
+            f08 = f07 / toast[1]
+            f7 = f08 / news.name
+            f8 = safe_rename(f7)
+            shutil.copy2(IMAGES_,f8)
+            f9 = Path(f00.path).resolve()
+
+            for node in f00.root.children:
+                f10 = node.data.path
+                f11 = f10.relative_to(f9)
+                if f11 == Path(toast[1]):
+                    node.expand()
+                    break
+            f00.reload()
 
     elif f2 == "button-4":
-        f15 = str(int(time.time()))
-        image_outs_ = CWD / f"{f15}.png"
-        image_outs = CWD / f"{f15[1:]}.json"
-        shutil.copy2(CONFIGS_, image_outs)
-        shutil.copy2(IMAGES_, image_outs_)
+        f12 = str(int(time.time()))
+        f13 = CWD / f"{f12}.png"
+        f14 = CWD / f"{f12[1:]}.json"
+        shutil.copy2(CONFIGS_, f14)
+        shutil.copy2(IMAGES_, f13)
         on_message(self, "", "f10")
+
+    if f4 in (6,0,1,2):
+        CONFIGS_.write_text(
+            json.dumps(f1))
+
 
 
 def on_submitted(self, event) -> None:
-    f1 = self.query_one("#cont-switch-1")
-    f2 = self.query_one(f"#{f1.current}")
-    f3 = f1.current.split("-")[-1]
-    f80 = self.app.stores or {}
-    f70 = self.app.store["0"]
-    f05 = f70[self.app.now] or []
-    f71 = f05[self.coord.row] or []
-    # f72 = f71.get(self.coord.column)
-    f00 = event.value
-    f0 = self.coord
+    f0 = self.query_one("#cont-switch-1")
+    f1 = self.query_one(f"#{f0.current}")
+    f2 = self.app.store["0"]
+    f3 = self.app.stores
+    f4 = f3['_blank'][4]
+    f5 = f3['_blank'][3]
+    f6 = f2[f5] or []
+    f7 = event.value
+    f8 = self.coord
+    f08 = f8.column
+    f09 = f8.row
 
-
-
-    if f71[0] and self.coord.column == 1:
-        f2.update_cell_at(f0,f00)
-        f6 = self.get_all_data(f2)
-        test = sum(1 for row in f05
+    f9 = f6[f8.row] or []
+    if f9[0] and f8.column == 1:
+        f1.update_cell_at(f8,f7)
+        f10 = self.get_all_data(f1)
+        test = sum(1 for row in f6
                    if row[0] != "")
-        f06 = [""] * test
+        f11 = [""] * test
 
-        for var,val in f6.items():
+        for var,val in f10.items():
             test = val.get('0','')
-            if len(f06) > int(var):
-                f06[int(var)] = test
+            if len(f11) > int(var):
+                f11[int(var)] = test
 
-        new = [self.coord.row,self.coord.column,*f06]
-        # news = [self.coord.row,self.coord.column,f00,s]
-        self.app.stores[self.app.now] = new
-        news = [*new,self.app.now]
-        self.e_images.config = [1,news]
-
-        self.coord = None
+        f12 = [f09,f08,*f11]
+        f3[f5] = f12
+        f13 = [1,*f12,f5,f4]
+        self.e_images.config = f13
         event.input.value = ""
-        f2.focus()
+        self.coord = None
+        f1.focus()
 
-
-    #         f8 = f0.row in range(0, 10)
-    #         f7 = f0.row in range(24, 31)
-    #         f9 = 2 if f8 else (0 if f7 else 1)
-    #         f10 = f9 if int(f3) == 0 else 1
-    #
-    #         self.app.stores[f3] = f6
-    #         f11 = {**self.app.stores}
-    #         f11.update({'_': [0,f10]})
-    #         self.e_images.config = f11
-    #
-
+        CONFIGS_.write_text(
+            json.dumps(f3))
 
