@@ -34,7 +34,8 @@ CONFIGS = APP_DIR.parent / "Formula" / "za.json"
 # structure widget vs app vs custom => analyze
 # color / background structure range / tint
 # scan and categorize all import modules
-#
+# https://github.com/jpfleury/gmic-filters-overview
+# https://jpfleury.github.io/gfo-demos/demos/fruits-400/index.html#362a98b9c342
 
 
 class ImageTab(Widget):
@@ -101,6 +102,8 @@ class ImageTab(Widget):
             f15 = ",".join(str(p) for p in f4)
             f16 = [x for x in f4 if x != ""]
             f17 = f15 if len(f16) else ","
+
+            self.notify(f"00: {f17}")
 
             f18 = await (asyncio
             .create_subprocess_exec(
