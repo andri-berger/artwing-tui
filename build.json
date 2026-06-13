@@ -8,12 +8,14 @@
     "stained": "stained_glass",
 
 
-
-
     "texturize_ca": "texturize_canvas",
     "texturize_pa": "texturize_paper",
 
   },
+
+
+
+
 
   "3": {
     "boxfitting": ["","artist","FX BOXFITTING. Apply box fitting effect on selected images."],
