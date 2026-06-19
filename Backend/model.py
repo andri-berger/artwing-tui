@@ -7,19 +7,21 @@ from textual.widget import Widget
 from pathlib import Path
 from textual import on,work
 
+from .script import helsing
 from .models import (
-    testlauf,helsing,tester)
+    testlauf,tester)
 
 import asyncio
 import shutil
 import json
 
 
-APP = Path(__file__)
-APP_DIR = Path(__file__).parent
-TEST = APP_DIR.parent / "uread.png"
-IMAGES = APP_DIR.parent / "Formula" / "za.png"
-CONFIGS = APP_DIR.parent / "Formula" / "za.json"
+PATH = Path(__file__)
+PATH_0 = Path(__file__).parent
+PATH_1 = PATH_0.parent / "Formula"
+PATH_2 = PATH_0.parent / "uread.png"
+PATH_3 = PATH_1 / "za.json"
+PATH_4 = PATH_1 / "za.png"
 
 
 # worker @work
@@ -42,58 +44,41 @@ class ImageTab(Widget):
     config: reactive[dict] = reactive(dict, init=False)
 
     def compose(self) -> ComposeResult:
-       yield Image(TEST)
+       yield Image(PATH_2)
 
     def on_mount(self) -> None:
+        self.f0 = self.app.query_one("#data-table-0")
+        self.f1 = self.app.query_one("#dir-tree-1")
         self.query_one(Image).styles.width = "auto"
         self.query_one(Image).styles.height = "100%"
 
-    def _select_child(self, parent_node, f8,tree) -> None:
-        for child in parent_node.children:
-            if child.data.path.name == f8:
-                tree.move_cursor(child)
-                break
-
     @work(exclusive=True)
     async def watch_config(self, value: dict):
-        f1 = self.app.query_one("#dir-tree-1")
-        f0 = self.app.query_one(DataTable)
-        f2 = self.app.store["0"]
-        f02 = self.app.store["3"]
+        f2 = self.app.store["2"]
+        f03 = self.app.store["0"]
         f4 = value[3:-2]
-        f5 = value[-2]
+        f05 = value[-2]
         f3 = value[-1]
+        f5 = f03.get(
+            f05,f05)
 
-        # (self.app.
-        #  clear_notifications())
+        (self.app.
+        clear_notifications())
         # self.notify(f"00: {value}")
 
         if value[0] == 0:
             with self.app.batch_update():
-                f0.clear(columns=False)
+                self.f0.clear(columns=False)
                 f6 = f2[f"{f5}"]
                 for row_i in range(9):
                     f7 = f6[row_i] if len(f6) > row_i else [""]
                     f8 = f4[row_i] if len(f4) > row_i else ""
                     f9 = [f7[0],f8]
-                    f0.add_row(*f9)
+                    self.f0.add_row(*f9)
 
-                f0.move_cursor(
+                self.f0.move_cursor(
                     row=value[1],
                     column=value[2])
-
-            f10 = f02.get(f5,[])
-            f11 = f10[1] if len(f10) > 1 else ""
-            f12 = Path(f1.path).resolve()
-            for node in f1.root.children:
-                f13 = node.data.path
-                f14 = f13.relative_to(f12)
-                if f14 == Path(f11):
-                    node.expand()
-                    self.call_after_refresh(
-                        self._select_child,
-                        node, f5,f1)
-                    break
 
         if self.query(Image):
             self.query_one(Image).remove()
@@ -103,19 +88,16 @@ class ImageTab(Widget):
             f16 = [x for x in f4 if x != ""]
             f17 = f15 if len(f16) else ","
 
-            self.notify(f"00: {f17}")
-
             f18 = await (asyncio
             .create_subprocess_exec(
                 "gmic", str(f3),
-                f5, f17, '-output', str(IMAGES),
+                f5, f17, '-output', str(PATH_4),
                 stdout=asyncio.subprocess.DEVNULL,
                 stderr=asyncio.subprocess.DEVNULL))
             await f18.communicate()
-            f19 = Image(IMAGES)
-            testlauf(f19,self.size,IMAGES)
+            f19 = Image(PATH_4)
+            testlauf(f19, self.size, PATH_4)
             await self.mount(f19)
-            # self.post_message("")
 
         if value[0] == 2:
             f20 = Image(f3)
@@ -155,14 +137,14 @@ class FileTypeTree(DirectoryTree):
         f1 = self.app.query_one("#label-0")
         f2 = self.app.query_one(DataTable)
         f3 = self.app.query_one(ImageTab)
-        f4 = self.app.store["3"]
+        f4 = self.app.store["1"]
         f5 = self.app.stores
         f6 = event.control.id
         f7 = f5['_blank'][4]
         f8 = f5['_blank'][3]
         f9 = event.path
         f10 = f9.name
-        f11 = str(TEST)
+        f11 = str(PATH_2)
         f12 = str(f9)
 
         self.notify(f"File selected: {event}")
@@ -175,7 +157,7 @@ class FileTypeTree(DirectoryTree):
             fx6 = f10.split(".")[-1]
 
             if fx6 == "json":
-                shutil.copy2(f9, CONFIGS)
+                shutil.copy2(f9, PATH_3)
                 f13 = f9.read_text()
                 f14 = json.loads(f13)
                 self.app.stores = f14
@@ -193,23 +175,23 @@ class FileTypeTree(DirectoryTree):
                 f0.move_cursor(
                     f0.root.children[0])
 
-                CONFIGS.write_text(
+                PATH_3.write_text(
                     json.dumps(f5))
 
         elif f6 == "dir-tree-1":
                 f18 = f4.get(f10, [])
                 f19 = f5.get(f8,[])
-                f20 = len(f18) > 2
+                f20 = len(f18) > 1
                 f21 = tester(self,f10,f7)
                 f22 = f2.cursor_coordinate
                 f3.config = [0,*f21,f10,f7]
 
-                f23 = f18[2] if f20 else ""
+                f23 = f18[1] if f20 else ""
                 f1.update(f23)
 
                 if len(f19) > 0:
                     f19[0] = f22.row if len(f19) > 0 else 0
                     f19[1] = f22.column if len(f19) > 0 else 0
 
-                CONFIGS.write_text(
+                PATH_3.write_text(
                     json.dumps(f5))

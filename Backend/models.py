@@ -8,11 +8,13 @@ import time
 import json
 
 
-CWD = Path.cwd()
-PATH_FILE = Path(__file__).parent
-STATIC_DIR = PATH_FILE.parent / "Fontend"
-IMAGES_ = PATH_FILE.parent / "Formula" / "za.png"
-CONFIGS_ = PATH_FILE.parent / "Formula" / "za.json"
+PATH = Path.cwd()
+PATH_0 = Path(__file__).parent
+PATH_1 = PATH_0.parent / "Fontend"
+PATH_2 = PATH_0.parent / "Formula"
+PATH_3 = PATH_2 / "za.json"
+PATH_4 = PATH_2 / "za.png"
+
 
 # tree = self.query_one(DirectoryTree)
 # node = tree.cursor_node
@@ -32,8 +34,8 @@ CONFIGS_ = PATH_FILE.parent / "Formula" / "za.json"
 #         path = node.data.path
 #         # do something with path
 
-def tester(self,param,params) -> list:
-    f0 = self.app.store["0"]
+def tester(self, param, params) -> list:
+    f0 = self.app.store["2"]
     f1 = self.app.stores
     f2 = f0.get(param,[])
     f3 = sum(1 for row in f2
@@ -46,18 +48,7 @@ def tester(self,param,params) -> list:
     f1[param] = f5
     return f5
 
-def helsing(self, param) -> list:
-    f1 = [0,0,0,"",""]
-    self.setdefault("_blank",f1)
-    f3 = self.get("_blank")[4]
-    f4 = self.get("_blank")[3]
-    f5 = self.get(f4,None)
-    f7 = f3 or param or ""
-    self['_blank'][4] = f7
-    if f5 is not None:
-        f7 = [*f5,f4,f7]
-        f1 = [0,*f7]
-    return f1
+
 
 def testlauf(yes, size, IMAGES):
     cell_w, cell_h = 9, 18
@@ -105,9 +96,9 @@ def action_next_table(self, event, prefix) -> None:
     f4 = self.query_one("#label-0")
     f5 = self.query_one("#fourth")
     f6 = self.query_one("#third")
-    f7 = self.app.store["4-1"]
-    f8 = self.app.store["4-0"]
-    f9 = self.app.store["3"]
+    f7 = self.app.store["3"]
+    f8 = self.app.store["4"]
+    f9 = self.app.store["1"]
     f10 = self.app.focused.id
     f11 = self.app.stores
     f12 = f11['_blank']
@@ -282,7 +273,7 @@ async def on_key_(self, event) -> None:
 def on_highlighted_(self, coordinate) -> None:
     f0 = self.query_one("#fourth")
     f1 = self.query_one("#third")
-    f2 = self.app.store["0"]
+    f2 = self.app.store["2"]
     f3 = self.app.stores
     f4 = f3['_blank'][3]
     f5 = [""] * 10
@@ -312,9 +303,9 @@ def on_pressed(self, event) -> None:
     f3 = f1['_blank'][3]
     f09 = f1['_blank'][4]
     f4 = f2.split("-")[-1]
-    f5 =  f0["4-0"].index(f2) \
-        if f2 in f0["4-0"] else -1
-    f6 = f0["4-1"][f5]
+    f5 =  f0["4"].index(f2) \
+        if f2 in f0["4"] else -1
+    f6 = f0["3"][f5]
     f02.update(f6)
 
 
@@ -338,16 +329,16 @@ def on_pressed(self, event) -> None:
         on_message(self,f2,"f8")
 
     elif f2 == "button-3":
-        toast = f0["3"].get(
+        toast = f0["1"].get(
             f3,["",""])
         node = f02.cursor_node
         news = node.data.path
         if toast[1]:
-            f07 = STATIC_DIR
+            f07 = PATH_1
             f08 = f07 / toast[1]
             f7 = f08 / news.name
             f8 = safe_rename(f7)
-            shutil.copy2(IMAGES_,f8)
+            shutil.copy2(PATH_4, f8)
             f9 = Path(f00.path).resolve()
 
             for node in f00.root.children:
@@ -360,14 +351,14 @@ def on_pressed(self, event) -> None:
 
     elif f2 == "button-4":
         f12 = str(int(time.time()))
-        f13 = CWD / f"{f12}.png"
-        f14 = CWD / f"{f12[1:]}.json"
-        shutil.copy2(CONFIGS_, f14)
-        shutil.copy2(IMAGES_, f13)
+        f13 = PATH / f"{f12}.png"
+        f14 = PATH / f"{f12[1:]}.json"
+        shutil.copy2(PATH_3, f14)
+        shutil.copy2(PATH_4, f13)
         on_message(self, "", "f10")
 
     if f4 in (6,0,1,2):
-        CONFIGS_.write_text(
+        PATH_3.write_text(
             json.dumps(f1))
 
 
@@ -375,7 +366,7 @@ def on_pressed(self, event) -> None:
 def on_submitted(self, event) -> None:
     f0 = self.query_one("#cont-switch-1")
     f1 = self.query_one(f"#{f0.current}")
-    f2 = self.app.store["0"]
+    f2 = self.app.store["2"]
     f3 = self.app.stores
     f4 = f3['_blank'][4]
     f5 = f3['_blank'][3]
@@ -406,6 +397,6 @@ def on_submitted(self, event) -> None:
         self.coord = None
         f1.focus()
 
-        CONFIGS_.write_text(
+        PATH_3.write_text(
             json.dumps(f3))
 

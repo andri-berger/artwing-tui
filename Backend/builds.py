@@ -13,7 +13,6 @@ from textual.widget import Widget
 from textual.events import Key
 from textual import on
 from itertools import cycle
-from pathlib import Path
 cursors = cycle(["cell"])
 
 
