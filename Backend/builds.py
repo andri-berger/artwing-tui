@@ -24,13 +24,12 @@ class TableApp(Widget):
     def __init__(self) -> None:
         super().__init__()
         self.glob = 0
-        self.coord = (0,0)
+        self.coord = (0,0)      # braucht es das??
         self._cursor = None
         self._clipboard = None
 
     def on_mount(self) -> None:
-        self.e_images = self.query_one(ImageTab)
-        table = self.query_one(DataTable)
+        table = self.query_one("#data-table")
         rows = [[""]] * 9
 
         table.cursor_type = "cell"
@@ -75,21 +74,21 @@ class TableApp(Widget):
                     id="dir-tree-1")
 
             with ContentSwitcher(
-                    initial="data-table-0",
+                    initial="data-table",
                     id="cont-switch-1"):
                 yield DataTable(
                     show_header=False,
-                    id="data-table-0")
+                    id="data-table")
 
         with Horizontal(id="status"):
-            yield Button("X", id="button-6")
-            yield Button("AS", id="button-0")
-            yield Button("BS", id="button-1")
-            yield Button("CS", id="button-2")
-            yield Button("CREATE", id="button-3")
-            yield Button("EXPORT", id="button-4")
-            yield Input(id="fourth", disabled=False)
-            yield Input(id="third", disabled=False)
+            yield Button("X", id="button-0")
+            yield Button("AS", id="button-1")
+            yield Button("BSS", id="button-2")
+            yield Button("CSS", id="button-3")
+            yield Button("CREATE", id="button-4")
+            yield Button("EXPORT", id="button-5")
+            yield Input(disabled=False, id="input-0")
+            yield Input(disabled=False, id="input-1")
 
         with Horizontal(id="bottoms"):
             yield Label(id="label-0")
