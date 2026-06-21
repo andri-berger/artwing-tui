@@ -1,11 +1,10 @@
 from .models import (
-    on_highlighted_,
     on_key_, on_pressed,
     on_submitted)
 from textual.widgets import (
     DataTable, Input, Button,
     ContentSwitcher, Label)
-
+from .script import on_highlighted
 from .model import FileTypeTree, ImageTab
 from textual.containers import Horizontal
 from textual.app import ComposeResult
@@ -24,7 +23,6 @@ class TableApp(Widget):
     def __init__(self) -> None:
         super().__init__()
         self.glob = 0
-        self.coord = (0,0)      # braucht es das??
         self._cursor = None
         self._clipboard = None
 
@@ -124,11 +122,11 @@ class TableApp(Widget):
 
     @on(DataTable.CellHighlighted)
     def highlighted(self, event: DataTable.CellHighlighted) -> None:
-        on_highlighted_(self, event.coordinate)
+        on_highlighted(self, event.coordinate)
 
     @on(Input.Submitted) # Enter only
     def submitted(self, event: Input.Submitted) -> None:
-        on_submitted(self,event)
+        on_submitted(self, event)
 
     @on(Button.Pressed)
     def pressed(self, event: Button.Pressed) -> None:

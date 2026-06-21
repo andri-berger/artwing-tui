@@ -250,7 +250,7 @@
     "zoom": ["warpings","FX ZOOM. Apply zoom factor to selected images. => Boundaries: 0=dirichlet, 1=neumann, 2=periodic, 3=mirror;"]
 },
   "2": {
-    "boxfitting": [
+    "boxfit": [
       ["min_box_size",">= 1","1"],
       ["max_box_size",">= 0","0"],
       ["init_density",">= 0","0.25"],
@@ -262,7 +262,7 @@
       ["thickness",">= 0","0.25"],
       ["colorize",">= 0","1.5"],
       ["quantize","> 0","8"]],
-    "color_ellipses": [
+    "colors": [
       ["count","> 0","400"],
       ["radius",">= 0","5"],
       ["opacity","<= 1","0.1"]],
@@ -299,7 +299,7 @@
       ["skip_frame",">= 0","0"]],
     "fractalize": [
       ["detail","<= 1","0.8"]],
-    "glow": [
+    "glow_all": [
       ["amplitude","% >= 0","1%"]],
     "halftone": [
       ["nb_levels",">= 2","5"],
@@ -307,26 +307,20 @@
       ["size_bright",">= 2","8"],
       ["size_shape","0 - 5","5"],
       ["smoothness","% >= 0","0"]],
-    "hardsketchbw": [
+    "hardsketch": [
       ["amplitude",">= 0","1000"],
       ["density",">= 0","3"],
       ["opacity","<= 1","0.1"],
       ["threshold","<= 100","20"],
       ["is_fast","0 - 1","0"]],
-    "hearts": [
+    "hearts_all": [
       ["density",">= 0","10"]],
-    "houghsketchbw": [
+    "houghsketch": [
       ["density",">= 0","100"],
       ["radius-a","> 0","3"],
       ["threshold","<= 100","100"],
       ["opacity","<= 1","0.1"],
       ["votesize","% > 0","100"]],
-    "lightrays": [
-      ["density","% >= 0","50%"],
-      ["center_x","% >=< 0","50%"],
-      ["center_y","% >=< 0","50%"],
-      ["ray_length",">= 0","0.9"],
-      ["ray_attenuate",">= 0","0.5"]],
     "light_relief": [
       ["ambient_light",">= 0","0.3"],
       ["specular_light",">= 0","0.5"],
@@ -339,7 +333,13 @@
       ["zscale",">= 0","1"],
       ["opacity","<= 1","1"],
       ["heightmap","0 - 1","0"]],
-    "mosaic": [
+    "lightray_fx": [
+      ["density","% >= 0","50%"],
+      ["center_x","% >=< 0","50%"],
+      ["center_y","% >=< 0","50%"],
+      ["ray_length",">= 0","0.9"],
+      ["ray_attenuate",">= 0","0.5"]],
+    "mosaic_fx": [
       ["density","<= 100","30"]],
     "old_photo": [],
     "pencilbw": [
@@ -390,7 +390,7 @@
       ["is_curved","0 - 1","1"]],
      "sponge": [
       ["sizing","> 0","13"]],
-     "stained_glass": [
+     "stained": [
       ["edges","% >= 0","40%"],
       ["shading",">= 0","0.2"],
       ["separator","0 - 1","0"]],
@@ -409,7 +409,7 @@
       ["radius","% >= 0","3"],
       ["smoothness",">= 0","1"],
       ["iterations",">= 0","8"]],
-    "stencilbw": [
+    "stencils": [
       ["edges",">= 0","15"],
       ["smooth",">= 0","10"]],
     "tetris": [
@@ -438,7 +438,7 @@
     "area": [
       ["tolerance",">= 0",""],
       ["connectivity","0 - 1","0"]],
-    "area_fg": [
+    "areas": [
       ["tolerance",">= 0",""],
       ["connectivity","0 - 1","0"]],
     "canny": [
@@ -472,7 +472,7 @@
       ["shape","0 - 4","0"],
       ["angle","0-360","0"],
       ["offset",">= 0","0"]],
-    "segment_watershed": [
+    "segment_water": [
       ["threshold",">= 0","2"]],
     "shade_stripes": [
       ["frequency",">= 0","5"],
@@ -481,25 +481,25 @@
       ["lightness",">= 0","2"]],
     "shadow_patch": [
       ["opacity",">= 0","0.7"]],
-    "spread": [
+    "spread_all": [
       ["coord_dx","% >= 0","3"],
       ["coord_dy","% >= 0","3"],
       ["coord_dz","% >= 0","0"]],
     "stripes_y": [
       ["frequency",">= 0","10"]],
-    "texturize_canvas": [
+    "texturize": [
       ["amplitude",">= 0","20"],
       ["fibrousness",">= 0","3"],
       ["emboss level",">= 0","0.6"]],
-    "texturize_paper": [],
-    "topographic_map": [
+    "texturizer": [],
+    "topographic": [
       ["nb_levels","> 0","16"],
       ["smoothness",">= 0","2"]],
     "vignette": [
       ["strength",">= 0","100"],
       ["radius_min","<= 100","70"],
       ["radius_max","<= 100","90"]],
-    "watermark_visible": [
+    "watermark": [
       ["text","text","G'MIC"],
       ["opacity","< 1","0.3"],
       ["sizing","> 0","53"],
@@ -507,7 +507,7 @@
       ["mode","0 - 1","1"],
       ["smooth",">= 0","0"]],
 
-    "adjust_colors": [
+    "adjust": [
       ["brightness","<= 100","0"],
       ["contrast","<= 100","0"],
       ["gamma","<= 100","0"],
@@ -515,7 +515,7 @@
       ["saturation","<= 100","0"],
       ["value_min","0-255","0"],
       ["value_max","0-255","0"]],
-    "brightness": [
+    "bright": [
       ["strength",">=< 0",""]],
     "cmy2rgb": [],
     "cmyk2rgb": [],
@@ -523,13 +523,13 @@
       ["attr_type","0 - 7",""]],
     "contrast": [
       ["strength",">=< 0",""]],
-    "direction2rgb": [],
+    "direction": [],
     "ditheredbw": [],
-    "gradient2rgb": [
+    "gradient": [
       ["orientate","0 - 1","0"]],
     "lightness": [],
     "luminance": [],
-    "remove_opacity": [],
+    "remove": [],
     "rgb2cmy": [],
     "rgb2cmyk": [],
     "rgb2srgb": [],
@@ -547,11 +547,11 @@
       ["deviation_r","% >=",""],
       ["sampling_s",">= 0","0"],
       ["sampling_r",">= 0","0"]],
-    "blur": [
+    "blur_all": [
       ["deviation","% >= 0",""],
       ["boundaries","0 - 3","1"],
       ["kernel","0 - 1","1"]],
-    "blur_angular": [
+    "blur_ang": [
       ["amplitude","% >= 0",""],
       ["center_x","% >=< 0","50%"],
       ["center_y","% >=< 0","50%"]],
@@ -580,7 +580,7 @@
       ["size_x",">= 0",""],
       ["size_y",">= 0",""],
       ["size_z",">= 0","1"]],
-    "closing_circ": [
+    "closings": [
       ["sizing",">= 0",""],
       ["is_real","0 - 1","0"],
       ["boundaries","0 - 3","1"]],
@@ -591,7 +591,7 @@
       ["sizing_z","% >= 0","1"],
       ["boundaries","0 - 3","1"],
       ["is_real","0 - 1","0"]],
-    "dilate_circ": [
+    "dilate_ci": [
       ["sizing","% >= 0",""],
       ["boundaries","0 - 3","1"],
       ["is_real","0 - 1","0"]],
@@ -599,7 +599,7 @@
       ["sizing","% >= 0",""],
       ["boundaries","0 - 1","1"],
       ["is_real","0 - 1","0"]],
-    "dilate_threshold": [
+    "dilate_thr": [
       ["size_x",">= 1",""],
       ["size_y",">= 1",""],
       ["size_z",">= 1","1"],
@@ -613,7 +613,7 @@
       ["sizing","% >= 0",""],
       ["boundaries","0 - 3","1"],
       ["is_real","0 - 1","0"]],
-    "grid": [
+    "grid_fx": [
       ["size_x","% >= 0",""],
       ["size_y","% >= 0",""],
       ["offset_x","% >=< 0","0"],
@@ -624,29 +624,29 @@
       ["color_G","0-255","0"],
       ["color_B","0-255","0"],
       ["color_A","0-255","255"]],
-    "heat_flow": [
+    "heat": [
       ["nb_iter",">= 0","10"],
       ["nb_dt",">=< 0","30"],
       ["sequence","0 - 1","0"]],
 
-    "ilaplacian": [
+    "ilapl": [
       ["iterations",">= 0","0"]],
-    "inpaint_holes": [
+    "inpaint": [
       ["maximal_area","% >= 0","4"],
       ["tolerance",">= 0","0"],
       ["connect","0 - 1","0"]],
     "kuwahara": [
       ["sizing","> 0",""]],
     "laplacian": [],
-    "map_tones": [
+    "map_tone": [
       ["threshold",">= 0","0.1"],
       ["gamma",">= 0","0.8"],
       ["smooth",">= 0","0.5"],
       ["nb_iter",">= 0","30"]],
-    "map_tones_fast": [
+    "map_tones": [
       ["radius","% >= 0","3%"],
       ["power",">= 0","0.3"]],
-    "normalize_local": [
+    "normalize": [
       ["amplitude",">= 0","3"],
       ["radius","> 0","16"],
       ["n_smooth","% >= 0","4%"],
@@ -654,7 +654,7 @@
       ["is_cut","0 - 1","1"],
       ["is_min",">= 0","0"],
       ["is_max",">= 0","255"]],
-    "opening": [
+    "opening_all": [
       ["size_x",">= 0",""],
       ["size_y",">= 0",""],
       ["size_z",">= 0","1"]],
@@ -663,16 +663,16 @@
       ["is_real","0 - 1","0"]],
     "remove_pixels": [
       ["pixels","% > 0",""]],
-    "rolling_guidance": [
+    "rolling_guide": [
       ["deviation_s","% >= 0","4"],
       ["deviation_r","% >= 0","10"],
       ["precision",">= 0","0.5"]],
-    "sharpen": [
+    "sharpen_fx": [
       ["amplitude",">= 0",""],
       ["edge",">= 0",""],
       ["alpha","½ >= 0","0"],
       ["sigma","½ >= 0","0"]],
-    "sharpen_alpha": [
+    "sharpened": [
       ["amplitude","% >= 0","1"],
       ["nb_scales","> 0","5"],
       ["anisotropy","<= 1","0"],
@@ -681,10 +681,10 @@
       ["smoothness","% >= 0","75%"],
       ["diffusion_type","0 - 2","1"],
       ["diffusion_iter",">= 0","20"]],
-    "syntexturize": [
+    "syntext": [
       ["width","% > 0","100%"],
       ["height","% > 0","100%"]],
-    "syntexturize_matchpatch": [
+    "syntexts": [
       ["width","% > 0","100%"],
       ["height","% > 0","100%"],
       ["nb_scales",">= 0","0"],
@@ -695,7 +695,7 @@
       ["radius","% >= 0",""],
       ["amount",">= 0","2"],
       ["threshold","% >= 0","0"]],
-    "unsharp_octave": [
+    "unsharps": [
       ["scales","> 0","4"],
       ["radius","% >= 0","1"],
       ["amount",">= 0","2"],
@@ -720,7 +720,7 @@
       ["attr_ns","> 0","0"],
       ["attr_md","> 0","0"],
       ["attr_nd","> 0","0"]],
-    "frame": [
+    "frame_all": [
       ["axes","list 3","xy"],
       ["sizing","% >= 0","10%"],
       ["color_r","0-255","255"],
@@ -779,11 +779,11 @@
     "imagegrid": [
       ["attr_M","> 0",""],
       ["attr_N","> 0","0"]],
-    "imagegrid_hexagonal": [
+    "imagegrid_he": [
       ["resolution","> 0","32"],
       ["outline","<= 1","0.1"],
       ["aliased","0 - 1","1"]],
-    "imagegrid_triangular": [
+    "imagegrid_tri": [
       ["pattern_width",">= 1","24"],
       ["pattern_height",">= 1","24"],
       ["pattern_type","0 - 5","0"],
@@ -799,7 +799,7 @@
       ["attr_M","> 0",""],
       ["attr_N","> 0","0"],
       ["amplitude",">=< 0","20"]],
-    "taquin": [
+    "taquined": [
       ["attr_M","> 0",""],
       ["attr_N","> 0","0"],
       ["remove","0 - 3","0"],
@@ -823,7 +823,7 @@
       ["coord_x0","% >=< 0",""],
       ["coord_x1","% >=< 0","0"],
       ["boundaries","0 - 3","0"]],
-    "crop": [
+    "crop_fx": [
       ["coord_x0","% >=< 0",""],
       ["coord_y0","% >=< 0","0"],
       ["coord_x1","% >=< 0","0"],
@@ -833,7 +833,7 @@
       ["axes","list 7",""],
       ["sizing","% >= 0",""],
       ["boundaries","0 - 3","0"]],
-    "mirror": [
+    "mirrors": [
       ["axis","list 3",""]],
     "rescale2d": [
       ["width","% > 0",""],
@@ -846,29 +846,29 @@
       ["depth_z","% >= 0","100"],
       ["value_b","<= 1","0.33"],
       ["value_c","<= 1","0.33"]],
-    "resize_pow2": [
+    "resize_pow": [
       ["interpolate","0 - 6","0"],
       ["boundaries","0 - 3","1"],
       ["attr_ax",">=< 0","0"],
       ["attr_ay",">=< 0","0"],
       ["attr_az",">=< 0","0"],
       ["attr_ac",">=< 0","0"]],
-    "rotate": [
+    "rotate_fx": [
       ["angle_all","0-360","0"],
       ["interpolate","0 - 2","1"],
       ["boundaries","0 - 3","0"],
       ["center_x","% >=< 0","0%"],
       ["center_y","% >=< 0","0%"]],
-    "rotate_tileable": [
+    "rotated": [
       ["angle_a","0-360","0"],
       ["max_size",">= 0","8"]],
-    "rows": [
+    "rows_fx": [
       ["attr_y0","% >=< 0",""],
       ["attr_y1","% >=< 0","0"],
       ["boundaries","0 - 3","0"]],
     "scale2x": [],
     "scale3x": [],
-    "scale_dcci2x": [
+    "scale_dc": [
       ["threshold",">= 0","1.15"],
       ["exponent","> 0","5"],
       ["extend","0 - 1","0"]],
@@ -878,7 +878,7 @@
       ["is_priority","0 - 1","0"],
       ["antialiasing","0 - 1","1"],
       ["maximum_seams","% >= 0","25%"]],
-    "shrink": [
+    "shrink_fx": [
       ["axes","0 - 6",""],
       ["sizing","% > 0",""],
       ["boundary","0 - 1","0"]],
@@ -889,7 +889,7 @@
       ["center_x","% >= 0","50%"],
       ["center_y","% >= 0","50%"],
       ["boundaries","0 - 3","0"]],
-    "upscale_smart": [
+    "upscale": [
       ["width","% > 0",""],
       ["height","% > 0","100"],
       ["depth",">= 0","100"],
@@ -901,8 +901,8 @@
       ["amplitude","% >= 0","10"],
       ["interpolate","0 - 2","1"],
       ["boundaries","0 - 3","3"]],
-    "equirectangular2nadirzenith": [],
-    "euclidean2polar": [
+    "equirect": [],
+    "euclidean": [
       ["center_x","% >=< 0","50%"],
       ["center_y","% >=< 0","50%"],
       ["stretch_f","> 0","1"],
@@ -920,7 +920,7 @@
       ["center_x","% >=< 0","50%"],
       ["center_y","% >=< 0","50%"],
       ["boundaries","0 - 3","3"]],
-    "kaleidoscope": [
+    "kaleidos": [
       ["center_x","% >=< 0","50%"],
       ["center_y","% >=< 0","50%"],
       ["radius",">=< 0","100"],
@@ -933,8 +933,8 @@
       ["dilation","> 0","0.5"],
       ["fading_all",">= 0","0"],
       ["fading_power",">= 0","0.5"]],
-    "nadirzenith2equirectangular": [],
-    "polar2euclidean": [
+    "nadirzenith": [],
+    "polar2euclid": [
       ["center_x","% >=< 0","50%"],
       ["center_y","% >=< 0","50%"],
       ["stretch_f","> 0","1"],
@@ -950,7 +950,7 @@
       ["shape","0 - 4","2"],
       ["angle","0-360","0"],
       ["offset",">=< 0","0"]],
-    "rotoidoscope": [
+    "rotoidos": [
       ["center_x",">=< %","50%"],
       ["center_y",">=< %","50%"],
       ["tiles_all","> 0","10"],
@@ -972,18 +972,18 @@
       ["boundaries","0 - 3","3"],
       ["antisymmetry","0 - 1","0"],
       ["swap_sides","0 - 1","0"]],
-    "transform_polar": [
+    "transform": [
       ["radius",">=< 0",""],
       ["angle_a",">=< 0",""],
       ["center_x","%","50%"],
       ["center_y","%","50%"],
       ["boundaries","0 - 3","3"]],
-    "twirl": [
+    "twirl_fx": [
       ["amplitude",">=< 0","1"],
       ["center_x","% >=> 0","50%"],
       ["center_y","% >=< 0","50%"],
       ["boundaries","0 - 3","3"]],
-    "warp_perspective": [
+    "warped": [
       ["x-angle",">=< 0","1.5"],
       ["y-angle",">=< 0","0"],
       ["z-zoom","> 0","1"],
