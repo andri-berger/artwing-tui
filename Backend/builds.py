@@ -1,84 +1,75 @@
 from .models import (
-    on_key_, on_pressed,
-    on_submitted)
+    on_key_, on_pressed, on_submitted)
 from textual.widgets import (
     DataTable, Input, Button,
     ContentSwitcher, Label)
-from .script import on_highlighted
-from .model import FileTypeTree, ImageTab
+from .script import script_f8
+from .model import FileTree, MainTab
 from textual.containers import Horizontal
 from textual.app import ComposeResult
 from textual.widget import Widget
-from textual.events import Key
-from textual import on
-from itertools import cycle
-cursors = cycle(["cell"])
+from textual.events import Key, Click
+from textual import on, events
 
 
-class NoSelectInput(Input):
-    def on_focus(self):
-        self.cursor_position = len(self.value)
-
-class TableApp(Widget):
+class MainApp(Widget):
     def __init__(self) -> None:
         super().__init__()
-        self.glob = 0
-        self._cursor = None
-        self._clipboard = None
 
     def on_mount(self) -> None:
-        table = self.query_one("#data-table")
-        rows = [[""]] * 9
+        f0 = self.query_one(
+            "#data-table")
 
-        table.cursor_type = "cell"
-        table.zebra_stripes = True
-        table.fixed_columns = 1
-        table.fixed_rows = 0
-        table.add_column(
+        f0.cursor_type = "cell"
+        f0.zebra_stripes = True
+        f0.fixed_columns = 1
+        f0.fixed_rows = 0
+        f1 = [[""]] * 10
+
+        f0.add_column(
             "", width=20)
-        for _ in range(9):
-                table.add_column(
-                    "",
-                    width=9)
-        table.add_rows(rows[0:])
+        for _ in range(2):
+                f0.add_column(
+                    "", width=10)
+        f0.add_rows(f1)
 
     def compose(self) -> ComposeResult:
-        with Horizontal(id="top"):
-            yield ImageTab(name="")
+        with Horizontal(id="layer-0"):
+            yield MainTab(name="")
 
-        with Horizontal(id="bottom"):
+        with Horizontal(id="layer-1"):
             with ContentSwitcher(
-                    initial="dir-tree-0",
-                    id="cont-switch-0"):
-                yield FileTypeTree(
+                    id="cont-switch-0",
+                    initial="dir-tree-0"):
+                yield FileTree(
                     "/",
-                    file_type="multi",
+                    file_type="file-0",
                     id="dir-tree-0")
 
             with ContentSwitcher(
-                    initial="dir-tree-2",
-                    id="cont-switch-3"):
-                yield FileTypeTree(
+                    id="cont-switch-1",
+                    initial="dir-tree-1"):
+                yield FileTree(
                     "Fontend",
-                    file_type="multi",
-                    id="dir-tree-2")
-
-            with ContentSwitcher(
-                    initial="dir-tree-1",
-                    id="cont-switch-2"):
-                yield FileTypeTree(
-                    "Fontend/_blank",
-                    file_type="naked",
+                    file_type="file-1",
                     id="dir-tree-1")
 
             with ContentSwitcher(
-                    initial="data-table",
-                    id="cont-switch-1"):
+                    id="cont-switch-2",
+                    initial="dir-tree-2"):
+                yield FileTree(
+                    "Fontend/_blank",
+                    file_type="file-2",
+                    id="dir-tree-2")
+
+            with ContentSwitcher(
+                    id="cont-switch-3",
+                    initial="data-table"):
                 yield DataTable(
                     show_header=False,
                     id="data-table")
 
-        with Horizontal(id="status"):
+        with Horizontal(id="layer-2"):
             yield Button("X", id="button-0")
             yield Button("AS", id="button-1")
             yield Button("BSS", id="button-2")
@@ -88,50 +79,55 @@ class TableApp(Widget):
             yield Input(disabled=False, id="input-0")
             yield Input(disabled=False, id="input-1")
 
-        with Horizontal(id="bottoms"):
+        with Horizontal(id="layer-3"):
             yield Label(id="label-0")
 
-    def get_all_data(self, table: DataTable):
-        skip_rows = 0
-        skip_cols = 1
+    def get_data(self, h0) -> dict:
+        f0 = self.app.horizontal
+        f1 = self.app.vertical
 
-        def coerce(v):
-            if not isinstance(v, str):  # only convert actual strings
-                return v
-            for cast in (int, float):
+        def data(h1) -> int | float | str:
+            if not isinstance(h1, str):
+                return h1
+            for cast in (int,float):
                 try:
-                    return cast(v)
-                except (ValueError, TypeError):
+                    return cast(h1)
+                except (ValueError,
+                        TypeError):
                     pass
-            return v
+            return h1
 
-        return {
+        f2 = {
             str(row_i): d
-            for row_i, r in enumerate(range(skip_rows, len(table.rows)))
+            for row_i, r in enumerate(
+                range(f0, len(h0.rows)))
             if (d := {
-                str(i): coerce(v)
-                for i, v in enumerate(table.get_row_at(r)[skip_cols:])
-                if v is not None and v != ''
-            })
-        }
-
-    def _position_digits(self):
-        x_offset = self.c_cont.region.x - self.c_digits.region.x
-        y_offset = self.c_cont.region.y - self.c_digits.region.y - 3
-        self.c_digits.styles.offset = (x_offset, y_offset)
+                str(i): data(v)
+                for i, v in enumerate(
+                    h0.get_row_at(r)[f1:])
+                if v is not None and v != ''})}
+        return f2
 
     @on(DataTable.CellHighlighted)
-    def highlighted(self, event: DataTable.CellHighlighted) -> None:
-        on_highlighted(self, event.coordinate)
+    def highlighted(self, event: DataTable.CellHighlighted):
+        script_f8(self, event.coordinate)
 
     @on(Input.Submitted) # Enter only
-    def submitted(self, event: Input.Submitted) -> None:
+    def submitted(self, event: Input.Submitted):
         on_submitted(self, event)
 
     @on(Button.Pressed)
-    def pressed(self, event: Button.Pressed) -> None:
+    def pressed(self, event: Button.Pressed):
         on_pressed(self, event)
 
     @on(Key)
-    async def key(self, event) -> None:
+    async def key(self, event: events.Key):
         await on_key_(self, event)
+
+    @on(Click)
+    def clicked(self):
+        f0 = self.app
+        f1 = f0.textfields
+        if f1 is not None:
+            f0.textfields.stop()
+            f0.textfields = None

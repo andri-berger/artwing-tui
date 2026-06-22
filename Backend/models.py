@@ -1,7 +1,10 @@
 from textual.widgets import (
     DataTable, Input)
-from .script import on_message, safe_rename, action_next_table
-from .model import ImageTab
+from .script import (script_f1,
+                     script_f0,
+                     script_f2,
+                     script_f9)
+from .model import MainTab
 from pathlib import Path
 import shutil
 import time
@@ -16,11 +19,9 @@ PATH_3 = PORT_2 / "za.json"
 PATH_4 = PORT_2 / "za.png"
 
 
-
-
 # OK !!!
 def on_submitted(self, event) -> None:
-    f0 = self.app.query_one(ImageTab)
+    f0 = self.app.query_one(MainTab)
     f1 = self.query_one("#data-table")
     f2 = f1.cursor_coordinate
     f3 = self.app.stores
@@ -40,7 +41,7 @@ def on_submitted(self, event) -> None:
         f14 = f9[f11] if f13 else []
         if len(f14) > 1 and f12 == 1:
             f1.update_cell_at(f2,f6)
-            f15 = self.get_all_data(f1)
+            f15 = self.get_data(f1)
             f16 = sum(1 for row in f9
                        if row[0] != "")
             f17 = f16 * [""]
@@ -60,21 +61,22 @@ def on_submitted(self, event) -> None:
 
 # OK !!!
 def on_pressed(self, event) -> None:
-    f0 = self.query_one(ImageTab)
+    f0 = self.query_one(MainTab)
     f1 = self.query_one("#data-table")
-    f2 = self.query_one("#dir-tree-2")
+    f2 = self.query_one("#dir-tree-1")
     f3 = self.query_one("#label-0")
     f4 = self.app.store["1"]
     f5 = self.app.store["3"]
     f6 = self.app.store["4"]
     f7 = self.app.store["5"]
-    f8 = self.app.stores
-    f9 = event.button.id
-    f10 = f8["_blank"]
+    f8 = f1.cursor_coordinate
+    f9 = self.app.stores
+    f10 = event.button.id
+    f11 = f9["_blank"]
     f12 = "textual-dark"
-    f13 =  f6.index(f9) \
-        if f9 in f6 else -1
-    f14 = f9.split("-")[-1]
+    f13 =  f6.index(f10) \
+        if f10 in f6 else -1
+    f14 = f10.split("-")[-1]
     f3.update(f5[f13] or "")
     self.app.textfield = f5[f13]
 
@@ -83,18 +85,17 @@ def on_pressed(self, event) -> None:
         self.app.textfields = None
 
     if int(f14) == 0:
-        f16 = f1.cursor_coordinate
-        f17 = [f16.row,f16.column]
-        on_message(self, f9, f10[3])
-        f0.config = [0, *f17, *f10[3:]]
-        f8[f10[3]] = f17
+        f17 = [f8.row,f8.column]
+        script_f1(self, f10, f11[3])
+        f0.config = [0, *f17, *f11[3:]]
+        f9[f11[3]] = f17
 
     elif int(f14) == 1:
         f18 = ["", "de"]
-        f19 = f18[f10[0]]
-        on_message(
-            self, f9, f19)
-        f10[0] = 1 - f10[0]
+        f19 = f18[f11[0]]
+        script_f1(
+            self, f10, f19)
+        f11[0] = 1 - f11[0]
 
     elif int(f14) in (2,3):
         f20 = 3 - int(f14)
@@ -104,17 +105,16 @@ def on_pressed(self, event) -> None:
         f23 = f22 % len(f7)
         f24 = f7[f23] or f12
         self.app.theme = f24
-        on_message(
-            self, f9, f24)
-        f10[2] = f23 or 0
+        script_f1(
+            self, f10, f24)
+        f11[2] = f23 or 0
 
     elif int(f14) == 4:
-        f25 = f4.get(f10[3],[])
-        if f25[0] is not None:
-            f26 = f"{f10[3]}.png"
+        f25 = f4.get(f11[3])
+        if f25 is not None:
+            f26 = f"{f11[3]}.png"
             f27 = PORT_1 / f25[0]
-            f28 = safe_rename(f27/f26)
-            self.notify(f"ooo {f28}")
+            f28 = script_f2(f27 / f26)
             shutil.copy2(PATH_4, f28)
             f29 = Path(f2.path).resolve()
 
@@ -139,127 +139,98 @@ def on_pressed(self, event) -> None:
         shutil.copy2(PATH_4, f36)
 
     if int(f14) in (4,5):
-        on_message(self, f9, "")
+        script_f1(self, f10, "")
 
     if int(f14) in (0,1,2,3):
         PATH_3.write_text(
-            json.dumps(f8))
+            json.dumps(f9))
 
 
 async def on_key_(self, event) -> None:
-    f0 = ["backspace", "space", "enter"]
-    f1 = self.query_one("#data-table")
-    f2 = self.query_one("#input-1")
-    f3 = f1.cursor_coordinate
-    f4 = f1.get_cell_at(f3)
-    f04 = self.app.focused
-    f5 = event.key
-    f6 = f4 or ""
+    f0 = ("delete","f1","f2","f3","f4","f5","f6",
+           "f7","f8","f9","f10","f11","f12")
+    f1 = ("backspace", "space", "enter")
+    f2 = self.query_one("#data-table")
+    f3 = self.query_one("#button-0")
+    f4 = self.query_one("#button-1")
+    f5 = self.query_one("#button-2")
+    f6 = self.query_one("#button-3")
+    f7 = self.query_one("#button-4")
+    f8 = self.query_one("#button-5")
+    f9 = self.query_one("#input-1")
+    f10 = f2.cursor_coordinate
+    f11 = f2.get_cell_at(f10)
+    f12 = self.app.clipboards
+    f13 = self.app.focused
+    f14 = str(f11) or ""
+    f15 = event.key
 
-    match f5:
+    if f15 in f0:
+        script_f0(
+            self, f15)
+
+    match f15:
         case "delete":
-            # self.coord = f3
-            on_message(self, f6, "f1")
             self.post_message(
                 Input.Submitted(
-                f2, ""))
+                f9, ""))
 
         case "f1":
-            # self.coord = f3
-            self._clipboard = str(f6)
-            on_message(self, f6, "f2")
+            f16 = self.app
             self.post_message(
                 Input.Submitted(
-                f2, f2.value))
+                f9, f9.value))
+            f16.clipboards = f14
 
         case "f2":
-            self._clipboard = str(f6)
-            on_message(self, f6, "f3")
+            f17 = self.app
+            f17.clipboards = f14
 
         case "f3":
-            # self.coord = f3
-            clipboard = self._clipboard
-            on_message(self, clipboard, "f4")
             self.post_message(
                 Input.Submitted(
-                f2, clipboard))
+                f9, f12))
 
-        case "f4":
-            self.query_one(
-                "#button-0").press()
-
-        case "f5":
-            self.query_one(
-                "#button-1").press()
-
-        case "f6":
-            self.query_one(
-                "#button-2").press()
-
-        case "f7":
-            self.query_one(
-                "#button-3").press()
-
-        case "f8":
-            self.query_one(
-                "#button-4").press()
-
-        case "f9":
-            self.query_one(
-                "#button-5").press()
-
-        case "f10":
-            self.notify("fullscreen coming soon, stay tuned")
-
-        case "f11":
-            self.notify("fullscreen coming soon, stay tuned")
-
-        case "f12":
-            self.notify("fullscreen coming soon, stay tuned")
-
-    # if isinstance(self.app.focused, DirectoryTree):
-    #     if f8 == "space":
-    #         h0.stop()
-    #         tree = self.query_one(DirectoryTree)
-    #         node = tree.cursor_node
-    #         if (node and node.data
-    #                 and node.data.path.is_file()):
-    #             self.notify("space pressed")
-    #             self.post_message(
-    #                 DirectoryTree.FileSelected(tree, node))
-
-    if not isinstance(f04, Input):
-        if f5 == "shift+tab":
-            action_next_table(self, event, -1)
-            # self.coord = None
-        elif f5 == "tab":
-            action_next_table(self, event, 1)
+        case "f4": f3.press()
+        case "f5": f4.press()
+        case "f6": f5.press()
+        case "f7": f6.press()
+        case "f8": f7.press()
+        case "f9": f8.press()
 
     # OK !!!
-    if isinstance(f04, Input):
-        if f5 == "tab":
+    if not isinstance(f13, Input):
+        if f15 == "shift+tab":
+            script_f9(
+                self, event, -1)
+        elif f15 == "tab":
+            script_f9(
+                self, event, 1)
+
+    # OK !!!
+    if isinstance(f13, Input):
+        if f15 == "tab":
             event.stop()
             event.prevent_default()
             self.post_message(
                 Input.Submitted(
-                f2, f2.value))
+                f9, f9.value))
         if event.key == "escape":
-            f2.value = ""
-            f1.focus()
-
-    # OK !!!
-    if isinstance(f04, DataTable):
-        if (len(f5) == 1
-                or f5 in f0):
+            f9.value = ""
             f2.focus()
+
+    if isinstance(f13, DataTable):
+        if (len(f15) == 1
+                or f15 in f1):
+            f9.focus()
             event.stop()
 
-            if f5 in f0:
-                f2.value = str(f6)
+            if f15 in f1:
+                f9.value = str(f14)
 
-            elif len(f5) == 1:
-                f2.value = f5
-
-                def after_focus():
-                    f2.cursor_position = len(f5)
-                self.call_after_refresh(after_focus)
+            elif len(f15) == 1:
+                f9.value = f15
+                f16 = 'cursor_position'
+                self.call_after_refresh(
+                    lambda: setattr(
+                        f9, f16, len(f15)))
