@@ -75,19 +75,16 @@ def script_f5(self, h0, h1) -> list:
     return f5
 
 def script_f6(h0, h1, h2) -> None:
-    f0, f1 = imagesize.get(str(h2))
+    f0 = imagesize.get(str(h2))
     f2 = h1.height * 18
     f3 = h1.width * 9
-    f4 = f0 / f1
-    f5 = f3 / f2
-
-    if f4 > f5:
+    f4 = f0[0] / f0[1]
+    if f4 > (f3 / f2):
         h0.styles.width = "100%"
         h0.styles.height = "auto"
-    elif f4 <= f5:
+    elif f4 <= (f3 / f2):
         h0.styles.width = "auto"
         h0.styles.height = "100%"
-
 
 def script_f7(self, h0) -> None:
     f0 = self.query_one("#dir-tree-2")
@@ -109,7 +106,6 @@ def script_f7(self, h0) -> None:
                     script_f3, node, h0, f0)
                 break
 
-# OK !!!
 def script_f8(self, h0) -> None:
     f0 = self.query_one("#input-0")
     f1 = self.query_one("#input-1")
@@ -134,7 +130,6 @@ def script_f8(self, h0) -> None:
             f1.value = (str(f13)
                         or f12[2])
 
-# OK !!!
 def script_f9(self, h0, h1) -> None:
     f0 = self.query_one("#data-table")
     f1 = self.query_one("#dir-tree-0")

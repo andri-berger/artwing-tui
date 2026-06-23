@@ -13,8 +13,6 @@ __pycache__/
 .ruff_cache/
 .idea/
 .venv/
-*.log
-*.tmp
 .cache
 .cache/
 .temp/
@@ -22,3 +20,5 @@ temp/
 .env
 *.pem
 *.key
+*.log
+*.tmp

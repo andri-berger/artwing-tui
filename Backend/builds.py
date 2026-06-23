@@ -11,7 +11,6 @@ from textual.widget import Widget
 from textual.events import Key, Click
 from textual import on, events
 
-
 class MainApp(Widget):
     def __init__(self) -> None:
         super().__init__()

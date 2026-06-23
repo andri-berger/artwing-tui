@@ -1,21 +1,17 @@
 [project]
 version = "1.0.0"
 name = "filterx-tui"
-description = "filterx generator"
+description = "filterx gmic"
 license = { file = "LICENSE" }
 authors = [{ name = "Andri Berger" }]
 requires-python = ">=3.14"
 dependencies = [
     "imagesize",
-    "numpy",
-    "pillow",
-    "playwright",
     "textual",
     "textual-image"]
 
 [dependency-groups]
 dev = [
-    "pyright",
     "ruff",
     "textual-dev"]
 
@@ -41,21 +37,3 @@ ignore = ["E501"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = ["F401"]
-
-[tool.pyright]
-pythonVersion = "3.14"
-typeCheckingMode = "strict"   # off / basic / standard / strict
-venvPath = "."
-venv = ".venv"
-include = ["backend"]
-exclude = ["tests"]
-
-# check-js = "tsc --noEmit"
-# check-py = "uv run pyright"
-# lint-py = "uv run ruff check"
-# lint-js = "biome check"
-# build = "uv build"
-
-
-
-

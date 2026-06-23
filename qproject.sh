@@ -14,14 +14,13 @@
 # cellfx – Cell-driven creative image filter sequencer powered by G'MIC
 # filterpress – Batch creative image processing via a terminal spreadsheet interface
 
-# apngasm output.apng frame1.png frame2.png frame3.png -d 100  # 100ms per frame
-# apngasm output.apng frame1.png 1/2 frame2.png 1/4 frame3.png 1/1
+# apngasm output.apng frames/*.png -d 100  # 100ms per frame
 # apngasm output.apng frames/*.png -d 10  # 10ms per frame
 # apngasm output.apng frame*.png 1 10
 
-INTERVAL=2
 OUTPUT_DIR="$HOME/screenshots"
 mkdir -p "$OUTPUT_DIR"
+INTERVAL=2
 
 i=0
 while true; do

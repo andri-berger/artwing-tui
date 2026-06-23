@@ -21,7 +21,6 @@ PATH_2 = PORT_0.parent / "project.png"
 PATH_3 = PORT_1 / "za.json"
 PATH_4 = PORT_1 / "za.png"
 
-# OK
 class MainTab(Widget):
     config: reactive[dict] = reactive(
         dict, init=False)
@@ -36,12 +35,12 @@ class MainTab(Widget):
 
     @work(exclusive=True)
     async def watch_config(self, value) -> None:
-        f1 = self.app.query_one("#data-table")
-        f2 = self.app.store["7"]
-        f3 = self.app.store["5"]
-        f4 = value[3:-2]
-        f5 = value[-2]
-        f6 = value[-1]
+        f0 = self.app.query_one("#data-table")
+        f1 = self.app.store["7"]
+        f2 = self.app.store["5"]
+        f3 = value[3:-2]
+        f4 = value[-2]
+        f5 = value[-1]
 
         if self.query(Image):
             (self.query_one(Image)
@@ -49,46 +48,46 @@ class MainTab(Widget):
 
         if value[0] == 0:
             with self.app.batch_update():
-                f1.clear(columns=False)
-                f7 = f2.get(f"{f5}",[])
-                f8 = max(len(f7),10)
+                f0.clear(columns=False)
+                f6 = f1.get(f"{f4}",[])
+                f7 = max(len(f6),10)
 
-                for row_i in range(f8):
-                    f9 = len(f7) > row_i
-                    f10 = len(f4) > row_i
-                    f11 = f4[row_i] if f10 else ""
-                    f12 = f7[row_i] if f9 else [""]
-                    f1.add_row(f12[0],str(f11),"")
+                for row_i in range(f7):
+                    f8 = len(f6) > row_i
+                    f9 = len(f3) > row_i
+                    f10 = f3[row_i] if f9 else ""
+                    f11 = f6[row_i] if f8 else [""]
+                    f0.add_row(f11[0],str(f10),"")
 
-                f1.move_cursor(
+                f0.move_cursor(
                     row=value[1],
                     column=value[2])
 
         if value[0] <= 1:
-            f13 = f3.get(f5, f5)
-            f14 = ",".join(str(p) for p in f4)
-            f15 = [x for x in f4 if x != ""]
-            f16 = f14 if len(f15) else ","
+            f12 = f2.get(f4, f4)
+            f13 = ",".join(str(p) for p in f3)
+            f14 = [x for x in f3 if x != ""]
+            f15 = f13 if len(f14) else ","
 
-            f17 = await (asyncio
+            f16 = await (asyncio
             .create_subprocess_exec(
-                "gmic", str(f6),
-                f13, f16, '-output', str(PATH_4),
+                "gmic", str(f5),
+                f12, f15, '-output', str(PATH_4),
                 stdout=asyncio.subprocess.DEVNULL,
                 stderr=asyncio.subprocess.DEVNULL))
-            await f17.communicate()
+            await f16.communicate()
 
-            f18 = Image(PATH_4)
-            f19 = self.size
+            f17 = Image(PATH_4)
+            f18 = self.size
             script_f6(
-                f18, f19, PATH_4)
-            await self.mount(f18)
+                f17, f18, PATH_4)
+            await self.mount(f17)
 
         if value[0] == 2:
-            f20 = Image(f6)
-            f21 = self.size
-            script_f6(f20, f21, f6)
-            await self.mount(f20)
+            f19 = Image(f5)
+            f20 = self.size
+            script_f6(f19, f20, f5)
+            await self.mount(f19)
 
     def render(self):
         return ""

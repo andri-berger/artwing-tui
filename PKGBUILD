@@ -1,7 +1,7 @@
-pkgname=filterx-tui
-pkgver=0.0.1
 pkgrel=1
+pkgver=0.0.1
 arch=('x86_64')
+pkgname=filterx-tui
 license=('GPL-3.0-only')
 provides=('filterx-tui')
 conflicts=('filterx-tui')
@@ -11,7 +11,7 @@ sha256sums=('10790e80a965d21087a53c40286817f7f7835356d917c2bce1c152dc004edcab')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 depends=(
     'gmic'
-    'python-numpy'
+    'imagesize'
     'python-textual-image'
     'python-textual'
 )
