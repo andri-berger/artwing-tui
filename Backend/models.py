@@ -4,22 +4,20 @@ from .script import (script_f1,
                      script_f0,
                      script_f2,
                      script_f9)
-from .model import MainTab
+from .model import MainTab, FileTree
 from pathlib import Path
 import shutil
 import time
 import json
 
-
 PORT = Path.cwd()
 PORT_0 = Path(__file__).parent
 PORT_1 = PORT_0.parent / "Fontend"
 PORT_2 = PORT_0.parent / "Formula"
+PORT_3 = PORT_1 / "zarpings"
 PATH_3 = PORT_2 / "za.json"
 PATH_4 = PORT_2 / "za.png"
 
-
-# OK !!!
 def on_submitted(self, event) -> None:
     f0 = self.app.query_one(MainTab)
     f1 = self.query_one("#data-table")
@@ -28,10 +26,9 @@ def on_submitted(self, event) -> None:
     f4 = self.app.store
     f5 = event.input
     f6 = event.value
-    f7 = f4["2"]
-    f5.value = ""
     f1.focus()
 
+    f7 = f4["2"]
     f8 = f3['_blank']
     f9 = f7.get(f8[3])
     if f9 is not None:
@@ -39,7 +36,8 @@ def on_submitted(self, event) -> None:
         f12 = f2.column
         f13 = len(f9) > f11
         f14 = f9[f11] if f13 else []
-        if len(f14) > 1 and f12 == 1:
+        if len(f14) > 2 and f12 == 1:
+            f5.value = f6 or f14[2]
             f1.update_cell_at(f2,f6)
             f15 = self.get_data(f1)
             f16 = sum(1 for row in f9
@@ -59,7 +57,6 @@ def on_submitted(self, event) -> None:
             PATH_3.write_text(
                 json.dumps(f3))
 
-# OK !!!
 def on_pressed(self, event) -> None:
     f0 = self.query_one(MainTab)
     f1 = self.query_one("#data-table")
@@ -112,16 +109,22 @@ def on_pressed(self, event) -> None:
     elif int(f14) == 4:
         f25 = f4.get(f11[3])
         if f25 is not None:
-            f26 = f"{f11[3]}.png"
-            f27 = PORT_1 / f25[0]
-            f28 = script_f2(f27 / f26)
-            shutil.copy2(PATH_4, f28)
-            f29 = Path(f2.path).resolve()
+            f26 = time.time()
+            f27 = str(int(f26))
+            f28 = f27[1:] or []
+            f29 = f"{f28}.json"
+            f30 = f"{f11[3]}.png"
+            f31 = PORT_1 / f25[0]
+            f32 = PORT_3 / f29 / ""
+            f33 = script_f2(f31/f30)
+            shutil.copy2(PATH_4, f33)
+            shutil.copy2(PATH_3, f32)
+            f34 = Path(f2.path).resolve()
 
             for f30 in f2.root.children:
-                f31 = f30.data.path or ""
-                f32 = f31.relative_to(f29)
-                if f32 == Path(f25[0]):
+                f35 = f30.data.path or ""
+                f36 = f35.relative_to(f34)
+                if f36 == Path(f25[0]):
                     f30.expand()
                     self.set_timer(
                         0.1, lambda:
@@ -130,13 +133,13 @@ def on_pressed(self, event) -> None:
             f2.reload()
 
     elif int(f14) == 5:
-        f33 = time.time()
-        f34 = str(int(f33))
-        f35 = f34[1:] or []
-        f36 = PORT / f"{f34}.png"
-        f37 = PORT / f"{f35}.json"
-        shutil.copy2(PATH_3, f37)
-        shutil.copy2(PATH_4, f36)
+        f37 = time.time()
+        f38 = str(int(f37))
+        f39 = f38[1:] or []
+        f40 = PORT / f"{f38}.png"
+        f41 = PORT / f"{f39}.json"
+        shutil.copy2(PATH_3, f41)
+        shutil.copy2(PATH_4, f40)
 
     if int(f14) in (4,5):
         script_f1(self, f10, "")
@@ -145,92 +148,103 @@ def on_pressed(self, event) -> None:
         PATH_3.write_text(
             json.dumps(f9))
 
-
 async def on_key_(self, event) -> None:
     f0 = ("delete","f1","f2","f3","f4","f5","f6",
            "f7","f8","f9","f10","f11","f12")
     f1 = ("backspace", "space", "enter")
     f2 = self.query_one("#data-table")
-    f3 = self.query_one("#button-0")
-    f4 = self.query_one("#button-1")
-    f5 = self.query_one("#button-2")
-    f6 = self.query_one("#button-3")
-    f7 = self.query_one("#button-4")
-    f8 = self.query_one("#button-5")
-    f9 = self.query_one("#input-1")
-    f10 = f2.cursor_coordinate
-    f11 = f2.get_cell_at(f10)
-    f12 = self.app.clipboards
-    f13 = self.app.focused
-    f14 = str(f11) or ""
-    f15 = event.key
-
-    if f15 in f0:
+    f3 = self.query_one("#dir-tree-1")
+    f4 = self.query_one("#button-0")
+    f5 = self.query_one("#button-1")
+    f6 = self.query_one("#button-2")
+    f7 = self.query_one("#button-3")
+    f8 = self.query_one("#button-4")
+    f9 = self.query_one("#button-5")
+    f10 = self.query_one("#input-1")
+    f11 = f2.cursor_coordinate
+    f12 = f2.get_cell_at(f11)
+    f13 = self.app.clipboards
+    f14 = self.app.focused
+    f15 = str(f12) or ""
+    f16 = event.key
+    if f16 in f0:
         script_f0(
-            self, f15)
+            self, f16)
 
-    match f15:
-        case "delete":
-            self.post_message(
-                Input.Submitted(
-                f9, ""))
-
-        case "f1":
-            f16 = self.app
-            self.post_message(
-                Input.Submitted(
-                f9, f9.value))
-            f16.clipboards = f14
-
-        case "f2":
-            f17 = self.app
-            f17.clipboards = f14
-
-        case "f3":
-            self.post_message(
-                Input.Submitted(
-                f9, f12))
-
-        case "f4": f3.press()
-        case "f5": f4.press()
-        case "f6": f5.press()
-        case "f7": f6.press()
-        case "f8": f7.press()
-        case "f9": f8.press()
-
-    # OK !!!
-    if not isinstance(f13, Input):
-        if f15 == "shift+tab":
+    if not isinstance(f14, Input):
+        if f16 == "shift+tab":
             script_f9(
                 self, event, -1)
-        elif f15 == "tab":
+        elif f16 == "tab":
             script_f9(
                 self, event, 1)
 
-    # OK !!!
-    if isinstance(f13, Input):
-        if f15 == "tab":
+    if isinstance(f14, Input):
+        if f16 == "tab":
             event.stop()
             event.prevent_default()
             self.post_message(
                 Input.Submitted(
-                f9, f9.value))
+                f10, f10.value))
         if event.key == "escape":
-            f9.value = ""
-            f2.focus()
+            self.post_message(
+                Input.Submitted(
+                f10, ""))
 
-    if isinstance(f13, DataTable):
-        if (len(f15) == 1
-                or f15 in f1):
-            f9.focus()
+    if isinstance(f14, DataTable):
+        if (len(f16) == 1
+                or f16 in f1):
+            f10.focus()
             event.stop()
 
-            if f15 in f1:
-                f9.value = str(f14)
+            if f16 in f1:
+                f10.value = str(f15)
 
-            elif len(f15) == 1:
-                f9.value = f15
-                f16 = 'cursor_position'
+            elif len(f16) == 1:
+                f10.value = f16
+                f17 = 'cursor_position'
                 self.call_after_refresh(
                     lambda: setattr(
-                        f9, f16, len(f15)))
+                        f10, f17, len(f16)))
+
+    match f16:
+        case "delete":
+            if not isinstance(
+                    f14, FileTree):
+                self.post_message(
+                    Input.Submitted(f10, ""))
+            if isinstance(f14, FileTree):
+                node = f3.cursor_node
+                if node is not None:
+                    path = node.data.path
+                    paths = node.parent
+                    if path.is_file():
+                        self.set_timer(
+                            0.1, lambda:
+                            f3.move_cursor(
+                                paths))
+                        path.unlink()
+                        f3.reload()
+
+        case "f1":
+            f17 = self.app
+            self.post_message(
+                Input.Submitted(
+                f10, f10.value))
+            f17.clipboards = f15
+
+        case "f2":
+            f19 = self.app
+            f19.clipboards = f15
+
+        case "f3":
+            self.post_message(
+                Input.Submitted(
+                f10, f13))
+
+        case "f4": f4.press()
+        case "f5": f5.press()
+        case "f6": f6.press()
+        case "f7": f7.press()
+        case "f8": f8.press()
+        case "f9": f9.press()

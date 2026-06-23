@@ -5,7 +5,7 @@ import json
 PORT_0 = Path(__file__).parent
 PORT_1 = PORT_0.parent / "Fontend"
 PORT_2 = PORT_0.parent / "Formula"
-PATH_3 = PORT_2 / "za.json"
+PATH_2 = PORT_2 / "za.json"
 
 def script_f0(self, h0) -> None:
     f0 = self.query_one("#label-0")
@@ -119,16 +119,20 @@ def script_f8(self, h0) -> None:
     f0.value = ""
 
     f4 = f3['_blank']
-    f5 = f2.get(f4[3])
-    if f5 is not None:
-        f6 = h0.row
-        f7 = h0.column
-        f8 = len(f5) > f6
-        f9 = f5[f6] if f8 else []
-        if (len(f9) > 2
-                and f7 <= 1):
-            f0.value = f9[1]
-            f1.value = f9[2]
+    f5 = f3.get(f4[3])
+    f6 = f2.get(f4[3])
+    if f6 is not None:
+        f7 = f5 or []
+        f8 = h0.row
+        f9 = h0.column
+        f10 = len(f6) > f8
+        f11 = len(f7[2:]) > f8
+        f12 = f6[f8] if f10 else []
+        f13 = f7[2:][f8] if f11 else ""
+        if len(f12) > 2 and f9 <= 1:
+            f0.value = f12[1] or ""
+            f1.value = (str(f13)
+                        or f12[2])
 
 # OK !!!
 def script_f9(self, h0, h1) -> None:
@@ -151,7 +155,7 @@ def script_f9(self, h0, h1) -> None:
     f16 = min(h1, 0)
     f17 = f13 + f16
 
-    if f15 != 3:
+    if f15 not in (2,3):
         f40 = self.app
         f18 = f6[f15] or ""
         f40.textfield = f18
@@ -159,7 +163,7 @@ def script_f9(self, h0, h1) -> None:
         f3.value = ""
         f4.value = ""
 
-    if f15 == 3:
+    if f15 in (2, 3):
         f19 = f12[3]
         f20 = f8.get(f19)
         if f20 is not None:
@@ -169,7 +173,7 @@ def script_f9(self, h0, h1) -> None:
             self.app.textfield = f22
             f5.update(f22)
 
-    if f17 == -1 or f17 == 9:
+    if f17 in (-1,9):
         h0.prevent_default()
         h0.stop()
 
@@ -179,5 +183,5 @@ def script_f9(self, h0, h1) -> None:
         f2.focus()
 
     f12[1] = f15 or 0
-    PATH_3.write_text(
+    PATH_2.write_text(
         json.dumps(f11))

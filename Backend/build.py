@@ -11,17 +11,17 @@ PORT = Path(__file__).parent
 PORT_0 = PORT.parent / "Formula"
 PORT_1 = PORT.parent / "Fontend"
 PORT_2 = PORT.parent / "Backend"
-PATH_4 = PORT.parent / "uread.png"
+PATH_2 = PORT.parent / "uread.png"
 PATH_3 = PORT.parent / "build.json"
-PATH_5 = PORT_2 / "style.tcss"
-PATH_6 = PORT_0 / "za.json"
+PATH_4 = PORT_2 / "style.tcss"
+PATH_5 = PORT_0 / "za.json"
 
 class CLIApp(App):
     AUTO_FOCUS = None
     COMMAND_PALETTE_DISPLAY = None
     ENABLE_COMMAND_PALETTE = False
     NOTIFICATION_TIMEOUT = 10
-    CSS_PATH = PATH_5
+    CSS_PATH = PATH_4
 
     def __init__(self) -> None:
         super().__init__()
@@ -33,8 +33,8 @@ class CLIApp(App):
         self.store = json.loads(
             PATH_3.read_text())
         self.stores = json.loads(
-            PATH_6.read_text()) \
-            if PATH_6.exists() else {}
+            PATH_5.read_text()) \
+            if PATH_5.exists() else {}
 
         f0 = self.store.get("4",[])
         f1 = self.store.get("5",[])
@@ -54,7 +54,7 @@ class CLIApp(App):
         f0 = self.query_one(
             MainTab)
         f1 = script_f4(
-            str(PATH_4),
+            str(PATH_2),
             self.stores)
 
         if f1[-2]:
