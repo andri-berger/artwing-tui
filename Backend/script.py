@@ -9,7 +9,7 @@ PATH_2 = PORT_2 / "za.json"
 
 def script_f0(self, h0) -> None:
     f0 = self.query_one("#label-0")
-    f1 = self.app.store["6"]
+    f1 = self.app.store["4"]
     f2 = self.app.textfield
     f0.update(f1.get(h0, ""))
     self.app.textfields = (
@@ -19,7 +19,7 @@ def script_f0(self, h0) -> None:
 
 def script_f1(self, h0, h1) -> None:
     f0 = self.query_one("#label-0")
-    f1 = self.app.store["60"]
+    f1 = self.app.store["3"]
     f2 = self.app.textfield
     f3 = f1.get(h0, "")
     f0.update(f3.format(
@@ -63,7 +63,7 @@ def script_f4(h0, h1) -> list:
 def script_f5(self, h0, h1) -> list:
     f0 = self.app.store
     f1 = self.app.stores
-    f2 = f0["2"].get(h0, [])
+    f2 = f0["7"].get(h0, [])
     f3 = sum(1 for row in f2
              if row[0] != "")
     f4 = [0, 0, *[""] * f3]
@@ -92,7 +92,7 @@ def script_f6(h0, h1, h2) -> None:
 def script_f7(self, h0) -> None:
     f0 = self.query_one("#dir-tree-2")
     f1 = self.query_one("#label-0")
-    f2 = self.app.store["1"]
+    f2 = self.app.store["6"]
     f3 = f2.get(h0, [])
     if f3[1] is not None:
         f4 = self.app
@@ -113,7 +113,7 @@ def script_f7(self, h0) -> None:
 def script_f8(self, h0) -> None:
     f0 = self.query_one("#input-0")
     f1 = self.query_one("#input-1")
-    f2 = self.app.store["2"]
+    f2 = self.app.store["7"]
     f3 = self.app.stores
     f1.value = ""
     f0.value = ""
@@ -142,9 +142,9 @@ def script_f9(self, h0, h1) -> None:
     f3 = self.query_one("#input-1")
     f4 = self.query_one("#input-0")
     f5 = self.query_one("#label-0")
-    f6 = self.app.store["3"]
-    f7 = self.app.store["4"]
-    f8 = self.app.store["1"]
+    f6 = self.app.store["2"]
+    f7 = self.app.store["1"]
+    f8 = self.app.store["6"]
     f9 = f0.cursor_coordinate
     f10 = self.app.focused.id
     f11 = self.app.stores
@@ -169,8 +169,8 @@ def script_f9(self, h0, h1) -> None:
         if f20 is not None:
             f21 = len(f20) > 1
             f22 = f20[1] if f21 else ""
-            script_f8(self, f9)
             self.app.textfield = f22
+            script_f8(self, f9)
             f5.update(f22)
 
     if f17 in (-1,9):

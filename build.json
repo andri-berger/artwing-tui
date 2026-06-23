@@ -1,9 +1,9 @@
 {
-  "5": [
-    "flexoki",
-    "rose-pine",
-    "rose-pine-moon",
+  "0": [
     "textual-dark",
+    "rose-pine-moon",
+    "rose-pine",
+    "flexoki",
     "monokai",
     "gruvbox",
     "nord",
@@ -20,7 +20,7 @@
     "atom-one-light",
     "textual-light",
     "textual-ansi"],
-  "4": [
+  "1": [
     "dir-tree-0",
     "dir-tree-1",
     "dir-tree-2",
@@ -31,7 +31,7 @@
     "button-3",
     "button-4",
     "button-5"],
-  "3": [
+  "2": [
     "GLOBAL FILE PICKER png and json",
     "LOCAL FILE PICKER png and json",
     "", "", "ClEAR THE EFFECT currently applied",
@@ -40,7 +40,7 @@
     "SELECT THEME from a predefined palette (next theme)",
     "CREATE Local snapshot (put into local file directory)",
     "SAVE IMAGE to disk (png plus json for project files)"],
-  "60": {
+  "3": {
     "dir-tree-0": "FILE {f3} has been chosen and applied!",
     "dir-tree-1": "FILE {f3} has been chosen and applied!",
     "dir-tree-2": "FX {f3} has been chosen and applied!",
@@ -50,7 +50,7 @@
     "button-3": "THEME {f3} has been chosen, good choice!",
     "button-4": "PNG FILE has been saved to local file directory!",
     "button-5": "PNG AND JSON FILES have been saved to disk!"},
-  "6": {
+  "4": {
     "delete": "DELETE cell contents or files in local file picker.",
     "f1": "COPY TABLE cell contents.",
     "f2": "CUT TABLE cell contents.",
@@ -61,7 +61,7 @@
     "f7": "PRESS CSS button programmatically.",
     "f8": "PRESS CREATE button programmatically.",
     "f9": "PRESS EXPORT button programmatically."},
-  "0": {
+  "5": {
     "boxfit": "boxfitting",
     "colors": "color_ellipses",
     "glow_all": "glow",
@@ -133,7 +133,7 @@
     "twirl_fx": "twirl",
     "warped": "warp_perspective"
   },
-  "1": {
+  "6": {
     "boxfit": ["artist","FX BOXFITTING. Apply box fitting effect on selected images."],
     "cartoon": ["artist","FX CARTOON. Apply cartoon effect on selected images."],
     "colors": ["artist","FX COLOR ELLIPSES. Add random color ellipses to selected images."],
@@ -311,7 +311,7 @@
     "wind": ["warpings","FX WIND. Apply wind effect on selected images."],
     "zoom": ["warpings","FX ZOOM. Apply zoom factor to selected images. => Boundaries: 0=dirichlet, 1=neumann, 2=periodic, 3=mirror;"]
 },
-  "2": {
+  "7": {
     "boxfit": [
       ["min_box_size",">= 1","1"],
       ["max_box_size",">= 0","0"],

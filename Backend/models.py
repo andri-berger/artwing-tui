@@ -26,9 +26,10 @@ def on_submitted(self, event) -> None:
     f4 = self.app.store
     f5 = event.input
     f6 = event.value
+    f5.value = ""
     f1.focus()
 
-    f7 = f4["2"]
+    f7 = f4["7"]
     f8 = f3['_blank']
     f9 = f7.get(f8[3])
     if f9 is not None:
@@ -62,20 +63,20 @@ def on_pressed(self, event) -> None:
     f1 = self.query_one("#data-table")
     f2 = self.query_one("#dir-tree-1")
     f3 = self.query_one("#label-0")
-    f4 = self.app.store["1"]
-    f5 = self.app.store["3"]
-    f6 = self.app.store["4"]
-    f7 = self.app.store["5"]
+    f4 = self.app.store["0"]
+    f5 = self.app.store["1"]
+    f6 = self.app.store["2"]
+    f7 = self.app.store["6"]
     f8 = f1.cursor_coordinate
     f9 = self.app.stores
     f10 = event.button.id
     f11 = f9["_blank"]
     f12 = "textual-dark"
-    f13 =  f6.index(f10) \
-        if f10 in f6 else -1
+    f13 =  f5.index(f10) \
+        if f10 in f5 else -1
     f14 = f10.split("-")[-1]
-    f3.update(f5[f13] or "")
-    self.app.textfield = f5[f13]
+    f3.update(f6[f13] or "")
+    self.app.textfield = f6[f13]
 
     if self.app.textfields is not None:
         self.app.textfields.stop()
@@ -99,15 +100,15 @@ def on_pressed(self, event) -> None:
         f21 = 1 - f20 * 2
         self.app.initial += f21
         f22 = self.app.initial
-        f23 = f22 % len(f7)
-        f24 = f7[f23] or f12
+        f23 = f22 % len(f4)
+        f24 = f4[f23] or f12
         self.app.theme = f24
         script_f1(
             self, f10, f24)
         f11[2] = f23 or 0
 
     elif int(f14) == 4:
-        f25 = f4.get(f11[3])
+        f25 = f7.get(f11[3])
         if f25 is not None:
             f26 = time.time()
             f27 = str(int(f26))

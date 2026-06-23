@@ -9,9 +9,7 @@ Fontend/warpings/*.png
 Fontend/zarpings/*.json
 Formula/*.json
 Formula/*.png
-.eslintcache
 __pycache__/
-.pytest_cache/
 .ruff_cache/
 .idea/
 .venv/

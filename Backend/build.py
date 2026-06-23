@@ -36,18 +36,18 @@ class CLIApp(App):
             PATH_5.read_text()) \
             if PATH_5.exists() else {}
 
-        f0 = self.store.get("4",[])
-        f1 = self.store.get("5",[])
+        f0 = self.store.get("1",[])
+        f1 = self.store.get("0",[])
         f2 = self.stores.get("_blank",[])
-        f3 = f2[1] if len(f2) > 0 else 0
-        f4 = f2[2] if len(f2) > 2 else 3
-        self.initial = f4 or 3
+        f3 = f2[1] if len(f2) > 1 else 0
+        f4 = f2[2] if len(f2) > 2 else 0
+        self.initial = f4 or 0
         self.theme = f1[f4] \
             if len(f1) > f4 \
             else "textual-dark"
         f5 = f0[f3] \
             if len(f0) > f3 \
-            else "dir-tree-2"
+            else "dir-tree-0"
         self.f6 = f"#{f5}"
 
     def on_mount(self) -> None:

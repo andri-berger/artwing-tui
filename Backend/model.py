@@ -37,8 +37,8 @@ class MainTab(Widget):
     @work(exclusive=True)
     async def watch_config(self, value) -> None:
         f1 = self.app.query_one("#data-table")
-        f2 = self.app.store["2"]
-        f3 = self.app.store["0"]
+        f2 = self.app.store["7"]
+        f3 = self.app.store["5"]
         f4 = value[3:-2]
         f5 = value[-2]
         f6 = value[-1]
@@ -58,7 +58,7 @@ class MainTab(Widget):
                     f10 = len(f4) > row_i
                     f11 = f4[row_i] if f10 else ""
                     f12 = f7[row_i] if f9 else [""]
-                    f1.add_row(f12[0],str(f11))
+                    f1.add_row(f12[0],str(f11),"")
 
                 f1.move_cursor(
                     row=value[1],
@@ -171,7 +171,7 @@ class FileTree(DirectoryTree):
                 json.dumps(f20))
 
         elif int(f7) == 2:
-            f21 = f4["1"]
+            f21 = f4["6"]
             f22 = f21.get(f10)
             f23 = f5.get(f8[3])
             if f22 is not None:
