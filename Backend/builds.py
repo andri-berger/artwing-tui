@@ -80,30 +80,30 @@ class MainApp(Widget):
         with Horizontal(id="layer-3"):
             yield Label(id="label-0")
 
-    def get_data(self, h0) -> dict:
+    def get_data(self, event) -> dict:
         f0 = self.app.horizontal
         f1 = self.app.vertical
 
-        def data(h1) -> int | float | str:
-            if not isinstance(h1, str):
-                return h1
+        def data(h) -> int | float | str:
+            if not isinstance(h, str):
+                return h
             for cast in (int,float):
                 try:
-                    return cast(h1)
+                    return cast(h)
                 except (ValueError,
                         TypeError):
                     pass
-            return h1
+            return h
 
         return {
-            str(h1): d
-            for h1, h2 in enumerate(
-                range(f0, len(h0.rows)))
+            str(h0): d
+            for h0, h1 in enumerate(
+                range(f0, len(event.rows)))
             if (d := {
-                str(h3): data(h4)
-                for h3, h4 in enumerate(
-                    h0.get_row_at(h2)[f1:])
-                if h4 is not None and h4 != ''})}
+                str(h2): data(h3)
+                for h2, h3 in enumerate(
+                    event.get_row_at(h1)[f1:])
+                if h3 is not None and h3 != ''})}
 
     @on(DataTable.CellHighlighted)
     def highlighted(self, event: DataTable.CellHighlighted):

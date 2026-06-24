@@ -18,8 +18,8 @@ PORT_0 = Path(__file__).parent
 PORT_1 = PORT_0.parent / "Formula"
 PATH_1 = PORT_0.parent / "uread.png"
 PATH_2 = PORT_0.parent / "project.png"
-PATH_3 = PORT_1 / "za.json"
-PATH_4 = PORT_1 / "za.png"
+PATH_3 = PORT_1 / "var.json"
+PATH_4 = PORT_1 / "var.png"
 
 class MainTab(Widget):
     config: reactive[dict] = reactive(

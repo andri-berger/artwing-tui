@@ -14,7 +14,7 @@ PORT_2 = PORT.parent / "Formula"
 PATH_2 = PORT.parent / "uread.png"
 PATH_3 = PORT.parent / "build.json"
 PATH_4 = PORT_0 / "style.tcss"
-PATH_5 = PORT_2 / "za.json"
+PATH_5 = PORT_2 / "var.json"
 
 class CLIApp(App):
     AUTO_FOCUS = None

@@ -13,9 +13,9 @@ PORT = Path.cwd()
 PORT_0 = Path(__file__).parent
 PORT_1 = PORT_0.parent / "Fontend"
 PORT_2 = PORT_0.parent / "Formula"
-PORT_3 = PORT_1 / "zarpings"
-PATH_3 = PORT_2 / "za.json"
-PATH_4 = PORT_2 / "za.png"
+PORT_3 = PORT_1 / "yamljson"
+PATH_3 = PORT_2 / "var.json"
+PATH_4 = PORT_2 / "var.png"
 
 def on_highlighted(self, event) -> None:
     f0 = self.query_one("#input-0")

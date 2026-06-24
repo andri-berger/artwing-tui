@@ -4,7 +4,7 @@ import imagesize
 PORT_0 = Path(__file__).parent
 PORT_1 = PORT_0.parent / "Fontend"
 PORT_2 = PORT_0.parent / "Formula"
-PATH_2 = PORT_2 / "za.json"
+PATH_2 = PORT_2 / "var.json"
 
 def script_f0(h) -> Path:
     f0 = h.stem

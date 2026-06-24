@@ -6,7 +6,7 @@ Fontend/filters/*.png
 Fontend/formats/*.png
 Fontend/geometry/*.png
 Fontend/warpings/*.png
-Fontend/zarpings/*.json
+Fontend/yamljson/*.json
 Formula/*.json
 Formula/*.png
 __pycache__/
