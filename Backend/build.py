@@ -3,31 +3,31 @@ from textual.app import (
 from pathlib import Path
 from .model import MainTab
 from .builds import MainApp
-from .script import (script_f4,
+from .script import (script_f5,
                      script_f7)
 import json
 
 PORT = Path(__file__).parent
-PORT_0 = PORT.parent / "Formula"
+PORT_0 = PORT.parent / "Backend"
 PORT_1 = PORT.parent / "Fontend"
-PORT_2 = PORT.parent / "Backend"
+PORT_2 = PORT.parent / "Formula"
 PATH_2 = PORT.parent / "uread.png"
 PATH_3 = PORT.parent / "build.json"
-PATH_4 = PORT_2 / "style.tcss"
-PATH_5 = PORT_0 / "za.json"
+PATH_4 = PORT_0 / "style.tcss"
+PATH_5 = PORT_2 / "za.json"
 
 class CLIApp(App):
     AUTO_FOCUS = None
     COMMAND_PALETTE_DISPLAY = None
     ENABLE_COMMAND_PALETTE = False
-    NOTIFICATION_TIMEOUT = 10
+    NOTIFICATION_TIMEOUT = 3
     CSS_PATH = PATH_4
 
     def __init__(self) -> None:
         super().__init__()
         self.vertical = 1
         self.horizontal = 0
-        self.clipboards = 0
+        self.clipboards = ''
         self.textfield = ''
         self.textfields = None
         self.store = json.loads(
@@ -53,7 +53,7 @@ class CLIApp(App):
     def on_mount(self) -> None:
         f0 = self.query_one(
             MainTab)
-        f1 = script_f4(
+        f1 = script_f5(
             str(PATH_2),
             self.stores)
 

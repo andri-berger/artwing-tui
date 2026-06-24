@@ -1,14 +1,13 @@
 from .models import (
-    on_key_, on_pressed, on_submitted)
+    on_key, on_pressed, on_submitted)
 from textual.widgets import (
     DataTable, Input, Button,
-    ContentSwitcher, Label)
-from .script import script_f8
+    ContentSwitcher, Label, DirectoryTree)
+from .models import on_highlighted, on_shift_tab
 from .model import FileTree, MainTab
 from textual.containers import Horizontal
 from textual.app import ComposeResult
 from textual.widget import Widget
-from textual.events import Key, Click
 from textual import on, events
 
 class MainApp(Widget):
@@ -27,7 +26,7 @@ class MainApp(Widget):
 
         f0.add_column(
             "", width=20)
-        for _ in range(2):
+        for h in range(2):
                 f0.add_column(
                     "", width=10)
         f0.add_rows(f1)
@@ -96,20 +95,19 @@ class MainApp(Widget):
                     pass
             return h1
 
-        f2 = {
-            str(row_i): d
-            for row_i, r in enumerate(
+        return {
+            str(h1): d
+            for h1, h2 in enumerate(
                 range(f0, len(h0.rows)))
             if (d := {
-                str(i): data(v)
-                for i, v in enumerate(
-                    h0.get_row_at(r)[f1:])
-                if v is not None and v != ''})}
-        return f2
+                str(h3): data(h4)
+                for h3, h4 in enumerate(
+                    h0.get_row_at(h2)[f1:])
+                if h4 is not None and h4 != ''})}
 
     @on(DataTable.CellHighlighted)
     def highlighted(self, event: DataTable.CellHighlighted):
-        script_f8(self, event.coordinate)
+        on_highlighted(self, event.coordinate)
 
     @on(Input.Submitted) # Enter only
     def submitted(self, event: Input.Submitted):
@@ -119,14 +117,23 @@ class MainApp(Widget):
     def pressed(self, event: Button.Pressed):
         on_pressed(self, event)
 
-    @on(Key)
+    @on(events.Key)
     async def key(self, event: events.Key):
-        await on_key_(self, event)
+        await on_key(self, event)
 
-    @on(Click)
+    @on(events.Click)
     def clicked(self):
         f0 = self.app
-        f1 = f0.textfields
-        if f1 is not None:
+        f1 = f0.focused
+        f2 = f0.textfields
+        f3 = DirectoryTree
+        f4 = DataTable
+        if f2 is not None:
             f0.textfields.stop()
             f0.textfields = None
+        f5 = isinstance(f1, f3)
+        f6 = isinstance(f1, f4)
+        if f5 or f6:
+            on_shift_tab(
+                self,None,
+                         0)
