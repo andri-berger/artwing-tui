@@ -88,39 +88,40 @@ def on_shift_tab(self, event, prefix) -> None:
     f3 = self.query_one("#input-1")
     f4 = self.query_one("#input-0")
     f5 = self.query_one("#label-0")
-    f6 = self.app.store["2"]
-    f7 = self.app.store["1"]
+    f6 = self.app.store["0"]
+    f7 = self.app.store["2"]
     f8 = self.app.store["6"]
     f9 = f0.cursor_coordinate
     f10 = self.app.focused.id
     f11 = self.app.stores
     f12 = f11['_blank']
-    f13 = f7.index(f10)
+    f13 = f6.index(f10)
     f14 = f13 + prefix
-    f15 = f14 % len(f7)
+    f15 = f14 % len(f6)
     f16 = min(prefix, 0)
     f17 = f13 + f16
+    f18 = self.app
 
     if f17 in (-1, 9):
         event.prevent_default()
         event.stop()
 
     if f15 not in (2, 3):
-        f40 = self.app
-        f18 = f6[f15] or ""
-        f40.textfield = f18
-        f5.update(f18)
+        f20 = f6[f15] or ""
+        f21 = f7.get(f20,"")
+        f18.textfield = f21
+        f5.update(f21)
         f3.value = ""
         f4.value = ""
 
     if f15 in (2, 3):
-        f19 = f12[3]
-        f20 = f8.get(f19)
-        if f20 is not None:
-            f21 = len(f20) > 1
-            f22 = f20[1] if f21 else ""
-            self.app.textfield = f22
+        f22 = f12[3]
+        f23 = f8.get(f22)
+        if f23 is not None:
+            f21 = len(f23) > 1
+            f22 = f23[1] if f21 else ""
             on_highlighted(self, f9)
+            self.app.textfield = f22
             f5.update(f22)
 
     if f17 == 9:
@@ -128,7 +129,7 @@ def on_shift_tab(self, event, prefix) -> None:
     if f17 == -1:
         f2.focus()
 
-    f12[1] = f15 or 0
+    f12[1] = f15 + 1
     PATH_3.write_text(
         json.dumps(f11))
 
@@ -137,29 +138,28 @@ def on_pressed(self, event) -> None:
     f1 = self.query_one("#data-table")
     f2 = self.query_one("#dir-tree-1")
     f3 = self.query_one("#label-0")
-    f4 = self.app.store["0"]
-    f5 = self.app.store["1"]
-    f6 = self.app.store["2"]
-    f7 = self.app.store["6"]
-    f8 = f1.cursor_coordinate
+    f4 = self.app.store["1"]
+    f5 = self.app.store["2"]
+    f6 = self.app.store["6"]
+    f7 = f1.cursor_coordinate
+    f8 = event.button.id
     f9 = self.app.stores
-    f10 = event.button.id
+    f10 = "textual-dark"
     f11 = f9["_blank"]
-    f12 = "textual-dark"
-    f13 =  f5.index(f10) \
-        if f10 in f5 else -1
-    f14 = f10.split("-")[-1]
-    f3.update(f6[f13] or "")
+    f12 = f5.get(f8,"")
+    f13 = f8.split("-")
+    f14 = f13[-1] or 0
     f15 = self.app
 
-    f15.textfield = f6[f13]
+    f3.update(f12)
+    f15.textfield = f12
     if f15.textfields is not None:
         f15.textfields.stop()
         f15.textfields = None
 
     if int(f14) == 0:
-        f16 = [f8.row,f8.column]
-        script_f3(self, f10, f11[3])
+        f16 = [f7.row,f7.column]
+        script_f3(self, f8, f11[3])
         f0.config = [0, *f16, *f11[3:]]
         f9[f11[3]] = f16
 
@@ -167,7 +167,7 @@ def on_pressed(self, event) -> None:
         f17 = ["", "de"]
         f18 = f17[f11[0]]
         script_f3(
-            self, f10, f18)
+            self, f8, f18)
         f11[0] = 1 - f11[0]
 
     elif int(f14) in (2,3):
@@ -176,14 +176,14 @@ def on_pressed(self, event) -> None:
         self.app.initial += f20
         f21 = self.app.initial
         f22 = f21 % len(f4)
-        f23 = f4[f22] or f12
+        f23 = f4[f22] or f10
         self.app.theme = f23
         script_f3(
-            self, f10, f23)
+            self, f8, f23)
         f11[2] = f22 or 0
 
     elif int(f14) == 4:
-        f24 = f7.get(f11[3])
+        f24 = f6.get(f11[3])
         if f24 is not None:
             f25 = time.time()
             f26 = str(int(f25))
@@ -218,7 +218,7 @@ def on_pressed(self, event) -> None:
         shutil.copy2(PATH_4, f39)
 
     if int(f14) in (4,5):
-        script_f3(self, f10, "")
+        script_f3(self, f8, "")
 
     if int(f14) in (0,1,2,3):
         PATH_3.write_text(

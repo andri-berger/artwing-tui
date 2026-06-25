@@ -5,7 +5,8 @@ from textual.widgets import DirectoryTree
 from textual.binding import Binding
 from textual.widget import Widget
 from textual import on, work
-from .script import (script_f5,
+from .script import (script_f3,
+                     script_f5,
                      script_f7,
                      script_f4,
                      script_f6)
@@ -46,23 +47,6 @@ class MainTab(Widget):
             (self.query_one(Image)
              .remove())
 
-        if path[0] == 0:
-            with self.app.batch_update():
-                f0.clear(columns=False)
-                f6 = f1.get(f"{f4}",[])
-                f7 = max(len(f6),10)
-
-                for h in range(f7):
-                    f8 = len(f6) > h
-                    f9 = len(f3) > h
-                    f10 = f3[h] if f9 else ""
-                    f11 = f6[h] if f8 else [""]
-                    f0.add_row(f11[0],str(f10),"")
-
-                f0.move_cursor(
-                    row=path[1],
-                    column=path[2])
-
         if path[0] <= 1:
             f12 = f2.get(f4, f4)
             f13 = ",".join(str(h0) for h0 in f3)
@@ -88,6 +72,23 @@ class MainTab(Widget):
             f20 = self.size
             script_f4(f19, f20, f5)
             await self.mount(f19)
+
+        if path[0] == 0:
+            with self.app.batch_update():
+                f0.clear(columns=False)
+                f6 = f1.get(f"{f4}",[])
+                f7 = max(len(f6),10)
+
+                for h in range(f7):
+                    f8 = len(f6) > h
+                    f9 = len(f3) > h
+                    f10 = f3[h] if f9 else ""
+                    f11 = f6[h] if f8 else [""]
+                    f0.add_row(f11[0],str(f10),"")
+
+                f0.move_cursor(
+                    row=path[1],
+                    column=path[2])
 
     def render(self):
         return ""
@@ -165,6 +166,7 @@ class FileTree(DirectoryTree):
                     script_f7(
                         self.app, f19)
 
+            script_f3(self, f6, f10)
             f20 = self.app.stores
             PATH_3.write_text(
                 json.dumps(f20))
@@ -183,7 +185,7 @@ class FileTree(DirectoryTree):
                 f1.update(f26)
 
             if f23 is not None:
-                if len(f23) > 0:
+                if len(f23) > 1:
                     f23[0] = f3.row
                     f23[1] = f3.column
 
