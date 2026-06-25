@@ -15,7 +15,11 @@ def script_f0(h) -> Path:
     f3 = f"{f0}*{f1}"
     f4 = f2.glob(f3)
     f5 = len(list(f4))
-    f6 = h.with_stem(f"{h.stem}_{f5 - 1}") if f5 > 0 else h
+    f6 = (
+        h.with_stem(f"{h.stem}_{f5 - 1}")
+        if f5 > 0
+        else h
+    )
     return f6
 
 
@@ -31,7 +35,9 @@ def script_f2(self, h) -> None:
     f1 = self.app.store["4"]
     f2 = self.app.textfield
     f0.update(f1.get(h, ""))
-    self.app.textfields = self.set_timer(3, lambda: f0.update(f2))
+    self.app.textfields = self.set_timer(
+        3, lambda: f0.update(f2)
+    )
 
 
 def script_f3(self, h, h0) -> None:
@@ -40,7 +46,9 @@ def script_f3(self, h, h0) -> None:
     f2 = self.app.textfield
     f3 = f1.get(h, "")
     f0.update(f3.format(f3=h0.upper()))
-    self.app.textfields = self.set_timer(3, lambda: f0.update(f2))
+    self.app.textfields = self.set_timer(
+        3, lambda: f0.update(f2)
+    )
 
 
 def script_f4(h, h0, h1) -> None:
@@ -101,5 +109,7 @@ def script_f7(self, h) -> None:
             f14 = f13.relative_to(f12)
             if f14 == Path(f3[0]):
                 h0.expand()
-                self.call_after_refresh(script_f1, h0, h, f0)
+                self.call_after_refresh(
+                    script_f1, h0, h, f0
+                )
                 break

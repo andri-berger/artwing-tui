@@ -6,7 +6,11 @@ from pathlib import Path
 from textual.widgets import DataTable, Input
 
 from .model import FileTree, MainTab
-from .script import script_f0, script_f2, script_f3
+from .script import (
+    script_f0,
+    script_f2,
+    script_f3,
+)
 
 PORT = Path.cwd()
 PORT_0 = Path(__file__).parent
@@ -199,7 +203,10 @@ def on_pressed(self, event) -> None:
                 f35 = f34.relative_to(f33)
                 if f35 == Path(f24[0]):
                     h.expand()
-                    self.set_timer(0.1, lambda: f2.move_cursor(h))
+                    self.set_timer(
+                        0.1,
+                        lambda: f2.move_cursor(h),
+                    )
                     break
             f2.reload()
 
@@ -220,7 +227,18 @@ def on_pressed(self, event) -> None:
 
 
 async def on_key(self, event) -> None:
-    f0 = ("delete", "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9")
+    f0 = (
+        "delete",
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+    )
     f1 = ("backspace", "space", "enter")
     f2 = self.query_one("#data-table")
     f3 = self.query_one("#dir-tree-1")
@@ -250,7 +268,9 @@ async def on_key(self, event) -> None:
         if f16 == "tab":
             event.stop()
             event.prevent_default()
-            self.post_message(Input.Submitted(f10, f10.value))
+            self.post_message(
+                Input.Submitted(f10, f10.value)
+            )
         if event.key == "escape":
             on_highlighted(self, f11)
             f2.focus()
@@ -266,33 +286,50 @@ async def on_key(self, event) -> None:
             elif len(f16) == 1:
                 f10.value = f16
                 f17 = "cursor_position"
-                self.call_after_refresh(lambda: setattr(f10, f17, len(f16)))
+                self.call_after_refresh(
+                    lambda: setattr(
+                        f10, f17, len(f16)
+                    )
+                )
 
     match f16:
         case "delete":
             if not isinstance(f14, FileTree):
-                self.post_message(Input.Submitted(f10, ""))
+                self.post_message(
+                    Input.Submitted(f10, "")
+                )
             if isinstance(f14, FileTree):
                 node = f3.cursor_node
                 if node is not None:
                     path = node.data.path
                     paths = node.parent
                     if path.is_file():
-                        self.set_timer(0.1, lambda: f3.move_cursor(paths))
+                        self.set_timer(
+                            0.1,
+                            lambda: (
+                                f3.move_cursor(
+                                    paths
+                                )
+                            ),
+                        )
                         path.unlink()
                         f3.reload()
 
         case "f1":
             f17 = self.app
             f17.clipboards = f15
-            self.post_message(Input.Submitted(f10, ""))
+            self.post_message(
+                Input.Submitted(f10, "")
+            )
 
         case "f2":
             f19 = self.app
             f19.clipboards = f15
 
         case "f3":
-            self.post_message(Input.Submitted(f10, f13))
+            self.post_message(
+                Input.Submitted(f10, f13)
+            )
 
         case "f4":
             f4.press()

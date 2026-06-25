@@ -10,7 +10,13 @@ from textual.widget import Widget
 from textual.widgets import DirectoryTree
 from textual_image.widget import Image
 
-from .script import script_f3, script_f4, script_f5, script_f6, script_f7
+from .script import (
+    script_f3,
+    script_f4,
+    script_f5,
+    script_f6,
+    script_f7,
+)
 
 PORT = Path(__file__)
 PORT_0 = Path(__file__).parent
@@ -22,7 +28,9 @@ PATH_4 = PORT_1 / "var.png"
 
 
 class MainTab(Widget):
-    config: reactive[dict] = reactive(dict, init=False)
+    config: reactive[dict] = reactive(
+        dict, init=False
+    )
 
     def compose(self) -> ComposeResult:
         yield Image(PATH_1)
@@ -84,9 +92,13 @@ class MainTab(Widget):
                     f9 = len(f3) > h
                     f10 = f3[h] if f9 else ""
                     f11 = f6[h] if f8 else [""]
-                    f0.add_row(f11[0], str(f10), "")
+                    f0.add_row(
+                        f11[0], str(f10), ""
+                    )
 
-                f0.move_cursor(row=path[1], column=path[2])
+                f0.move_cursor(
+                    row=path[1], column=path[2]
+                )
 
     def render(self):
         return ""
@@ -96,9 +108,15 @@ class FileTree(DirectoryTree):
     show_root = False
     show_guides = True
     guide_depth = 4
-    BINDINGS = [Binding("space", "select_cursor", "Select")]
+    BINDINGS = [
+        Binding(
+            "space", "select_cursor", "Select"
+        )
+    ]
 
-    def __init__(self, path, file_type, **kwargs) -> None:
+    def __init__(
+        self, path, file_type, **kwargs
+    ) -> None:
         super().__init__(path, **kwargs)
         self.file_type = file_type
 
@@ -109,13 +127,23 @@ class FileTree(DirectoryTree):
         return [
             h0
             for h0 in path
-            if (h0.suffix.lower() in f2 or h0.is_dir() or f1)
+            if (
+                h0.suffix.lower() in f2
+                or h0.is_dir()
+                or f1
+            )
             and not h0.name.startswith(".")
-            and not (h0.parent.name == "_blank" and f0 == "file-1")
+            and not (
+                h0.parent.name == "_blank"
+                and f0 == "file-1"
+            )
         ]
 
     @on(DirectoryTree.DirectorySelected)
-    def select(self, event: DirectoryTree.DirectorySelected):
+    def select(
+        self,
+        event: DirectoryTree.DirectorySelected,
+    ):
         f0 = self.app.query_one(MainTab)
         f1 = self.app.stores
         f2 = event.path.name
@@ -129,7 +157,9 @@ class FileTree(DirectoryTree):
             PATH_3.write_text(json.dumps(f1))
 
     @on(DirectoryTree.FileSelected)
-    def selected(self, event: DirectoryTree.FileSelected):
+    def selected(
+        self, event: DirectoryTree.FileSelected
+    ):
         f0 = self.app.query_one("#data-table")
         f1 = self.app.query_one("#label-0")
         f2 = self.app.query_one(MainTab)

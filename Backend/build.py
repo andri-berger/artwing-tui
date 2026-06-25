@@ -31,8 +31,14 @@ class CLIApp(App):
         self.clipboards = ""
         self.textfield = ""
         self.textfields = None
-        self.store = json.loads(PATH_3.read_text())
-        self.stores = json.loads(PATH_5.read_text()) if PATH_5.exists() else {}
+        self.store = json.loads(
+            PATH_3.read_text()
+        )
+        self.stores = (
+            json.loads(PATH_5.read_text())
+            if PATH_5.exists()
+            else {}
+        )
         f0 = self.store.get("0", [])
         f1 = self.store.get("1", [])
         f2 = self.stores.get("_blank", [])
@@ -43,7 +49,9 @@ class CLIApp(App):
         f6 = f2[1] if f4 else 0
         f7 = f2[2] if f5 else 0
         self.initial = f7 or 0
-        self.theme = f1[f7] if len(f1) > f7 else f3
+        self.theme = (
+            f1[f7] if len(f1) > f7 else f3
+        )
         f8 = f6 or 3
         f9 = f0[f8 - 1]
         self.f6 = f"#{f9}"
