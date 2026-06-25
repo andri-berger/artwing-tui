@@ -1,18 +1,16 @@
-from textual.app import ComposeResult
-from textual.reactive import reactive
-from textual_image.widget import Image
-from textual.widgets import DirectoryTree
-from textual.binding import Binding
-from textual.widget import Widget
-from textual import on, work
-from .script import (script_f3,
-                     script_f5,
-                     script_f7,
-                     script_f4,
-                     script_f6)
-from pathlib import Path
 import asyncio
 import json
+from pathlib import Path
+
+from textual import on, work
+from textual.app import ComposeResult
+from textual.binding import Binding
+from textual.reactive import reactive
+from textual.widget import Widget
+from textual.widgets import DirectoryTree
+from textual_image.widget import Image
+
+from .script import script_f3, script_f4, script_f5, script_f6, script_f7
 
 PORT = Path(__file__)
 PORT_0 = Path(__file__).parent
@@ -22,9 +20,9 @@ PATH_2 = PORT_0.parent / "project.png"
 PATH_3 = PORT_1 / "var.json"
 PATH_4 = PORT_1 / "var.png"
 
+
 class MainTab(Widget):
-    config: reactive[dict] = reactive(
-        dict, init=False)
+    config: reactive[dict] = reactive(dict, init=False)
 
     def compose(self) -> ComposeResult:
         yield Image(PATH_1)
@@ -44,8 +42,7 @@ class MainTab(Widget):
         f5 = path[-1]
 
         if self.query_one(Image):
-            (self.query_one(Image)
-             .remove())
+            (self.query_one(Image).remove())
 
         if path[0] <= 1:
             f12 = f2.get(f4, f4)
@@ -53,18 +50,21 @@ class MainTab(Widget):
             f14 = [h1 for h1 in f3 if h1 != ""]
             f15 = f13 if len(f14) else ","
 
-            f16 = await (asyncio
-            .create_subprocess_exec(
-                "gmic", str(f5),
-                f12, f15, '-output', str(PATH_4),
+            f16 = await asyncio.create_subprocess_exec(
+                "gmic",
+                str(f5),
+                f12,
+                f15,
+                "-output",
+                str(PATH_4),
                 stdout=asyncio.subprocess.DEVNULL,
-                stderr=asyncio.subprocess.DEVNULL))
+                stderr=asyncio.subprocess.DEVNULL,
+            )
             await f16.communicate()
 
             f17 = Image(PATH_4)
             f18 = self.size
-            script_f4(
-                f17, f18, PATH_4)
+            script_f4(f17, f18, PATH_4)
             await self.mount(f17)
 
         if path[0] == 2:
@@ -76,60 +76,57 @@ class MainTab(Widget):
         if path[0] == 0:
             with self.app.batch_update():
                 f0.clear(columns=False)
-                f6 = f1.get(f"{f4}",[])
-                f7 = max(len(f6),10)
+                f6 = f1.get(f"{f4}", [])
+                f7 = max(len(f6), 10)
 
                 for h in range(f7):
                     f8 = len(f6) > h
                     f9 = len(f3) > h
                     f10 = f3[h] if f9 else ""
                     f11 = f6[h] if f8 else [""]
-                    f0.add_row(f11[0],str(f10),"")
+                    f0.add_row(f11[0], str(f10), "")
 
-                f0.move_cursor(
-                    row=path[1],
-                    column=path[2])
+                f0.move_cursor(row=path[1], column=path[2])
 
     def render(self):
         return ""
 
+
 class FileTree(DirectoryTree):
     show_root = False
-    BINDINGS = [
-        Binding("space",
-        "select_cursor",
-        "Select")]
+    show_guides = True
+    guide_depth = 4
+    BINDINGS = [Binding("space", "select_cursor", "Select")]
 
-    def __init__(self, path,
-                 file_type, **kwargs) -> None:
+    def __init__(self, path, file_type, **kwargs) -> None:
         super().__init__(path, **kwargs)
         self.file_type = file_type
 
     def filter_paths(self, path) -> list:
         f0 = self.file_type
         f1 = f0 == "file-2"
-        f2 = (".png",".json")
-        return [h0 for h0 in path
-                if (h0.suffix.lower() in
-                    f2 or h0.is_dir() or f1)
-                and not h0.name.startswith(".")
-                and not (h0.parent.name == "_blank"
-                         and f0 == "file-1")]
+        f2 = (".png", ".json")
+        return [
+            h0
+            for h0 in path
+            if (h0.suffix.lower() in f2 or h0.is_dir() or f1)
+            and not h0.name.startswith(".")
+            and not (h0.parent.name == "_blank" and f0 == "file-1")
+        ]
 
     @on(DirectoryTree.DirectorySelected)
     def select(self, event: DirectoryTree.DirectorySelected):
         f0 = self.app.query_one(MainTab)
         f1 = self.app.stores
         f2 = event.path.name
-        f3 = f1['_blank']
+        f3 = f1["_blank"]
         if f2 == "_blank":
             f4 = [f3[3], str(PATH_1)]
             f5 = script_f6(self, *f4)
             f0.config = [2, *f5, *f4]
 
             f3[3] = 0 or ""
-            PATH_3.write_text(
-                json.dumps(f1))
+            PATH_3.write_text(json.dumps(f1))
 
     @on(DirectoryTree.FileSelected)
     def selected(self, event: DirectoryTree.FileSelected):
@@ -141,7 +138,7 @@ class FileTree(DirectoryTree):
         f5 = self.app.stores
         f6 = event.control.id
         f7 = f6.split("-")[-1]
-        f8 = f5['_blank']
+        f8 = f5["_blank"]
         f9 = event.path
         f10 = f9.name
 
@@ -151,7 +148,7 @@ class FileTree(DirectoryTree):
                 f12 = 2 - f8[0] or 0
                 f13 = [f8[3], str(f9)]
                 f14 = script_f6(self, *f13)
-                f2.config = [f12,*f14,*f13]
+                f2.config = [f12, *f14, *f13]
 
             elif f11[-1] == "json":
                 f15 = str(PATH_1)
@@ -163,13 +160,11 @@ class FileTree(DirectoryTree):
                 if f18[-2]:
                     f19 = f18[-2]
                     f2.config = f18
-                    script_f7(
-                        self.app, f19)
+                    script_f7(self.app, f19)
 
             script_f3(self, f6, f10)
             f20 = self.app.stores
-            PATH_3.write_text(
-                json.dumps(f20))
+            PATH_3.write_text(json.dumps(f20))
 
         elif int(f7) == 2:
             f21 = f4["6"]
@@ -189,5 +184,4 @@ class FileTree(DirectoryTree):
                     f23[0] = f3.row
                     f23[1] = f3.column
 
-            PATH_3.write_text(
-                json.dumps(f5))
+            PATH_3.write_text(json.dumps(f5))

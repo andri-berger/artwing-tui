@@ -1,13 +1,12 @@
-from textual.widgets import (
-    DataTable, Input)
-from .script import (script_f3,
-                     script_f2,
-                     script_f0)
-from .model import MainTab, FileTree
-from pathlib import Path
+import json
 import shutil
 import time
-import json
+from pathlib import Path
+
+from textual.widgets import DataTable, Input
+
+from .model import FileTree, MainTab
+from .script import script_f0, script_f2, script_f3
 
 PORT = Path.cwd()
 PORT_0 = Path(__file__).parent
@@ -17,6 +16,7 @@ PORT_3 = PORT_1 / "yamljson"
 PATH_3 = PORT_2 / "var.json"
 PATH_4 = PORT_2 / "var.png"
 
+
 def on_highlighted(self, event) -> None:
     f0 = self.query_one("#input-0")
     f1 = self.query_one("#input-1")
@@ -25,7 +25,7 @@ def on_highlighted(self, event) -> None:
     f1.value = ""
     f0.value = ""
 
-    f4 = f3['_blank']
+    f4 = f3["_blank"]
     f5 = f3.get(f4[3])
     f6 = f2.get(f4[3])
     if f6 is not None:
@@ -38,8 +38,8 @@ def on_highlighted(self, event) -> None:
         f13 = f7[2:][f8] if f11 else ""
         if len(f12) > 2 and f9 <= 1:
             f0.value = f12[1] or ""
-            f1.value = (str(f13)
-                        or f12[2])
+            f1.value = str(f13) or f12[2]
+
 
 def on_submitted(self, event) -> None:
     f0 = self.query_one("#data-table")
@@ -53,7 +53,7 @@ def on_submitted(self, event) -> None:
     f0.focus()
 
     f7 = f4["7"]
-    f8 = f3['_blank']
+    f8 = f3["_blank"]
     f9 = f7.get(f8[3])
     if f9 is not None:
         f11 = f2.row
@@ -62,24 +62,23 @@ def on_submitted(self, event) -> None:
         f14 = f9[f11] if f13 else []
         if len(f14) > 2 and f12 == 1:
             f5.value = f6 or f14[2]
-            f0.update_cell_at(f2,f6)
+            f0.update_cell_at(f2, f6)
             f15 = self.get_data(f0)
-            f16 = sum(1 for h in f9
-                       if h[0] != "")
+            f16 = sum(1 for h in f9 if h[0] != "")
             f17 = f16 * [""]
 
-            for h0,h1 in f15.items():
-                f18 = h1.get('0','')
+            for h0, h1 in f15.items():
+                f18 = h1.get("0", "")
                 if len(f17) > int(h0):
                     f17[int(h0)] = f18
 
-            f19 = [f11,f12,*f17]
-            f20 = [1,*f19,*f8[3:]]
+            f19 = [f11, f12, *f17]
+            f20 = [1, *f19, *f8[3:]]
             f3[f8[3]] = f19 or []
 
             f1.config = f20
-            PATH_3.write_text(
-                json.dumps(f3))
+            PATH_3.write_text(json.dumps(f3))
+
 
 def on_shift_tab(self, event, prefix) -> None:
     f0 = self.query_one("#data-table")
@@ -94,7 +93,7 @@ def on_shift_tab(self, event, prefix) -> None:
     f9 = f0.cursor_coordinate
     f10 = self.app.focused.id
     f11 = self.app.stores
-    f12 = f11['_blank']
+    f12 = f11["_blank"]
     f13 = f6.index(f10)
     f14 = f13 + prefix
     f15 = f14 % len(f6)
@@ -108,7 +107,7 @@ def on_shift_tab(self, event, prefix) -> None:
 
     if f15 not in (2, 3):
         f20 = f6[f15] or ""
-        f21 = f7.get(f20,"")
+        f21 = f7.get(f20, "")
         f18.textfield = f21
         f5.update(f21)
         f3.value = ""
@@ -130,8 +129,8 @@ def on_shift_tab(self, event, prefix) -> None:
         f2.focus()
 
     f12[1] = f15 + 1
-    PATH_3.write_text(
-        json.dumps(f11))
+    PATH_3.write_text(json.dumps(f11))
+
 
 def on_pressed(self, event) -> None:
     f0 = self.query_one(MainTab)
@@ -146,7 +145,7 @@ def on_pressed(self, event) -> None:
     f9 = self.app.stores
     f10 = "textual-dark"
     f11 = f9["_blank"]
-    f12 = f5.get(f8,"")
+    f12 = f5.get(f8, "")
     f13 = f8.split("-")
     f14 = f13[-1] or 0
     f15 = self.app
@@ -158,7 +157,7 @@ def on_pressed(self, event) -> None:
         f15.textfields = None
 
     if int(f14) == 0:
-        f16 = [f7.row,f7.column]
+        f16 = [f7.row, f7.column]
         script_f3(self, f8, f11[3])
         f0.config = [0, *f16, *f11[3:]]
         f9[f11[3]] = f16
@@ -166,11 +165,10 @@ def on_pressed(self, event) -> None:
     elif int(f14) == 1:
         f17 = ["", "de"]
         f18 = f17[f11[0]]
-        script_f3(
-            self, f8, f18)
+        script_f3(self, f8, f18)
         f11[0] = 1 - f11[0]
 
-    elif int(f14) in (2,3):
+    elif int(f14) in (2, 3):
         f19 = 3 - int(f14)
         f20 = 1 - f19 * 2
         self.app.initial += f20
@@ -178,8 +176,7 @@ def on_pressed(self, event) -> None:
         f22 = f21 % len(f4)
         f23 = f4[f22] or f10
         self.app.theme = f23
-        script_f3(
-            self, f8, f23)
+        script_f3(self, f8, f23)
         f11[2] = f22 or 0
 
     elif int(f14) == 4:
@@ -202,9 +199,7 @@ def on_pressed(self, event) -> None:
                 f35 = f34.relative_to(f33)
                 if f35 == Path(f24[0]):
                     h.expand()
-                    self.set_timer(
-                        0.1, lambda:
-                        f2.move_cursor(h))
+                    self.set_timer(0.1, lambda: f2.move_cursor(h))
                     break
             f2.reload()
 
@@ -217,16 +212,15 @@ def on_pressed(self, event) -> None:
         shutil.copy2(PATH_3, f40)
         shutil.copy2(PATH_4, f39)
 
-    if int(f14) in (4,5):
+    if int(f14) in (4, 5):
         script_f3(self, f8, "")
 
-    if int(f14) in (0,1,2,3):
-        PATH_3.write_text(
-            json.dumps(f9))
+    if int(f14) in (0, 1, 2, 3):
+        PATH_3.write_text(json.dumps(f9))
+
 
 async def on_key(self, event) -> None:
-    f0 = ("delete","f1","f2","f3",
-          "f4","f5","f6","f7","f8","f9")
+    f0 = ("delete", "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8", "f9")
     f1 = ("backspace", "space", "enter")
     f2 = self.query_one("#data-table")
     f3 = self.query_one("#dir-tree-1")
@@ -244,31 +238,25 @@ async def on_key(self, event) -> None:
     f15 = str(f12 or "")
     f16 = event.key
     if f16 in f0:
-        script_f2(
-            self, f16)
+        script_f2(self, f16)
 
     if not isinstance(f14, Input):
         if f16 == "shift+tab":
-            on_shift_tab(
-                self, event, -1)
+            on_shift_tab(self, event, -1)
         elif f16 == "tab":
-            on_shift_tab(
-                self, event, 1)
+            on_shift_tab(self, event, 1)
 
     if isinstance(f14, Input):
         if f16 == "tab":
             event.stop()
             event.prevent_default()
-            self.post_message(
-                Input.Submitted(
-                f10, f10.value))
+            self.post_message(Input.Submitted(f10, f10.value))
         if event.key == "escape":
             on_highlighted(self, f11)
             f2.focus()
 
     if isinstance(f14, DataTable):
-        if (len(f16) == 1
-                or f16 in f1):
+        if len(f16) == 1 or f16 in f1:
             f10.focus()
             event.stop()
 
@@ -277,49 +265,44 @@ async def on_key(self, event) -> None:
 
             elif len(f16) == 1:
                 f10.value = f16
-                f17 = 'cursor_position'
-                self.call_after_refresh(
-                    lambda: setattr(
-                        f10, f17, len(f16)))
+                f17 = "cursor_position"
+                self.call_after_refresh(lambda: setattr(f10, f17, len(f16)))
 
     match f16:
         case "delete":
-            if not isinstance(
-                    f14, FileTree):
-                self.post_message(
-                    Input.Submitted(f10, ""))
+            if not isinstance(f14, FileTree):
+                self.post_message(Input.Submitted(f10, ""))
             if isinstance(f14, FileTree):
                 node = f3.cursor_node
                 if node is not None:
                     path = node.data.path
                     paths = node.parent
                     if path.is_file():
-                        self.set_timer(
-                            0.1, lambda:
-                            f3.move_cursor(
-                                paths))
+                        self.set_timer(0.1, lambda: f3.move_cursor(paths))
                         path.unlink()
                         f3.reload()
 
         case "f1":
             f17 = self.app
             f17.clipboards = f15
-            self.post_message(
-                Input.Submitted(
-                    f10, ""))
+            self.post_message(Input.Submitted(f10, ""))
 
         case "f2":
             f19 = self.app
             f19.clipboards = f15
 
         case "f3":
-            self.post_message(
-                Input.Submitted(
-                f10, f13))
+            self.post_message(Input.Submitted(f10, f13))
 
-        case "f4": f4.press()
-        case "f5": f5.press()
-        case "f6": f6.press()
-        case "f7": f7.press()
-        case "f8": f8.press()
-        case "f9": f9.press()
+        case "f4":
+            f4.press()
+        case "f5":
+            f5.press()
+        case "f6":
+            f6.press()
+        case "f7":
+            f7.press()
+        case "f8":
+            f8.press()
+        case "f9":
+            f9.press()
