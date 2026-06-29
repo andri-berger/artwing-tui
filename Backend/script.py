@@ -53,9 +53,9 @@ def script_f3(self, h, h0) -> None:
 
 def script_f4(h, h0, h1) -> None:
     f0 = imagesize.get(str(h1))
-    f2 = h0.height * 18
-    f3 = h0.width * 9
-    f4 = h.styles
+    f2 = h.height * 18
+    f3 = h.width * 9
+    f4 = h0.styles
     f5 = f0[0] / f0[1]
     if f5 > (f3 / f2):
         f4.width = "100%"

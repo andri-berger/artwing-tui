@@ -58,7 +58,8 @@ class MainTab(Widget):
             f14 = [h1 for h1 in f3 if h1 != ""]
             f15 = f13 if len(f14) else ","
 
-            f16 = await asyncio.create_subprocess_exec(
+            f16 = await (asyncio.
+            create_subprocess_exec(
                 "gmic",
                 str(f5),
                 f12,
@@ -67,12 +68,12 @@ class MainTab(Widget):
                 str(PATH_4),
                 stdout=asyncio.subprocess.DEVNULL,
                 stderr=asyncio.subprocess.DEVNULL,
-            )
+            ))
             await f16.communicate()
 
             f17 = Image(PATH_4)
             f18 = self.size
-            script_f4(f17, f18, PATH_4)
+            script_f4(f18, f17, PATH_4)
             await self.mount(f17)
 
         if path[0] == 2:
