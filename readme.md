@@ -104,10 +104,10 @@ filterx-tui is a terminal-native creative filter engine wrapping G'MIC's extensi
 <br>
 
 ## Installation
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+filterx-tui has no Electron, no npm, no 200 MB runtime surprise — just a Python TUI and G'MIC under the hood. Pick whichever method matches your setup below.
 
 ### Generic Install (Native)
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
+Pulls the install script directly from the repo and wires everything up. Requires Python 3.11+ and G'MIC to be present on your system.
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/\
@@ -115,14 +115,14 @@ andri-berger/filterx-tui/main/install.sh | sh
 ```
 
 ### macOS (Homebrew)
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
+Tap the formula and let Homebrew handle dependencies. G'MIC gets pulled in automatically via the formula's dependency spec.
 
 ```bash
 brew install andri-berger/filterx-tui/tap
 ```
 
 ### Arch Linux (AUR)
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua
+Use your AUR helper of choice — the PKGBUILD handles the rest, including the G'MIC dependency.
 
 ```bash
 yay -S filterx-tui 
@@ -193,6 +193,8 @@ Keyboard-driven, no mouse. Lorem ipsum dolor sit amet, consetetur sadipscing eli
         <td>Sixely only</td>
     </tr>
 </table>
+
+Can be extended quite easily with other well-known libraries / binaries, such as [fred's scripts](https://github.com/fredrikaverpil/fred-scripts), [vtracer](https://github.com/vercel/vtracer) or [wand](https://github.com/wandbox/wand).
 
 ## API Reference
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -339,8 +341,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     <tr>
         <th align="left">Layer</th>
         <th align="left">Name</th>
-        <th align="left">
-        Link <img width="560"></th>
+        <th align="left">Link </th>
     </tr>
         <tr><td><kbd>
         Build</kbd></td>
