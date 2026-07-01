@@ -341,7 +341,8 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     <tr>
         <th align="left">Layer</th>
         <th align="left">Name</th>
-        <th align="left">Link </th>
+        <th align="left">Link  
+        <img width="500"></th>
     </tr>
         <tr><td><kbd>
         Build</kbd></td>
