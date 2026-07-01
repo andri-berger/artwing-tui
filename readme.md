@@ -22,18 +22,6 @@ filterx-tui is a terminal-native creative filter engine wrapping G'MIC's extensi
         <td><a href="Backend/modules/710000002.png">
         <img src="Backend/modules/710000002.png"></a></td>
     </tr>
-    <tr>
-        <td><a href="Backend/modules/710000000.png">
-        <img src="Backend/modules/710000000.png"></a></td>
-        <td><a href="Backend/modules/710000001.png">
-        <img src="Backend/modules/710000001.png"></a></td>
-        <td><a href="Backend/modules/710000001.png">
-        <img src="Backend/modules/710000001.png"></a></td>
-        <td><a href="Backend/modules/710000002.png">
-        <img src="Backend/modules/710000002.png"></a></td>
-        <td><a href="Backend/modules/710000002.png">
-        <img src="Backend/modules/710000002.png"></a></td>
-    </tr>
   </tr>
 </table>
 <br>
@@ -127,8 +115,6 @@ filterx-tui #Launches the TUI
     </tr>
 </table>
 
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-
 <table>
     <tr>
         <th width="20">Docs</th>
@@ -136,62 +122,62 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         <th align="left">Description</th>
     </tr>
     <tr>
-        <td><a href="Backend/modules/7000000038.png">
-        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><a href="Backend/modules/700000038.png">
+        <img src="Backend/modules/1700000038.png"></a></td>
         <td><kbd>Global Filetree</kbd></td>
         <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr. </td>
     </tr>
     <tr>
-        <td><a href="Backend/modules/7000000038.png">
-        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><a href="Backend/modules/700000038.png">
+        <img src="Backend/modules/1700000038.png"></a></td>
         <td><kbd>Local Filetree</kbd></td>
         <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr. </td>
     </tr>
     <tr>
-        <td><a href="Backend/modules/7000000038.png">
-        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><a href="Backend/modules/700000038.png">
+        <img src="Backend/modules/1700000038.png"></a></td>
         <td><kbd>FX Filetree</kbd></td>
         <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr. </td>
     </tr>
     <tr>
-        <td><a href="Backend/modules/7000000038.png">
-        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><a href="Backend/modules/700000038.png">
+        <img src="Backend/modules/1700000038.png"></a></td>
         <td><kbd>Grid FX Rack</kbd></td>
         <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr. </td>
     </tr>
     <tr>
-        <td><a href="Backend/modules/7000000038.png">
-        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><a href="Backend/modules/700000038.png">
+        <img src="Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button X</kbd></td>
         <td>Clear the Canvas. Lorem ipsum dolor sit amet. </td>
     </tr>
     <tr>
-        <td><a href="Backend/modules/7000000038.png">
-        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><a href="Backend/modules/700000038.png">
+        <img src="Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Afs</kbd></td>
         <td>Set Seed for A00-A99 Elements. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td><a href="Backend/modules/7000000038.png">
-        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><a href="Backend/modules/700000038.png">
+        <img src="Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Bfs</kbd></td>
         <td>Set Seed for B00-B99. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td><a href="Backend/modules/7000000038.png">
-        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><a href="Backend/modules/700000038.png">
+        <img src="Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Cfs</kbd></td>
         <td>Set Seed for C00-C99. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td><a href="Backend/modules/7000000038.png">
-        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><a href="Backend/modules/700000038.png">
+        <img src="Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Create</kbd></td>
         <td>Generate Artwork via Random Generator. Lorem ipsum dolor sit amet.</td>
     </tr>
     <tr>
-        <td><a href="Backend/modules/7000000038.png">
-        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><a href="Backend/modules/700000038.png">
+        <img src="Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Export</kbd></td>
         <td>Export both generated (png) and project file (json) into the directory from where the app was executed / started.</td>
     </tr>
