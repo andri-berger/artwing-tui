@@ -1,5 +1,3 @@
-
-![Readme](./readme.png)
 # Filterx-TUI (WIP)
 filterx-tui is a terminal-native creative filter engine wrapping G'MIC's extensive library of image effects into a comfortable spreadsheet-driven interface. Think of it as an effects rack for images, operated entirely from the terminal – a creative filter machine with no GUI overhead, no cloud dependency, no subscription. The motivation was equally simple: G'MIC is one of the most powerful and underappreciated image processing tools in existence, yet its full potential remains largely inaccessible to anyone unwilling to memorize its command syntax or navigate its GIMP plugin interface. filterx-tui bridges that gap, exposing G'MIC's creative filter library through a structured, navigable interface that rewards exploration without demanding expertise. It is the sibling project of artwork-tui, operating under the same GitHub umbrella and complementing it naturally: where artwork-tui generates, filterx-tui processes.
 
@@ -10,96 +8,33 @@ filterx-tui is a terminal-native creative filter engine wrapping G'MIC's extensi
 [Gallery](#gallery)
 
 
-<img src="Backend/modules/1710000000.png" width="100%">
+<img src="Backend/modules/710000000.png" width="100%">
 <table>
-  <tr>
-    <td><a href="Backend/modules/1710000000.png">
-    <img src="Backend/modules/1710000000.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000001.png">
-    <img src="Backend/modules/1710000001.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000001.png">
-    <img src="Backend/modules/1710000001.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000002.png">
-    <img src="Backend/modules/1710000002.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000002.png">
-    <img src="Backend/modules/1710000002.png">
-    </a></td>
+    <tr>
+        <td><a href="Backend/modules/710000000.png">
+        <img src="Backend/modules/710000000.png"></a></td>
+        <td><a href="Backend/modules/710000001.png">
+        <img src="Backend/modules/710000001.png"></a></td>
+        <td><a href="Backend/modules/710000001.png">
+        <img src="Backend/modules/710000001.png"></a></td>
+        <td><a href="Backend/modules/710000002.png">
+        <img src="Backend/modules/710000002.png"></a></td>
+        <td><a href="Backend/modules/710000002.png">
+        <img src="Backend/modules/710000002.png"></a></td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/710000000.png">
+        <img src="Backend/modules/710000000.png"></a></td>
+        <td><a href="Backend/modules/710000001.png">
+        <img src="Backend/modules/710000001.png"></a></td>
+        <td><a href="Backend/modules/710000001.png">
+        <img src="Backend/modules/710000001.png"></a></td>
+        <td><a href="Backend/modules/710000002.png">
+        <img src="Backend/modules/710000002.png"></a></td>
+        <td><a href="Backend/modules/710000002.png">
+        <img src="Backend/modules/710000002.png"></a></td>
+    </tr>
   </tr>
-    
-<!-- 
-<tr>
-    <td><a href="Backend/modules/1710000008.png">
-    <img src="Backend/modules/1710000008.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000009.png">
-    <img src="Backend/modules/1710000009.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000010.png">
-    <img src="Backend/modules/1710000010.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000011.png">
-    <img src="Backend/modules/1710000011.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000012.png">
-    <img src="Backend/modules/1710000012.png">
-    </a></td>
-  </tr>
-  <tr>
-    <td><a href="Backend/modules/1710000014.png">
-    <img src="Backend/modules/1710000014.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000015.png">
-    <img src="Backend/modules/1710000015.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000016.png">
-    <img src="Backend/modules/1710000016.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000017.png">
-    <img src="Backend/modules/1710000017.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000018.png">
-    <img src="Backend/modules/1710000018.png">
-    </a></td>
-  </tr>
-  <tr>
-    <td><a href="Backend/modules/1710000020.png">
-    <img src="Backend/modules/1710000020.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000021.png">
-    <img src="Backend/modules/1710000021.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000022.png">
-    <img src="Backend/modules/1710000022.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000023.png">
-    <img src="Backend/modules/1710000023.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000024.png">
-    <img src="Backend/modules/1710000024.png">
-    </a></td>
-  </tr>
-  <tr>
-    <td><a href="Backend/modules/1710000026.png">
-    <img src="Backend/modules/1710000026.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000027.png">
-    <img src="Backend/modules/1710000027.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000028.png">
-    <img src="Backend/modules/1710000028.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000029.png">
-    <img src="Backend/modules/1710000029.png">
-    </a></td>
-    <td><a href="Backend/modules/1710000030.png">
-    <img src="Backend/modules/1710000030.png">
-    </a></td>
-  </tr> 
--->
 </table>
 <br>
 
@@ -130,13 +65,11 @@ yay -S filterx-tui
 ```
 
 ## Configuration
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+Keyboard-driven, no mouse. Can be extended quite easily with other well-known libraries / binaries, such as [fred's scripts](https://github.com/fredrikaverpil/fred-scripts), [vtracer](https://github.com/vercel/vtracer) or [wand](https://github.com/wandbox/wand). Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
 
 ```bash
 filterx-tui #Launches the TUI
 ```
-Keyboard-driven, no mouse. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-
 <table width="100%">
     <tr>
         <th align="left">KPG</th>
@@ -146,55 +79,124 @@ Keyboard-driven, no mouse. Lorem ipsum dolor sit amet, consetetur sadipscing eli
     </tr>
     <tr>
         <td>&#x2705;</td>
-        <td>Kitty</td>
+        <td><kbd>Kitty</kbd></td>
         <td>Linux, macOS</td>
         <td>The originator — reference implementation</td>
     </tr>
     <tr>
         <td>&#x2705;</td>
-        <td>Ghostty</td>
+        <td><kbd>Ghostty</kbd></td>
         <td>Linux, macOS</td>
         <td>The new kid on the block — native support</td>
     </tr>
     <tr>
         <td>&#x2705;</td>
-        <td>WezTerm</td>
+        <td><kbd>WezTerm</kbd></td>
         <td>Linux, macOS</td>
         <td>Also supports Sixel + iTerm2 protocol — widest coverage</td>
     </tr>
     <tr>
         <td>&#x1F7E1;</td>
-        <td>suckless</td>
+        <td><kbd>suckless</kbd></td>
         <td>Linux</td>
         <td>Patch available implementing a subset of KGP - not built-in</td>
     </tr>
     <tr>
         <td>&#x274C;</td>
-        <td>foot</td>
+        <td><kbd>foot</kbd></td>
         <td>Linux (Wayland)</td>
         <td>Sixel only — notable omission given it's the go-to Wayland minimal terminal</td>
     </tr>
     <tr>
         <td>&#x274C;</td>
-        <td>Alacritty</td>
+        <td><kbd>Alacritty</kbd></td>
         <td>Linux, macOS</td>
         <td>Intentionally does not support font ligatures or modern image protocols</td>
     </tr>
     <tr>
         <td>&#x274C;</td>
-        <td>iTerm2</td>
+        <td><kbd>iTerm2</kbd></td>
         <td>macOS</td>
         <td>Has its own inline image protocol (iTerm2 protocol), not KGP</td>
     </tr>
      <tr>
         <td>&#x274C;</td>
-        <td>Konsole</td>
+        <td><kbd>Konsole</kbd></td>
         <td>Linux</td>
         <td>Sixely only</td>
     </tr>
 </table>
 
-Can be extended quite easily with other well-known libraries / binaries, such as [fred's scripts](https://github.com/fredrikaverpil/fred-scripts), [vtracer](https://github.com/vercel/vtracer) or [wand](https://github.com/wandbox/wand).
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+
+<table>
+    <tr>
+        <th width="20">Docs</th>
+        <th align="left">Element</th>
+        <th align="left">Description</th>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000038.png">
+        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><kbd>Global Filetree</kbd></td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr. </td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000038.png">
+        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><kbd>Local Filetree</kbd></td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr. </td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000038.png">
+        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><kbd>FX Filetree</kbd></td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr. </td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000038.png">
+        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><kbd>Grid FX Rack</kbd></td>
+        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr. </td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000038.png">
+        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><kbd>Button X</kbd></td>
+        <td>Clear the Canvas. Lorem ipsum dolor sit amet. </td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000038.png">
+        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><kbd>Button Afs</kbd></td>
+        <td>Set Seed for A00-A99 Elements. Lorem ipsum dolor sit amet.</td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000038.png">
+        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><kbd>Button Bfs</kbd></td>
+        <td>Set Seed for B00-B99. Lorem ipsum dolor sit amet.</td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000038.png">
+        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><kbd>Button Cfs</kbd></td>
+        <td>Set Seed for C00-C99. Lorem ipsum dolor sit amet.</td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000038.png">
+        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><kbd>Button Create</kbd></td>
+        <td>Generate Artwork via Random Generator. Lorem ipsum dolor sit amet.</td>
+    </tr>
+    <tr>
+        <td><a href="Backend/modules/7000000038.png">
+        <img src="Backend/modules/17000000038.png"></a></td>
+        <td><kbd>Button Export</kbd></td>
+        <td>Export both generated (png) and project file (json) into the directory from where the app was executed / started.</td>
+    </tr>
+</table>
+<br>
 
 ## API Reference
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
@@ -260,24 +262,6 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         <td>Export both generated (png) and project file (json) into the directory from where the app was executed / started.</td>
     </tr>
     <tr>
-        <td><kbd>
-        F10</kbd></td>
-        <td>Scrolling</td>
-        <td>Extra functionality (I) with regards to fullscreen toggle and scroll-emulation (=> see also shift-arrows)</td>
-    </tr>
-    <tr>
-        <td><kbd>
-        F11</kbd></td>
-        <td>Scrolling</td>
-        <td>Extra functionality (II) with regards to fullscreen toggle and scroll-emulation (=> see also shift-arrows)</td>
-    </tr>
-    <tr>
-        <td><kbd>
-        F12</kbd></td>
-        <td>Scrolling</td>
-        <td>Extra functionality (II) with regards to fullscreen toggle and scroll-emulation (=> see also shift-arrows)</td>
-    </tr>
-    <tr>
         <td><kbd>Del
         </kbd></td>
         <td>Delete</td>
@@ -288,18 +272,6 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
         Tab</kbd></td>
         <td>Navigate</td>
         <td>Cycle forward all navigational UI-Elements. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
-    </tr>
-    <tr>
-        <td><kbd>
-        Shift-Tab</kbd></td>
-        <td>Navigate</td>
-        <td>Cycle backward all navigational UI-Elements. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
-    </tr>
-    <tr>
-        <td><kbd>
-        Shift-Arrow</kbd></td>
-        <td>Navigation</td>
-        <td>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.</td>
     </tr>
     <tr>
         <td><kbd>
@@ -335,14 +307,14 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
 
 
 ## API Credit
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
 
 <table width="100%">
     <tr>
         <th align="left">Layer</th>
         <th align="left">Name</th>
-        <th align="left">Link  
-        <img width="500"></th>
+        <th align="left">Link</th>
     </tr>
         <tr><td><kbd>
         Build</kbd></td>
@@ -402,17 +374,36 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     <tr>
         <td><kbd>
         Processing</kbd></td>
-        <td>Gmic FX</td><td>
+        <td>FX Gmic</td><td>
         <a href="//github.com/GreycLab/gmic">
         https://github.com/GreycLab/gmic</a></td>
     </tr>
+    <tr>
+        <td><kbd>
+        Inspiration</kbd></td>
+        <td>FX Script</td><td>
+        <a href="//www.fmwconcepts.com">
+        https://www.fmwconcepts.com</a></td>
+    </tr>
+    <tr>
+        <td><kbd>
+        Inspiration</kbd></td>
+        <td>FX Tracer</td><td>
+        <a href="//visioncortex.org/vtracer">
+        https://visioncortex.org/vtracer</a></td>
+    </tr>
+    <tr>
+        <td><kbd>
+        Inspiration</kbd></td>
+        <td>FX Wand</td><td>
+        <a href="//docs.wand-py.org/en/0.7.2/">
+        https://docs.wand-py.org/en</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
 </table>
-
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+<br>
 
 ## PI Gallery
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
 
 <table>
 <tr>
@@ -475,20 +466,5 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod 
     <td><a href="Backend/module/1780159679.png">
     <img src="Backend/module/1780159679.png"></a></td>
 </tr>
-
 </table>
-
-Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-
-
-## Rationale
-
-If you encounter any issues, please file an issue on GitHub.
-<br>If you find this module useful, please consider starring the repository on GitHub. 
-
-This project began by moving most of the functionality from a commercial WEB SaaS-project https://print-artwork.com (minus the physical print / POD, minus the vectorizer => vtracer), free of charge, now at the complete opposite in copyleft territory, with some additional code-tweaks to accommodate the different UI-requirements in archaic TUI-land as opposed to shiny WEB-land. The app has been split up into the the glaze/gloss part and the generational part with its sibling <a href="https://github.com/andri-berger/artwork-tui>filterx-TUI">filterx-TUI</a> listed under the same GitHub Profile. Thus, they complement each another really well. The other one for the substance, the matter, this one for the refinement.
-
 <br>
-<br>
-<br>
-

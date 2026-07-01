@@ -18,9 +18,13 @@
 # GITHUB:: grainfield – Terminal-native creative image processing via G'MIC
 # GITHUB:: patina – A terminal image processing workbench powered by G'MIC
 
-# apngasm output.apng frame/*.png -d 2000
-# apngasm output.apng frame/*.png -d 1600
-# apngasm output.apng frame/*.png -d 1200
+# apngasm -o output.png frame/*.png -d 2000
+# apngasm -o output.png frame/*.png -d 1600
+# apngasm -o output.png frame/*.png -d 1300
+# apngasm -o output.png frame/*.png 1.3 1
+# apngasm -o output.png frame/*.png 1.6 1
+# apngasm -o output.png frame/*.png 2 1
+
 
 OUTPUT_DIRS="$HOME/screenshots"
 mkdir -p "$OUTPUT_DIRS"
