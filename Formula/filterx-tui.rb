@@ -7,7 +7,9 @@ class FilterxTui < Formula
   url "https://github.com/andri-berger/filterx-tui/archive/v0.0.2.tar.gz"
   sha256 "acbdb30a0716d8fd6f27e98d796077a7c8232d7618589142dd9c2cf398af94b0"
   depends_on "python@3.14"
+  depends_on "pillow"
   depends_on "gmic"
+
 
   resource "imagesize" do
     url "https://files.pythonhosted.org/packages/6c/e6/7bf14eeb8f8b7251141944835abd42eb20a658d89084b7e1f3e5fe394090/imagesize-2.0.0.tar.gz"
@@ -32,11 +34,6 @@ class FilterxTui < Formula
   resource "mdurl" do
     url "https://files.pythonhosted.org/packages/d6/54/cfe61301667036ec958cb99bd3efefba235e65cdeb9c84d24a8293ba1d90/mdurl-0.1.2.tar.gz"
     sha256 "bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba"
-  end
-
-  resource "pillow" do
-    url "https://files.pythonhosted.org/packages/1c/3d/bb7fca845737cf9d7dbde16ed1843984665ff2e0a518f5db43e77ec540b9/pillow-12.3.0.tar.gz"
-    sha256 "3b8182a766685eaa002637e28b4ec8d6b18819a0c71f579bf0dbaa5830297cce"
   end
 
   resource "platformdirs" do
