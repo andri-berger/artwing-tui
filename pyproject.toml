@@ -22,6 +22,11 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 include = [
     "Backend",
+    "Fontend",
+    "Formula",
+    "build.json",
+    "uread.png",
+    "project.png",
     "pyproject.py"]
 
 [project.scripts]
