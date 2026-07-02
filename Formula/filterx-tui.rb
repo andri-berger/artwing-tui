@@ -1,4 +1,4 @@
-class Tap < Formula
+class FilterxTui < Formula
   include Language::Python::Virtualenv
 
   license "GPL-3.0-only"

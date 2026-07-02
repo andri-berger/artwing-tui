@@ -51,7 +51,9 @@ moment while G'MIC builds its filter collection — subsequent updates via
 `brew upgrade` are quick.
 
 ```bash
-brew install andri-berger/filterx-tui/tap
+brew tap andri-berger/filterx-tui \
+https://github.com/andri-berger/filterx-tui
+brew install filterx-tui
 ```
 
 ### Arch Linux (AUR)
