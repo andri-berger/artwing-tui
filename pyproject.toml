@@ -24,9 +24,8 @@ include = [
     "Backend",
     "Fontend",
     "Formula",
-    "build.json",
     "uread.png",
-    "project.png",
+    "build.json",
     "pyproject.py"]
 
 [project.scripts]
