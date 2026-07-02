@@ -12,6 +12,21 @@ The motivation was equally simple: G'MIC is one of the most powerful and underap
 
 <img src="Backend/modules/710000000.png" width="100%">
 <table>
+  </tr>
+    <tr>
+        <td><a href="Backend/modules/710000000.png">
+        <img src="Backend/modules/710000000.png"></a></td>
+        <td><a href="Backend/modules/710000001.png">
+        <img src="Backend/modules/710000001.png"></a></td>
+        <td><a href="Backend/modules/710000001.png">
+        <img src="Backend/modules/710000001.png"></a></td>
+        <td><a href="Backend/modules/710000002.png">
+        <img src="Backend/modules/710000002.png"></a></td>
+    </tr>
+  </tr>
+</table>
+<table>
+  </tr>
     <tr>
         <td><a href="Backend/modules/710000000.png">
         <img src="Backend/modules/710000000.png"></a></td>
