@@ -2,10 +2,10 @@ class FilterxTui < Formula
   include Language::Python::Virtualenv
 
   license "GPL-3.0-only"
-  desc "Flexible Filterx Generator in TUI format"
+  desc "Flexible Filterx Rack Processor in TUI format"
   homepage "https://github.com/andri-berger/filterx-tui"
-  url "https://github.com/andri-berger/filterx-tui/archive/v0.0.1.tar.gz"
-  sha256 "10790e80a965d21087a53c40286817f7f7835356d917c2bce1c152dc004edcab"
+  url "https://github.com/andri-berger/filterx-tui/archive/v0.0.2.tar.gz"
+  sha256 "acbdb30a0716d8fd6f27e98d796077a7c8232d7618589142dd9c2cf398af94b0"
   depends_on "python@3.14"
   depends_on "gmic"
 
