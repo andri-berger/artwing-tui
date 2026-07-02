@@ -22,20 +22,6 @@ The motivation was equally simple: G'MIC is one of the most powerful and underap
         <img src="Backend/modules/710000001.png"></a></td>
         <td><a href="Backend/modules/710000002.png">
         <img src="Backend/modules/710000002.png"></a></td>
-    </tr>
-  </tr>
-</table>
-<table>
-  </tr>
-    <tr>
-        <td><a href="Backend/modules/710000000.png">
-        <img src="Backend/modules/710000000.png"></a></td>
-        <td><a href="Backend/modules/710000001.png">
-        <img src="Backend/modules/710000001.png"></a></td>
-        <td><a href="Backend/modules/710000001.png">
-        <img src="Backend/modules/710000001.png"></a></td>
-        <td><a href="Backend/modules/710000002.png">
-        <img src="Backend/modules/710000002.png"></a></td>
         <td><a href="Backend/modules/710000002.png">
         <img src="Backend/modules/710000002.png"></a></td>
     </tr>
@@ -384,7 +370,7 @@ If you like what this project does, follow the links — the ideas started there
         Inspiration</kbd></td>
         <td>FX Wand</td><td>
         <a href="//docs.wand-py.org/en/0.7.2/">
-        https://docs.wand-py.org/en</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        https://docs.wand-py.org/en</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
     </tr>
 </table>
 
