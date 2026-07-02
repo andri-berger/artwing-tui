@@ -24,6 +24,10 @@ class FilterxTui < Formula
     sha256 "6c894e65a879dadb4f6cf46ddcfedb0173ff7e0cb1fe605ff7b357a597bdbc90"
   end
 
+  def install
+    virtualenv_install_with_resources
+  end
+
   test do
     system "#{bin}/filterx-tui", "--version"
   end
