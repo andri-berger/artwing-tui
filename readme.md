@@ -53,7 +53,7 @@ moment while G'MIC builds its filter collection — subsequent updates via
 ```bash
 brew tap andri-berger/filterx-tui \
 https://github.com/andri-berger/filterx-tui
-brew install filterx-tui
+brew install filterx-tui #install from tap
 ```
 
 ### Arch Linux (AUR)
