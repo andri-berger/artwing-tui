@@ -1,12 +1,19 @@
 from pathlib import Path
-
+from platformdirs import user_data_dir
 import imagesize
+
+def script_f00() -> Path:
+    DIR  = user_data_dir(
+        "filterx-tui")
+    Path(DIR).mkdir(
+        parents=True,
+        exist_ok=True)
+    return Path(DIR)
 
 PORT_0 = Path(__file__).parent
 PORT_1 = PORT_0.parent / "Fontend"
 PORT_2 = PORT_0.parent / "Formula"
-PATH_2 = PORT_2 / "var.json"
-
+PATH_2 = script_f00() / "var.json"
 
 def script_f0(h) -> Path:
     f0 = h.stem

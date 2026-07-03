@@ -11,6 +11,7 @@ from textual.widgets import DirectoryTree
 from textual_image.widget import Image
 
 from .script import (
+    script_f00,
     script_f3,
     script_f4,
     script_f5,
@@ -23,8 +24,8 @@ PORT_0 = Path(__file__).parent
 PORT_1 = PORT_0.parent / "Formula"
 PATH_1 = PORT_0.parent / "uread.png"
 PATH_2 = PORT_0.parent / "project.png"
-PATH_3 = PORT_1 / "var.json"
-PATH_4 = PORT_1 / "var.png"
+PATH_3 = script_f00() / "var.json"
+PATH_4 = script_f00() / "var.png"
 
 
 class MainTab(Widget):

@@ -7,18 +7,20 @@ from textual.widgets import DataTable, Input
 
 from .model import FileTree, MainTab
 from .script import (
+    script_f00,
     script_f0,
     script_f2,
     script_f3,
 )
 
 PORT = Path.cwd()
+PORT_00 = script_f00()
 PORT_0 = Path(__file__).parent
 PORT_1 = PORT_0.parent / "Fontend"
 PORT_2 = PORT_0.parent / "Formula"
 PORT_3 = PORT_1 / "yamljson"
-PATH_3 = PORT_2 / "var.json"
-PATH_4 = PORT_2 / "var.png"
+PATH_3 = PORT_00 / "var.json"
+PATH_4 = PORT_00 / "var.png"
 
 
 def on_highlighted(self, event) -> None:

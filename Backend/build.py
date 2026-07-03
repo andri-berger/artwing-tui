@@ -1,11 +1,10 @@
 import json
 from pathlib import Path
-
 from textual.app import App, ComposeResult
 
 from .builds import MainApp
 from .model import MainTab
-from .script import script_f5, script_f7
+from .script import script_f00, script_f5, script_f7
 
 PORT = Path(__file__).parent
 PORT_0 = PORT.parent / "Backend"
@@ -13,9 +12,8 @@ PORT_1 = PORT.parent / "Fontend"
 PORT_2 = PORT.parent / "Formula"
 PATH_2 = PORT.parent / "uread.png"
 PATH_3 = PORT.parent / "build.json"
+PATH_5 = script_f00() / "var.json"
 PATH_4 = PORT_0 / "style.tcss"
-PATH_5 = PORT_2 / "var.json"
-
 
 class CLIApp(App):
     AUTO_FOCUS = None

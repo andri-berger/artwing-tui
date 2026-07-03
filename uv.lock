@@ -123,6 +123,7 @@ version = "0.0.2"
 source = { editable = "." }
 dependencies = [
     { name = "imagesize" },
+    { name = "platformdirs" },
     { name = "textual" },
     { name = "textual-image" },
 ]
@@ -136,6 +137,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "imagesize" },
+    { name = "platformdirs" },
     { name = "textual" },
     { name = "textual-image" },
 ]
