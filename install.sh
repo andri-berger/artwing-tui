@@ -24,7 +24,7 @@ else
     exit 1
 fi
 
-uv tool install git+https://github.com/andri-berger/filterx-tui.git --quiet
+uv tool install --force git+https://github.com/andri-berger/filterx-tui.git@v0.1.0 --quiet
 
 echo "if command not found, add to your shell config: export PATH=\"\$HOME/.local/bin:\$PATH\""
 echo "done — run: filterx-tui"

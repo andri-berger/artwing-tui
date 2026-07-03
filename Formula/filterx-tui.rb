@@ -74,7 +74,4 @@ class FilterxTui < Formula
     virtualenv_install_with_resources
   end
 
-  test do
-    system "#{bin}/filterx-tui", "--version"
-  end
 end

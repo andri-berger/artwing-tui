@@ -11,6 +11,7 @@ Formula/*.json
 Formula/*.png
 __pycache__/
 .ruff_cache/
+.SRCINFO
 .idea/
 .venv/
 .cache

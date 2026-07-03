@@ -1,19 +1,23 @@
 pkgrel=1
-pkgver=0.0.1
-arch=('x86_64')
+pkgver=0.1.0
+arch=('any')
 pkgname=filterx-tui
 license=('GPL-3.0-only')
-provides=('filterx-tui')
-conflicts=('filterx-tui')
-pkgdesc="Flexible FilterFX Layer in TUI format"
-url="https://github.com/andri-berger/filterx-tui"  source=("https://github.com/andri-berger/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('10790e80a965d21087a53c40286817f7f7835356d917c2bce1c152dc004edcab')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+pkgdesc='Flexible FilterFX Layer in TUI format'
+url='https://github.com/andri-berger/filterx-tui'
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/andri-berger/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('b0bb10dd319361adcc82a672130731814733e430704f82627ef8775f640da9a8')
+makedepends=(
+    'python-hatchling'
+    'python-installer'
+    'python-build'
+    'python-wheel')
 depends=(
-    'gmic'
-    'imagesize'
     'python-textual-image'
+    'python-platformdirs'
     'python-textual'
+    'imagesize'
+    'gmic'
 )
 
 build() {
@@ -26,5 +30,4 @@ package() {
     python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
 
