@@ -26,7 +26,7 @@ PORT_2 = PORT_1.parent.parent
 PATH_4 = PORT_0 / "700000000.json"
 PATH_5 = PORT_0 / "1700000000.png"
 PATH_2 = PORT_2 / "project.png"
-PATH_3 = PORT_2 / "uread.png"
+PATH_3 = PORT_2 / "build.png"
 
 
 class MainTab(Widget):

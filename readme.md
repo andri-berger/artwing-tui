@@ -10,20 +10,20 @@ The motivation was equally simple: G'MIC is one of the most powerful and underap
 [Gallery](#gallery)
 
 
-<img src="Backend/modules/710000000.png" width="100%">
+<img src="filterx/Backend/modules/710000000.png" width="100%">
 <table>
   </tr>
     <tr>
-        <td><a href="Backend/modules/710000000.png">
-        <img src="Backend/modules/710000000.png"></a></td>
-        <td><a href="Backend/modules/710000001.png">
-        <img src="Backend/modules/710000001.png"></a></td>
-        <td><a href="Backend/modules/710000001.png">
-        <img src="Backend/modules/710000001.png"></a></td>
-        <td><a href="Backend/modules/710000002.png">
-        <img src="Backend/modules/710000002.png"></a></td>
-        <td><a href="Backend/modules/710000002.png">
-        <img src="Backend/modules/710000002.png"></a></td>
+        <td><a href="filterx/Backend/modules/710000000.png">
+        <img src="filterx/Backend/modules/710000000.png"></a></td>
+        <td><a href="filterx/Backend/modules/710000001.png">
+        <img src="filterx/Backend/modules/710000001.png"></a></td>
+        <td><a href="filterx/Backend/modules/710000001.png">
+        <img src="filterx/Backend/modules/710000001.png"></a></td>
+        <td><a href="filterx/Backend/modules/710000002.png">
+        <img src="filterx/Backend/modules/710000002.png"></a></td>
+        <td><a href="filterx/Backend/modules/710000002.png">
+        <img src="filterx/Backend/modules/710000002.png"></a></td>
     </tr>
   </tr>
 </table>
@@ -97,67 +97,67 @@ filterx-tui #Launches the TUI
         <th align="left">Description</th>
     </tr>
     <tr>
-        <td><a href="Backend/modules/700000038.png">
-        <img src="Backend/modules/1700000038.png"></a></td>
+        <td><a href="filterx/Backend/modules/700000038.png">
+        <img src="filterx/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Global Filetree</kbd></td>
         <td>Choose either png (for the base image) or json (for your project-files). Mirror of your unrestricted / full filesystem, hence the name global. </td>
     </tr>
     <tr>
-        <td><a href="Backend/modules/700000038.png">
-        <img src="Backend/modules/1700000038.png"></a></td>
+        <td><a href="filterx/Backend/modules/700000038.png">
+        <img src="filterx/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Local Filetree</kbd></td>
         <td>Choose either png (for the base image) or json (for your project-files). Local Filesystem only hosting all files copied over via Button Create (see below), hence the name local. </td>
     </tr>
     <tr>
-        <td><a href="Backend/modules/700000038.png">
-        <img src="Backend/modules/1700000038.png"></a></td>
+        <td><a href="filterx/Backend/modules/700000038.png">
+        <img src="filterx/Backend/modules/1700000038.png"></a></td>
         <td><kbd>FX Filetree</kbd></td>
         <td>Browse the catalogue of available filter effects. Selecting an entry loads
 it into the Grid FX Rack, where its parameters become editable.</td>
     </tr>
     <tr>
-        <td><a href="Backend/modules/700000038.png">
-        <img src="Backend/modules/1700000038.png"></a></td>
+        <td><a href="filterx/Backend/modules/700000038.png">
+        <img src="filterx/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Grid FX Rack</kbd></td>
         <td>The heart of the app — a spreadsheet-style grid where selected effects are
 stacked like modules in a rack. Each row holds one effect with its parameters
 as editable cells; the stack is applied to the base image in order.</td>
     </tr>
     <tr>
-        <td><a href="Backend/modules/700000038.png">
-        <img src="Backend/modules/1700000038.png"></a></td>
+        <td><a href="filterx/Backend/modules/700000038.png">
+        <img src="filterx/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button X</kbd></td>
         <td>Clear currently active/selected FX Parameters. Resets the grid to a blank state so you can start a new composition — exported files on disk are not touched.</td>
     </tr>
     <tr>
-        <td><a href="Backend/modules/700000038.png">
-        <img src="Backend/modules/1700000038.png"></a></td>
+        <td><a href="filterx/Backend/modules/700000038.png">
+        <img src="filterx/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Afs</kbd></td>
         <td>Set previous Theme (there are 19 Themes in total to choose from).</td>
     </tr>
     <tr>
-        <td><a href="Backend/modules/700000038.png">
-        <img src="Backend/modules/1700000038.png"></a></td>
+        <td><a href="filterx/Backend/modules/700000038.png">
+        <img src="filterx/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Bfs</kbd></td>
         <td>Set next Theme (there are 19 Themes in total to choose from).</td>
     </tr>
     <tr>
-        <td><a href="Backend/modules/700000038.png">
-        <img src="Backend/modules/1700000038.png"></a></td>
+        <td><a href="filterx/Backend/modules/700000038.png">
+        <img src="filterx/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Cfs</kbd></td>
         <td>Copy/Export existing file to the local file directory, that can be used as base for further FX processing.</td>
     </tr>
     <tr>
-        <td><a href="Backend/modules/700000038.png">
-        <img src="Backend/modules/1700000038.png"></a></td>
+        <td><a href="filterx/Backend/modules/700000038.png">
+        <img src="filterx/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Create</kbd></td>
         <td>The heart of the app — a spreadsheet-style grid where selected effects are
 stacked like modules in a rack. Each row holds one effect with its parameters
 as editable cells; the stack is applied to the base image in order.</td>
     </tr>
     <tr>
-        <td><a href="Backend/modules/700000038.png">
-        <img src="Backend/modules/1700000038.png"></a></td>
+        <td><a href="filterx/Backend/modules/700000038.png">
+        <img src="filterx/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Export</kbd></td>
         <td>Export both generated (png) and project file (json) into the directory from where the app was executed / started.</td>
     </tr>
@@ -396,64 +396,64 @@ reproduce and feed them your own images.
 
 <table>
 <tr>
-    <td><a href="Backend/module/1780150638.png">
-    <img src="Backend/module/1780150638.png"></a></td>
-    <td><a href="Backend/module/1780150643.png">
-    <img src="Backend/module/1780150643.png"></a></td>
-    <td><a href="Backend/module/1780150675.png">
-    <img src="Backend/module/1780150675.png"></a></td>
-    <td><a href="Backend/module/1780150689.png">
-    <img src="Backend/module/1780150689.png"></a></td>
-    <td><a href="Backend/module/1780150715.png">
-    <img src="Backend/module/1780150715.png"></a></td>
+    <td><a href="filterx/Backend/module/1780150638.png">
+    <img src="filterx/Backend/module/1780150638.png"></a></td>
+    <td><a href="filterx/Backend/module/1780150643.png">
+    <img src="filterx/Backend/module/1780150643.png"></a></td>
+    <td><a href="filterx/Backend/module/1780150675.png">
+    <img src="filterx/Backend/module/1780150675.png"></a></td>
+    <td><a href="filterx/Backend/module/1780150689.png">
+    <img src="filterx/Backend/module/1780150689.png"></a></td>
+    <td><a href="filterx/Backend/module/1780150715.png">
+    <img src="filterx/Backend/module/1780150715.png"></a></td>
 </tr>
 <tr>
-    <td><a href="Backend/module/1780150731.png">
-    <img src="Backend/module/1780150731.png"></a></td>
-    <td><a href="Backend/module/1780150740.png">
-    <img src="Backend/module/1780150740.png"></a></td>
-    <td><a href="Backend/module/1780150748.png">
-    <img src="Backend/module/1780150748.png"></a></td>  
-    <td><a href="Backend/module/1780151480.png">
-    <img src="Backend/module/1780151480.png"></a></td>  
-    <td><a href="Backend/module/1780151501.png">
-    <img src="Backend/module/1780151501.png"></a></td>
+    <td><a href="filterx/Backend/module/1780150731.png">
+    <img src="filterx/Backend/module/1780150731.png"></a></td>
+    <td><a href="filterx/Backend/module/1780150740.png">
+    <img src="filterx/Backend/module/1780150740.png"></a></td>
+    <td><a href="filterx/Backend/module/1780150748.png">
+    <img src="filterx/Backend/module/1780150748.png"></a></td>  
+    <td><a href="filterx/Backend/module/1780151480.png">
+    <img src="filterx/Backend/module/1780151480.png"></a></td>  
+    <td><a href="filterx/Backend/module/1780151501.png">
+    <img src="filterx/Backend/module/1780151501.png"></a></td>
 </tr>
 <tr>
-    <td><a href="Backend/module/1780151522.png">
-    <img src="Backend/module/1780151522.png"></a></td>
-    <td><a href="Backend/module/1780159196.png">
-    <img src="Backend/module/1780159196.png"></a></td>
-    <td><a href="Backend/module/1780159214.png">
-    <img src="Backend/module/1780159214.png"></a></td>
-    <td><a href="Backend/module/1780159226.png">
-    <img src="Backend/module/1780159226.png"></a></td>
-    <td><a href="Backend/module/1780159230.png">
-    <img src="Backend/module/1780159230.png"></a></td>  
+    <td><a href="filterx/Backend/module/1780151522.png">
+    <img src="filterx/Backend/module/1780151522.png"></a></td>
+    <td><a href="filterx/Backend/module/1780159196.png">
+    <img src="filterx/Backend/module/1780159196.png"></a></td>
+    <td><a href="filterx/Backend/module/1780159214.png">
+    <img src="filterx/Backend/module/1780159214.png"></a></td>
+    <td><a href="filterx/Backend/module/1780159226.png">
+    <img src="filterx/Backend/module/1780159226.png"></a></td>
+    <td><a href="filterx/Backend/module/1780159230.png">
+    <img src="filterx/Backend/module/1780159230.png"></a></td>  
 </tr>
 <tr>
-    <td><a href="Backend/module/1780159311.png">
-    <img src="Backend/module/1780159311.png"></a></td>
-    <td><a href="Backend/module/1780159326.png">
-    <img src="Backend/module/1780159326.png"></a></td>
-    <td><a href="Backend/module/1780159589.png">
-    <img src="Backend/module/1780159589.png"></a></td>
-    <td><a href="Backend/module/1780159608.png">
-    <img src="Backend/module/1780159608.png"></a></td>
-    <td><a href="Backend/module/1780159627.png">
-    <img src="Backend/module/1780159627.png"></a></td>
+    <td><a href="filterx/Backend/module/1780159311.png">
+    <img src="filterx/Backend/module/1780159311.png"></a></td>
+    <td><a href="filterx/Backend/module/1780159326.png">
+    <img src="filterx/Backend/module/1780159326.png"></a></td>
+    <td><a href="filterx/Backend/module/1780159589.png">
+    <img src="filterx/Backend/module/1780159589.png"></a></td>
+    <td><a href="filterx/Backend/module/1780159608.png">
+    <img src="filterx/Backend/module/1780159608.png"></a></td>
+    <td><a href="filterx/Backend/module/1780159627.png">
+    <img src="filterx/Backend/module/1780159627.png"></a></td>
 </tr>
 <tr>
-    <td><a href="Backend/module/1780159636.png">
-    <img src="Backend/module/1780159636.png"></a></td>
-    <td><a href="Backend/module/1780159664.png">
-    <img src="Backend/module/1780159664.png"></a></td>
-    <td><a href="Backend/module/1780159667.png">
-    <img src="Backend/module/1780159667.png"></a></td>
-    <td><a href="Backend/module/1780159675.png">
-    <img src="Backend/module/1780159675.png"></a></td>
-    <td><a href="Backend/module/1780159679.png">
-    <img src="Backend/module/1780159679.png"></a></td>
+    <td><a href="filterx/Backend/module/1780159636.png">
+    <img src="filterx/Backend/module/1780159636.png"></a></td>
+    <td><a href="filterx/Backend/module/1780159664.png">
+    <img src="filterx/Backend/module/1780159664.png"></a></td>
+    <td><a href="filterx/Backend/module/1780159667.png">
+    <img src="filterx/Backend/module/1780159667.png"></a></td>
+    <td><a href="filterx/Backend/module/1780159675.png">
+    <img src="filterx/Backend/module/1780159675.png"></a></td>
+    <td><a href="filterx/Backend/module/1780159679.png">
+    <img src="filterx/Backend/module/1780159679.png"></a></td>
 </tr>
 </table>
 <br>

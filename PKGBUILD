@@ -15,8 +15,8 @@ makedepends=(
 depends=(
     'python-textual-image'
     'python-platformdirs'
+    'ptyhon-imagesize'
     'python-textual'
-    'imagesize'
     'gmic'
 )
 

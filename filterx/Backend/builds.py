@@ -24,7 +24,7 @@ from .models import (
 
 PORT_0 = script_f01()
 PORT_1 = Path(__file__).parent
-PORT_2 = PORT_1.parent / "Fontend"
+PORT_2 = PORT_1.parent / "Frontend"
 PORT_3 = PORT_2 / "_blank"
 
 class MainApp(Widget):
