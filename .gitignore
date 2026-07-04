@@ -1,12 +1,3 @@
-Fontend/artist/*.png
-Fontend/degrade/*.png
-Fontend/extract/*.png
-Fontend/filter/*.png
-Fontend/filters/*.png
-Fontend/formats/*.png
-Fontend/geometry/*.png
-Fontend/warpings/*.png
-Fontend/yamljson/*.json
 __pycache__/
 .ruff_cache/
 .SRCINFO
