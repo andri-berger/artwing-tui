@@ -10,14 +10,16 @@ from .script import (script_f00,
                      script_f5,
                      script_f7)
 
+PORT_00 = script_f00()
 PORT_0 = script_f01()
 PORT_1 = Path(__file__).parent
 PORT_2 = PORT_1.parent / "Backend"
 PORT_3 = PORT_1.parent / "Fontend"
 PATH_3 = PORT_1.parent / "uread.png"
 PATH_4 = PORT_1.parent / "build.json"
-PATH_5 = script_f00() / "var.json"
+PATH_5 = PORT_00 / "700000000.json"
 PATH_6 = PORT_2 / "style.tcss"
+
 
 class CLIApp(App):
     AUTO_FOCUS = None

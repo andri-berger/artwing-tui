@@ -1,7 +1,7 @@
 # <img src="readme.png" width="50" valign="middle" alt="logo"> Filterx-TUI
 filterx-tui is a terminal-native creative filter engine wrapping G'MIC's extensive library of image effects into a comfortable spreadsheet-driven interface. Think of it as an effects rack for images, operated entirely from the terminal – a creative filter machine with no GUI overhead, no cloud dependency, no subscription. 
 
-The motivation was equally simple: G'MIC is one of the most powerful and underappreciated image processing tools in existence, yet its full potential remains largely inaccessible to anyone unwilling to memorize its command syntax or navigate its GIMP plugin interface. filterx-tui bridges that gap, exposing G'MIC's creative filter library through a structured, navigable interface that rewards exploration without demanding expertise. It is the sibling project of artwork-tui, operating under the same GitHub umbrella and complementing it naturally: where artwork-tui generates, filterx-tui processes.
+The motivation was equally simple: G'MIC is one of the most powerful and underappreciated image processing tools in existence, yet its full potential remains largely inaccessible to anyone unwilling to memorize its command syntax or navigate its GIMP plugin interface. filterx-tui bridges that gap, exposing G'MIC's creative filter library through a structured, navigable interface that rewards exploration without demanding expertise. It is the sibling project of filterx-tuii, operating under the same GitHub umbrella and complementing it naturally: where filterx-tuii generates, filterx-tui processes.
 
 [Installation](#installation) / 
 [Configuration](#configuration) / 
@@ -48,7 +48,7 @@ andri-berger/filterx-tui/main/install.sh | sh
 Tap the formula and let Homebrew handle dependencies. G'MIC gets pulled in
 automatically via the formula's dependency spec. First install may take a
 moment while G'MIC builds its filter collection — subsequent updates via
-`brew upgrade` are quick.
+`brew upgrade` are quick. Additional, user-generated files are stored in the following directory => ~/Library/Application Support/filterx-tui
 
 ```bash
 brew tap andri-berger/filterx-tui \
@@ -60,7 +60,7 @@ brew install filterx-tui #install from tap
 Use your AUR helper of choice — the PKGBUILD handles the rest, including the
 G'MIC dependency. If you prefer doing it by hand, `git clone` the AUR repo
 and run `makepkg -si`; there is nothing exotic in the build. You run Arch,
-so you knew that already.
+so you knew that already. Additional, user-generated files are stored in the following directories => ~/.local/share/filterx-tuii and ~/.local/state/filterx-tui
 
 ```bash
 yay -S filterx-tui 
@@ -324,6 +324,13 @@ If you like what this project does, follow the links — the ideas started there
         <td>Pip Uv</td><td>
         <a href="//github.com/astral-sh/uv">
         https://github.com/astral-sh/uv</a></td>
+    </tr>
+    <tr>
+        <td><kbd>
+        Framework</kbd></td>
+        <td>Platform</td><td>
+        <a href="//github.com/tox-dev/platformdirs">
+        https://github.com/tox-dev/platformdirs</a></td>
     </tr>
     <tr>
         <td><kbd>
