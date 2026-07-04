@@ -19,6 +19,18 @@ PATH_3 = PORT_1.parent / "uread.png"
 PATH_4 = PORT_1.parent / "build.json"
 PATH_5 = PORT_00 / "700000000.json"
 PATH_6 = PORT_2 / "style.tcss"
+PATH_7 = PORT_0 / "_blank"
+
+
+shutil.copytree(
+    PORT_3, PORT_0,
+    ignore=shutil.
+    ignore_patterns(".*"),
+    dirs_exist_ok=True)
+for entry in PATH_7.iterdir():
+    shutil.rmtree(entry) \
+        if entry.is_dir() \
+        else entry.unlink()
 
 
 class CLIApp(App):
@@ -59,11 +71,6 @@ class CLIApp(App):
         f8 = f6 or 3
         f9 = f0[f8 - 1]
         self.f6 = f"#{f9}"
-
-        shutil.copytree(
-            PORT_3, PORT_0, ignore=shutil.
-            ignore_patterns(".idea"),
-            dirs_exist_ok=True)
 
     def on_mount(self) -> None:
         f0 = self.query_one(MainTab)

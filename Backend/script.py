@@ -20,6 +20,12 @@ def script_f00() -> Path:
         exist_ok=True)
     return Path(f0)
 
+def _ignore(dirpath, names):
+    skip = {n for n in names if n.startswith(".")}
+    if Path(dirpath).name == "_blank":
+        skip = set(names)
+    return skip
+
 
 def script_f0(h) -> Path:
     f0 = h.stem
