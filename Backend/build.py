@@ -1,26 +1,30 @@
 import json
+import shutil
 from pathlib import Path
 from textual.app import App, ComposeResult
 
 from .builds import MainApp
 from .model import MainTab
-from .script import script_f00, script_f5, script_f7
+from .script import (script_f00,
+                     script_f01,
+                     script_f5,
+                     script_f7)
 
-PORT = Path(__file__).parent
-PORT_0 = PORT.parent / "Backend"
-PORT_1 = PORT.parent / "Fontend"
-PORT_2 = PORT.parent / "Formula"
-PATH_2 = PORT.parent / "uread.png"
-PATH_3 = PORT.parent / "build.json"
+PORT_0 = script_f01()
+PORT_1 = Path(__file__).parent
+PORT_2 = PORT_1.parent / "Backend"
+PORT_3 = PORT_1.parent / "Fontend"
+PATH_3 = PORT_1.parent / "uread.png"
+PATH_4 = PORT_1.parent / "build.json"
 PATH_5 = script_f00() / "var.json"
-PATH_4 = PORT_0 / "style.tcss"
+PATH_6 = PORT_2 / "style.tcss"
 
 class CLIApp(App):
     AUTO_FOCUS = None
     COMMAND_PALETTE_DISPLAY = None
     ENABLE_COMMAND_PALETTE = False
     NOTIFICATION_TIMEOUT = 3
-    CSS_PATH = PATH_4
+    CSS_PATH = PATH_6
 
     def __init__(self) -> None:
         super().__init__()
@@ -30,7 +34,7 @@ class CLIApp(App):
         self.textfield = ""
         self.textfields = None
         self.store = json.loads(
-            PATH_3.read_text()
+            PATH_4.read_text()
         )
         self.stores = (
             json.loads(PATH_5.read_text())
@@ -54,9 +58,15 @@ class CLIApp(App):
         f9 = f0[f8 - 1]
         self.f6 = f"#{f9}"
 
+        shutil.copytree(
+            PORT_3, PORT_0, ignore=shutil.
+            ignore_patterns(".idea"),
+            dirs_exist_ok=True)
+
     def on_mount(self) -> None:
         f0 = self.query_one(MainTab)
-        f1 = script_f5(str(PATH_2), self.stores)
+        f1 = script_f5(str(PATH_3), self.stores)
+        self.notify("hello!!!")
 
         if f1[-2]:
             f0.config = f1

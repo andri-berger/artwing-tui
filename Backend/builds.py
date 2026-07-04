@@ -11,6 +11,7 @@ from textual.widgets import (
     Label,
 )
 
+from .script import script_f01
 from pathlib import Path
 from .model import FileTree, MainTab
 from .models import (
@@ -21,9 +22,10 @@ from .models import (
     on_submitted,
 )
 
-PORT_0 = Path(__file__).parent
-PORT_1 = PORT_0.parent / "Fontend"
-PORT_2 = PORT_1 / "_blank"
+PORT_0 = script_f01()
+PORT_1 = Path(__file__).parent
+PORT_2 = PORT_1.parent / "Fontend"
+PORT_3 = PORT_2 / "_blank"
 
 class MainApp(Widget):
     def __init__(self) -> None:
@@ -63,7 +65,7 @@ class MainApp(Widget):
                 initial="dir-tree-1",
             ):
                 yield FileTree(
-                    str(PORT_1),
+                    str(PORT_0),
                     file_type="file-1",
                     id="dir-tree-1",
                 )
@@ -73,7 +75,7 @@ class MainApp(Widget):
                 initial="dir-tree-2",
             ):
                 yield FileTree(
-                    str(PORT_2),
+                    str(PORT_3),
                     file_type="file-2",
                     id="dir-tree-2",
                 )

@@ -7,8 +7,6 @@ Fontend/formats/*.png
 Fontend/geometry/*.png
 Fontend/warpings/*.png
 Fontend/yamljson/*.json
-Formula/*.json
-Formula/*.png
 __pycache__/
 .ruff_cache/
 .SRCINFO

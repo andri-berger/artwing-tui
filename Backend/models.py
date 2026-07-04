@@ -13,14 +13,12 @@ from .script import (
     script_f3,
 )
 
-PORT = Path.cwd()
-PORT_00 = script_f00()
-PORT_0 = Path(__file__).parent
-PORT_1 = PORT_0.parent / "Fontend"
-PORT_2 = PORT_0.parent / "Formula"
-PORT_3 = PORT_1 / "yamljson"
-PATH_3 = PORT_00 / "var.json"
-PATH_4 = PORT_00 / "var.png"
+PORT_0 = script_f00()
+PORT_1 = Path(__file__).parent
+PORT_2 = PORT_1.parent / "Fontend"
+PORT_3 = PORT_2 / "yamljson"
+PATH_3 = PORT_0 / "var.json"
+PATH_4 = PORT_0 / "var.png"
 
 
 def on_highlighted(self, event) -> None:
@@ -193,7 +191,7 @@ def on_pressed(self, event) -> None:
             f27 = f26[1:] or []
             f28 = f"{f27}.json"
             f29 = f"{f11[3]}.png"
-            f30 = PORT_1 / f24[0]
+            f30 = PORT_2 / f24[0]
             f31 = PORT_3 / f28 / ""
             f32 = script_f0(f30 / f29)
             shutil.copy2(PATH_4, f32)
@@ -216,8 +214,8 @@ def on_pressed(self, event) -> None:
         f36 = time.time()
         f37 = str(int(f36))
         f38 = f37[1:] or []
-        f39 = PORT / f"{f37}.png"
-        f40 = PORT / f"{f38}.json"
+        f39 = PORT_0 / f"{f37}.png"
+        f40 = PORT_0 / f"{f38}.json"
         shutil.copy2(PATH_3, f40)
         shutil.copy2(PATH_4, f39)
 

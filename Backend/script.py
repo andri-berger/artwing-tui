@@ -1,19 +1,25 @@
 from pathlib import Path
-from platformdirs import user_data_dir
+from platformdirs import user_data_dir, user_state_dir
 import imagesize
 
-def script_f00() -> Path:
-    DIR  = user_data_dir(
+
+def script_f01() -> Path:
+    f0  = user_state_dir(
         "filterx-tui")
-    Path(DIR).mkdir(
+    Path(f0).mkdir(
         parents=True,
         exist_ok=True)
-    return Path(DIR)
+    return Path(f0)
 
-PORT_0 = Path(__file__).parent
-PORT_1 = PORT_0.parent / "Fontend"
-PORT_2 = PORT_0.parent / "Formula"
-PATH_2 = script_f00() / "var.json"
+
+def script_f00() -> Path:
+    f0  = user_data_dir(
+        "filterx-tui")
+    Path(f0).mkdir(
+        parents=True,
+        exist_ok=True)
+    return Path(f0)
+
 
 def script_f0(h) -> Path:
     f0 = h.stem
@@ -28,7 +34,6 @@ def script_f0(h) -> Path:
         else h
     )
     return f6
-
 
 def script_f1(h, h0, h1) -> None:
     for h2 in h.children:

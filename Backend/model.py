@@ -19,13 +19,14 @@ from .script import (
     script_f7,
 )
 
-PORT = Path(__file__)
-PORT_0 = Path(__file__).parent
-PORT_1 = PORT_0.parent / "Formula"
-PATH_1 = PORT_0.parent / "uread.png"
-PATH_2 = PORT_0.parent / "project.png"
-PATH_3 = script_f00() / "var.json"
-PATH_4 = script_f00() / "var.png"
+
+PORT_0 = script_f00()
+PORT_1 = Path(__file__)
+PORT_2 = PORT_1.parent.parent
+PATH_2 = PORT_2 / "project.png"
+PATH_3 = PORT_2 / "uread.png"
+PATH_4 = PORT_0 / "var.json"
+PATH_5 = PORT_0 / "var.png"
 
 
 class MainTab(Widget):
@@ -34,7 +35,7 @@ class MainTab(Widget):
     )
 
     def compose(self) -> ComposeResult:
-        yield Image(PATH_1)
+        yield Image(PATH_3)
 
     def on_mount(self) -> None:
         f0 = self.query_one(Image)
@@ -66,15 +67,15 @@ class MainTab(Widget):
                 f12,
                 f15,
                 "-output",
-                str(PATH_4),
+                str(PATH_5),
                 stdout=asyncio.subprocess.DEVNULL,
                 stderr=asyncio.subprocess.DEVNULL,
             ))
             await f16.communicate()
 
-            f17 = Image(PATH_4)
+            f17 = Image(PATH_5)
             f18 = self.size
-            script_f4(f18, f17, PATH_4)
+            script_f4(f18, f17, PATH_5)
             await self.mount(f17)
 
         if path[0] == 2:
@@ -151,12 +152,12 @@ class FileTree(DirectoryTree):
         f2 = event.path.name
         f3 = f1["_blank"]
         if f2 == "_blank":
-            f4 = [f3[3], str(PATH_1)]
+            f4 = [f3[3], str(PATH_3)]
             f5 = script_f6(self, *f4)
             f0.config = [2, *f5, *f4]
 
             f3[3] = 0 or ""
-            PATH_3.write_text(json.dumps(f1))
+            PATH_4.write_text(json.dumps(f1))
 
     @on(DirectoryTree.FileSelected)
     def selected(
@@ -183,7 +184,7 @@ class FileTree(DirectoryTree):
                 f2.config = [f12, *f14, *f13]
 
             elif f11[-1] == "json":
-                f15 = str(PATH_1)
+                f15 = str(PATH_3)
                 f16 = f9.read_text()
                 f17 = json.loads(f16)
                 self.app.stores = f17
@@ -196,7 +197,7 @@ class FileTree(DirectoryTree):
 
             script_f3(self, f6, f10)
             f20 = self.app.stores
-            PATH_3.write_text(json.dumps(f20))
+            PATH_4.write_text(json.dumps(f20))
 
         elif int(f7) == 2:
             f21 = f4["6"]
@@ -216,4 +217,4 @@ class FileTree(DirectoryTree):
                     f23[0] = f3.row
                     f23[1] = f3.column
 
-            PATH_3.write_text(json.dumps(f5))
+            PATH_4.write_text(json.dumps(f5))
