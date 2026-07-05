@@ -1,10 +1,10 @@
-class FilterxTui < Formula
+class ArtwingTui < Formula
   include Language::Python::Virtualenv
 
   license "GPL-3.0-only"
-  desc "Flexible Filterx Rack Processor in TUI format"
-  homepage "https://github.com/andri-berger/filterx-tui"
-  url "https://github.com/andri-berger/filterx-tui/archive/v0.1.0.tar.gz"
+  desc "Flexible Artwing Rack Processor in TUI format"
+  homepage "https://github.com/andri-berger/artwing-tui"
+  url "https://github.com/andri-berger/artwing-tui/archive/v0.1.0.tar.gz"
   sha256 "b0bb10dd319361adcc82a672130731814733e430704f82627ef8775f640da9a8"
   depends_on "python@3.14"
   depends_on "pillow"

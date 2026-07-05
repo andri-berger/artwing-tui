@@ -1,7 +1,7 @@
-# <img src="readme.png" width="50" valign="middle" alt="logo"> Filterx-TUI
-filterx-tui is a terminal-native creative filter engine wrapping G'MIC's extensive library of image effects into a comfortable spreadsheet-driven interface. Think of it as an effects rack for images, operated entirely from the terminal – a creative filter machine with no GUI overhead, no cloud dependency, no subscription. 
+# <img src="readme.png" width="50" valign="middle" alt="logo"> Artwing-TUI
+Artwork-TUI is a terminal-native creative filter engine wrapping G'MIC's extensive library of image effects into a comfortable spreadsheet-driven interface. Think of it as an effects rack for images, operated entirely from the terminal – a creative filter machine with no GUI overhead, no cloud dependency, no subscription. 
 
-The motivation was equally simple: G'MIC is one of the most powerful and underappreciated image processing tools in existence, yet its full potential remains largely inaccessible to anyone unwilling to memorize its command syntax or navigate its GIMP plugin interface. filterx-tui bridges that gap, exposing G'MIC's creative filter library through a structured, navigable interface that rewards exploration without demanding expertise. It is the sibling project of filterx-tuii, operating under the same GitHub umbrella and complementing it naturally: where filterx-tuii generates, filterx-tui processes.
+The motivation was equally simple: G'MIC is one of the most powerful and underappreciated image processing tools in existence, yet its full potential remains largely inaccessible to anyone unwilling to memorize its command syntax or navigate its GIMP plugin interface. artwing-tui bridges that gap, exposing G'MIC's creative filter library through a structured, navigable interface that rewards exploration without demanding expertise. It is the sibling project of artwork-tui, operating under the same GitHub umbrella and complementing it naturally: where artwork-tui generates, artwing-tui processes.
 
 [Installation](#installation) / 
 [Configuration](#configuration) / 
@@ -10,27 +10,27 @@ The motivation was equally simple: G'MIC is one of the most powerful and underap
 [Gallery](#gallery)
 
 
-<img src="filterx/Backend/modules/710000000.png" width="100%">
+<img src="artwing/Backend/modules/710000000.png" width="100%">
 <table>
   </tr>
     <tr>
-        <td><a href="filterx/Backend/modules/710000000.png">
-        <img src="filterx/Backend/modules/710000000.png"></a></td>
-        <td><a href="filterx/Backend/modules/710000001.png">
-        <img src="filterx/Backend/modules/710000001.png"></a></td>
-        <td><a href="filterx/Backend/modules/710000001.png">
-        <img src="filterx/Backend/modules/710000001.png"></a></td>
-        <td><a href="filterx/Backend/modules/710000002.png">
-        <img src="filterx/Backend/modules/710000002.png"></a></td>
-        <td><a href="filterx/Backend/modules/710000002.png">
-        <img src="filterx/Backend/modules/710000002.png"></a></td>
+        <td><a href="artwing/Backend/modules/710000000.png">
+        <img src="artwing/Backend/modules/710000000.png"></a></td>
+        <td><a href="artwing/Backend/modules/710000001.png">
+        <img src="artwing/Backend/modules/710000001.png"></a></td>
+        <td><a href="artwing/Backend/modules/710000001.png">
+        <img src="artwing/Backend/modules/710000001.png"></a></td>
+        <td><a href="artwing/Backend/modules/710000002.png">
+        <img src="artwing/Backend/modules/710000002.png"></a></td>
+        <td><a href="artwing/Backend/modules/710000002.png">
+        <img src="artwing/Backend/modules/710000002.png"></a></td>
     </tr>
   </tr>
 </table>
 
 
 ## Installation
-filterx-tui has no Electron, no npm, no 200 MB runtime surprise — just a Python TUI and G'MIC under the hood. Pick whichever method matches your setup below.
+Artwing-TUI has no Electron, no npm, no 200 MB runtime surprise — just a Python TUI and G'MIC under the hood. Pick whichever method matches your setup below.
 
 ### Generic Install (Native)
 Pulls the install script directly from the repo and wires everything up.
@@ -41,30 +41,30 @@ instinct — read the script first; it is short and does exactly what it says.
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/\
-andri-berger/filterx-tui/main/install.sh | sh
+andri-berger/artwing-tui/main/install.sh | sh
 ```
 
 ### macOS (Homebrew)
 Tap the formula and let Homebrew handle dependencies. G'MIC gets pulled in
 automatically via the formula's dependency spec. First install may take a
 moment while G'MIC builds its filter collection — subsequent updates via
-`brew upgrade` are quick. Additional, user-generated files are stored in the following directory => ~/Library/Application Support/filterx-tui
+`brew upgrade` are quick. Additional, user-generated files are stored in the following directory => ~/Library/Application Support/artwing-tui
 
 ```bash
-brew tap andri-berger/filterx-tui \
-https://github.com/andri-berger/filterx-tui
-brew install filterx-tui #install from tap
+brew tap andri-berger/artwing-tui \
+https://github.com/andri-berger/artwing-tui
+brew install artwing-tui #install from tap
 ```
 
 ### Arch Linux (AUR)
 Use your AUR helper of choice — the PKGBUILD handles the rest, including the
 G'MIC dependency. If you prefer doing it by hand, `git clone` the AUR repo
 and run `makepkg -si`; there is nothing exotic in the build. You run Arch,
-so you knew that already. Additional, user-generated files are stored in the following directories => ~/.local/share/filterx-tuii and ~/.local/state/filterx-tui
+so you knew that already. Additional, user-generated files are stored in the following directories => ~/.local/share/artwing-tui and ~/.local/state/artwing-tui
 
 ```bash
-yay -S filterx-tui 
-# paru -S filterx-tui
+yay -S artwing-tui 
+# paru -S artwing-tui
 ```
 
 ## Configuration
@@ -86,7 +86,7 @@ export. A typical session reads left to right: pick a base image, stack and
 tune filters, generate, export.
 
 ```bash
-filterx-tui #Launches the TUI
+artwing-tui #Launches the TUI
 # kitty, ghostty, wezterm are currently supported
 ```
 
@@ -97,67 +97,67 @@ filterx-tui #Launches the TUI
         <th align="left">Description</th>
     </tr>
     <tr>
-        <td><a href="filterx/Backend/modules/700000038.png">
-        <img src="filterx/Backend/modules/1700000038.png"></a></td>
+        <td><a href="artwing/Backend/modules/700000038.png">
+        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Global Filetree</kbd></td>
         <td>Choose either png (for the base image) or json (for your project-files). Mirror of your unrestricted / full filesystem, hence the name global. </td>
     </tr>
     <tr>
-        <td><a href="filterx/Backend/modules/700000038.png">
-        <img src="filterx/Backend/modules/1700000038.png"></a></td>
+        <td><a href="artwing/Backend/modules/700000038.png">
+        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Local Filetree</kbd></td>
         <td>Choose either png (for the base image) or json (for your project-files). Local Filesystem only hosting all files copied over via Button Create (see below), hence the name local. </td>
     </tr>
     <tr>
-        <td><a href="filterx/Backend/modules/700000038.png">
-        <img src="filterx/Backend/modules/1700000038.png"></a></td>
+        <td><a href="artwing/Backend/modules/700000038.png">
+        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>FX Filetree</kbd></td>
         <td>Browse the catalogue of available filter effects. Selecting an entry loads
 it into the Grid FX Rack, where its parameters become editable.</td>
     </tr>
     <tr>
-        <td><a href="filterx/Backend/modules/700000038.png">
-        <img src="filterx/Backend/modules/1700000038.png"></a></td>
+        <td><a href="artwing/Backend/modules/700000038.png">
+        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Grid FX Rack</kbd></td>
         <td>The heart of the app — a spreadsheet-style grid where selected effects are
 stacked like modules in a rack. Each row holds one effect with its parameters
 as editable cells; the stack is applied to the base image in order.</td>
     </tr>
     <tr>
-        <td><a href="filterx/Backend/modules/700000038.png">
-        <img src="filterx/Backend/modules/1700000038.png"></a></td>
+        <td><a href="artwing/Backend/modules/700000038.png">
+        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button X</kbd></td>
         <td>Clear currently active/selected FX Parameters. Resets the grid to a blank state so you can start a new composition — exported files on disk are not touched.</td>
     </tr>
     <tr>
-        <td><a href="filterx/Backend/modules/700000038.png">
-        <img src="filterx/Backend/modules/1700000038.png"></a></td>
+        <td><a href="artwing/Backend/modules/700000038.png">
+        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Afs</kbd></td>
         <td>Set previous Theme (there are 19 Themes in total to choose from).</td>
     </tr>
     <tr>
-        <td><a href="filterx/Backend/modules/700000038.png">
-        <img src="filterx/Backend/modules/1700000038.png"></a></td>
+        <td><a href="artwing/Backend/modules/700000038.png">
+        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Bfs</kbd></td>
         <td>Set next Theme (there are 19 Themes in total to choose from).</td>
     </tr>
     <tr>
-        <td><a href="filterx/Backend/modules/700000038.png">
-        <img src="filterx/Backend/modules/1700000038.png"></a></td>
+        <td><a href="artwing/Backend/modules/700000038.png">
+        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Cfs</kbd></td>
         <td>Copy/Export existing file to the local file directory, that can be used as base for further FX processing.</td>
     </tr>
     <tr>
-        <td><a href="filterx/Backend/modules/700000038.png">
-        <img src="filterx/Backend/modules/1700000038.png"></a></td>
+        <td><a href="artwing/Backend/modules/700000038.png">
+        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Create</kbd></td>
         <td>The heart of the app — a spreadsheet-style grid where selected effects are
 stacked like modules in a rack. Each row holds one effect with its parameters
 as editable cells; the stack is applied to the base image in order.</td>
     </tr>
     <tr>
-        <td><a href="filterx/Backend/modules/700000038.png">
-        <img src="filterx/Backend/modules/1700000038.png"></a></td>
+        <td><a href="artwing/Backend/modules/700000038.png">
+        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Export</kbd></td>
         <td>Export both generated (png) and project file (json) into the directory from where the app was executed / started.</td>
     </tr>
@@ -330,7 +330,7 @@ If you like what this project does, follow the links — the ideas started there
         Framework</kbd></td>
         <td>Platform</td><td>
         <a href="//github.com/tox-dev/platformdirs">
-        https://github.com/tox-dev/platformdirs</a></td>
+        https://github.com/tox-dev/platform</a></td>
     </tr>
     <tr>
         <td><kbd>
@@ -396,64 +396,64 @@ reproduce and feed them your own images.
 
 <table>
 <tr>
-    <td><a href="filterx/Backend/module/1780150638.png">
-    <img src="filterx/Backend/module/1780150638.png"></a></td>
-    <td><a href="filterx/Backend/module/1780150643.png">
-    <img src="filterx/Backend/module/1780150643.png"></a></td>
-    <td><a href="filterx/Backend/module/1780150675.png">
-    <img src="filterx/Backend/module/1780150675.png"></a></td>
-    <td><a href="filterx/Backend/module/1780150689.png">
-    <img src="filterx/Backend/module/1780150689.png"></a></td>
-    <td><a href="filterx/Backend/module/1780150715.png">
-    <img src="filterx/Backend/module/1780150715.png"></a></td>
+    <td><a href="artwing/Backend/module/1780150638.png">
+    <img src="artwing/Backend/module/1780150638.png"></a></td>
+    <td><a href="artwing/Backend/module/1780150643.png">
+    <img src="artwing/Backend/module/1780150643.png"></a></td>
+    <td><a href="artwing/Backend/module/1780150675.png">
+    <img src="artwing/Backend/module/1780150675.png"></a></td>
+    <td><a href="artwing/Backend/module/1780150689.png">
+    <img src="artwing/Backend/module/1780150689.png"></a></td>
+    <td><a href="artwing/Backend/module/1780150715.png">
+    <img src="artwing/Backend/module/1780150715.png"></a></td>
 </tr>
 <tr>
-    <td><a href="filterx/Backend/module/1780150731.png">
-    <img src="filterx/Backend/module/1780150731.png"></a></td>
-    <td><a href="filterx/Backend/module/1780150740.png">
-    <img src="filterx/Backend/module/1780150740.png"></a></td>
-    <td><a href="filterx/Backend/module/1780150748.png">
-    <img src="filterx/Backend/module/1780150748.png"></a></td>  
-    <td><a href="filterx/Backend/module/1780151480.png">
-    <img src="filterx/Backend/module/1780151480.png"></a></td>  
-    <td><a href="filterx/Backend/module/1780151501.png">
-    <img src="filterx/Backend/module/1780151501.png"></a></td>
+    <td><a href="artwing/Backend/module/1780150731.png">
+    <img src="artwing/Backend/module/1780150731.png"></a></td>
+    <td><a href="artwing/Backend/module/1780150740.png">
+    <img src="artwing/Backend/module/1780150740.png"></a></td>
+    <td><a href="artwing/Backend/module/1780150748.png">
+    <img src="artwing/Backend/module/1780150748.png"></a></td>  
+    <td><a href="artwing/Backend/module/1780151480.png">
+    <img src="artwing/Backend/module/1780151480.png"></a></td>  
+    <td><a href="artwing/Backend/module/1780151501.png">
+    <img src="artwing/Backend/module/1780151501.png"></a></td>
 </tr>
 <tr>
-    <td><a href="filterx/Backend/module/1780151522.png">
-    <img src="filterx/Backend/module/1780151522.png"></a></td>
-    <td><a href="filterx/Backend/module/1780159196.png">
-    <img src="filterx/Backend/module/1780159196.png"></a></td>
-    <td><a href="filterx/Backend/module/1780159214.png">
-    <img src="filterx/Backend/module/1780159214.png"></a></td>
-    <td><a href="filterx/Backend/module/1780159226.png">
-    <img src="filterx/Backend/module/1780159226.png"></a></td>
-    <td><a href="filterx/Backend/module/1780159230.png">
-    <img src="filterx/Backend/module/1780159230.png"></a></td>  
+    <td><a href="artwing/Backend/module/1780151522.png">
+    <img src="artwing/Backend/module/1780151522.png"></a></td>
+    <td><a href="artwing/Backend/module/1780159196.png">
+    <img src="artwing/Backend/module/1780159196.png"></a></td>
+    <td><a href="artwing/Backend/module/1780159214.png">
+    <img src="artwing/Backend/module/1780159214.png"></a></td>
+    <td><a href="artwing/Backend/module/1780159226.png">
+    <img src="artwing/Backend/module/1780159226.png"></a></td>
+    <td><a href="artwing/Backend/module/1780159230.png">
+    <img src="artwing/Backend/module/1780159230.png"></a></td>  
 </tr>
 <tr>
-    <td><a href="filterx/Backend/module/1780159311.png">
-    <img src="filterx/Backend/module/1780159311.png"></a></td>
-    <td><a href="filterx/Backend/module/1780159326.png">
-    <img src="filterx/Backend/module/1780159326.png"></a></td>
-    <td><a href="filterx/Backend/module/1780159589.png">
-    <img src="filterx/Backend/module/1780159589.png"></a></td>
-    <td><a href="filterx/Backend/module/1780159608.png">
-    <img src="filterx/Backend/module/1780159608.png"></a></td>
-    <td><a href="filterx/Backend/module/1780159627.png">
-    <img src="filterx/Backend/module/1780159627.png"></a></td>
+    <td><a href="artwing/Backend/module/1780159311.png">
+    <img src="artwing/Backend/module/1780159311.png"></a></td>
+    <td><a href="artwing/Backend/module/1780159326.png">
+    <img src="artwing/Backend/module/1780159326.png"></a></td>
+    <td><a href="artwing/Backend/module/1780159589.png">
+    <img src="artwing/Backend/module/1780159589.png"></a></td>
+    <td><a href="artwing/Backend/module/1780159608.png">
+    <img src="artwing/Backend/module/1780159608.png"></a></td>
+    <td><a href="artwing/Backend/module/1780159627.png">
+    <img src="artwing/Backend/module/1780159627.png"></a></td>
 </tr>
 <tr>
-    <td><a href="filterx/Backend/module/1780159636.png">
-    <img src="filterx/Backend/module/1780159636.png"></a></td>
-    <td><a href="filterx/Backend/module/1780159664.png">
-    <img src="filterx/Backend/module/1780159664.png"></a></td>
-    <td><a href="filterx/Backend/module/1780159667.png">
-    <img src="filterx/Backend/module/1780159667.png"></a></td>
-    <td><a href="filterx/Backend/module/1780159675.png">
-    <img src="filterx/Backend/module/1780159675.png"></a></td>
-    <td><a href="filterx/Backend/module/1780159679.png">
-    <img src="filterx/Backend/module/1780159679.png"></a></td>
+    <td><a href="artwing/Backend/module/1780159636.png">
+    <img src="artwing/Backend/module/1780159636.png"></a></td>
+    <td><a href="artwing/Backend/module/1780159664.png">
+    <img src="artwing/Backend/module/1780159664.png"></a></td>
+    <td><a href="artwing/Backend/module/1780159667.png">
+    <img src="artwing/Backend/module/1780159667.png"></a></td>
+    <td><a href="artwing/Backend/module/1780159675.png">
+    <img src="artwing/Backend/module/1780159675.png"></a></td>
+    <td><a href="artwing/Backend/module/1780159679.png">
+    <img src="artwing/Backend/module/1780159679.png"></a></td>
 </tr>
 </table>
 <br>

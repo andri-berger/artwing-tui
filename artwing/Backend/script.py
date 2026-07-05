@@ -5,7 +5,7 @@ import imagesize
 
 def script_f01() -> Path:
     f0  = user_state_dir(
-        "filterx-tui")
+        "artwing-tui")
     Path(f0).mkdir(
         parents=True,
         exist_ok=True)
@@ -14,7 +14,7 @@ def script_f01() -> Path:
 
 def script_f00() -> Path:
     f0  = user_data_dir(
-        "filterx-tui")
+        "artwing-tui")
     Path(f0).mkdir(
         parents=True,
         exist_ok=True)

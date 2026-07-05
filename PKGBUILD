@@ -1,10 +1,10 @@
 pkgrel=1
 pkgver=0.1.0
 arch=('any')
-pkgname=filterx-tui
+pkgname=artwing-tui
 license=('GPL-3.0-only')
 pkgdesc='Flexible FilterFX Layer in TUI format'
-url='https://github.com/andri-berger/filterx-tui'
+url="https://github.com/andri-berger/${pkgname}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/andri-berger/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('b0bb10dd319361adcc82a672130731814733e430704f82627ef8775f640da9a8')
 makedepends=(

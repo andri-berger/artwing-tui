@@ -1,4 +1,4 @@
-from filterx.Backend.build import CLIApp
+from artwing.Backend.build import CLIApp
 
 
 def init():
