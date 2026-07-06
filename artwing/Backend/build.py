@@ -1,14 +1,17 @@
 import json
 import shutil
 from pathlib import Path
+
 from textual.app import App, ComposeResult
 
 from .builds import MainApp
 from .model import MainTab
-from .script import (script_f00,
-                     script_f01,
-                     script_f5,
-                     script_f7)
+from .script import (
+    script_f00,
+    script_f01,
+    script_f5,
+    script_f7,
+)
 
 PORT_00 = script_f00()
 PORT_0 = script_f01()
@@ -23,14 +26,15 @@ PATH_7 = PORT_0 / "_blank"
 
 
 shutil.copytree(
-    PORT_3, PORT_0,
-    ignore=shutil.
-    ignore_patterns(".*"),
-    dirs_exist_ok=True)
+    PORT_3,
+    PORT_0,
+    ignore=shutil.ignore_patterns(".*"),
+    dirs_exist_ok=True,
+)
 for entry in PATH_7.iterdir():
-    shutil.rmtree(entry) \
-        if entry.is_dir() \
-        else entry.unlink()
+    shutil.rmtree(
+        entry
+    ) if entry.is_dir() else entry.unlink()
 
 
 class CLIApp(App):
