@@ -1,24 +1,23 @@
 from pathlib import Path
-from platformdirs import user_data_dir, user_state_dir
+
 import imagesize
+from platformdirs import (
+    user_data_dir,
+    user_state_dir,
+)
 
 
 def script_f01() -> Path:
-    f0  = user_state_dir(
-        "artwing-tui")
-    Path(f0).mkdir(
-        parents=True,
-        exist_ok=True)
+    f0 = user_state_dir("artwing-tui")
+    Path(f0).mkdir(parents=True, exist_ok=True)
     return Path(f0)
 
 
 def script_f00() -> Path:
-    f0  = user_data_dir(
-        "artwing-tui")
-    Path(f0).mkdir(
-        parents=True,
-        exist_ok=True)
+    f0 = user_data_dir("artwing-tui")
+    Path(f0).mkdir(parents=True, exist_ok=True)
     return Path(f0)
+
 
 def _ignore(dirpath, names):
     skip = {n for n in names if n.startswith(".")}
@@ -40,6 +39,7 @@ def script_f0(h) -> Path:
         else h
     )
     return f6
+
 
 def script_f1(h, h0, h1) -> None:
     for h2 in h.children:
