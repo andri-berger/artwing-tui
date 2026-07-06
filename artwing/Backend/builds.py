@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from textual import events, on
 from textual.app import ComposeResult
 from textual.containers import Horizontal
@@ -11,8 +13,6 @@ from textual.widgets import (
     Label,
 )
 
-from .script import script_f01
-from pathlib import Path
 from .model import FileTree, MainTab
 from .models import (
     on_highlighted,
@@ -21,11 +21,13 @@ from .models import (
     on_shift_tab,
     on_submitted,
 )
+from .script import script_f01
 
 PORT_0 = script_f01()
 PORT_1 = Path(__file__).parent
 PORT_2 = PORT_1.parent / "Frontend"
 PORT_3 = PORT_2 / "_blank"
+
 
 class MainApp(Widget):
     def __init__(self) -> None:
