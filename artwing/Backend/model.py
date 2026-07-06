@@ -19,7 +19,6 @@ from .script import (
     script_f7,
 )
 
-
 PORT_0 = script_f00()
 PORT_1 = Path(__file__)
 PORT_2 = PORT_1.parent.parent
@@ -60,8 +59,7 @@ class MainTab(Widget):
             f14 = [h1 for h1 in f3 if h1 != ""]
             f15 = f13 if len(f14) else ","
 
-            f16 = await (asyncio.
-            create_subprocess_exec(
+            f16 = await asyncio.create_subprocess_exec(
                 "gmic",
                 str(f5),
                 f12,
@@ -70,7 +68,7 @@ class MainTab(Widget):
                 str(PATH_5),
                 stdout=asyncio.subprocess.DEVNULL,
                 stderr=asyncio.subprocess.DEVNULL,
-            ))
+            )
             await f16.communicate()
 
             f17 = Image(PATH_5)
