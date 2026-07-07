@@ -7,6 +7,7 @@ from platformdirs import (
 )
 
 
+
 def script_f01() -> Path:
     f0 = user_state_dir("artwing-tui")
     Path(f0).mkdir(parents=True, exist_ok=True)
