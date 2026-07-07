@@ -8,6 +8,7 @@ else
     echo "uv already installed, skipping"
 fi
 
+
 if command -v gmic >/dev/null 2>&1; then
     echo "gmic already installed, skipping"
 elif command -v pacman >/dev/null 2>&1; then
