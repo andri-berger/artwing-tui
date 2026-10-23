@@ -46,9 +46,29 @@ andri-berger/artwing-tui/main/install.sh | sh
 ```
 
 To update, run the same command again. To remove it, run
-`uv tool uninstall artwing-tui`. Additional, user-generated files are stored in
-~/.local/share/artwing-tui and ~/.local/state/artwing-tui on Linux, and in
-~/Library/Application Support/artwing-tui on macOS.
+`uv tool uninstall artwing-tui`. User-generated files are not removed with it,
+see below.
+
+### Where your files end up
+Artwing keeps two folders per user, a share (data) folder and a state folder.
+`$XDG_DATA_HOME` and `$XDG_STATE_HOME` override the defaults on both systems.
+
+| | Linux | macOS |
+|---|---|---|
+| Share | `~/.local/share/artwing-tui` | `~/Library/Application Support/artwing-tui` |
+| State | `~/.local/state/artwing-tui` | `~/Library/Application Support/artwing-tui` |
+| Share, XDG set | `$XDG_DATA_HOME/artwing-tui` | `$XDG_DATA_HOME/artwing-tui` |
+| State, XDG set | `$XDG_STATE_HOME/artwing-tui` | `$XDG_STATE_HOME/artwing-tui` |
+
+- **Export (F9)** writes the png and its json project file into the share
+  folder, named by timestamp, e.g. `1792780000.png` and `792780000.json`.
+- **Create (F8)** writes the png into the state folder, under the category of
+  the active effect, e.g. `filter/blur_all.png` (`blur_all_0.png` and so on
+  if it already exists), and its json into
+  `yamljson/`. These are the files the local tree in the middle shows.
+- The share folder also holds the working copies `1700000000.png` (current
+  preview) and `700000000.json` (current state), which are overwritten as you
+  work.
 
 ## Configuration
 The interface is built from a small set of panels and buttons, each described
@@ -142,7 +162,7 @@ as editable cells; the stack is applied to the base image in order.</td>
         <td><a href="artwing/Backend/modules/700000038.png">
         <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Export</kbd></td>
-        <td>Export both generated (png) and project file (json) into the directory from where the app was executed / started.</td>
+        <td>Export both generated (png) and project file (json) into the share folder, see Where your files end up.</td>
     </tr>
 </table>
 
