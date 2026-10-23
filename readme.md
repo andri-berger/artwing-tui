@@ -35,8 +35,9 @@ Artwing-TUI has no Electron, no npm, no 200 MB runtime surprise — just a Pytho
 
 ### Generic Install (Native)
 Pulls the install script directly from the repo and wires everything up.
-Requires Python 3.11+ and G'MIC to be present on your system. The script uses
-uv under the hood, so installation lands in an isolated environment and never
+The script installs uv and G'MIC if they are missing (G'MIC 3.x recommended,
+some filters are missing in 2.9). uv brings its own Python 3.14 when your
+system has none, so installation lands in an isolated environment and never
 touches your system Python. If piping curl into sh makes you twitch — good
 instinct — read the script first; it is short and does exactly what it says.
 

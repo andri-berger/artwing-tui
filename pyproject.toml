@@ -1,5 +1,5 @@
 [project]
-version = "0.0.2"
+version = "0.1.1"
 name = "artwing-tui"
 description = "artwing gmic"
 license = { file = "LICENSE" }
@@ -23,6 +23,10 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 include = ["artwing"]
+# gallery images for the readme, not needed at runtime
+exclude = [
+    "artwing/Backend/module",
+    "artwing/Backend/modules"]
 
 [project.scripts]
 artwing-tui ="artwing.init:init"
