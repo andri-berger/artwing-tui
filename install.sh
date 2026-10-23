@@ -4,8 +4,7 @@
 set -eu
 
 # REF is rewritten by release.sh on every release
-REF="v0.1.1"
-URL="https://github.com/andri-berger/artwing-tui/archive/refs/tags/${REF}.tar.gz"
+URL="https://github.com/andri-berger/artwing-tui/archive/refs/heads/main.tar.gz"
 
 say() { printf '%s\n' "$*"; }
 die() { printf 'error: %s\n' "$*" >&2; exit 1; }
@@ -62,7 +61,7 @@ case "$GMIC_VERSION" in
 esac
 
 # 3. artwing-tui
-say "installing artwing-tui ${REF}..."
+say "installing artwing-tui..."
 uv tool install --force --python ">=3.14" "artwing-tui @ ${URL}" --quiet
 
 if has artwing-tui; then
