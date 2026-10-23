@@ -160,7 +160,8 @@ def on_pressed(self, event) -> None:
         f15.textfields.stop()
         f15.textfields = None
 
-    if int(f14) == 0:
+    # X: nothing to clear without an effect
+    if int(f14) == 0 and f11[3]:
         f16 = [f7.row, f7.column]
         script_f3(self, f8, f11[3])
         f0.config = [0, *f16, *f11[3:]]

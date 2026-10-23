@@ -50,14 +50,26 @@ class MainTab(Widget):
         f3 = path[3:-2]
         f4 = path[-2]
         f5 = path[-1]
+        f12 = None
         f23 = None
 
         if path[0] <= 1:
-            f12 = f2.get(f4, f4)
             f13 = ",".join(str(h0) for h0 in f3)
             f14 = [h1 for h1 in f3 if h1 != ""]
             f15 = f13 if len(f14) else ","
+            # only listed effects and plain values
+            # reach gmic, a loaded json could hold
+            # commands (exec) or {..}/$ expansions
+            f24 = set(f13) & set("{}$")
+            if f4 in f1 and not f24:
+                f12 = f2.get(f4, f4)
+            else:
+                self.app.notify(
+                    f"{f4}: not allowed",
+                    severity="error",
+                )
 
+        if f12 is not None:
             f16 = await asyncio.create_subprocess_exec(
                 "gmic",
                 str(script_f13(f5)),
@@ -85,8 +97,9 @@ class MainTab(Widget):
                     f"gmic {f12}: {f22}",
                     severity="error",
                 )
-
-            if PATH_01.exists():
+            else:
+                # on failure keep the preview, the
+                # old output must not pose as new
                 f23 = PATH_01
 
         if path[0] == 2:
@@ -94,8 +107,8 @@ class MainTab(Widget):
 
         # swap images only once gmic is done,
         # so the preview never goes blank
-        await self.query(Image).remove()
         if f23 is not None:
+            await self.query(Image).remove()
             try:
                 f17 = Image(f23)
                 f18 = self.size

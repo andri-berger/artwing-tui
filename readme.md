@@ -95,72 +95,51 @@ artwing-tui #Launches the TUI
 
 <table>
     <tr>
-        <th width="20">Docs</th>
         <th align="left">Element</th>
         <th align="left">Description</th>
     </tr>
     <tr>
-        <td><a href="artwing/Backend/modules/700000038.png">
-        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Global Filetree</kbd></td>
         <td>Choose either an image (png, jpg, bmp, gif, tif, webp, ppm/pgm/pnm or tga as base image) or json (for your project-files). Mirror of your unrestricted / full filesystem, hence the name global. </td>
     </tr>
     <tr>
-        <td><a href="artwing/Backend/modules/700000038.png">
-        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Local Filetree</kbd></td>
         <td>Choose either an image (png, jpg, bmp, gif, tif, webp, ppm/pgm/pnm or tga as base image) or json (for your project-files). Local Filesystem only hosting all files copied over via Button Create (see below), hence the name local. </td>
     </tr>
     <tr>
-        <td><a href="artwing/Backend/modules/700000038.png">
-        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>FX Filetree</kbd></td>
         <td>Browse the catalogue of available filter effects. Selecting an entry loads
 it into the Grid FX Rack, where its parameters become editable.</td>
     </tr>
     <tr>
-        <td><a href="artwing/Backend/modules/700000038.png">
-        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Grid FX Rack</kbd></td>
         <td>The heart of the app — a spreadsheet-style grid where selected effects are
 stacked like modules in a rack. Each row holds one effect with its parameters
 as editable cells; the stack is applied to the base image in order.</td>
     </tr>
     <tr>
-        <td><a href="artwing/Backend/modules/700000038.png">
-        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button X</kbd></td>
         <td>Clear currently active/selected FX Parameters. Resets the grid to a blank state so you can start a new composition — exported files on disk are not touched.</td>
     </tr>
     <tr>
-        <td><a href="artwing/Backend/modules/700000038.png">
-        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Afs</kbd></td>
         <td>Set previous Theme (there are 19 Themes in total to choose from).</td>
     </tr>
     <tr>
-        <td><a href="artwing/Backend/modules/700000038.png">
-        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Bfs</kbd></td>
         <td>Set next Theme (there are 19 Themes in total to choose from).</td>
     </tr>
     <tr>
-        <td><a href="artwing/Backend/modules/700000038.png">
-        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Cfs</kbd></td>
         <td>Copy/Export existing file to the local file directory, that can be used as base for further FX processing.</td>
     </tr>
     <tr>
-        <td><a href="artwing/Backend/modules/700000038.png">
-        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Create</kbd></td>
         <td>The heart of the app — a spreadsheet-style grid where selected effects are
 stacked like modules in a rack. Each row holds one effect with its parameters
 as editable cells; the stack is applied to the base image in order.</td>
     </tr>
     <tr>
-        <td><a href="artwing/Backend/modules/700000038.png">
-        <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Button Export</kbd></td>
         <td>Export both generated (png) and project file (json) into the share folder, see Where your files end up.</td>
     </tr>
