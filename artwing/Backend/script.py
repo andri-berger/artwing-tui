@@ -94,15 +94,20 @@ def script_f4(h, h0, h1) -> None:
 
 def script_f5(h, h0) -> list:
     f0 = [0, 0, 0, "", ""]
-    h0.setdefault("_blank", f0)
+    # a copy, the returned list must not be
+    # the stored one
+    h0.setdefault("_blank", [*f0])
     f1 = h0.get("_blank")[4]
     f2 = h0.get("_blank")[3]
-    f3 = h0.get(f2, None)
+    f3 = h0.get(f2) if f2 else None
     f4 = f1 or h or ""
     h0["_blank"][4] = f4
     if f3 is not None:
         f4 = [*f3, f2, f4]
         f0 = [0, *f4]
+    # an image without effect comes back raw
+    elif f1 and Path(f1).is_file():
+        f0 = [2, 0, 0, f2, f4]
     return f0
 
 

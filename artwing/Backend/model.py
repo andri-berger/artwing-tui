@@ -35,12 +35,15 @@ class MainTab(Widget):
     )
 
     def compose(self) -> ComposeResult:
-        yield Image(PATH_3)
+        # a restored image follows right after
+        # startup, no fallback image before it
+        if not self.app.restored[-1]:
+            yield Image(PATH_3)
 
     def on_mount(self) -> None:
-        f0 = self.query_one(Image)
-        f0.styles.width = "auto"
-        f0.styles.height = "100%"
+        for f0 in self.query(Image):
+            f0.styles.width = "auto"
+            f0.styles.height = "100%"
 
     @work(exclusive=True)
     async def watch_config(self, path) -> None:
@@ -115,7 +118,6 @@ class MainTab(Widget):
         # swap images only once gmic is done,
         # so the preview never goes blank
         if f23 is not None:
-            await self.query(Image).remove()
             try:
                 f17 = Image(f23)
                 f18 = self.size
@@ -126,7 +128,16 @@ class MainTab(Widget):
                     severity="error",
                 )
             else:
+                await self.query(Image).remove()
                 await self.mount(f17)
+
+        # a failed restore at startup shows the
+        # fallback image instead of nothing
+        if not self.query(Image):
+            f20 = Image(PATH_3)
+            f20.styles.width = "auto"
+            f20.styles.height = "100%"
+            await self.mount(f20)
 
         if path[0] == 0:
             with self.app.batch_update():
@@ -251,7 +262,9 @@ class FileTree(DirectoryTree):
         if int(f7) <= 1:
             f11 = f9.suffix.lower()
             if f11 in FORMATS:
-                f12 = 2 - f8[0] or 0
+                # an active effect is reapplied to
+                # the new image, else it shows raw
+                f12 = 1 if f8[3] in f4["7"] else 2
                 f13 = [f8[3], str(f9)]
                 f14 = script_f6(self, *f13)
                 f2.config = [f12, *f14, *f13]
@@ -268,10 +281,10 @@ class FileTree(DirectoryTree):
                 self.app.stores = f17
                 f18 = script_f5(f15, f17)
 
-                if f18[-2]:
-                    f19 = f18[-2]
+                if f18[-1]:
                     f2.config = f18
-                    script_f7(self.app, f19)
+                if f18[-2]:
+                    script_f7(self.app, f18[-2])
 
             script_f3(self.app, f6, f10)
             f20 = self.app.stores

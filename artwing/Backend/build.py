@@ -82,14 +82,20 @@ class CLIApp(App):
         f8 = f6 or 3
         f9 = f0[f8 - 1]
         self.f6 = f"#{f9}"
+        # what on_mount restores, MainTab skips
+        # the fallback image when there is one
+        self.restored = script_f5(
+            str(PATH_3), self.stores
+        )
 
     def on_mount(self) -> None:
         f0 = self.query_one(MainTab)
-        f1 = script_f5(str(PATH_3), self.stores)
+        f1 = self.restored
         self.notify("hello!!!")
 
-        if f1[-2]:
+        if f1[-1]:
             f0.config = f1
+        if f1[-2]:
             script_f7(self, f1[-2])
 
         # reopen the left tree at the last file,
