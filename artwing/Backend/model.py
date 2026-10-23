@@ -80,6 +80,12 @@ class MainTab(Widget):
         if path[0] == 2:
             f19 = []
 
+        # an effect clears the preview at once,
+        # its result shows when gmic is done,
+        # never a stale image before it
+        if f19:
+            await self.query(Image).remove()
+
         if f19 is not None:
             f16 = await asyncio.create_subprocess_exec(
                 "gmic",
@@ -107,16 +113,17 @@ class MainTab(Widget):
                     f"gmic {f12}: {f22}",
                     severity="error",
                 )
+                # show the base image, the old
+                # output must not pose as new
+                f23 = f5
             elif path[0] <= 1:
-                # on failure keep the preview, the
-                # old output must not pose as new
                 f23 = PATH_01
 
         if path[0] == 2:
             f23 = f5
 
-        # swap images only once gmic is done,
-        # so the preview never goes blank
+        # swap in the new image once gmic is
+        # done, a raw view keeps the old till then
         if f23 is not None:
             try:
                 f17 = Image(f23)
@@ -131,7 +138,7 @@ class MainTab(Widget):
                 await self.query(Image).remove()
                 await self.mount(f17)
 
-        # a failed restore at startup shows the
+        # a failed effect or restore shows the
         # fallback image instead of nothing
         if not self.query(Image):
             f20 = Image(PATH_3)
