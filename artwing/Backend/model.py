@@ -12,6 +12,7 @@ from textual_image.widget import Image
 from .script import (
     FORMATS,
     PATH_01,
+    PATH_03,
     script_f3,
     script_f4,
     script_f5,
@@ -33,6 +34,10 @@ class MainTab(Widget):
     config: reactive[dict] = reactive(
         dict, init=False
     )
+    # what PATH_01 holds: [effect, image],
+    # effect "" for raw; None while a render
+    # runs or after it failed
+    rendered = None
 
     def compose(self) -> ComposeResult:
         # a restored image follows right after
@@ -56,6 +61,7 @@ class MainTab(Widget):
         f12 = Path(f5).name
         f19 = None
         f23 = None
+        self.rendered = None
 
         if path[0] <= 1:
             f13 = ",".join(str(h0) for h0 in f3)
@@ -95,7 +101,7 @@ class MainTab(Widget):
                 "-keep[0]",
                 *f19,
                 "-output",
-                str(PATH_01),
+                str(PATH_03),
                 stdout=asyncio.subprocess.DEVNULL,
                 stderr=asyncio.subprocess.PIPE,
             )
@@ -116,8 +122,12 @@ class MainTab(Widget):
                 # show the base image, the old
                 # output must not pose as new
                 f23 = f5
-            elif path[0] <= 1:
-                f23 = PATH_01
+            else:
+                PATH_03.replace(PATH_01)
+                f28 = f4 if path[0] <= 1 else ""
+                self.rendered = [f28, f5]
+                if path[0] <= 1:
+                    f23 = PATH_01
 
         if path[0] == 2:
             f23 = f5
@@ -209,11 +219,19 @@ class FileTree(DirectoryTree):
         # open the tree down to the last used
         # file, using only public reloads
         f0 = Path(path)
+        f4 = Path(self.path)
         if not f0.is_file():
             return
         await self.reload()
         f1 = self.root
-        f2 = [*reversed(f0.parents[:-1]), f0]
+        # walk down from this tree's own root
+        f2 = [
+            *(
+                h for h in reversed(f0.parents)
+                if f4 in h.parents
+            ),
+            f0,
+        ]
         for h0 in f2:
             f3 = next(
                 (
@@ -230,7 +248,8 @@ class FileTree(DirectoryTree):
                 await self.reload_node(f1)
         # reading last_line lays out the tree,
         # so the node knows its line
-        if self.last_line >= 0:
+        f5 = f1 is not self.root
+        if self.last_line >= 0 and f5:
             self.move_cursor(f1, animate=False)
 
     @on(DirectoryTree.DirectorySelected)

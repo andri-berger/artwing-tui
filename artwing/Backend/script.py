@@ -26,6 +26,9 @@ PORT_00 = script_f00()
 PATH_00 = PORT_00 / "700000000.json"
 PATH_01 = PORT_00 / "1700000000.png"
 PATH_02 = PORT_00 / "1700000001"
+# gmic writes here, PATH_01 is replaced
+# only by a finished render
+PATH_03 = PORT_00 / "1700000002.png"
 # raster formats both gmic and pillow read
 FORMATS = (
     ".png",
@@ -50,11 +53,16 @@ def _ignore(dirpath, names):
     return skip
 
 
-def script_f0(h) -> Path:
+def script_f0(*h) -> list:
+    # free names, all with the same _N, so
+    # a png and its json stay a pair
     f0 = 0
-    f1 = h
-    while f1.exists():
-        f1 = h.with_stem(f"{h.stem}_{f0}")
+    f1 = [*h]
+    while any(h0.exists() for h0 in f1):
+        f1 = [
+            h0.with_stem(f"{h0.stem}_{f0}")
+            for h0 in h
+        ]
         f0 += 1
     return f1
 

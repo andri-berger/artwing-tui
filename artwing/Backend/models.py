@@ -1,11 +1,12 @@
+import json
 import shutil
 import time
+from pathlib import Path
 
 from textual.widgets import DataTable, Input
 
 from .model import FileTree, MainTab
 from .script import (
-    PATH_00,
     PATH_01,
     PORT_00,
     script_f0,
@@ -13,7 +14,6 @@ from .script import (
     script_f2,
     script_f3,
     script_f9,
-    script_f11,
 )
 
 PORT_0 = script_f01()
@@ -152,9 +152,15 @@ def on_pressed(self, event) -> None:
 
     f3.update(f12)
 
-    # nothing to save before the first image
-    # has been through gmic
-    f34 = PATH_00.exists() and PATH_01.exists()
+    # only a finished render is saved, never
+    # an older one while gmic runs or failed
+    f34 = f0.rendered
+    if int(f14) in (4, 5) and f34 is None:
+        self.app.notify(
+            "NOTHING SAVED, the image is still"
+            " rendering or its effect failed",
+            severity="warning",
+        )
 
     # X: nothing to clear without an effect
     if int(f14) == 0 and f11[3]:
@@ -182,38 +188,43 @@ def on_pressed(self, event) -> None:
         # still restores the same theme
         f11[2] = f23
 
-    elif int(f14) == 4:
-        f24 = f6.get(f11[3])
-        if f24 is not None and f34:
-            f25 = time.time()
-            f26 = str(int(f25))
-            f27 = f26[1:]
-            f28 = f"{f27}.json"
-            f29 = f"{f11[3]}.png"
-            f30 = PORT_0 / f24[0]
-            f31 = PORT_3 / f28
-            f32 = script_f0(f30 / f29)
-            shutil.copy2(PATH_01, f32)
-            shutil.copy2(PATH_00, f31)
-
-            f33 = script_f11(f2, f24[0])
-            if f33 is not None:
-                self.set_timer(
-                    0.1,
-                    lambda: f2.move_cursor(f33),
-                )
-            f2.reload()
+    elif int(f14) == 4 and f34:
+        # an effect goes to its category, a raw
+        # image to the root, named after it;
+        # the json is named after the png
+        f24 = f6.get(f34[0])
+        f25 = f34[0] or Path(f34[1]).stem
+        f30 = PORT_0 / f24[0] if f24 else PORT_0
+        f32, f31 = script_f0(
+            f30 / f"{f25}.png",
+            PORT_3 / f"{f25}.json",
+        )
+        f32.parent.mkdir(exist_ok=True)
+        f31.parent.mkdir(exist_ok=True)
+        shutil.copy2(PATH_01, f32)
+        f31.write_text(json.dumps(f9))
+        # cursor on the new png, so it can be
+        # picked as the next source right away
+        f2.reveal(f32)
+        script_f3(self, f8, "", f15)
 
     elif int(f14) == 5 and f34:
-        f36 = time.time()
-        f37 = str(int(f36))
-        f38 = f37[1:]
+        # png and json share one timestamp,
+        # the next free one
+        f36 = int(time.time())
+        while any(
+            h.exists()
+            for h in (
+                PORT_00 / f"{f36}.png",
+                PORT_00 / f"{str(f36)[1:]}.json",
+            )
+        ):
+            f36 += 1
+        f37 = str(f36)
         f39 = PORT_00 / f"{f37}.png"
-        f40 = PORT_00 / f"{f38}.json"
-        shutil.copy2(PATH_00, f40)
+        f40 = PORT_00 / f"{f37[1:]}.json"
+        f40.write_text(json.dumps(f9))
         shutil.copy2(PATH_01, f39)
-
-    if int(f14) in (4, 5):
         script_f3(self, f8, "", f15)
 
     if int(f14) in (0, 1, 2, 3):

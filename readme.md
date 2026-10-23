@@ -64,8 +64,13 @@ Artwing keeps two folders per user, a share (data) folder and a state folder.
   folder, named by timestamp, e.g. `1792780000.png` and `792780000.json`.
 - **Create (F8)** writes the png into the state folder, under the category of
   the active effect, e.g. `filter/blur_all.png` (`blur_all_0.png` and so on
-  if it already exists), and its json into
-  `yamljson/`. These are the files the local tree in the middle shows.
+  if it already exists), and its json under the same name into `yamljson/`,
+  e.g. `yamljson/blur_all.json`. An image without effect goes to the top of
+  the state folder under its own name. These are the files the local tree in
+  the middle shows; its cursor jumps to the new png, so you can pick it as
+  the next source and stack another effect on top.
+- Both only save a finished render. While gmic is still running, or after
+  it failed, they save nothing and say so.
 - The share folder also holds the working copies `1700000000.png` (current
   preview) and `700000000.json` (current state), which are overwritten as you
   work.
