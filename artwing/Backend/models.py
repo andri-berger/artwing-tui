@@ -172,7 +172,8 @@ def on_pressed(self, event) -> None:
         f9[f11[3]] = f16
 
     elif int(f14) == 1:
-        f17 = ["", "de"]
+        # AS on (1) opts out of reapplying
+        f17 = ["de", ""]
         f18 = f17[f11[0]]
         script_f3(self, f8, f18)
         f11[0] = 1 - f11[0]

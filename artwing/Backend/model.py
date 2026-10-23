@@ -263,8 +263,9 @@ class FileTree(DirectoryTree):
             f11 = f9.suffix.lower()
             if f11 in FORMATS:
                 # an active effect is reapplied to
-                # the new image, else it shows raw
-                f12 = 1 if f8[3] in f4["7"] else 2
+                # the new image unless AS opted out
+                f28 = f8[3] in f4["7"] and not f8[0]
+                f12 = 1 if f28 else 2
                 f13 = [f8[3], str(f9)]
                 f14 = script_f6(self, *f13)
                 f2.config = [f12, *f14, *f13]
