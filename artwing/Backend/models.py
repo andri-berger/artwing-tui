@@ -231,6 +231,56 @@ def on_pressed(self, event) -> None:
         script_f9(f9)
 
 
+def on_files(self, h, h0) -> None:
+    # F1 cuts, F2 copies a file of the left
+    # or middle tree, F3 pastes it into the
+    # middle tree next to the cursor
+    f0 = self.query_one("#dir-tree-1")
+    f1 = h0.cursor_node
+    f2 = f1.data.path if f1 and f1.data else None
+    f7 = self.app.notify
+
+    if h in ("f1", "f2"):
+        if h0.id == "dir-tree-2":
+            return
+        if f2 is None or not f2.is_file():
+            return
+        self.app.files = [f2, h == "f1"]
+        f8 = "CUT" if h == "f1" else "COPIED"
+        f7(f"FILE {f2.name.upper()} {f8}!")
+        return
+
+    if h0 is not f0 or not self.app.files:
+        return
+    f3, f4 = self.app.files
+    f5 = Path(f0.path)
+    if f2 is not None:
+        f5 = f2 if f2.is_dir() else f2.parent
+    # _blank is wiped at every start
+    if f5.name == "_blank":
+        f5 = Path(f0.path)
+    if not f3.is_file():
+        self.app.files = []
+        f7(
+            f"{f3.name}: no longer there",
+            severity="warning",
+        )
+        return
+    if f4 and f3.parent == f5:
+        return
+    (f6,) = script_f0(f5 / f3.name)
+    if f4:
+        shutil.move(f3, f6)
+        self.app.files = []
+    else:
+        shutil.copy2(f3, f6)
+    f7(f"FILE {f6.name.upper()} PASTED!")
+    f0.reveal(f6)
+    # a cut from the left tree leaves a gap
+    if f4:
+        self.query_one("#dir-tree-0").reload()
+
+
 async def on_key(self, event) -> None:
     f0 = (
         "delete",
@@ -260,6 +310,13 @@ async def on_key(self, event) -> None:
     f14 = self.app.focused
     f15 = str(f12 or "")
     f16 = event.key
+    # in a file tree F1-F3 act on files,
+    # never on the table
+    if isinstance(f14, FileTree):
+        if f16 in ("f1", "f2", "f3"):
+            on_files(self, f16, f14)
+            return
+
     if f16 in f0:
         script_f2(self, f16)
 
@@ -320,6 +377,8 @@ async def on_key(self, event) -> None:
                         path.unlink()
                         f3.reload()
 
+        # F1 cuts (clears the cell), F2 copies,
+        # in the order of the button row
         case "f1":
             f17 = self.app
             f17.clipboards = f15

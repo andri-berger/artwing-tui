@@ -57,8 +57,8 @@
 
   "4": {
     "delete": "DELETE cell contents or files in local file picker.",
-    "f1": "COPY TABLE cell contents.",
-    "f2": "CUT TABLE cell contents.",
+    "f1": "CUT TABLE cell contents.",
+    "f2": "COPY TABLE cell contents.",
     "f3": "PASTE TABLE cell contents.",
     "f4": "PRESS X button programmatically.",
     "f5": "PRESS AS button programmatically.",

@@ -124,25 +124,23 @@ as editable cells; the stack is applied to the base image in order.</td>
     </tr>
     <tr>
         <td><kbd>Button X</kbd></td>
-        <td>Clear currently active/selected FX Parameters. Resets the grid to a blank state so you can start a new composition — exported files on disk are not touched.</td>
+        <td>Clear the parameters of the active effect, so it runs with its defaults again. Files on disk are not touched.</td>
     </tr>
     <tr>
-        <td><kbd>Button Afs</kbd></td>
-        <td>Set previous Theme (there are 19 Themes in total to choose from).</td>
+        <td><kbd>Button AS</kbd></td>
+        <td>Toggle whether picking a new image re-applies the active effect. Off (default): every picked image gets the effect. On: picked images show raw.</td>
     </tr>
     <tr>
-        <td><kbd>Button Bfs</kbd></td>
-        <td>Set next Theme (there are 19 Themes in total to choose from).</td>
+        <td><kbd>Button BSS</kbd></td>
+        <td>Step to the previous theme of the built-in list.</td>
     </tr>
     <tr>
-        <td><kbd>Button Cfs</kbd></td>
-        <td>Copy/Export existing file to the local file directory, that can be used as base for further FX processing.</td>
+        <td><kbd>Button CSS</kbd></td>
+        <td>Step to the next theme of the built-in list.</td>
     </tr>
     <tr>
         <td><kbd>Button Create</kbd></td>
-        <td>The heart of the app — a spreadsheet-style grid where selected effects are
-stacked like modules in a rack. Each row holds one effect with its parameters
-as editable cells; the stack is applied to the base image in order.</td>
+        <td>Save the current result (png plus json named after it) into the local file directory in the middle, the cursor lands on it, so you can pick it as the next source and stack another effect on top. See Where your files end up.</td>
     </tr>
     <tr>
         <td><kbd>Button Export</kbd></td>
@@ -152,106 +150,115 @@ as editable cells; the stack is applied to the base image in order.</td>
 
 
 ## API Reference
-The entire application is driven from the keyboard — there is no mouse layer,
-and that is a feature, not a gap. The function keys F1 through F9 form the
-actual API surface of the app: clipboard operations, seed control, generation,
-and export. What makes them worth learning is that they behave consistently
-across contexts — F1/F2/F3 work the same whether you are copying a cell inside
-the grid or moving a png/json file between the directory trees, so the muscle
-memory you build in one panel carries over to the other.
+The entire application is driven from the keyboard. Del and F1 to F9 follow
+the button row from left to right: Del, cut, copy, paste, then X, AS, BSS,
+CSS, Create and Export. Del and F1 to F3 work on whatever has the focus:
+in the grid they act on the cell under the cursor, in a file tree on the
+file under the cursor. Files can be cut or copied in the global and the
+local tree, and are always pasted into the local tree in the middle, which
+makes it the place to collect sources for further FX.
 
 The remaining bindings follow the conventions you already know from any
 terminal application: Tab cycles focus, arrow keys move through the grid,
-Del clears, Ctrl-Q leaves. A deliberate design choice runs through all of it —
-every action is deterministic and inspectable. Seeds (F5–F7) pin down the
-random generator per element group, so an artwork you like is never a happy
-accident you cannot reproduce; the exported json (F9) is the full recipe,
-the png merely its rendering.
+Ctrl-Q leaves. The exported json (F9) is the full recipe, the png merely its
+rendering.
 
 <table>
     <tr>
         <td><kbd>
+        Del</kbd></td>
+        <td>Delete</td>
+        <td>Grid: clear the cell. Local file tree: delete the file under the cursor from disk.</td>
+    </tr>
+    <tr>
+        <td><kbd>
         F1</kbd></td>
-        <td>Copy</td>
-        <td>Copy table cell, also applies to the first 2 directories, you can copy png/json files therein without leaving the app. Think of it as Ctrl-C in setting outside of TUI. </td>
+        <td>Cut</td>
+        <td>Grid: cut the cell (copy it, then clear it). Global or local file tree: cut the png/json file, F3 moves it into the local tree. Think of it as Ctrl-X.</td>
     </tr>
     <tr>
         <td><kbd>
         F2</kbd></td>
-        <td>Cut</td>
-        <td>Cut table cell, also applies to the first 2 file directories, you can cut png/json files without leaving the app. Think of it as Ctrl-X in setting outside of TUI. </td>
+        <td>Copy</td>
+        <td>Grid: copy the cell. Global or local file tree: copy the png/json file, F3 pastes a copy into the local tree. Think of it as Ctrl-C.</td>
     </tr>
     <tr>
         <td><kbd>
         F3</kbd></td>
         <td>Paste</td>
-        <td>Paste table cell. In the local (middle) file directory it pastes the png/json file copied or cut with F1/F2 next to the cursor, so you can bring files in from the global picker without leaving the app. Think of it as Ctrl-V in setting outside of TUI. </td>
+        <td>Grid: paste into the cell. Local file tree: paste the cut or copied file into the folder under the cursor (a name that is taken gets _0, _1, ...). Think of it as Ctrl-V.</td>
     </tr>
     <tr>
         <td><kbd>
         F4</kbd></td>
-        <td>Clear</td>
-        <td>Clear currently active/selected FX Parameters. Resets the grid to a blank state so you can start a new composition — exported files on disk are not touched.</td>
+        <td>X</td>
+        <td>Press Button X (clear the effect parameters).</td>
     </tr>
     <tr>
         <td><kbd>
         F5</kbd></td>
-        <td>Afs</td>
-        <td>Set previous Theme (there are 19 Themes in total to choose from).</td>
+        <td>AS</td>
+        <td>Press Button AS (toggle re-applying the effect to picked images).</td>
     </tr>
     <tr>
         <td><kbd>
         F6</kbd></td>
-        <td>Bfs</td>
-        <td>Set next Theme (there are 19 Themes in total to choose from).</td>
+        <td>BSS</td>
+        <td>Press Button BSS (previous theme).</td>
     </tr>
     <tr>
         <td><kbd>
         F7</kbd></td>
-        <td>Cfs</td>
-        <td>Set Seed for C00-C99. Completes the per-group seed control; with all three seeds set, an artwork is fully deterministic.</td>
+        <td>CSS</td>
+        <td>Press Button CSS (next theme).</td>
     </tr>
     <tr>
         <td><kbd>
         F8</kbd></td>
         <td>Create</td>
-        <td>Generate Artwork via Random Generator. Uses the seeds set via F5-F7 where given, otherwise draws fresh ones.</td>
+        <td>Press Button Create (save the result into the local file tree).</td>
+    </tr>
+    <tr>
+        <td><kbd>
+        F9</kbd></td>
+        <td>Export</td>
+        <td>Press Button Export (png plus json into the share folder).</td>
     </tr>
     <tr>
         <td><kbd>
         Tab</kbd></td>
         <td>Navigate</td>
-        <td>Cycle forward through all navigational UI elements — grid, directory trees, and panels — in a fixed, predictable order.</td>
+        <td>Cycle forward through grid, file trees and buttons in a fixed order; Shift-Tab goes back. In a cell editor, Tab applies the value.</td>
     </tr>
     <tr>
         <td><kbd>
         Arrow-keys</kbd></td>
         <td>Navigation</td>
-        <td>Navigate table/grid cells in all directions: left, right, up, down. Within the directory trees, up/down move through entries.</td>
-    </tr>
-    <tr>
-        <td><kbd>
-        BackSpace</kbd></td>
-        <td>Navigation</td>
-        <td>Step back one level — collapses the current node in the directory tree, or leaves cell editing without applying changes.</td>
+        <td>Move through grid cells in all directions; in the file trees, up/down move through entries.</td>
     </tr>
     <tr>
         <td><kbd>
         Space</kbd></td>
         <td>Navigation</td>
-        <td>Toggle the element under the cursor — expands or collapses a directory node without changing focus.</td>
+        <td>File trees: pick the entry under the cursor (open a folder, choose an image, json or effect). Grid: edit the cell, like Enter.</td>
     </tr>
     <tr>
         <td><kbd>
-        Enter</kbd></td>
-        <td>Navigation</td>
-        <td>Confirm the current selection — activates the focused cell or opens the highlighted file entry.</td>
+        Enter / BackSpace</kbd></td>
+        <td>Edit</td>
+        <td>Grid: edit the cell, starting from its current value. Typing a character starts editing with that character.</td>
+    </tr>
+    <tr>
+        <td><kbd>
+        Escape</kbd></td>
+        <td>Edit</td>
+        <td>Leave the cell editor without applying the change.</td>
     </tr>
     <tr>
         <td><kbd>
         Ctrl-Q</kbd></td>
         <td>System</td>
-        <td>Exit the app. Unexported work in the grid is discarded, so run F9 first if you want to keep the current state.</td>
+        <td>Exit the app. Work is kept for the next start; run F9 to keep a copy of the current state.</td>
     </tr>
 </table>
 
