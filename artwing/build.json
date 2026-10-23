@@ -35,8 +35,8 @@
     "textual-ansi"],
 
   "2": {
-    "dir-tree-0": "GLOBAL FILE PICKER png and json",
-    "dir-tree-1": "LOCAL FILE PICKER png and json",
+    "dir-tree-0": "GLOBAL FILE PICKER images and json",
+    "dir-tree-1": "LOCAL FILE PICKER images and json",
     "button-0": "CLEAR THE EFFECT currently applied",
     "button-1": "TOGGLE REALTIME FX application on files",
     "button-2": "SELECT THEME from a predefined palette (prev theme)",

@@ -160,6 +160,10 @@ def on_pressed(self, event) -> None:
         f15.textfields.stop()
         f15.textfields = None
 
+    # nothing to save before the first image
+    # has been through gmic
+    f34 = PATH_00.exists() and PATH_01.exists()
+
     # X: nothing to clear without an effect
     if int(f14) == 0 and f11[3]:
         f16 = [f7.row, f7.column]
@@ -186,7 +190,7 @@ def on_pressed(self, event) -> None:
 
     elif int(f14) == 4:
         f24 = f6.get(f11[3])
-        if f24 is not None:
+        if f24 is not None and f34:
             f25 = time.time()
             f26 = str(int(f25))
             f27 = f26[1:]
@@ -206,7 +210,7 @@ def on_pressed(self, event) -> None:
                 )
             f2.reload()
 
-    elif int(f14) == 5:
+    elif int(f14) == 5 and f34:
         f36 = time.time()
         f37 = str(int(f36))
         f38 = f37[1:]

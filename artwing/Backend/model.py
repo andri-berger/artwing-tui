@@ -50,7 +50,8 @@ class MainTab(Widget):
         f3 = path[3:-2]
         f4 = path[-2]
         f5 = path[-1]
-        f12 = None
+        f12 = Path(f5).name
+        f19 = None
         f23 = None
 
         if path[0] <= 1:
@@ -63,21 +64,27 @@ class MainTab(Widget):
             f24 = set(f13) & set("{}$")
             if f4 in f1 and not f24:
                 f12 = f2.get(f4, f4)
+                f19 = [f12, f15]
             else:
                 self.app.notify(
                     f"{f4}: not allowed",
                     severity="error",
                 )
 
-        if f12 is not None:
+        # the raw view (2) runs gmic without
+        # an effect, so CREATE and EXPORT
+        # save the image that is shown
+        if path[0] == 2:
+            f19 = []
+
+        if f19 is not None:
             f16 = await asyncio.create_subprocess_exec(
                 "gmic",
                 str(script_f13(f5)),
                 # gif/tiff can hold several
                 # frames, use the first only
                 "-keep[0]",
-                f12,
-                f15,
+                *f19,
                 "-output",
                 str(PATH_01),
                 stdout=asyncio.subprocess.DEVNULL,
@@ -97,7 +104,7 @@ class MainTab(Widget):
                     f"gmic {f12}: {f22}",
                     severity="error",
                 )
-            else:
+            elif path[0] <= 1:
                 # on failure keep the preview, the
                 # old output must not pose as new
                 f23 = PATH_01
