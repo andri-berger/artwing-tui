@@ -49,6 +49,8 @@ class CLIApp(App):
         self.vertical = 1
         self.horizontal = 0
         self.clipboards = ""
+        # [path, cut] for F1/F2/F3 in the trees
+        self.files = []
         self.toasts = {}
         self.store = json.loads(
             PATH_4.read_text()

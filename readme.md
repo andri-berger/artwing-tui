@@ -185,7 +185,7 @@ the png merely its rendering.
         <td><kbd>
         F3</kbd></td>
         <td>Paste</td>
-        <td>Paste table cell, also applies to first 2 file directories, you can paste png/json files without leaving the app. Think of it as Ctrl-V in setting outside of TUI. </td>
+        <td>Paste table cell. In the local (middle) file directory it pastes the png/json file copied or cut with F1/F2 next to the cursor, so you can bring files in from the global picker without leaving the app. Think of it as Ctrl-V in setting outside of TUI. </td>
     </tr>
     <tr>
         <td><kbd>
