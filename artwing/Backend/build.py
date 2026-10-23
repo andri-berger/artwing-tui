@@ -74,10 +74,17 @@ class CLIApp(App):
         f5 = len(f2) > 2
         f6 = f2[1] if f4 else 0
         f7 = f2[2] if f5 else 0
-        self.initial = f7 or 0
-        self.theme = (
-            f1[f7] if len(f1) > f7 else f3
-        )
+        # the theme is stored by name, older
+        # states hold an index into the list
+        if f7 in f1:
+            f7 = f1.index(f7)
+        elif not (
+            isinstance(f7, int)
+            and 0 <= f7 < len(f1)
+        ):
+            f7 = 0
+        self.initial = f7
+        self.theme = f1[f7] if f1 else f3
         f8 = f6 or 3
         f9 = f0[f8 - 1]
         self.f6 = f"#{f9}"
@@ -111,7 +118,6 @@ class CLIApp(App):
     def on_mount(self) -> None:
         f0 = self.query_one(MainTab)
         f1 = self.restored
-        self.notify("hello!!!")
 
         if f1[-1]:
             f0.config = f1

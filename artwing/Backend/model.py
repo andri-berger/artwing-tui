@@ -6,7 +6,7 @@ from textual.app import ComposeResult
 from textual.binding import Binding
 from textual.reactive import reactive
 from textual.widget import Widget
-from textual.widgets import DirectoryTree
+from textual.widgets import DirectoryTree, Input
 from textual_image.widget import Image
 
 from .script import (
@@ -240,15 +240,35 @@ class FileTree(DirectoryTree):
     ):
         f0 = self.app.query_one(MainTab)
         f1 = self.app.stores
-        f2 = event.path.name
+        f2 = event.path
         f3 = f1["_blank"]
-        if f2 == "_blank":
-            f4 = [f3[3], str(PATH_3)]
-            f5 = script_f6(self, *f4)
-            f0.config = [2, *f5, *f4]
+        f6 = self.file_type
+        # only the _blank folders at the top of
+        # the 2nd and 3rd picker, not any folder
+        # of that name on disk
+        f7 = f2.parent == Path(self.path)
+        if f2.name != "_blank" or not f7:
+            return
+        if f6 == "file-0":
+            return
+        # picker 2: back to the blank canvas,
+        # picker 3: no effect on the image shown
+        f4 = f3[4] if f6 == "file-2" else ""
+        f5 = f4 or str(PATH_3)
+        f0.config = [2, 0, 0, "", f5]
+        f3[3] = ""
+        f3[4] = f5
+        script_f9(f1)
 
-            f3[3] = ""
-            script_f9(f1)
+        # nothing left of the old effect
+        f8 = self.app.query_one("#data-table")
+        f9 = self.app.query_one("#label-0")
+        f10 = self.app.store["2"]
+        f8.clear(columns=False)
+        f8.add_rows([[""]] * 10)
+        f9.update(f10.get(self.id, ""))
+        for h in self.app.query(Input):
+            h.value = ""
 
     @on(DirectoryTree.FileSelected)
     def selected(

@@ -25,17 +25,17 @@ MainTab {
 
 DataTable,
 FileTree {
-    border: hkey white;
+    border: hkey $foreground;
     scrollbar-visibility: hidden; }
 
 Button {
     min-width: 0;
     text-style: none;
-    border: hkey white; }
+    border: hkey $foreground; }
 
 Input {
     padding: 0;
-    border: hkey white; }
+    border: hkey $foreground; }
 
 Label {
     width: 70;

@@ -144,7 +144,6 @@ def on_pressed(self, event) -> None:
     f7 = f1.cursor_coordinate
     f8 = event.button.id
     f9 = self.app.stores
-    f10 = "textual-dark"
     f11 = f9["_blank"]
     f12 = f5.get(f8, "")
     f13 = f8.split("-")
@@ -171,16 +170,17 @@ def on_pressed(self, event) -> None:
         script_f3(self, f8, f18, f15)
         f11[0] = 1 - f11[0]
 
-    elif int(f14) in (2, 3):
-        f19 = 3 - int(f14)
-        f20 = 1 - f19 * 2
-        self.app.initial += f20
-        f21 = self.app.initial
-        f22 = f21 % len(f4)
-        f23 = f4[f22] or f10
+    elif int(f14) in (2, 3) and f4:
+        # BSS steps back, CSS forward
+        f20 = -1 if int(f14) == 2 else 1
+        f22 = (self.app.initial + f20) % len(f4)
+        f23 = f4[f22]
+        self.app.initial = f22
         self.app.theme = f23
         script_f3(self, f8, f23, f15)
-        f11[2] = f22 or 0
+        # by name, a reordered theme list
+        # still restores the same theme
+        f11[2] = f23
 
     elif int(f14) == 4:
         f24 = f6.get(f11[3])
