@@ -161,13 +161,7 @@ class MainApp(Widget):
     def clicked(self):
         f0 = self.app
         f1 = f0.focused
-        f2 = f0.textfields
-        f3 = DirectoryTree
-        f4 = DataTable
-        if f2 is not None:
-            f0.textfields.stop()
-            f0.textfields = None
-        f5 = isinstance(f1, f3)
-        f6 = isinstance(f1, f4)
+        f5 = isinstance(f1, DirectoryTree)
+        f6 = isinstance(f1, DataTable)
         if f5 or f6:
             on_shift_tab(self, None, 0)

@@ -71,10 +71,10 @@ def script_f2(self, h) -> None:
     script_f10(self, f0.get(h, ""))
 
 
-def script_f3(self, h, h0) -> None:
+def script_f3(self, h, h0, h1="") -> None:
     f0 = self.app.store["3"]
     f1 = f0.get(h, "")
-    script_f10(self, f1.format(f3=h0.upper()))
+    script_f10(self, f1.format(f3=h0.upper()), h1)
 
 
 def script_f4(h, h0, h1) -> None:
@@ -131,9 +131,7 @@ def script_f7(self, h) -> None:
     f2 = self.app.store["6"]
     f3 = f2.get(h, [None, None])
     if f3[1] is not None:
-        f4 = self.app
         f1.update(f3[1])
-        f4.textfield = f3[1]
     if f3[0] is not None:
         f5 = script_f11(f0, f3[0])
         if f5 is not None:
@@ -157,16 +155,9 @@ def script_f9(h) -> None:
     f0.replace(PATH_00)
 
 
-def script_f10(self, h) -> None:
-    f0 = self.app.query_one("#label-0")
-    f1 = self.app.textfield
-    f2 = self.app.textfields
-    if f2 is not None:
-        f2.stop()
-    f0.update(h)
-    self.app.textfields = self.set_timer(
-        3, lambda: f0.update(f1)
-    )
+def script_f10(self, h, h0="") -> None:
+    # Feedback toast; label-0 keeps its text
+    self.notify(h, title=h0, timeout=2)
 
 
 def script_f11(h, h0):

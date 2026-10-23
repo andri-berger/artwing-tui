@@ -308,7 +308,6 @@ class FileTree(DirectoryTree):
                 f26 = f22[1] if f25 else ""
                 f27 = script_f6(self, *f24)
                 f2.config = [0, *f27, *f24]
-                self.app.textfield = f26
                 f1.update(f26)
 
             if f23 is not None:

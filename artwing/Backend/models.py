@@ -103,7 +103,6 @@ def on_shift_tab(self, event, prefix) -> None:
     f15 = f14 % len(f6)
     f16 = min(prefix, 0)
     f17 = f13 + f16
-    f18 = self.app
 
     if f17 in (-1, 9):
         event.prevent_default()
@@ -112,7 +111,6 @@ def on_shift_tab(self, event, prefix) -> None:
     if f15 not in (2, 3):
         f20 = f6[f15] or ""
         f21 = f7.get(f20, "")
-        f18.textfield = f21
         f5.update(f21)
         f3.value = ""
         f4.value = ""
@@ -124,7 +122,6 @@ def on_shift_tab(self, event, prefix) -> None:
             f21 = len(f23) > 1
             f22 = f23[1] if f21 else ""
             on_highlighted(self, f9)
-            self.app.textfield = f22
             f5.update(f22)
 
     if f17 == 9:
@@ -152,13 +149,9 @@ def on_pressed(self, event) -> None:
     f12 = f5.get(f8, "")
     f13 = f8.split("-")
     f14 = f13[-1] or 0
-    f15 = self.app
+    f15 = str(event.button.label)
 
     f3.update(f12)
-    f15.textfield = f12
-    if f15.textfields is not None:
-        f15.textfields.stop()
-        f15.textfields = None
 
     # nothing to save before the first image
     # has been through gmic
@@ -167,7 +160,7 @@ def on_pressed(self, event) -> None:
     # X: nothing to clear without an effect
     if int(f14) == 0 and f11[3]:
         f16 = [f7.row, f7.column]
-        script_f3(self, f8, f11[3])
+        script_f3(self, f8, f11[3], f15)
         f0.config = [0, *f16, *f11[3:]]
         f9[f11[3]] = f16
 
@@ -175,7 +168,7 @@ def on_pressed(self, event) -> None:
         # AS on (1) opts out of reapplying
         f17 = ["de", ""]
         f18 = f17[f11[0]]
-        script_f3(self, f8, f18)
+        script_f3(self, f8, f18, f15)
         f11[0] = 1 - f11[0]
 
     elif int(f14) in (2, 3):
@@ -186,7 +179,7 @@ def on_pressed(self, event) -> None:
         f22 = f21 % len(f4)
         f23 = f4[f22] or f10
         self.app.theme = f23
-        script_f3(self, f8, f23)
+        script_f3(self, f8, f23, f15)
         f11[2] = f22 or 0
 
     elif int(f14) == 4:
@@ -221,7 +214,7 @@ def on_pressed(self, event) -> None:
         shutil.copy2(PATH_01, f39)
 
     if int(f14) in (4, 5):
-        script_f3(self, f8, "")
+        script_f3(self, f8, "", f15)
 
     if int(f14) in (0, 1, 2, 3):
         script_f9(f9)

@@ -1,4 +1,13 @@
 
+ToastRack {
+    align: right bottom; }
+
+Toast {
+    width: 36; }
+
+ToastHolder {
+    align-horizontal: right; }
+
 Screen {
     align: center middle;
     background: $surface; }
