@@ -3,7 +3,7 @@
 # usage: curl -fsSL https://raw.githubusercontent.com/andri-berger/artwing-tui/main/install.sh | sh
 set -eu
 
-# REF is rewritten by Formula/artwing-tui.sh on every release
+# REF is rewritten by release.sh on every release
 REF="v0.1.1"
 URL="https://github.com/andri-berger/artwing-tui/archive/refs/tags/${REF}.tar.gz"
 

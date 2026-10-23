@@ -31,9 +31,8 @@ The motivation was equally simple: G'MIC is one of the most powerful and underap
 
 
 ## Installation
-Artwing-TUI has no Electron, no npm, no 200 MB runtime surprise — just a Python TUI and G'MIC under the hood. Pick whichever method matches your setup below.
+Artwing-TUI has no Electron, no npm, no 200 MB runtime surprise — just a Python TUI and G'MIC under the hood. One install script, one path, every Unix system.
 
-### Generic Install (Native)
 Pulls the install script directly from the repo and wires everything up.
 The script installs uv and G'MIC if they are missing (G'MIC 3.x recommended,
 some filters are missing in 2.9). uv brings its own Python 3.14 when your
@@ -46,28 +45,10 @@ curl -fsSL https://raw.githubusercontent.com/\
 andri-berger/artwing-tui/main/install.sh | sh
 ```
 
-### macOS (Homebrew)
-Tap the formula and let Homebrew handle dependencies. G'MIC gets pulled in
-automatically via the formula's dependency spec. First install may take a
-moment while G'MIC builds its filter collection — subsequent updates via
-`brew upgrade` are quick. Additional, user-generated files are stored in the following directory => ~/Library/Application Support/artwing-tui
-
-```bash
-brew tap andri-berger/artwing-tui \
-https://github.com/andri-berger/artwing-tui
-brew install artwing-tui #install from tap
-```
-
-### Arch Linux (AUR)
-Use your AUR helper of choice — the PKGBUILD handles the rest, including the
-G'MIC dependency. If you prefer doing it by hand, `git clone` the AUR repo
-and run `makepkg -si`; there is nothing exotic in the build. You run Arch,
-so you knew that already. Additional, user-generated files are stored in the following directories => ~/.local/share/artwing-tui and ~/.local/state/artwing-tui
-
-```bash
-yay -S artwing-tui 
-# paru -S artwing-tui
-```
+To update, run the same command again. To remove it, run
+`uv tool uninstall artwing-tui`. Additional, user-generated files are stored in
+~/.local/share/artwing-tui and ~/.local/state/artwing-tui on Linux, and in
+~/Library/Application Support/artwing-tui on macOS.
 
 ## Configuration
 The interface is built from a small set of panels and buttons, each described

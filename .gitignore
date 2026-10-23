@@ -1,6 +1,5 @@
 __pycache__/
 .ruff_cache/
-.SRCINFO
 .idea/
 .venv/
 .cache
