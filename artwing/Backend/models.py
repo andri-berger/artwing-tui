@@ -337,26 +337,34 @@ async def on_key(self, event) -> None:
             on_highlighted(self, f11)
             f2.focus()
 
-    if isinstance(f14, DataTable):
-        if len(f16) == 1 or f16 in f1:
+    f20 = isinstance(f14, DataTable)
+    if f20:
+        # "-" starts a negative value
+        f21 = f16 == "minus"
+        if len(f16) == 1 or f16 in f1 or f21:
             f10.focus()
             event.stop()
 
             if f16 in f1:
-                f10.value = f15
-
-            elif len(f16) == 1:
-                f10.value = f16
-                f17 = "cursor_position"
-                self.call_after_refresh(
-                    lambda: setattr(
-                        f10, f17, len(f16)
-                    )
+                # the cell's value, an empty
+                # cell starts from the default
+                on_highlighted(self, f11)
+                f10.value = f15 or f10.value
+            else:
+                f10.value = "-" if f21 else f16
+            f22 = len(f10.value)
+            self.call_after_refresh(
+                lambda: setattr(
+                    f10, "cursor_position", f22
                 )
+            )
 
     match f16:
+        # Del and F1-F3 act on the grid only
+        # when it has the focus; in the cell
+        # editor Del deletes a character
         case "delete":
-            if not isinstance(f14, FileTree):
+            if f20:
                 self.post_message(
                     Input.Submitted(f10, "")
                 )
@@ -379,18 +387,19 @@ async def on_key(self, event) -> None:
 
         # F1 cuts (clears the cell), F2 copies,
         # in the order of the button row
-        case "f1":
+        case "f1" if f20:
             f17 = self.app
             f17.clipboards = f15
             self.post_message(
                 Input.Submitted(f10, "")
             )
 
-        case "f2":
+        case "f2" if f20:
             f19 = self.app
             f19.clipboards = f15
 
-        case "f3":
+        # nothing copied yet, nothing to paste
+        case "f3" if f20 and f13:
             self.post_message(
                 Input.Submitted(f10, f13)
             )

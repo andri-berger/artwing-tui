@@ -168,7 +168,7 @@ rendering.
         <td><kbd>
         Del</kbd></td>
         <td>Delete</td>
-        <td>Grid: clear the cell. Local file tree: delete the file under the cursor from disk.</td>
+        <td>Grid: clear the cell (inside the cell editor Del just deletes a character). Local file tree: delete the file under the cursor from disk.</td>
     </tr>
     <tr>
         <td><kbd>
@@ -246,7 +246,7 @@ rendering.
         <td><kbd>
         Enter / BackSpace</kbd></td>
         <td>Edit</td>
-        <td>Grid: edit the cell, starting from its current value. Typing a character starts editing with that character.</td>
+        <td>Grid: edit the cell, starting from its current value, or from the default when the cell is empty. Typing a character or - starts editing with it.</td>
     </tr>
     <tr>
         <td><kbd>
