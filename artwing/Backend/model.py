@@ -11,21 +11,18 @@ from textual.widgets import DirectoryTree
 from textual_image.widget import Image
 
 from .script import (
-    script_f00,
+    PATH_01,
     script_f3,
     script_f4,
     script_f5,
     script_f6,
     script_f7,
     script_f8,
+    script_f9,
 )
 
-PORT_0 = script_f00()
 PORT_1 = Path(__file__)
 PORT_2 = PORT_1.parent.parent
-PATH_4 = PORT_0 / "700000000.json"
-PATH_5 = PORT_0 / "1700000000.png"
-PATH_2 = PORT_2 / "project.png"
 PATH_3 = PORT_2 / "build.png"
 
 
@@ -51,8 +48,7 @@ class MainTab(Widget):
         f3 = path[3:-2]
         f4 = path[-2]
         f5 = path[-1]
-
-        await self.query(Image).remove()
+        f23 = None
 
         if path[0] <= 1:
             f12 = f2.get(f4, f4)
@@ -66,11 +62,18 @@ class MainTab(Widget):
                 f12,
                 f15,
                 "-output",
-                str(PATH_5),
+                str(PATH_01),
                 stdout=asyncio.subprocess.DEVNULL,
                 stderr=asyncio.subprocess.PIPE,
             )
-            f21 = await f16.communicate()
+            try:
+                f21 = await f16.communicate()
+            except asyncio.CancelledError:
+                # a newer call replaced this
+                # worker, stop gmic so it can't
+                # overwrite the newer result
+                f16.kill()
+                raise
             if f16.returncode:
                 f22 = script_f8(f21[1])
                 self.app.notify(
@@ -78,17 +81,20 @@ class MainTab(Widget):
                     severity="error",
                 )
 
-            if PATH_5.exists():
-                f17 = Image(PATH_5)
-                f18 = self.size
-                script_f4(f18, f17, PATH_5)
-                await self.mount(f17)
+            if PATH_01.exists():
+                f23 = PATH_01
 
         if path[0] == 2:
-            f19 = Image(f5)
-            f20 = self.size
-            script_f4(f20, f19, f5)
-            await self.mount(f19)
+            f23 = f5
+
+        # swap images only once gmic is done,
+        # so the preview never goes blank
+        await self.query(Image).remove()
+        if f23 is not None:
+            f17 = Image(f23)
+            f18 = self.size
+            script_f4(f18, f17, f23)
+            await self.mount(f17)
 
         if path[0] == 0:
             with self.app.batch_update():
@@ -162,8 +168,8 @@ class FileTree(DirectoryTree):
             f5 = script_f6(self, *f4)
             f0.config = [2, *f5, *f4]
 
-            f3[3] = 0 or ""
-            PATH_4.write_text(json.dumps(f1))
+            f3[3] = ""
+            script_f9(f1)
 
     @on(DirectoryTree.FileSelected)
     def selected(
@@ -203,7 +209,7 @@ class FileTree(DirectoryTree):
 
             script_f3(self.app, f6, f10)
             f20 = self.app.stores
-            PATH_4.write_text(json.dumps(f20))
+            script_f9(f20)
 
         elif int(f7) == 2:
             f21 = f4["6"]
@@ -223,4 +229,4 @@ class FileTree(DirectoryTree):
                     f23[0] = f3.row
                     f23[1] = f3.column
 
-            PATH_4.write_text(json.dumps(f5))
+            script_f9(f5)

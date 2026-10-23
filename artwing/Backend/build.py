@@ -7,20 +7,19 @@ from textual.app import App, ComposeResult
 from .builds import MainApp
 from .model import MainTab
 from .script import (
-    script_f00,
+    PATH_00,
+    _ignore,
     script_f01,
     script_f5,
     script_f7,
 )
 
-PORT_00 = script_f00()
 PORT_0 = script_f01()
 PORT_1 = Path(__file__).parent
 PORT_2 = PORT_1.parent / "Backend"
 PORT_3 = PORT_1.parent / "Frontend"
 PATH_3 = PORT_1.parent / "build.png"
 PATH_4 = PORT_1.parent / "build.json"
-PATH_5 = PORT_00 / "700000000.json"
 PATH_6 = PORT_2 / "style.tcss"
 PATH_7 = PORT_0 / "_blank"
 
@@ -29,7 +28,7 @@ PATH_7 = PORT_0 / "_blank"
 shutil.copytree(
     PORT_3,
     PORT_0,
-    ignore=shutil.ignore_patterns(".*"),
+    ignore=_ignore,
     dirs_exist_ok=True,
 )
 for entry in PATH_7.iterdir():
@@ -56,10 +55,17 @@ class CLIApp(App):
             PATH_4.read_text()
         )
         self.stores = (
-            json.loads(PATH_5.read_text())
-            if PATH_5.exists()
+            json.loads(PATH_00.read_text())
+            if PATH_00.exists()
             else {}
         )
+        # drop themes this textual version
+        # doesn't ship (e.g. textual-ansi)
+        self.store["1"] = [
+            h
+            for h in self.store.get("1", [])
+            if h in self.available_themes
+        ]
         f0 = self.store.get("0", [])
         f1 = self.store.get("1", [])
         f2 = self.stores.get("_blank", [])

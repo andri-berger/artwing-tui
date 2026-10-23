@@ -1,24 +1,22 @@
-import json
 import shutil
 import time
-from pathlib import Path
 
 from textual.widgets import DataTable, Input
 
 from .model import FileTree, MainTab
 from .script import (
+    PATH_00,
+    PATH_01,
+    PORT_00,
     script_f0,
-    script_f00,
     script_f01,
     script_f2,
     script_f3,
+    script_f9,
+    script_f11,
 )
 
 PORT_0 = script_f01()
-PORT_1 = script_f00()
-PORT_2 = Path(__file__).parent
-PATH_3 = PORT_1 / "700000000.json"
-PATH_4 = PORT_1 / "1700000000.png"
 PORT_3 = PORT_0 / "yamljson"
 
 
@@ -83,7 +81,7 @@ def on_submitted(self, event) -> None:
             f3[f8[3]] = f19 or []
 
             f1.config = f20
-            PATH_3.write_text(json.dumps(f3))
+            script_f9(f3)
 
 
 def on_shift_tab(self, event, prefix) -> None:
@@ -135,7 +133,7 @@ def on_shift_tab(self, event, prefix) -> None:
         f2.focus()
 
     f12[1] = f15 + 1
-    PATH_3.write_text(json.dumps(f11))
+    script_f9(f11)
 
 
 def on_pressed(self, event) -> None:
@@ -190,42 +188,37 @@ def on_pressed(self, event) -> None:
         if f24 is not None:
             f25 = time.time()
             f26 = str(int(f25))
-            f27 = f26[1:] or []
+            f27 = f26[1:]
             f28 = f"{f27}.json"
             f29 = f"{f11[3]}.png"
             f30 = PORT_0 / f24[0]
-            f31 = PORT_3 / f28 / ""
+            f31 = PORT_3 / f28
             f32 = script_f0(f30 / f29)
-            shutil.copy2(PATH_4, f32)
-            shutil.copy2(PATH_3, f31)
-            f33 = Path(f2.path).resolve()
+            shutil.copy2(PATH_01, f32)
+            shutil.copy2(PATH_00, f31)
 
-            for h in f2.root.children:
-                f34 = h.data.path or ""
-                f35 = f34.relative_to(f33)
-                if f35 == Path(f24[0]):
-                    h.expand()
-                    self.set_timer(
-                        0.1,
-                        lambda: f2.move_cursor(h),
-                    )
-                    break
+            f33 = script_f11(f2, f24[0])
+            if f33 is not None:
+                self.set_timer(
+                    0.1,
+                    lambda: f2.move_cursor(f33),
+                )
             f2.reload()
 
     elif int(f14) == 5:
         f36 = time.time()
         f37 = str(int(f36))
-        f38 = f37[1:] or []
-        f39 = PORT_1 / f"{f37}.png"
-        f40 = PORT_1 / f"{f38}.json"
-        shutil.copy2(PATH_3, f40)
-        shutil.copy2(PATH_4, f39)
+        f38 = f37[1:]
+        f39 = PORT_00 / f"{f37}.png"
+        f40 = PORT_00 / f"{f38}.json"
+        shutil.copy2(PATH_00, f40)
+        shutil.copy2(PATH_01, f39)
 
     if int(f14) in (4, 5):
         script_f3(self, f8, "")
 
     if int(f14) in (0, 1, 2, 3):
-        PATH_3.write_text(json.dumps(f9))
+        script_f9(f9)
 
 
 async def on_key(self, event) -> None:

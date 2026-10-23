@@ -1,3 +1,4 @@
+import json
 import re
 from pathlib import Path
 
@@ -19,6 +20,11 @@ def script_f00() -> Path:
     f0 = user_data_dir("artwing-tui")
     Path(f0).mkdir(parents=True, exist_ok=True)
     return Path(f0)
+
+
+PORT_00 = script_f00()
+PATH_00 = PORT_00 / "700000000.json"
+PATH_01 = PORT_00 / "1700000000.png"
 
 
 def _ignore(dirpath, names):
@@ -45,24 +51,14 @@ def script_f1(h, h0, h1) -> None:
 
 
 def script_f2(self, h) -> None:
-    f0 = self.query_one("#label-0")
-    f1 = self.app.store["4"]
-    f2 = self.app.textfield
-    f0.update(f1.get(h, ""))
-    self.app.textfields = self.set_timer(
-        3, lambda: f0.update(f2)
-    )
+    f0 = self.app.store["4"]
+    script_f10(self, f0.get(h, ""))
 
 
 def script_f3(self, h, h0) -> None:
-    f0 = self.query_one("#label-0")
-    f1 = self.app.store["3"]
-    f2 = self.app.textfield
-    f3 = f1.get(h, "")
-    f0.update(f3.format(f3=h0.upper()))
-    self.app.textfields = self.set_timer(
-        3, lambda: f0.update(f2)
-    )
+    f0 = self.app.store["3"]
+    f1 = f0.get(h, "")
+    script_f10(self, f1.format(f3=h0.upper()))
 
 
 def script_f4(h, h0, h1) -> None:
@@ -74,13 +70,13 @@ def script_f4(h, h0, h1) -> None:
     if f5 > (f3 / f2):
         f4.width = "100%"
         f4.height = "auto"
-    elif f5 <= (f3 / f2):
+    else:
         f4.width = "auto"
         f4.height = "100%"
 
 
 def script_f5(h, h0) -> list:
-    f0 = [0, 0, 0, "", ""] or []
+    f0 = [0, 0, 0, "", ""]
     h0.setdefault("_blank", f0)
     f1 = h0.get("_blank")[4]
     f2 = h0.get("_blank")[3]
@@ -117,16 +113,11 @@ def script_f7(self, h) -> None:
         f1.update(f3[1])
         f4.textfield = f3[1]
     if f3[0] is not None:
-        f12 = Path(f0.path).resolve()
-        for h0 in f0.root.children:
-            f13 = h0.data.path or ""
-            f14 = f13.relative_to(f12)
-            if f14 == Path(f3[0]):
-                h0.expand()
-                self.call_after_refresh(
-                    script_f1, h0, h, f0
-                )
-                break
+        f5 = script_f11(f0, f3[0])
+        if f5 is not None:
+            self.call_after_refresh(
+                script_f1, f5, h, f0
+            )
 
 
 def script_f8(h) -> str:
@@ -134,3 +125,31 @@ def script_f8(h) -> str:
     f1 = re.sub(r"\x1b\[[\d;]*m", "", f0)
     f2 = f1.strip().split("\n")[-1]
     return f2.split("***")[-1].strip()
+
+
+def script_f9(h) -> None:
+    # write to a temp file first, so a crash
+    # never leaves a half written state file
+    f0 = PATH_00.with_suffix(".tmp")
+    f0.write_text(json.dumps(h))
+    f0.replace(PATH_00)
+
+
+def script_f10(self, h) -> None:
+    f0 = self.app.query_one("#label-0")
+    f1 = self.app.textfield
+    f2 = self.app.textfields
+    if f2 is not None:
+        f2.stop()
+    f0.update(h)
+    self.app.textfields = self.set_timer(
+        3, lambda: f0.update(f1)
+    )
+
+
+def script_f11(h, h0):
+    for h1 in h.root.children:
+        if h1.data.path.name == h0:
+            h1.expand()
+            return h1
+    return None
