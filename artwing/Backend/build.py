@@ -92,6 +92,13 @@ class CLIApp(App):
             f0.config = f1
             script_f7(self, f1[-2])
 
+        # reopen the left tree at the last file,
+        # queued behind the tree's own first load
+        f2 = self.stores["_blank"][4]
+        f3 = self.query_one("#dir-tree-0")
+        if f2 != str(PATH_3):
+            f3.call_later(f3.reveal, f2)
+
         self.set_focus(self.query_one(self.f6))
 
     def compose(self) -> ComposeResult:

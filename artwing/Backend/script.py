@@ -2,7 +2,7 @@ import json
 import re
 from pathlib import Path
 
-import imagesize
+from PIL import Image
 from platformdirs import (
     user_data_dir,
     user_state_dir,
@@ -25,6 +25,22 @@ def script_f00() -> Path:
 PORT_00 = script_f00()
 PATH_00 = PORT_00 / "700000000.json"
 PATH_01 = PORT_00 / "1700000000.png"
+PATH_02 = PORT_00 / "1700000001"
+# raster formats both gmic and pillow read
+FORMATS = (
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".bmp",
+    ".gif",
+    ".tif",
+    ".tiff",
+    ".webp",
+    ".ppm",
+    ".pgm",
+    ".pnm",
+    ".tga",
+)
 
 
 def _ignore(dirpath, names):
@@ -62,7 +78,8 @@ def script_f3(self, h, h0) -> None:
 
 
 def script_f4(h, h0, h1) -> None:
-    f0 = imagesize.get(str(h1))
+    with Image.open(h1) as f1:
+        f0 = f1.size
     f2 = h.height * 18
     f3 = h.width * 9
     f4 = h0.styles
@@ -153,3 +170,27 @@ def script_f11(h, h0):
             h1.expand()
             return h1
     return None
+
+
+def script_f12(h) -> dict | None:
+    # only accept artwing state files, any
+    # other json on disk is ignored
+    try:
+        f0 = json.loads(Path(h).read_text())
+    except OSError, ValueError:
+        return None
+    f1 = isinstance(f0, dict)
+    f2 = f0.get("_blank") if f1 else None
+    f3 = isinstance(f2, list) and len(f2) == 5
+    return f0 if f3 else None
+
+
+def script_f13(h) -> Path:
+    # gmic parses "," and "$" in file names,
+    # so hand it a link with a plain name
+    f0 = Path(h)
+    f1 = PATH_02.with_suffix(f0.suffix.lower())
+    for h0 in PORT_00.glob(f"{PATH_02.name}.*"):
+        h0.unlink()
+    f1.symlink_to(f0.resolve())
+    return f1

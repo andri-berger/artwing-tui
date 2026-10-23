@@ -83,13 +83,13 @@ artwing-tui #Launches the TUI
         <td><a href="artwing/Backend/modules/700000038.png">
         <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Global Filetree</kbd></td>
-        <td>Choose either png (for the base image) or json (for your project-files). Mirror of your unrestricted / full filesystem, hence the name global. </td>
+        <td>Choose either an image (png, jpg, bmp, gif, tif, webp, ppm/pgm/pnm or tga as base image) or json (for your project-files). Mirror of your unrestricted / full filesystem, hence the name global. </td>
     </tr>
     <tr>
         <td><a href="artwing/Backend/modules/700000038.png">
         <img src="artwing/Backend/modules/1700000038.png"></a></td>
         <td><kbd>Local Filetree</kbd></td>
-        <td>Choose either png (for the base image) or json (for your project-files). Local Filesystem only hosting all files copied over via Button Create (see below), hence the name local. </td>
+        <td>Choose either an image (png, jpg, bmp, gif, tif, webp, ppm/pgm/pnm or tga as base image) or json (for your project-files). Local Filesystem only hosting all files copied over via Button Create (see below), hence the name local. </td>
     </tr>
     <tr>
         <td><a href="artwing/Backend/modules/700000038.png">
@@ -332,9 +332,9 @@ If you like what this project does, follow the links — the ideas started there
     <tr align="left">
         <td><kbd>
         Processing</kbd></td>
-        <td>Resize Img</td><td>
-        <a href="//github.com/shibukawa/imagesize_py">
-        https://github.com/shibukawa/imsize</a></td>
+        <td>Pillow Img</td><td>
+        <a href="//github.com/python-pillow/Pillow">
+        https://github.com/python-pillow/Pillow</a></td>
     </tr>
     <tr>
         <td><kbd>

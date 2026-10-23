@@ -1,5 +1,4 @@
 import asyncio
-import json
 from pathlib import Path
 
 from textual import on, work
@@ -11,6 +10,7 @@ from textual.widgets import DirectoryTree
 from textual_image.widget import Image
 
 from .script import (
+    FORMATS,
     PATH_01,
     script_f3,
     script_f4,
@@ -19,6 +19,8 @@ from .script import (
     script_f7,
     script_f8,
     script_f9,
+    script_f12,
+    script_f13,
 )
 
 PORT_1 = Path(__file__)
@@ -58,7 +60,10 @@ class MainTab(Widget):
 
             f16 = await asyncio.create_subprocess_exec(
                 "gmic",
-                str(f5),
+                str(script_f13(f5)),
+                # gif/tiff can hold several
+                # frames, use the first only
+                "-keep[0]",
                 f12,
                 f15,
                 "-output",
@@ -91,10 +96,17 @@ class MainTab(Widget):
         # so the preview never goes blank
         await self.query(Image).remove()
         if f23 is not None:
-            f17 = Image(f23)
-            f18 = self.size
-            script_f4(f18, f17, f23)
-            await self.mount(f17)
+            try:
+                f17 = Image(f23)
+                f18 = self.size
+                script_f4(f18, f17, f23)
+            except OSError:
+                self.app.notify(
+                    f"{Path(f23).name}: no image",
+                    severity="error",
+                )
+            else:
+                await self.mount(f17)
 
         if path[0] == 0:
             with self.app.batch_update():
@@ -138,13 +150,13 @@ class FileTree(DirectoryTree):
     def filter_paths(self, path) -> list:
         f0 = self.file_type
         f1 = f0 == "file-2"
-        f2 = (".png", ".json")
+        f2 = (*FORMATS, ".json")
         return [
             h0
             for h0 in path
             if (
                 h0.suffix.lower() in f2
-                or h0.is_dir()
+                or self._safe_is_dir(h0)
                 or f1
             )
             and not h0.name.startswith(".")
@@ -153,6 +165,35 @@ class FileTree(DirectoryTree):
                 and f0 == "file-1"
             )
         ]
+
+    @work(exclusive=True, group="reveal")
+    async def reveal(self, path) -> None:
+        # open the tree down to the last used
+        # file, using only public reloads
+        f0 = Path(path)
+        if not f0.is_file():
+            return
+        await self.reload()
+        f1 = self.root
+        f2 = [*reversed(f0.parents[:-1]), f0]
+        for h0 in f2:
+            f3 = next(
+                (
+                    h1
+                    for h1 in f1.children
+                    if h1.data.path == h0
+                ),
+                None,
+            )
+            if f3 is None:
+                break
+            f1 = f3
+            if h0 != f0:
+                await self.reload_node(f1)
+        # reading last_line lays out the tree,
+        # so the node knows its line
+        if self.last_line >= 0:
+            self.move_cursor(f1, animate=False)
 
     @on(DirectoryTree.DirectorySelected)
     def select(
@@ -188,17 +229,22 @@ class FileTree(DirectoryTree):
         f10 = f9.name
 
         if int(f7) <= 1:
-            f11 = f10.split(".")
-            if f11[-1] == "png":
+            f11 = f9.suffix.lower()
+            if f11 in FORMATS:
                 f12 = 2 - f8[0] or 0
                 f13 = [f8[3], str(f9)]
                 f14 = script_f6(self, *f13)
                 f2.config = [f12, *f14, *f13]
 
-            elif f11[-1] == "json":
+            elif f11 == ".json":
                 f15 = str(PATH_3)
-                f16 = f9.read_text()
-                f17 = json.loads(f16)
+                f17 = script_f12(f9)
+                if f17 is None:
+                    self.app.notify(
+                        f"{f10}: no artwing file",
+                        severity="error",
+                    )
+                    return
                 self.app.stores = f17
                 f18 = script_f5(f15, f17)
 
