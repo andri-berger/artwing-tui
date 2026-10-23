@@ -300,7 +300,7 @@ async def on_key(self, event) -> None:
                 self.post_message(
                     Input.Submitted(f10, "")
                 )
-            if isinstance(f14, FileTree):
+            if f14 is f3:
                 node = f3.cursor_node
                 if node is not None:
                     path = node.data.path

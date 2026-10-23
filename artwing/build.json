@@ -101,7 +101,7 @@
     "grid_fx": "grid",
     "heat": "heat_flow",
 
-    "ilapl": "iplacian",
+    "ilapl": "ilaplacian",
     "inpaint": "inpaint_holes",
     "map_tone": "map_tones",
     "map_tones": "map_tones_fast",
@@ -127,7 +127,7 @@
     "rows_fx": "rows",
     "scale_dc": "scale_dcci2x",
     "shrink_fx": "shrink",
-    "upscale": "upscale_ smart",
+    "upscale": "upscale_smart",
 
     "equirect": "equirectangular2nadirzenith",
     "euclidean": "euclidean2polar",
@@ -314,7 +314,7 @@
     "twirl_fx": ["warpings","FX TWIRL. Apply twirl deformation on selected images. => Boundaries: 0=dirichlet, 1=neumann, 2=periodic, 3=mirror"],
     "warped": ["warpings","FX WARP PERSPECTIVE. Warp selected images with perspective deformation. => Boundaries: 0=dirichlet, 1=neumann, 2=periodic, 3=mirror"],
     "water": ["warpings","FX WATER. Apply water deformation on selected images."],
-    "wave": [" warpings","FX WAVE. Apply wave deformation on selected images."],
+    "wave": ["warpings","FX WAVE. Apply wave deformation on selected images."],
     "wind": ["warpings","FX WIND. Apply wind effect on selected images."],
     "zoom": ["warpings","FX ZOOM. Apply zoom factor to selected images. => Boundaries: 0=dirichlet, 1=neumann, 2=periodic, 3=mirror"]
 },

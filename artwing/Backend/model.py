@@ -17,6 +17,7 @@ from .script import (
     script_f5,
     script_f6,
     script_f7,
+    script_f8,
 )
 
 PORT_0 = script_f00()
@@ -51,8 +52,7 @@ class MainTab(Widget):
         f4 = path[-2]
         f5 = path[-1]
 
-        if self.query_one(Image):
-            (self.query_one(Image).remove())
+        await self.query(Image).remove()
 
         if path[0] <= 1:
             f12 = f2.get(f4, f4)
@@ -68,19 +68,26 @@ class MainTab(Widget):
                 "-output",
                 str(PATH_5),
                 stdout=asyncio.subprocess.DEVNULL,
-                stderr=asyncio.subprocess.DEVNULL,
+                stderr=asyncio.subprocess.PIPE,
             )
-            await f16.communicate()
+            f21 = await f16.communicate()
+            if f16.returncode:
+                f22 = script_f8(f21[1])
+                self.app.notify(
+                    f"gmic {f12}: {f22}",
+                    severity="error",
+                )
 
-            f17 = Image(PATH_5)
-            f18 = self.size
-            script_f4(f18, f17, PATH_5)
-            await self.mount(f17)
+            if PATH_5.exists():
+                f17 = Image(PATH_5)
+                f18 = self.size
+                script_f4(f18, f17, PATH_5)
+                await self.mount(f17)
 
         if path[0] == 2:
             f19 = Image(f5)
             f20 = self.size
-            script_f4(f19, f20, f5)
+            script_f4(f20, f19, f5)
             await self.mount(f19)
 
         if path[0] == 0:
@@ -194,7 +201,7 @@ class FileTree(DirectoryTree):
                     f2.config = f18
                     script_f7(self.app, f19)
 
-            script_f3(self, f6, f10)
+            script_f3(self.app, f6, f10)
             f20 = self.app.stores
             PATH_4.write_text(json.dumps(f20))
 

@@ -1,3 +1,4 @@
+import re
 from pathlib import Path
 
 import imagesize
@@ -28,18 +29,12 @@ def _ignore(dirpath, names):
 
 
 def script_f0(h) -> Path:
-    f0 = h.stem
-    f1 = h.suffix
-    f2 = h.parent
-    f3 = f"{f0}*{f1}"
-    f4 = f2.glob(f3)
-    f5 = len(list(f4))
-    f6 = (
-        h.with_stem(f"{h.stem}_{f5 - 1}")
-        if f5 > 0
-        else h
-    )
-    return f6
+    f0 = 0
+    f1 = h
+    while f1.exists():
+        f1 = h.with_stem(f"{h.stem}_{f0}")
+        f0 += 1
+    return f1
 
 
 def script_f1(h, h0, h1) -> None:
@@ -116,7 +111,7 @@ def script_f7(self, h) -> None:
     f0 = self.query_one("#dir-tree-2")
     f1 = self.query_one("#label-0")
     f2 = self.app.store["6"]
-    f3 = f2.get(h, [])
+    f3 = f2.get(h, [None, None])
     if f3[1] is not None:
         f4 = self.app
         f1.update(f3[1])
@@ -132,3 +127,10 @@ def script_f7(self, h) -> None:
                     script_f1, h0, h, f0
                 )
                 break
+
+
+def script_f8(h) -> str:
+    f0 = h.decode("latin-1")
+    f1 = re.sub(r"\x1b\[[\d;]*m", "", f0)
+    f2 = f1.strip().split("\n")[-1]
+    return f2.split("***")[-1].strip()
