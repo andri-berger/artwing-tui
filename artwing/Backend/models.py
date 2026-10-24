@@ -7,13 +7,13 @@ from textual.widgets import DataTable, Input
 
 from .model import FileTree, MainTab
 from .script import (
-    PATH_01,
     PORT_00,
     script_f0,
     script_f01,
     script_f2,
     script_f3,
     script_f9,
+    script_f15,
 )
 
 PORT_0 = script_f01()
@@ -201,7 +201,7 @@ def on_pressed(self, event) -> None:
         )
         f32.parent.mkdir(exist_ok=True)
         f31.parent.mkdir(exist_ok=True)
-        shutil.copy2(PATH_01, f32)
+        script_f15(f32)
         f31.write_text(json.dumps(f9))
         # cursor on the new png, so it can be
         # picked as the next source right away
@@ -224,7 +224,7 @@ def on_pressed(self, event) -> None:
         f39 = PORT_00 / f"{f37}.png"
         f40 = PORT_00 / f"{f37[1:]}.json"
         f40.write_text(json.dumps(f9))
-        shutil.copy2(PATH_01, f39)
+        script_f15(f39)
         script_f3(self, f8, "", f15)
 
     if int(f14) in (0, 1, 2, 3):

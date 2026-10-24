@@ -71,7 +71,7 @@ Artwing keeps two folders per user, a share (data) folder and a state folder.
   the next source and stack another effect on top.
 - Both only save a finished render. While gmic is still running, or after
   it failed, they save nothing and say so.
-- The share folder also holds the working copies `1700000000.png` (current
+- The share folder also holds the working copies `1700000000.tif` (current
   preview) and `700000000.json` (current state), which are overwritten as you
   work.
 

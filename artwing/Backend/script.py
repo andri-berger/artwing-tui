@@ -26,11 +26,14 @@ def script_f00() -> Path:
 
 PORT_00 = script_f00()
 PATH_00 = PORT_00 / "700000000.json"
-PATH_01 = PORT_00 / "1700000000.png"
+# working copies as plain tif: gmic writes
+# png many times slower (5 s vs 0.4 s for
+# 12 MP), CREATE and EXPORT still save png
+PATH_01 = PORT_00 / "1700000000.tif"
 PATH_02 = PORT_00 / "1700000001"
 # gmic writes here, PATH_01 is replaced
 # only by a finished render
-PATH_03 = PORT_00 / "1700000002.png"
+PATH_03 = PORT_00 / "1700000002.tif"
 # seconds before a gmic run is aborted
 TIMEOUT = 120
 # raster formats both gmic and pillow read
@@ -209,6 +212,13 @@ def script_f13(h) -> Path:
     return f1
 
 
+def script_f15(h) -> None:
+    # PATH_01 as png, pillow encodes it many
+    # times faster than gmic
+    with Image.open(PATH_01) as f0:
+        f0.save(h)
+
+
 async def script_f14(h, h0) -> str | None:
     # one gmic run into PATH_03, the error
     # text when it fails, None when done
@@ -223,7 +233,7 @@ async def script_f14(h, h0) -> str | None:
             "-keep[0]",
             *h0,
             "-output",
-            str(PATH_03),
+            f"{PATH_03},uchar,none",
             stdout=f0.DEVNULL,
             stderr=f0.PIPE,
         )
