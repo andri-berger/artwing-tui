@@ -1,3 +1,4 @@
+import asyncio
 import json
 import re
 from pathlib import Path
@@ -7,6 +8,7 @@ from platformdirs import (
     user_data_dir,
     user_state_dir,
 )
+from textual_image._terminal import get_cell_size
 
 
 
@@ -29,6 +31,8 @@ PATH_02 = PORT_00 / "1700000001"
 # gmic writes here, PATH_01 is replaced
 # only by a finished render
 PATH_03 = PORT_00 / "1700000002.png"
+# seconds before a gmic run is aborted
+TIMEOUT = 120
 # raster formats both gmic and pillow read
 FORMATS = (
     ".png",
@@ -85,19 +89,20 @@ def script_f3(self, h, h0, h1="") -> None:
     script_f10(self, f1.format(f3=h0.upper()), h1)
 
 
-def script_f4(h, h0, h1) -> None:
-    with Image.open(h1) as f1:
-        f0 = f1.size
-    f2 = h.height * 18
-    f3 = h.width * 9
-    f4 = h0.styles
-    f5 = f0[0] / f0[1]
-    if f5 > (f3 / f2):
-        f4.width = "100%"
-        f4.height = "auto"
-    else:
-        f4.width = "auto"
-        f4.height = "100%"
+def script_f4(h, h0):
+    # the preview never needs more pixels than
+    # the screen has, jpeg even decodes smaller
+    f0 = get_cell_size()
+    f1 = (
+        h0.width * f0.width,
+        h0.height * f0.height,
+    )
+    with Image.open(h) as f2:
+        f2.draft("RGB", f1)
+        f3 = f2.has_transparency_data
+        f4 = f2.convert("RGBA" if f3 else "RGB")
+    f4.thumbnail(f1)
+    return f4
 
 
 def script_f5(h, h0) -> list:
@@ -152,7 +157,11 @@ def script_f8(h) -> str:
     f0 = h.decode("latin-1")
     f1 = re.sub(r"\x1b\[[\d;]*m", "", f0)
     f2 = f1.strip().split("\n")[-1]
-    return f2.split("***")[-1].strip()
+    f3 = f2.split("***")[-1].strip()
+    # an effect this gmic version lacks
+    if "Unknown command" in f3:
+        f3 = "not in this gmic version"
+    return f3
 
 
 def script_f9(h) -> None:
@@ -198,3 +207,49 @@ def script_f13(h) -> Path:
         h0.unlink()
     f1.symlink_to(f0.resolve())
     return f1
+
+
+async def script_f14(h, h0) -> str | None:
+    # one gmic run into PATH_03, the error
+    # text when it fails, None when done
+    PATH_03.unlink(missing_ok=True)
+    f0 = asyncio.subprocess
+    try:
+        f1 = await asyncio.create_subprocess_exec(
+            "gmic",
+            str(h),
+            # gif/tiff can hold several
+            # frames, use the first only
+            "-keep[0]",
+            *h0,
+            "-output",
+            str(PATH_03),
+            stdout=f0.DEVNULL,
+            stderr=f0.PIPE,
+        )
+    except FileNotFoundError:
+        return "not found, is G'MIC installed?"
+    except OSError as h1:
+        return h1.strerror or str(h1)
+    try:
+        f2 = await asyncio.wait_for(
+            f1.communicate(), TIMEOUT
+        )
+    except asyncio.CancelledError:
+        # a newer call replaced this worker,
+        # stop gmic so it can't overwrite
+        # the newer result
+        f1.kill()
+        raise
+    except TimeoutError:
+        f1.kill()
+        await f1.wait()
+        return f"aborted after {TIMEOUT} s"
+    f3 = f1.returncode
+    if f3:
+        # killed from outside: no message
+        f4 = f"aborted ({f3})"
+        return script_f8(f2[1]) or f4
+    if not PATH_03.is_file():
+        return "wrote no image"
+    return None

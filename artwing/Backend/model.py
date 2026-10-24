@@ -18,10 +18,10 @@ from .script import (
     script_f5,
     script_f6,
     script_f7,
-    script_f8,
     script_f9,
     script_f12,
     script_f13,
+    script_f14,
 )
 
 PORT_1 = Path(__file__)
@@ -86,42 +86,38 @@ class MainTab(Widget):
         if path[0] == 2:
             f19 = []
 
+        f25 = Path(f5)
+        if f19 is not None and not f25.is_file():
+            self.app.notify(
+                f"{f25.name}: file not found",
+                severity="error",
+            )
+            f19 = None
+
         # an effect clears the preview at once,
         # its result shows when gmic is done,
         # never a stale image before it
         if f19:
-            await self.query(Image).remove()
+            await self.drop()
+
+        # the raw view shows at once, gmic only
+        # copies it for CREATE and EXPORT
+        if path[0] == 2 and f19 is not None:
+            await self.show(f5)
 
         if f19 is not None:
-            f16 = await asyncio.create_subprocess_exec(
-                "gmic",
-                str(script_f13(f5)),
-                # gif/tiff can hold several
-                # frames, use the first only
-                "-keep[0]",
-                *f19,
-                "-output",
-                str(PATH_03),
-                stdout=asyncio.subprocess.DEVNULL,
-                stderr=asyncio.subprocess.PIPE,
+            f22 = await script_f14(
+                script_f13(f5), f19
             )
-            try:
-                f21 = await f16.communicate()
-            except asyncio.CancelledError:
-                # a newer call replaced this
-                # worker, stop gmic so it can't
-                # overwrite the newer result
-                f16.kill()
-                raise
-            if f16.returncode:
-                f22 = script_f8(f21[1])
+            if f22 is not None:
                 self.app.notify(
                     f"gmic {f12}: {f22}",
                     severity="error",
                 )
                 # show the base image, the old
                 # output must not pose as new
-                f23 = f5
+                if path[0] <= 1:
+                    f23 = f5
             else:
                 PATH_03.replace(PATH_01)
                 f28 = f4 if path[0] <= 1 else ""
@@ -129,24 +125,9 @@ class MainTab(Widget):
                 if path[0] <= 1:
                     f23 = PATH_01
 
-        if path[0] == 2:
-            f23 = f5
-
-        # swap in the new image once gmic is
-        # done, a raw view keeps the old till then
+        # swap in the new image once gmic is done
         if f23 is not None:
-            try:
-                f17 = Image(f23)
-                f18 = self.size
-                script_f4(f18, f17, f23)
-            except OSError:
-                self.app.notify(
-                    f"{Path(f23).name}: no image",
-                    severity="error",
-                )
-            else:
-                await self.query(Image).remove()
-                await self.mount(f17)
+            await self.show(f23)
 
         # a failed effect or restore shows the
         # fallback image instead of nothing
@@ -174,6 +155,42 @@ class MainTab(Widget):
                 f0.move_cursor(
                     row=path[1], column=path[2]
                 )
+
+    async def show(self, h) -> None:
+        # decode and shrink off the UI thread,
+        # each repaint then scales a screen
+        # sized copy instead of the whole file
+        try:
+            f0 = await asyncio.to_thread(
+                script_f4, h, self.app.size
+            )
+        except OSError:
+            self.app.notify(
+                f"{Path(h).name}: no image",
+                severity="error",
+            )
+            return
+        f1 = Image(f0)
+        # both auto fit the image into the
+        # area; a 100% side is read before
+        # layout as 0, wide images got 0 rows
+        f1.styles.width = "auto"
+        f1.styles.height = "auto"
+        await self.drop()
+        await self.mount(f1)
+
+    async def drop(self) -> None:
+        # textual's lru_cache on get_inner_outer
+        # keeps the styles cache of removed
+        # widgets, empty it or each old preview
+        # stays in memory with all its lines
+        f0 = self.query(Image)
+        for h in f0:
+            for h0 in h.walk_children(
+                with_self=True
+            ):
+                h0._styles_cache.clear()
+        await f0.remove()
 
     def render(self):
         return ""
@@ -348,6 +365,11 @@ class FileTree(DirectoryTree):
                 f27 = script_f6(self, *f24)
                 f2.config = [0, *f27, *f24]
                 f1.update(f26)
+            else:
+                self.app.notify(
+                    f"{f10}: unknown effect",
+                    severity="warning",
+                )
 
             if f23 is not None:
                 if len(f23) > 1:
