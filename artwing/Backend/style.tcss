@@ -1,12 +1,13 @@
 
 ToastRack {
-    align: right bottom; }
+    align: left bottom;
+    padding-left: 2; }
 
 Toast {
     width: 36; }
 
 ToastHolder {
-    align-horizontal: right; }
+    align-horizontal: left; }
 
 Screen {
     align: center middle;
