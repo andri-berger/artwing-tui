@@ -34,6 +34,8 @@ PATH_02 = PORT_00 / "1700000001"
 # gmic writes here, PATH_01 is replaced
 # only by a finished render
 PATH_03 = PORT_00 / "1700000002.tif"
+# what the installed gmic answered once
+GMIC = {}
 # seconds before a gmic run is aborted
 TIMEOUT = 120
 # raster formats both gmic and pillow read
@@ -219,12 +221,32 @@ def script_f15(h) -> None:
         f0.save(h)
 
 
+async def script_f16() -> str:
+    # 8 bit pixels for the tif: gmic 3 renamed
+    # uchar to uint8, ask the installed gmic
+    # once which name it knows
+    if "type" not in GMIC:
+        f0 = await asyncio.create_subprocess_exec(
+            "gmic",
+            "-version",
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.STDOUT,
+        )
+        f1 = (await f0.communicate())[0]
+        # first x.y.z in the banner
+        f2 = re.search(rb"(\d+)\.\d+\.\d+", f1)
+        f3 = f2 and int(f2[1]) < 3
+        GMIC["type"] = "uchar" if f3 else "uint8"
+    return GMIC["type"]
+
+
 async def script_f14(h, h0) -> str | None:
     # one gmic run into PATH_03, the error
     # text when it fails, None when done
     PATH_03.unlink(missing_ok=True)
     f0 = asyncio.subprocess
     try:
+        f5 = await script_f16()
         f1 = await asyncio.create_subprocess_exec(
             "gmic",
             str(h),
@@ -233,7 +255,7 @@ async def script_f14(h, h0) -> str | None:
             "-keep[0]",
             *h0,
             "-output",
-            f"{PATH_03},uchar,none",
+            f"{PATH_03},{f5},none",
             stdout=f0.DEVNULL,
             stderr=f0.PIPE,
         )
