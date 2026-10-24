@@ -1,5 +1,5 @@
 # <img src="artwing/build.png" width="50" valign="middle" alt="logo"> Artwing-TUI
-Artwork-TUI is a terminal-native creative filter engine wrapping G'MIC's extensive library of image effects into a comfortable spreadsheet-driven interface. Think of it as an effects rack for images, operated entirely from the terminal – a creative filter machine with no GUI overhead, no cloud dependency, no subscription. 
+Artwing-TUI is a terminal-native creative filter engine wrapping G'MIC's extensive library of image effects into a comfortable spreadsheet-driven interface. Think of it as an effects rack for images, operated entirely from the terminal – a creative filter machine with no GUI overhead, no cloud dependency, no subscription. 
 
 The motivation was equally simple: G'MIC is one of the most powerful and underappreciated image processing tools in existence, yet its full potential remains largely inaccessible to anyone unwilling to memorize its command syntax or navigate its GIMP plugin interface. artwing-tui bridges that gap, exposing G'MIC's creative filter library through a structured, navigable interface that rewards exploration without demanding expertise. It is the sibling project of artwork-tui, operating under the same GitHub umbrella and complementing it naturally: where artwork-tui generates, artwing-tui processes.
 
@@ -10,25 +10,69 @@ The motivation was equally simple: G'MIC is one of the most powerful and underap
 [Gallery](#gallery)
 
 
-
-<img src="artwing/Backend/modules/710000000.png" width="100%">
 <table>
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <b>Apply an effect and tweak it</b><br>
+      <a href="demos/01_apply_effect.png"><img src="demos/01_apply_effect.png" width="100%" alt="Apply an effect and tweak it"></a>
+    </td>
+    <td width="50%" align="center" valign="top">
+      <b>Open images from anywhere</b><br>
+      <a href="demos/02_open_images.png"><img src="demos/02_open_images.png" width="100%" alt="Open images from anywhere"></a>
+    </td>
   </tr>
-    <tr>
-        <td><a href="artwing/Backend/modules/710000000.png">
-        <img src="artwing/Backend/modules/710000000.png"></a></td>
-        <td><a href="artwing/Backend/modules/710000001.png">
-        <img src="artwing/Backend/modules/710000001.png"></a></td>
-        <td><a href="artwing/Backend/modules/710000001.png">
-        <img src="artwing/Backend/modules/710000001.png"></a></td>
-        <td><a href="artwing/Backend/modules/710000002.png">
-        <img src="artwing/Backend/modules/710000002.png"></a></td>
-        <td><a href="artwing/Backend/modules/710000002.png">
-        <img src="artwing/Backend/modules/710000002.png"></a></td>
-    </tr>
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <b>Tour the effect categories</b><br>
+      <a href="demos/03_effect_tour.png"><img src="demos/03_effect_tour.png" width="100%" alt="Tour the effect categories"></a>
+    </td>
+    <td width="50%" align="center" valign="top">
+      <b>Realtime FX on every picked image</b><br>
+      <a href="demos/04_realtime.png"><img src="demos/04_realtime.png" width="100%" alt="Realtime FX on every picked image"></a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <b>Stack effects with CREATE</b><br>
+      <a href="demos/05_stack.png"><img src="demos/05_stack.png" width="100%" alt="Stack effects with CREATE"></a>
+    </td>
+    <td width="50%" align="center" valign="top">
+      <b>CREATE and EXPORT</b><br>
+      <a href="demos/06_save.png"><img src="demos/06_save.png" width="100%" alt="CREATE and EXPORT"></a>
+    </td>
   </tr>
 </table>
 
+<table>
+  <tr>
+    <td width="33%" align="center" valign="top">
+      <b>Load a saved project</b><br>
+      <a href="demos/07_load_project.png"><img src="demos/07_load_project.png" width="100%" alt="Load a saved project"></a>
+    </td>
+    <td width="33%" align="center" valign="top">
+      <b>Pick up where you left off</b><br>
+      <a href="demos/08_restore.png"><img src="demos/08_restore.png" width="100%" alt="Pick up where you left off"></a>
+    </td>
+    <td width="33%" align="center" valign="top">
+      <b>Reset parameters, effect or image</b><br>
+      <a href="demos/09_resets.png"><img src="demos/09_resets.png" width="100%" alt="Reset parameters, effect or image"></a>
+    </td>
+  </tr>
+  <tr>
+    <td width="33%" align="center" valign="top">
+      <b>Themes</b><br>
+      <a href="demos/10_themes.png"><img src="demos/10_themes.png" width="100%" alt="Themes"></a>
+    </td>
+    <td width="33%" align="center" valign="top">
+      <b>Edit parameters in the grid</b><br>
+      <a href="demos/11_grid.png"><img src="demos/11_grid.png" width="100%" alt="Edit parameters in the grid"></a>
+    </td>
+    <td width="33%" align="center" valign="top">
+      <b>Copy, move and delete files</b><br>
+      <a href="demos/12_files.png"><img src="demos/12_files.png" width="100%" alt="Copy, move and delete files"></a>
+    </td>
+  </tr>
+</table>
 
 ## Installation
 Artwing-TUI has no Electron, no npm, no 200 MB runtime surprise — just a Python TUI and G'MIC under the hood. One install script, one path, every Unix system.
