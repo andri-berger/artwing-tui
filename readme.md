@@ -1,13 +1,13 @@
 # <img src="artwing/build.png" width="50" valign="middle" alt="logo"> Artwing-TUI
-Artwing-TUI is a terminal-native creative filter engine wrapping G'MIC's extensive library of image effects into a comfortable spreadsheet-driven interface. Think of it as an effects rack for images, operated entirely from the terminal – a creative filter machine with no GUI overhead, no cloud dependency, no subscription. 
+Artwing-TUI is a terminal-native creative filter engine wrapping G'MIC's extensive library of image effects into a comfortable spreadsheet-driven interface. Think of it as an effects rack for images, operated entirely from the terminal – a creative filter machine with no GUI overhead, no cloud dependency, no subscription.
 
 The motivation was equally simple: G'MIC is one of the most powerful and underappreciated image processing tools in existence, yet its full potential remains largely inaccessible to anyone unwilling to memorize its command syntax or navigate its GIMP plugin interface. artwing-tui bridges that gap, exposing G'MIC's creative filter library through a structured, navigable interface that rewards exploration without demanding expertise. It is the sibling project of artwork-tui, operating under the same GitHub umbrella and complementing it naturally: where artwork-tui generates, artwing-tui processes.
 
 [Installation](#installation) / 
 [Configuration](#configuration) / 
-[API Reference](#reference) / 
-[API Credit](#credit) / 
-[Gallery](#gallery)
+[API Reference](#api-reference) / 
+[API Credit](#api-credit) / 
+[API Gallery](#api-gallery)
 
 
 <table>
@@ -63,23 +63,33 @@ The motivation was equally simple: G'MIC is one of the most powerful and underap
 </table>
 
 ## Installation
-Artwing-TUI has no Electron, no npm, no 200 MB runtime surprise — just a Python TUI and G'MIC under the hood. One install script, one path, every Unix system.
+Artwing-TUI has no Electron, no npm, no 200 MB runtime surprise — just a Python TUI and G'MIC under the hood. One install script, one path, Linux and macOS.
 
-Pulls the install script directly from the repo and wires everything up.
-The script installs uv and G'MIC if they are missing (G'MIC 3.x recommended,
-some filters are missing in 2.9). uv brings its own Python 3.14 when your
-system has none, so installation lands in an isolated environment and never
-touches your system Python. If piping curl into sh makes you twitch — good
-instinct — read the script first; it is short and does exactly what it says.
+You need `curl` and, for sharp previews, a terminal with a graphics
+protocol (tested: kitty, ghostty, wezterm). Elsewhere the preview falls back
+to Sixel or Unicode half-blocks: it works, but coarse.
+
+The script installs uv and G'MIC if they are missing. G'MIC comes from your
+package manager (pacman, apt, dnf, zypper or Homebrew), which may ask for
+your sudo password. uv brings its own Python 3.14 when your system has none,
+so artwing-tui lands in an isolated environment and never touches your
+system Python. If piping curl into sh makes you twitch — good instinct —
+read the script first; it is short and does exactly what it says.
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/\
 andri-berger/artwing-tui/main/install.sh | sh
+artwing-tui
 ```
 
-To update, run the same command again. To remove it, run
-`uv tool uninstall artwing-tui`. User-generated files are not removed with it,
-see below.
+- **Update:** run the same command again.
+- **Remove:** `uv tool uninstall artwing-tui`. uv, G'MIC and your files stay,
+  see below.
+- **`artwing-tui: command not found`:** add `~/.local/bin` to your `PATH`
+  (the script prints the line to add).
+- **Some filters fail with a gmic error:** check `gmic -version`. Several
+  filters need G'MIC 3.x, Debian and Ubuntu still ship 2.9; newer builds are
+  on [gmic.eu](https://gmic.eu/download.html).
 
 ### Where your files end up
 Artwing keeps two folders per user, a share (data) folder and a state folder.
@@ -93,7 +103,8 @@ Artwing keeps two folders per user, a share (data) folder and a state folder.
 | State, XDG set | `$XDG_STATE_HOME/artwing-tui` | `$XDG_STATE_HOME/artwing-tui` |
 
 - **Export (F9)** writes the png and its json project file into the share
-  folder, named by timestamp, e.g. `1792780000.png` and `792780000.json`.
+  folder, named by timestamp, e.g. `1792780000.png` and `792780000.json`
+  (the json name drops the first digit).
 - **Create (F8)** writes the png into the state folder, under the category of
   the active effect, e.g. `filter/blur_all.png` (`blur_all_0.png` and so on
   if it already exists), and its json under the same name into `yamljson/`,
@@ -109,16 +120,11 @@ Artwing keeps two folders per user, a share (data) folder and a state folder.
 
 ## Configuration
 The interface is built from a small set of panels and buttons, each described
-below. Most buttons have a function-key twin from the API Reference above —
-pressing F8, for instance, does nothing more than programmatically press the
-Create button, so the two tables describe one surface from two angles: the
-keybindings are the fast path, the buttons the discoverable one. Screenshots
-in the Docs column show each element in context.
-
-A note on terminal support: the app renders image previews inline, which
-requires a terminal implementing a graphics protocol — hence the current list
-of kitty, ghostty, and wezterm. On anything else the TUI itself will run, but
-you would be filtering images blind, which defeats the purpose.
+below. Most buttons have a function-key twin in the [API Reference](#api-reference)
+below — pressing F8, for instance, does nothing more than programmatically
+press the Create button, so the two tables describe one surface from two
+angles: the keybindings are the fast path, the buttons the discoverable one.
+The [demos](#) at the top show each element in context.
 
 The three file trees on the left feed the pipeline, the FX rack in the center
 is where the actual work happens, and the button row drives generation and
@@ -126,8 +132,7 @@ export. A typical session reads left to right: pick a base image, stack and
 tune filters, generate, export.
 
 ```bash
-artwing-tui #Launches the TUI
-# kitty, ghostty, wezterm are currently supported
+artwing-tui   # launches the TUI, Ctrl-Q quits
 ```
 
 <table>
@@ -172,11 +177,11 @@ as editable cells; the stack is applied to the base image in order.</td>
     </tr>
     <tr>
         <td><kbd>Button Create</kbd></td>
-        <td>Save the current result (png plus json named after it) into the local file directory in the middle, the cursor lands on it, so you can pick it as the next source and stack another effect on top. See Where your files end up.</td>
+        <td>Save the current result (png plus json named after it) into the local file tree in the middle, the cursor lands on it, so you can pick it as the next source and stack another effect on top. See <a href="#where-your-files-end-up">Where your files end up</a>.</td>
     </tr>
     <tr>
         <td><kbd>Button Export</kbd></td>
-        <td>Export both generated (png) and project file (json) into the share folder, see Where your files end up.</td>
+        <td>Export both generated (png) and project file (json) into the share folder, see <a href="#where-your-files-end-up">Where your files end up</a>.</td>
     </tr>
 </table>
 
@@ -321,21 +326,13 @@ If you like what this project does, follow the links — the ideas started there
         Build</kbd></td>
         <td>Apng</td><td>
         <a href="//github.com/apngasm/apngasm">
-        https://github.com/apngasm/apng</a></td>
-    </tr>
+        https://github.com/apngasm/apngasm</a></td>
     </tr>
         <tr><td><kbd>
         Build</kbd></td>
         <td>Grim</td><td>
         <a href="//github.com/emersion/grim">
         https://github.com/emersion/grim</a></td>
-    </tr>
-    <tr>
-        <td><kbd>
-        Build</kbd></td>
-        <td>Biome</td><td>
-        <a href="//github.com/biomejs/biome">
-        https://github.com/biomejs/biome</a></td>
     </tr>
     <tr>
         <td><kbd>
@@ -356,7 +353,7 @@ If you like what this project does, follow the links — the ideas started there
         Framework</kbd></td>
         <td>Platform</td><td>
         <a href="//github.com/tox-dev/platformdirs">
-        https://github.com/tox-dev/platform</a></td>
+        https://github.com/tox-dev/platformdirs</a></td>
     </tr>
     <tr>
         <td><kbd>
@@ -410,12 +407,13 @@ If you like what this project does, follow the links — the ideas started there
 </table>
 
 
-## PI Gallery
+## API Gallery
 Twenty-five takes on a single source image. Every variation below was produced
 with the filters shipped in this repo — same input file, different filter
 effect per render, no manual retouching in between. The gallery exists to give
 you a feel for the expressive range before you install anything: from subtle
-tonal shifts to renders where the original is barely recognizable. Filenames are the Unix timestamps of their render runs, left untouched as a
+tonal shifts to renders where the original is barely recognizable.
+Filenames are the Unix timestamps of their render runs, left untouched as a
 quiet proof of process — these are batch outputs, not hand-picked compositions.
 Click any thumbnail for full resolution, then pick the effects you want to
 reproduce and feed them your own images.
